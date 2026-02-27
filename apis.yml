@@ -1,0 +1,60 @@
+name: Google Campaign Manager API
+description: The Campaign Manager 360 API allows developers to programmatically manage campaigns, creatives, reports, and other advertising operations in Google's Campaign Manager 360 platform.
+image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
+url: https://developers.google.com/doubleclick-advertisers
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+apis:
+- name: Campaign Manager 360 API
+  description: Manage your DoubleClick Campaign Manager ad campaigns and reports programmatically. Create, retrieve, update, and delete campaigns, creatives, placements, and generate comprehensive reporting data.
+  image: https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png
+  humanUrl: https://developers.google.com/doubleclick-advertisers
+  baseUrl: https://dfareporting.googleapis.com
+  tags:
+  - Advertising
+  - Campaign Management
+  - Digital Marketing
+  - Reporting
+  - Analytics
+  - Creatives
+  - Placements
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/doubleclick-advertisers/v4
+  - type: OpenAPI
+    url: https://dfareporting.googleapis.com/$discovery/rest?version=v4
+  - type: Authentication
+    url: https://developers.google.com/doubleclick-advertisers/guides/authorizing
+  - type: Pricing
+    url: https://marketingplatform.google.com/about/campaign-manager-360/pricing/
+  - type: QuickStart
+    url: https://developers.google.com/doubleclick-advertisers/getting_started
+  - type: Support
+    url: https://support.google.com/campaignmanager
+  - type: Console
+    url: https://console.cloud.google.com/apis/library/dfareporting.googleapis.com
+  - type: Terms of Service
+    url: https://developers.google.com/terms
+  - type: RateLimits
+    url: https://developers.google.com/doubleclick-advertisers/quotas
+  contact:
+  - type: Support
+    url: https://support.google.com/campaignmanager/contact/cm360_api_support
+common:
+- type: Portal
+  url: https://developers.google.com/
+- type: Authentication
+  url: https://developers.google.com/identity/protocols/oauth2
+- type: Blog
+  url: https://blog.google/products/marketingplatform/
+- type: Status
+  url: https://status.cloud.google.com/
+- type: Privacy
+  url: https://policies.google.com/privacy
+- type: Terms
+  url: https://policies.google.com/terms
+maintainers:
+- FN: Google Marketing Platform Team
+  email: google-marketing-platform@google.com
+  url: https://marketingplatform.google.com/
