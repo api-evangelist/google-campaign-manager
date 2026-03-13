@@ -1,0 +1,3151 @@
+openapi: 3.1.0
+info:
+  title: Campaign Manager 360 API
+  description: >-
+    The Campaign Manager 360 API (formerly DoubleClick Campaign Manager)
+    provides programmatic access to manage digital advertising campaigns,
+    ads, placements, and reports. Use this API to automate trafficking
+    workflows, create and manage campaign structures, configure ad
+    placements across publisher sites, and generate comprehensive
+    reporting data for campaign performance analysis. The API supports
+    the full campaign lifecycle from creation through reporting and
+    optimization.
+  version: v4
+  contact:
+    name: Google Campaign Manager 360 API Support
+    url: https://support.google.com/campaignmanager
+  termsOfService: https://developers.google.com/terms
+
+externalDocs:
+  description: Campaign Manager 360 API Documentation
+  url: https://developers.google.com/doubleclick-advertisers/rest/v4
+
+servers:
+  - url: https://dfareporting.googleapis.com/dfareporting/v4
+    description: Campaign Manager 360 API Production Server
+
+tags:
+  - name: Campaigns
+    description: >-
+      Manage advertising campaigns. Campaigns serve as top-level
+      organizational containers that group ads, placements, and
+      creatives under a single advertiser with shared start and end
+      dates, budgets, and targeting configurations.
+  - name: Ads
+    description: >-
+      Manage ad configurations within campaigns. Ads define the creative
+      content, delivery schedules, targeting rules, and placement
+      assignments that determine how and where advertising is served
+      to users.
+  - name: Placements
+    description: >-
+      Manage placements representing ad inventory on publisher sites.
+      Placements define the size, format, pricing, and site location
+      where ads can be served, and generate the ad tags that publishers
+      install on their pages.
+  - name: Reports
+    description: >-
+      Create, configure, and run reports to analyze campaign performance.
+      Reports support multiple types including standard, reach, path to
+      conversion, cross-dimension reach, floodlight, and cross-media
+      reach, with configurable dimensions, metrics, and date ranges.
+
+security:
+  - OAuth2:
+      - https://www.googleapis.com/auth/dfareporting
+      - https://www.googleapis.com/auth/dfatrafficking
+
+paths:
+  /userprofiles/{profileId}/campaigns:
+    get:
+      operationId: listCampaigns
+      summary: List campaigns
+      description: >-
+        Retrieves a list of campaigns, possibly filtered. Results are
+        returned in descending order by last modified time. Use query
+        parameters to filter by advertiser, archive status, search
+        string, or specific campaign IDs.
+      tags:
+        - Campaigns
+      security:
+        - OAuth2:
+            - https://www.googleapis.com/auth/dfatrafficking
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - name: advertiserIds
+          in: query
+          required: false
+          description: Select only campaigns that belong to these advertisers.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: ids
+          in: query
+          required: false
+          description: Select only campaigns with these IDs.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: searchString
+          in: query
+          required: false
+          description: >-
+            Search string for filtering results. Matches against campaign
+            name and ID fields.
+          schema:
+            type: string
+        - name: archived
+          in: query
+          required: false
+          description: Select only archived campaigns. Default is false.
+          schema:
+            type: boolean
+            default: false
+        - name: sortField
+          in: query
+          required: false
+          description: Field by which to sort the list.
+          schema:
+            type: string
+            enum:
+              - ID
+              - NAME
+            default: ID
+        - name: sortOrder
+          in: query
+          required: false
+          description: Order of sorted results.
+          schema:
+            type: string
+            enum:
+              - ASCENDING
+              - DESCENDING
+            default: ASCENDING
+        - $ref: '#/components/parameters/MaxResults'
+        - $ref: '#/components/parameters/PageToken'
+      responses:
+        '200':
+          description: List of campaigns.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignsListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+    post:
+      operationId: insertCampaign
+      summary: Create a campaign
+      description: >-
+        Inserts a new campaign. The campaign is created under the
+        specified advertiser with the provided configuration. Required
+        fields include name, advertiserId, startDate, and endDate.
+      tags:
+        - Campaigns
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+            example:
+              name: Q1 2026 Brand Awareness Campaign
+              advertiserId: '12345678'
+              startDate: '2026-01-01'
+              endDate: '2026-03-31'
+              defaultLandingPageId: '98765432'
+      responses:
+        '200':
+          description: Created campaign.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /userprofiles/{profileId}/campaigns/{campaignId}:
+    get:
+      operationId: getCampaign
+      summary: Get a campaign
+      description: Gets one campaign by ID.
+      tags:
+        - Campaigns
+      security:
+        - OAuth2:
+            - https://www.googleapis.com/auth/dfatrafficking
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/CampaignId'
+      responses:
+        '200':
+          description: Campaign details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateCampaign
+      summary: Update a campaign
+      description: >-
+        Updates an existing campaign. All writable fields must be
+        provided in the request body; unset writable fields will be
+        reset to their default values.
+      tags:
+        - Campaigns
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/CampaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+      responses:
+        '200':
+          description: Updated campaign.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      operationId: patchCampaign
+      summary: Patch a campaign
+      description: >-
+        Updates an existing campaign. This method supports patch
+        semantics; only the fields specified in the request body are
+        modified.
+      tags:
+        - Campaigns
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/CampaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+      responses:
+        '200':
+          description: Patched campaign.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /userprofiles/{profileId}/ads:
+    get:
+      operationId: listAds
+      summary: List ads
+      description: >-
+        Retrieves a list of ads, possibly filtered. Results are returned
+        in descending order by last modified time. Use query parameters
+        to filter by campaign, advertiser, type, or other criteria.
+      tags:
+        - Ads
+      security:
+        - OAuth2:
+            - https://www.googleapis.com/auth/dfatrafficking
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - name: campaignIds
+          in: query
+          required: false
+          description: Select only ads belonging to these campaigns.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: advertiserIds
+          in: query
+          required: false
+          description: Select only ads belonging to these advertisers.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: ids
+          in: query
+          required: false
+          description: Select only ads with these IDs.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: placementIds
+          in: query
+          required: false
+          description: Select only ads with these placement IDs assigned.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: type
+          in: query
+          required: false
+          description: Select only ads with the specified type.
+          schema:
+            type: string
+            enum:
+              - AD_SERVING_STANDARD_AD
+              - AD_SERVING_DEFAULT_AD
+              - AD_SERVING_CLICK_TRACKER
+              - AD_SERVING_TRACKING
+              - AD_SERVING_BRAND_SAFE_AD
+        - name: active
+          in: query
+          required: false
+          description: Select only active ads.
+          schema:
+            type: boolean
+        - name: archived
+          in: query
+          required: false
+          description: Select only archived ads.
+          schema:
+            type: boolean
+            default: false
+        - name: searchString
+          in: query
+          required: false
+          description: >-
+            Search string for filtering results. Matches against ad
+            name and ID fields.
+          schema:
+            type: string
+        - name: sortField
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ID
+              - NAME
+            default: ID
+        - name: sortOrder
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ASCENDING
+              - DESCENDING
+            default: ASCENDING
+        - $ref: '#/components/parameters/MaxResults'
+        - $ref: '#/components/parameters/PageToken'
+      responses:
+        '200':
+          description: List of ads.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdsListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+    post:
+      operationId: insertAd
+      summary: Create an ad
+      description: >-
+        Inserts a new ad. The ad is created under the specified campaign
+        and advertiser with the provided delivery, creative rotation,
+        and targeting configuration.
+      tags:
+        - Ads
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ad'
+            example:
+              name: Homepage Banner Ad
+              campaignId: '12345678'
+              advertiserId: '87654321'
+              type: AD_SERVING_STANDARD_AD
+              active: true
+              startTime: '2026-01-01T00:00:00Z'
+              endTime: '2026-03-31T23:59:59Z'
+      responses:
+        '200':
+          description: Created ad.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ad'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /userprofiles/{profileId}/ads/{adId}:
+    get:
+      operationId: getAd
+      summary: Get an ad
+      description: Gets one ad by ID.
+      tags:
+        - Ads
+      security:
+        - OAuth2:
+            - https://www.googleapis.com/auth/dfatrafficking
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AdId'
+      responses:
+        '200':
+          description: Ad details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ad'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateAd
+      summary: Update an ad
+      description: >-
+        Updates an existing ad. All writable fields must be provided
+        in the request body.
+      tags:
+        - Ads
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AdId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ad'
+      responses:
+        '200':
+          description: Updated ad.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ad'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      operationId: patchAd
+      summary: Patch an ad
+      description: >-
+        Updates an existing ad. This method supports patch semantics;
+        only the fields specified in the request body are modified.
+      tags:
+        - Ads
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AdId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ad'
+      responses:
+        '200':
+          description: Patched ad.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ad'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /userprofiles/{profileId}/placements:
+    get:
+      operationId: listPlacements
+      summary: List placements
+      description: >-
+        Retrieves a list of placements, possibly filtered. Results are
+        returned in descending order by last modified time.
+      tags:
+        - Placements
+      security:
+        - OAuth2:
+            - https://www.googleapis.com/auth/dfatrafficking
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - name: campaignIds
+          in: query
+          required: false
+          description: Select only placements belonging to these campaigns.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: advertiserIds
+          in: query
+          required: false
+          description: Select only placements belonging to these advertisers.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: ids
+          in: query
+          required: false
+          description: Select only placements with these IDs.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: siteIds
+          in: query
+          required: false
+          description: Select only placements associated with these sites.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: groupIds
+          in: query
+          required: false
+          description: >-
+            Select only placements belonging to these placement groups.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: compatibilities
+          in: query
+          required: false
+          description: Select only placements with these compatibilities.
+          schema:
+            type: string
+            enum:
+              - DISPLAY
+              - DISPLAY_INTERSTITIAL
+              - IN_STREAM_VIDEO
+              - IN_STREAM_AUDIO
+        - name: searchString
+          in: query
+          required: false
+          description: Search string for filtering results.
+          schema:
+            type: string
+        - name: sortField
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ID
+              - NAME
+            default: ID
+        - name: sortOrder
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ASCENDING
+              - DESCENDING
+            default: ASCENDING
+        - $ref: '#/components/parameters/MaxResults'
+        - $ref: '#/components/parameters/PageToken'
+      responses:
+        '200':
+          description: List of placements.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlacementsListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+    post:
+      operationId: insertPlacement
+      summary: Create a placement
+      description: >-
+        Inserts a new placement. The placement is associated with a
+        campaign, site, and directory site, and defines the ad inventory
+        configuration for a specific location on a publisher site.
+      tags:
+        - Placements
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Placement'
+            example:
+              name: Homepage Leaderboard 728x90
+              campaignId: '12345678'
+              siteId: '11111111'
+              directorySiteId: '22222222'
+              compatibility: DISPLAY
+              size:
+                id: '12345'
+                width: 728
+                height: 90
+              tagFormats:
+                - PLACEMENT_TAG_STANDARD
+                - PLACEMENT_TAG_JAVASCRIPT
+              pricingSchedule:
+                startDate: '2026-01-01'
+                endDate: '2026-03-31'
+                pricingType: PRICING_TYPE_CPM
+      responses:
+        '200':
+          description: Created placement.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Placement'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /userprofiles/{profileId}/placements/{placementId}:
+    get:
+      operationId: getPlacement
+      summary: Get a placement
+      description: Gets one placement by ID.
+      tags:
+        - Placements
+      security:
+        - OAuth2:
+            - https://www.googleapis.com/auth/dfatrafficking
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/PlacementId'
+      responses:
+        '200':
+          description: Placement details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Placement'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updatePlacement
+      summary: Update a placement
+      description: Updates an existing placement.
+      tags:
+        - Placements
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/PlacementId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Placement'
+      responses:
+        '200':
+          description: Updated placement.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Placement'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      operationId: patchPlacement
+      summary: Patch a placement
+      description: >-
+        Updates an existing placement. This method supports patch
+        semantics.
+      tags:
+        - Placements
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/PlacementId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Placement'
+      responses:
+        '200':
+          description: Patched placement.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Placement'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /userprofiles/{profileId}/placements/generatetags:
+    post:
+      operationId: generatePlacementTags
+      summary: Generate placement tags
+      description: >-
+        Generates tags for one or more placements. Tags are the code
+        snippets that publishers place on their sites to enable ad
+        serving for the associated placements.
+      tags:
+        - Placements
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - name: placementIds
+          in: query
+          required: false
+          description: Generate tags for these placements.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        - name: tagFormats
+          in: query
+          required: false
+          description: Tag formats to generate.
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - PLACEMENT_TAG_STANDARD
+                - PLACEMENT_TAG_IFRAME_JAVASCRIPT
+                - PLACEMENT_TAG_IFRAME_ILAYER
+                - PLACEMENT_TAG_INTERNAL_REDIRECT
+                - PLACEMENT_TAG_JAVASCRIPT
+                - PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT
+                - PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT
+                - PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT
+                - PLACEMENT_TAG_CLICK_COMMANDS
+                - PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH
+                - PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3
+                - PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4
+                - PLACEMENT_TAG_TRACKING
+                - PLACEMENT_TAG_TRACKING_IFRAME
+                - PLACEMENT_TAG_TRACKING_JAVASCRIPT
+          style: form
+          explode: true
+        - name: campaignId
+          in: query
+          required: false
+          description: Generate placements belonging to this campaign.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Generated placement tags.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlacementsGenerateTagsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /userprofiles/{profileId}/reports:
+    get:
+      operationId: listReports
+      summary: List reports
+      description: >-
+        Retrieves list of reports. Results are ordered by last modified
+        time descending.
+      tags:
+        - Reports
+      security:
+        - OAuth2:
+            - https://www.googleapis.com/auth/dfareporting
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - name: scope
+          in: query
+          required: false
+          description: The scope that defines which results are returned.
+          schema:
+            type: string
+            enum:
+              - ALL
+              - MINE
+            default: MINE
+        - name: sortField
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ID
+              - LAST_MODIFIED_TIME
+              - NAME
+            default: LAST_MODIFIED_TIME
+        - name: sortOrder
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - ASCENDING
+              - DESCENDING
+            default: DESCENDING
+        - $ref: '#/components/parameters/MaxResults'
+        - $ref: '#/components/parameters/PageToken'
+      responses:
+        '200':
+          description: List of reports.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportsListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+    post:
+      operationId: insertReport
+      summary: Create a report
+      description: >-
+        Creates a report. Configure the report type, criteria with
+        dimensions and metrics, date range, and optional scheduling
+        for automated delivery.
+      tags:
+        - Reports
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report'
+            example:
+              name: Weekly Campaign Performance Report
+              type: STANDARD
+              format: CSV
+              criteria:
+                dateRange:
+                  relativeDateRange: LAST_7_DAYS
+                dimensions:
+                  - name: campaign
+                  - name: ad
+                metricNames:
+                  - impressions
+                  - clicks
+                  - clickRate
+                  - totalConversions
+      responses:
+        '200':
+          description: Created report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /userprofiles/{profileId}/reports/{reportId}:
+    get:
+      operationId: getReport
+      summary: Get a report
+      description: Retrieves a report by its ID.
+      tags:
+        - Reports
+      security:
+        - OAuth2:
+            - https://www.googleapis.com/auth/dfareporting
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/ReportId'
+      responses:
+        '200':
+          description: Report details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateReport
+      summary: Update a report
+      description: Updates a report.
+      tags:
+        - Reports
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/ReportId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report'
+      responses:
+        '200':
+          description: Updated report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      operationId: patchReport
+      summary: Patch a report
+      description: Updates a report. This method supports patch semantics.
+      tags:
+        - Reports
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/ReportId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report'
+      responses:
+        '200':
+          description: Patched report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      operationId: deleteReport
+      summary: Delete a report
+      description: Deletes a report by its ID.
+      tags:
+        - Reports
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/ReportId'
+      responses:
+        '204':
+          description: Report deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /userprofiles/{profileId}/reports/{reportId}/run:
+    post:
+      operationId: runReport
+      summary: Run a report
+      description: >-
+        Runs a report. The report is executed asynchronously. Use the
+        files endpoint to check report completion status and download
+        the generated report file.
+      tags:
+        - Reports
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/ReportId'
+        - name: synchronous
+          in: query
+          required: false
+          description: >-
+            If set to true, tries to run the report synchronously.
+            If the report is too large for synchronous processing,
+            it runs asynchronously instead.
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: Report file metadata for the initiated run.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: >-
+        OAuth 2.0 authentication for accessing Campaign Manager 360
+        resources. Requires appropriate scopes for trafficking or
+        reporting operations.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/dfareporting: >-
+              View and manage DoubleClick for Advertisers reports
+            https://www.googleapis.com/auth/dfatrafficking: >-
+              View and manage your DoubleClick Campaign Manager's
+              (DCM) display ad campaigns
+
+  parameters:
+    ProfileId:
+      name: profileId
+      in: path
+      required: true
+      description: >-
+        The Campaign Manager 360 user profile ID. Each user has a
+        profile for each account they have access to.
+      schema:
+        type: string
+        pattern: '^\d+$'
+      example: '123456'
+
+    CampaignId:
+      name: campaignId
+      in: path
+      required: true
+      description: Campaign ID.
+      schema:
+        type: string
+        pattern: '^\d+$'
+      example: '12345678'
+
+    AdId:
+      name: adId
+      in: path
+      required: true
+      description: Ad ID.
+      schema:
+        type: string
+        pattern: '^\d+$'
+      example: '87654321'
+
+    PlacementId:
+      name: placementId
+      in: path
+      required: true
+      description: Placement ID.
+      schema:
+        type: string
+        pattern: '^\d+$'
+      example: '11223344'
+
+    ReportId:
+      name: reportId
+      in: path
+      required: true
+      description: The ID of the report.
+      schema:
+        type: string
+        pattern: '^\d+$'
+      example: '99887766'
+
+    MaxResults:
+      name: maxResults
+      in: query
+      required: false
+      description: Maximum number of results to return. Default is 1000.
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 1000
+        default: 1000
+
+    PageToken:
+      name: pageToken
+      in: query
+      required: false
+      description: >-
+        Value of the nextPageToken from the previous result page.
+      schema:
+        type: string
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters or malformed request body.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or invalid credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Insufficient permissions for the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Campaign:
+      type: object
+      description: >-
+        A Campaign Manager 360 campaign. Campaigns are the top-level
+        organizational unit for advertising activities, grouping ads,
+        placements, and creatives under a single advertiser with shared
+        configuration, date ranges, and targeting.
+      required:
+        - name
+        - advertiserId
+        - startDate
+        - endDate
+      properties:
+        id:
+          type: string
+          description: Campaign ID. This is a read-only, auto-generated field.
+          readOnly: true
+        accountId:
+          type: string
+          description: Account ID of this campaign.
+          readOnly: true
+        subaccountId:
+          type: string
+          description: Subaccount ID of this campaign.
+          readOnly: true
+        advertiserId:
+          type: string
+          description: Advertiser ID of this campaign. Required on insert.
+        advertiserGroupId:
+          type: string
+          description: Advertiser group ID of the associated advertiser.
+        name:
+          type: string
+          description: >-
+            Name of this campaign. Must be fewer than 512 characters
+            and unique among campaigns of the same advertiser.
+          maxLength: 512
+        archived:
+          type: boolean
+          description: Whether this campaign has been archived.
+          default: false
+        startDate:
+          type: string
+          format: date
+          description: >-
+            Start date of this campaign. The date format is YYYY-MM-DD.
+        endDate:
+          type: string
+          format: date
+          description: >-
+            End date of this campaign. Must be on or after the start
+            date. The date format is YYYY-MM-DD.
+        comment:
+          type: string
+          description: >-
+            Arbitrary comments about this campaign. Must be fewer than
+            256 characters.
+          maxLength: 256
+        billingInvoiceCode:
+          type: string
+          description: Billing invoice code included in the invoices.
+        defaultLandingPageId:
+          type: string
+          description: >-
+            Default landing page ID for this campaign.
+        externalId:
+          type: string
+          description: External ID for this campaign.
+        audienceSegmentGroups:
+          type: array
+          description: >-
+            Audience segment groups assigned to this campaign. Maximum
+            of 300 segment groups.
+          maxItems: 300
+          items:
+            $ref: '#/components/schemas/AudienceSegmentGroup'
+        eventTagOverrides:
+          type: array
+          description: Event tag overrides for this campaign.
+          items:
+            $ref: '#/components/schemas/EventTagOverride'
+        clickThroughUrlSuffixProperties:
+          $ref: '#/components/schemas/ClickThroughUrlSuffixProperties'
+        defaultClickThroughEventTagProperties:
+          $ref: '#/components/schemas/DefaultClickThroughEventTagProperties'
+        creativeGroupIds:
+          type: array
+          description: >-
+            List of creative group IDs assigned to this campaign.
+          items:
+            type: string
+        creativeOptimizationConfiguration:
+          $ref: '#/components/schemas/CreativeOptimizationConfiguration'
+        additionalCreativeOptimizationConfigurations:
+          type: array
+          description: Additional creative optimization configurations.
+          items:
+            $ref: '#/components/schemas/CreativeOptimizationConfiguration'
+        adBlockingConfiguration:
+          $ref: '#/components/schemas/AdBlockingConfiguration'
+        measurementPartnerLink:
+          $ref: '#/components/schemas/MeasurementPartnerLink'
+        euPoliticalAdsDeclaration:
+          type: string
+          description: EU political advertising declaration for this campaign.
+          enum:
+            - EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED
+            - EU_POLITICAL_ADS_DECLARATION_NOT_POLITICAL
+            - EU_POLITICAL_ADS_DECLARATION_POLITICAL
+        kind:
+          type: string
+          description: >-
+            Identifies what kind of resource this is. Value is always
+            dfareporting#campaign.
+          readOnly: true
+          default: 'dfareporting#campaign'
+        createInfo:
+          $ref: '#/components/schemas/LastModifiedInfo'
+          readOnly: true
+        lastModifiedInfo:
+          $ref: '#/components/schemas/LastModifiedInfo'
+          readOnly: true
+        idDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        advertiserIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+
+    Ad:
+      type: object
+      description: >-
+        A Campaign Manager 360 ad. Ads define the creative content,
+        delivery schedules, targeting rules, and placement assignments
+        that control how advertising is served.
+      required:
+        - name
+        - campaignId
+        - advertiserId
+        - type
+        - startTime
+        - endTime
+      properties:
+        id:
+          type: string
+          description: Ad ID. Read-only, auto-generated field.
+          readOnly: true
+        accountId:
+          type: string
+          description: Account ID of this ad.
+          readOnly: true
+        subaccountId:
+          type: string
+          description: Subaccount ID of this ad.
+          readOnly: true
+        campaignId:
+          type: string
+          description: Campaign ID of this ad. Required on insert.
+        advertiserId:
+          type: string
+          description: Advertiser ID of this ad. Required on insert.
+        name:
+          type: string
+          description: >-
+            Name of this ad. Must be fewer than 256 characters.
+          maxLength: 256
+        active:
+          type: boolean
+          description: >-
+            Whether this ad is active. Cannot be true when archived
+            is true.
+        archived:
+          type: boolean
+          description: >-
+            Whether this ad is archived. Cannot be true when active
+            is true.
+          default: false
+        comments:
+          type: string
+          description: Comments for this ad.
+        startTime:
+          type: string
+          format: date-time
+          description: >-
+            Date and time that this ad should start serving. Must be
+            in the future for new ads.
+        endTime:
+          type: string
+          format: date-time
+          description: >-
+            Date and time that this ad should stop serving. Must be
+            after startTime.
+        type:
+          type: string
+          description: Type of ad. Required on insert.
+          enum:
+            - AD_SERVING_STANDARD_AD
+            - AD_SERVING_DEFAULT_AD
+            - AD_SERVING_CLICK_TRACKER
+            - AD_SERVING_TRACKING
+            - AD_SERVING_BRAND_SAFE_AD
+        dynamicClickTracker:
+          type: boolean
+          description: >-
+            Whether this ad is a dynamic click tracker. Read-only
+            after insert.
+        size:
+          $ref: '#/components/schemas/Size'
+        placementAssignments:
+          type: array
+          description: Placement assignments for this ad.
+          items:
+            $ref: '#/components/schemas/PlacementAssignment'
+        creativeRotation:
+          $ref: '#/components/schemas/CreativeRotation'
+        deliverySchedule:
+          $ref: '#/components/schemas/DeliverySchedule'
+        geoTargeting:
+          $ref: '#/components/schemas/GeoTargeting'
+        technologyTargeting:
+          $ref: '#/components/schemas/TechnologyTargeting'
+        dayPartTargeting:
+          $ref: '#/components/schemas/DayPartTargeting'
+        eventTagOverrides:
+          type: array
+          description: Event tag overrides for this ad.
+          items:
+            $ref: '#/components/schemas/EventTagOverride'
+        clickThroughUrl:
+          $ref: '#/components/schemas/ClickThroughUrl'
+        kind:
+          type: string
+          description: >-
+            Identifies what kind of resource this is. Value is always
+            dfareporting#ad.
+          readOnly: true
+          default: 'dfareporting#ad'
+        createInfo:
+          $ref: '#/components/schemas/LastModifiedInfo'
+          readOnly: true
+        lastModifiedInfo:
+          $ref: '#/components/schemas/LastModifiedInfo'
+          readOnly: true
+        idDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        advertiserIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        campaignIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+
+    Placement:
+      type: object
+      description: >-
+        A Campaign Manager 360 placement. Placements represent ad
+        inventory on publisher sites and define the size, format,
+        pricing, and location where ads can be served.
+      required:
+        - name
+        - campaignId
+        - compatibility
+        - tagFormats
+      properties:
+        id:
+          type: string
+          description: Placement ID. Read-only, auto-generated field.
+          readOnly: true
+        accountId:
+          type: string
+          description: Account ID of this placement.
+          readOnly: true
+        subaccountId:
+          type: string
+          description: Subaccount ID of this placement.
+          readOnly: true
+        advertiserId:
+          type: string
+          description: Advertiser ID of this placement.
+        campaignId:
+          type: string
+          description: Campaign ID of this placement. Required on insert.
+        name:
+          type: string
+          description: >-
+            Name of this placement. Must be fewer than 512 characters.
+          maxLength: 512
+        siteId:
+          type: string
+          description: >-
+            Site ID associated with this placement. Required on insert,
+            read-only after.
+        directorySiteId:
+          type: string
+          description: >-
+            Directory site ID of this placement. Required on insert,
+            read-only after.
+        externalId:
+          type: string
+          description: External ID for this placement.
+        keyName:
+          type: string
+          description: >-
+            Key name of this placement, auto-generated from the name.
+          readOnly: true
+        placementGroupId:
+          type: string
+          description: ID of the placement group this placement belongs to.
+        compatibility:
+          type: string
+          description: Placement compatibility. Required on insert.
+          enum:
+            - DISPLAY
+            - DISPLAY_INTERSTITIAL
+            - IN_STREAM_VIDEO
+            - IN_STREAM_AUDIO
+        size:
+          $ref: '#/components/schemas/Size'
+        additionalSizes:
+          type: array
+          description: Additional sizes associated with this placement.
+          items:
+            $ref: '#/components/schemas/Size'
+        tagFormats:
+          type: array
+          description: Tag formats to generate for this placement.
+          items:
+            type: string
+            enum:
+              - PLACEMENT_TAG_STANDARD
+              - PLACEMENT_TAG_IFRAME_JAVASCRIPT
+              - PLACEMENT_TAG_IFRAME_ILAYER
+              - PLACEMENT_TAG_INTERNAL_REDIRECT
+              - PLACEMENT_TAG_JAVASCRIPT
+              - PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT
+              - PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT
+              - PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT
+              - PLACEMENT_TAG_CLICK_COMMANDS
+              - PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH
+              - PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3
+              - PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4
+              - PLACEMENT_TAG_TRACKING
+              - PLACEMENT_TAG_TRACKING_IFRAME
+              - PLACEMENT_TAG_TRACKING_JAVASCRIPT
+        paymentSource:
+          type: string
+          description: >-
+            Payment source for this placement. Read-only after insert.
+          enum:
+            - PLACEMENT_AGENCY_PAID
+            - PLACEMENT_PUBLISHER_PAID
+        paymentApproved:
+          type: boolean
+          description: >-
+            Whether payment was approved for this placement. Read-only
+            for non-publisher-paid placements.
+          readOnly: true
+        status:
+          type: string
+          description: Third-party placement status.
+          enum:
+            - PENDING_REVIEW
+            - PAYMENT_ACCEPTED
+            - PAYMENT_REJECTED
+            - ACKNOWLEDGE_REJECTION
+            - ACKNOWLEDGE_ACCEPTANCE
+            - DRAFT
+        activeStatus:
+          type: string
+          description: >-
+            Whether this placement is active, inactive, archived, or
+            permanently archived.
+          enum:
+            - PLACEMENT_STATUS_ACTIVE
+            - PLACEMENT_STATUS_INACTIVE
+            - PLACEMENT_STATUS_ARCHIVED
+            - PLACEMENT_STATUS_PERMANENTLY_ARCHIVED
+        pricingSchedule:
+          $ref: '#/components/schemas/PricingSchedule'
+        contentCategoryId:
+          type: string
+          description: ID of the content category assigned to this placement.
+        placementStrategyId:
+          type: string
+          description: ID of the placement strategy assigned to this placement.
+        comment:
+          type: string
+          description: Comments for this placement.
+        primary:
+          type: boolean
+          description: Whether this placement is the primary placement in a roadblock.
+        sslRequired:
+          type: boolean
+          description: Whether creatives assigned to this placement must be SSL-compliant.
+        adBlockingOptOut:
+          type: boolean
+          description: Whether this placement opts out of ad blocking.
+        wrappingOptOut:
+          type: boolean
+          description: Whether this placement opts out of tag wrapping.
+        videoSettings:
+          $ref: '#/components/schemas/VideoSettings'
+        videoActiveViewOptOut:
+          type: boolean
+          description: >-
+            Whether Verification and ActiveView for in-stream video
+            creatives are disabled for this placement.
+        vpaidAdapterChoice:
+          type: string
+          description: VPAID adapter setting for this placement.
+          enum:
+            - DEFAULT
+            - FLASH
+            - HTML5
+            - BOTH
+        lookbackConfiguration:
+          $ref: '#/components/schemas/LookbackConfiguration'
+        tagSetting:
+          $ref: '#/components/schemas/TagSetting'
+        partnerWrappingData:
+          $ref: '#/components/schemas/MeasurementPartnerWrappingData'
+        conversionDomainOverride:
+          $ref: '#/components/schemas/ConversionDomainOverride'
+        kind:
+          type: string
+          description: >-
+            Identifies what kind of resource this is. Value is always
+            dfareporting#placement.
+          readOnly: true
+          default: 'dfareporting#placement'
+        createInfo:
+          $ref: '#/components/schemas/LastModifiedInfo'
+          readOnly: true
+        lastModifiedInfo:
+          $ref: '#/components/schemas/LastModifiedInfo'
+          readOnly: true
+        idDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        advertiserIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        campaignIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        siteIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        directorySiteIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        placementGroupIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+
+    Report:
+      type: object
+      description: >-
+        A Campaign Manager 360 report configuration. Reports provide
+        performance data and analytics for campaigns, ads, placements,
+        and other advertising dimensions.
+      properties:
+        id:
+          type: string
+          description: Report ID. Read-only, auto-generated field.
+          readOnly: true
+        ownerProfileId:
+          type: string
+          description: >-
+            The user profile ID of the owner of this report.
+          readOnly: true
+        accountId:
+          type: string
+          description: The account ID this report belongs to.
+          readOnly: true
+        subAccountId:
+          type: string
+          description: The subaccount ID this report belongs to.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the report.
+        fileName:
+          type: string
+          description: >-
+            The filename used when generating report files for this
+            report.
+        type:
+          type: string
+          description: The type of report.
+          enum:
+            - STANDARD
+            - REACH
+            - PATH_TO_CONVERSION
+            - CROSS_DIMENSION_REACH
+            - FLOODLIGHT
+            - CROSS_MEDIA_REACH
+        format:
+          type: string
+          description: The output format of the report.
+          enum:
+            - CSV
+            - EXCEL
+          default: CSV
+        etag:
+          type: string
+          description: Etag of this resource.
+          readOnly: true
+        lastModifiedTime:
+          type: string
+          description: >-
+            The timestamp (in milliseconds since epoch) of when this
+            report was last modified.
+          readOnly: true
+        criteria:
+          $ref: '#/components/schemas/ReportCriteria'
+        reachCriteria:
+          $ref: '#/components/schemas/ReportReachCriteria'
+        pathToConversionCriteria:
+          $ref: '#/components/schemas/ReportPathToConversionCriteria'
+        crossDimensionReachCriteria:
+          $ref: '#/components/schemas/ReportCrossDimensionReachCriteria'
+        floodlightCriteria:
+          $ref: '#/components/schemas/ReportFloodlightCriteria'
+        crossMediaReachCriteria:
+          $ref: '#/components/schemas/ReportCrossMediaReachCriteria'
+        schedule:
+          $ref: '#/components/schemas/ReportSchedule'
+        delivery:
+          $ref: '#/components/schemas/ReportDelivery'
+        kind:
+          type: string
+          description: >-
+            Identifies what kind of resource this is. Value is always
+            dfareporting#report.
+          readOnly: true
+          default: 'dfareporting#report'
+
+    ReportCriteria:
+      type: object
+      description: Configuration for a STANDARD report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensions:
+          type: array
+          description: >-
+            The list of standard dimensions the report should include.
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+        metricNames:
+          type: array
+          description: The list of names of metrics the report should include.
+          items:
+            type: string
+        dimensionFilters:
+          type: array
+          description: >-
+            The list of filters on which dimensions are filtered.
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+        activities:
+          $ref: '#/components/schemas/Activities'
+        customRichMediaEvents:
+          $ref: '#/components/schemas/CustomRichMediaEvents'
+
+    ReportReachCriteria:
+      type: object
+      description: Configuration for a REACH report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+        metricNames:
+          type: array
+          items:
+            type: string
+        reachByFrequencyMetricNames:
+          type: array
+          items:
+            type: string
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+        activities:
+          $ref: '#/components/schemas/Activities'
+        enableAllDimensionCombinations:
+          type: boolean
+
+    ReportPathToConversionCriteria:
+      type: object
+      description: Configuration for a PATH_TO_CONVERSION report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        conversionDimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+        perInteractionDimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+        metricNames:
+          type: array
+          items:
+            type: string
+        activityFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+        floodlightConfigId:
+          $ref: '#/components/schemas/DimensionValue'
+
+    ReportCrossDimensionReachCriteria:
+      type: object
+      description: Configuration for a CROSS_DIMENSION_REACH report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimension:
+          type: string
+          enum:
+            - ADVERTISER
+            - CAMPAIGN
+            - SITE_BY_ADVERTISER
+            - SITE_BY_CAMPAIGN
+        metricNames:
+          type: array
+          items:
+            type: string
+        overlapMetricNames:
+          type: array
+          items:
+            type: string
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+        pivoted:
+          type: boolean
+        breakdown:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+
+    ReportFloodlightCriteria:
+      type: object
+      description: Configuration for a FLOODLIGHT report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+        metricNames:
+          type: array
+          items:
+            type: string
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+        floodlightConfigId:
+          $ref: '#/components/schemas/DimensionValue'
+        reportProperties:
+          type: object
+          properties:
+            includeUnattributedIPConversions:
+              type: boolean
+            includeUnattributedCookieConversions:
+              type: boolean
+            includeAttributedIPConversions:
+              type: boolean
+
+    ReportCrossMediaReachCriteria:
+      type: object
+      description: Configuration for a CROSS_MEDIA_REACH report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+        metricNames:
+          type: array
+          items:
+            type: string
+
+    ReportSchedule:
+      type: object
+      description: >-
+        Schedule configuration for automated report generation and
+        delivery.
+      properties:
+        active:
+          type: boolean
+          description: Whether the schedule is active.
+        repeats:
+          type: string
+          description: >-
+            The interval at which the report is run. Acceptable values
+            are DAILY, WEEKLY, MONTHLY, or QUARTERLY.
+          enum:
+            - DAILY
+            - WEEKLY
+            - MONTHLY
+            - QUARTERLY
+        every:
+          type: integer
+          description: >-
+            Defines every how many days, weeks, or months the report
+            should be run.
+        startDate:
+          type: string
+          format: date
+          description: Start date of the scheduled reports.
+        expirationDate:
+          type: string
+          format: date
+          description: >-
+            The expiration date when the scheduled report stops running.
+        runsOnDayOfMonth:
+          type: string
+          description: >-
+            Enum to define for MONTHLY and QUARTERLY schedules whether
+            reports should be repeated on the same day of the month or
+            the same day of the week.
+          enum:
+            - DAY_OF_MONTH
+            - WEEK_OF_MONTH
+        timezone:
+          type: string
+          description: The timezone for the report schedule.
+
+    ReportDelivery:
+      type: object
+      description: Report email delivery settings.
+      properties:
+        emailOwner:
+          type: boolean
+          description: Whether the report should be emailed to the report owner.
+        emailOwnerDeliveryType:
+          type: string
+          description: The type of delivery for the owner email.
+          enum:
+            - LINK
+            - ATTACHMENT
+        message:
+          type: string
+          description: The message to include in the email.
+        recipients:
+          type: array
+          description: The list of recipients to send the report to.
+          items:
+            $ref: '#/components/schemas/Recipient'
+
+    Recipient:
+      type: object
+      description: An email recipient for report delivery.
+      properties:
+        email:
+          type: string
+          format: email
+          description: The email address of the recipient.
+        deliveryType:
+          type: string
+          description: The delivery type for this recipient.
+          enum:
+            - LINK
+            - ATTACHMENT
+
+    File:
+      type: object
+      description: >-
+        Represents a report file generated by running a report.
+      properties:
+        id:
+          type: string
+          description: The unique ID of this report file.
+          readOnly: true
+        reportId:
+          type: string
+          description: The ID of the report this file was generated from.
+          readOnly: true
+        status:
+          type: string
+          description: The status of this report file.
+          enum:
+            - PROCESSING
+            - REPORT_AVAILABLE
+            - FAILED
+            - CANCELLED
+          readOnly: true
+        format:
+          type: string
+          description: The output format of this report file.
+          enum:
+            - CSV
+            - EXCEL
+          readOnly: true
+        fileName:
+          type: string
+          description: The filename of the file.
+          readOnly: true
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        lastModifiedTime:
+          type: string
+          description: >-
+            The timestamp in milliseconds since epoch for when this
+            file was last modified.
+          readOnly: true
+        urls:
+          type: object
+          description: The URLs where the completed report file can be downloaded.
+          properties:
+            apiUrl:
+              type: string
+              format: uri
+              description: The URL for downloading the report data through the API.
+            browserUrl:
+              type: string
+              format: uri
+              description: The URL for downloading the report data through a browser.
+          readOnly: true
+        etag:
+          type: string
+          readOnly: true
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#file'
+
+    Size:
+      type: object
+      description: Represents the dimensions of ads, placements, and creatives.
+      properties:
+        id:
+          type: string
+          description: ID of this size.
+        width:
+          type: integer
+          description: Width of this size in pixels.
+        height:
+          type: integer
+          description: Height of this size in pixels.
+        iab:
+          type: boolean
+          description: Whether this size is an IAB standard size.
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#size'
+
+    DateRange:
+      type: object
+      description: Date range configuration for reports.
+      properties:
+        startDate:
+          type: string
+          format: date
+          description: >-
+            The start date of the date range, inclusive. Format is
+            YYYY-MM-DD.
+        endDate:
+          type: string
+          format: date
+          description: >-
+            The end date of the date range, inclusive. Format is
+            YYYY-MM-DD.
+        relativeDateRange:
+          type: string
+          description: >-
+            The date range relative to the date of when the report
+            is run.
+          enum:
+            - TODAY
+            - YESTERDAY
+            - WEEK_TO_DATE
+            - MONTH_TO_DATE
+            - QUARTER_TO_DATE
+            - YEAR_TO_DATE
+            - PREVIOUS_WEEK
+            - PREVIOUS_MONTH
+            - PREVIOUS_QUARTER
+            - PREVIOUS_YEAR
+            - LAST_7_DAYS
+            - LAST_14_DAYS
+            - LAST_30_DAYS
+            - LAST_365_DAYS
+            - LAST_60_DAYS
+            - LAST_90_DAYS
+            - LAST_24_MONTHS
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#dateRange'
+
+    SortedDimension:
+      type: object
+      description: A sorted dimension for report queries.
+      properties:
+        name:
+          type: string
+          description: The name of the dimension.
+        sortOrder:
+          type: string
+          description: The sort order of this dimension.
+          enum:
+            - ASCENDING
+            - DESCENDING
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#sortedDimension'
+
+    Activities:
+      type: object
+      description: >-
+        Represents an activity group for report filtering.
+      properties:
+        filters:
+          type: array
+          description: List of activity filters.
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+        metricNames:
+          type: array
+          description: List of activity metric names.
+          items:
+            type: string
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#activities'
+
+    CustomRichMediaEvents:
+      type: object
+      description: Custom rich media events for report filtering.
+      properties:
+        filteredEventIds:
+          type: array
+          description: List of custom rich media event IDs.
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#customRichMediaEvents'
+
+    DimensionValue:
+      type: object
+      description: A dimension value used for filtering and reporting.
+      properties:
+        dimensionName:
+          type: string
+          description: The name of the dimension.
+        value:
+          type: string
+          description: The value of the dimension.
+        id:
+          type: string
+          description: The ID associated with the value.
+        matchType:
+          type: string
+          description: Match type for filtering.
+          enum:
+            - EXACT
+            - BEGINS_WITH
+            - CONTAINS
+            - WILDCARD_EXPRESSION
+        etag:
+          type: string
+          readOnly: true
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#dimensionValue'
+
+    LastModifiedInfo:
+      type: object
+      description: Modification timestamp information.
+      properties:
+        time:
+          type: string
+          description: >-
+            Timestamp of the last change in milliseconds since epoch.
+
+    AudienceSegmentGroup:
+      type: object
+      description: Audience segment group for targeting.
+      properties:
+        id:
+          type: string
+          description: ID of this audience segment group.
+        name:
+          type: string
+          description: Name of this audience segment group.
+        audienceSegments:
+          type: array
+          description: Audience segments assigned to this group.
+          items:
+            $ref: '#/components/schemas/AudienceSegment'
+
+    AudienceSegment:
+      type: object
+      description: An audience segment for targeting.
+      properties:
+        id:
+          type: string
+          description: ID of this audience segment.
+        name:
+          type: string
+          description: Name of this audience segment.
+        allocation:
+          type: integer
+          description: >-
+            Weight allocated to this segment. Must be between 1 and
+            1000.
+          minimum: 1
+          maximum: 1000
+
+    EventTagOverride:
+      type: object
+      description: Event tag override configuration.
+      properties:
+        id:
+          type: string
+          description: ID of the event tag that is overridden.
+        enabled:
+          type: boolean
+          description: Whether this override is enabled.
+
+    ClickThroughUrlSuffixProperties:
+      type: object
+      description: Click-through URL suffix properties.
+      properties:
+        clickThroughUrlSuffix:
+          type: string
+          description: >-
+            Click-through URL suffix to apply to all ads in this
+            entity's scope.
+        overrideInheritedSuffix:
+          type: boolean
+          description: >-
+            Whether this entity should override the inherited suffix
+            with its own defined suffix.
+
+    DefaultClickThroughEventTagProperties:
+      type: object
+      description: Default click-through event tag properties.
+      properties:
+        defaultClickThroughEventTagId:
+          type: string
+          description: ID of the default click-through event tag.
+        overrideInheritedEventTag:
+          type: boolean
+          description: Whether to override the inherited event tag.
+
+    ClickThroughUrl:
+      type: object
+      description: Click-through URL configuration.
+      properties:
+        defaultLandingPage:
+          type: boolean
+          description: Whether the campaign default landing page is used.
+        landingPageId:
+          type: string
+          description: ID of the landing page for the click-through URL.
+        customClickThroughUrl:
+          type: string
+          format: uri
+          description: Custom click-through URL.
+        computedClickThroughUrl:
+          type: string
+          format: uri
+          description: >-
+            Read-only computed click-through URL. Set when either
+            defaultLandingPage or landingPageId is set.
+          readOnly: true
+
+    CreativeOptimizationConfiguration:
+      type: object
+      description: Creative optimization configuration.
+      properties:
+        id:
+          type: string
+          description: ID of this creative optimization configuration.
+        name:
+          type: string
+          description: Name of this creative optimization configuration.
+        optimizationActivitys:
+          type: array
+          description: >-
+            List of optimization activities associated with this
+            configuration.
+          items:
+            $ref: '#/components/schemas/OptimizationActivity'
+        optimizationModel:
+          type: string
+          description: Optimization model for this configuration.
+          enum:
+            - CLICK
+            - POST_CLICK
+            - POST_IMPRESSION
+            - POST_CLICK_AND_IMPRESSION
+            - VIDEO_COMPLETION
+
+    OptimizationActivity:
+      type: object
+      description: An optimization activity for creative optimization.
+      properties:
+        floodlightActivityId:
+          type: string
+          description: Floodlight activity ID of this optimization activity.
+        floodlightActivityIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+        weight:
+          type: integer
+          description: Weight associated with this optimization.
+
+    AdBlockingConfiguration:
+      type: object
+      description: Ad blocking configuration for a campaign.
+      properties:
+        enabled:
+          type: boolean
+          description: >-
+            Whether this campaign has enabled ad blocking. When true,
+            ad blocking is enabled for the campaign and a default ad
+            can be served for blocked ads.
+        overrideClickThroughUrl:
+          type: string
+          format: uri
+          description: Override click-through URL for blocked ads.
+
+    MeasurementPartnerLink:
+      type: object
+      description: Measurement partner integration link.
+      properties:
+        measurementPartner:
+          type: string
+          description: Measurement partner used for tag wrapping.
+          enum:
+            - NONE
+            - INTEGRAL_AD_SCIENCE
+            - DOUBLE_VERIFY
+        linkStatus:
+          type: string
+          description: The status of the link.
+          enum:
+            - MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
+            - MEASUREMENT_PARTNER_LINK_ACTIVE
+            - MEASUREMENT_PARTNER_LINK_INACTIVE
+        partnerCampaignId:
+          type: string
+          description: Partner campaign ID for the link.
+
+    MeasurementPartnerWrappingData:
+      type: object
+      description: Measurement partner wrapping data for placements.
+      properties:
+        measurementPartner:
+          type: string
+          enum:
+            - NONE
+            - INTEGRAL_AD_SCIENCE
+            - DOUBLE_VERIFY
+        tagWrappingMode:
+          type: string
+          enum:
+            - NONE
+            - BLOCKING
+            - MONITORING
+            - MONITORING_READ_ONLY
+            - VIDEO_PIXEL_MONITORING
+            - TRACKING
+            - NON_VPAID_MONITORING
+            - VPAID_MONITORING
+        wrappedTag:
+          type: string
+          description: The wrapped tag content.
+        linkStatus:
+          type: string
+          enum:
+            - MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
+            - MEASUREMENT_PARTNER_LINK_ACTIVE
+            - MEASUREMENT_PARTNER_LINK_INACTIVE
+
+    ConversionDomainOverride:
+      type: object
+      description: Conversion domain override for a placement.
+      properties:
+        conversionDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+
+    PlacementAssignment:
+      type: object
+      description: Placement assignment for an ad.
+      properties:
+        placementId:
+          type: string
+          description: ID of the placement to be assigned.
+        active:
+          type: boolean
+          description: Whether this placement assignment is active.
+        sslRequired:
+          type: boolean
+          description: Whether the placement requires SSL.
+        placementIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+
+    CreativeRotation:
+      type: object
+      description: >-
+        Creative rotation configuration controlling how creatives
+        are served within an ad.
+      properties:
+        type:
+          type: string
+          description: Type of creative rotation.
+          enum:
+            - CREATIVE_ROTATION_TYPE_SEQUENTIAL
+            - CREATIVE_ROTATION_TYPE_RANDOM
+        weightCalculationStrategy:
+          type: string
+          description: Strategy for calculating creative weights.
+          enum:
+            - WEIGHT_STRATEGY_EQUAL
+            - WEIGHT_STRATEGY_CUSTOM
+            - WEIGHT_STRATEGY_HIGHEST_CTR
+            - WEIGHT_STRATEGY_OPTIMIZED
+        creativeAssignments:
+          type: array
+          description: Creative assignments in this creative rotation.
+          items:
+            $ref: '#/components/schemas/CreativeAssignment'
+        creativeOptimizationConfigurationId:
+          type: string
+          description: >-
+            Creative optimization configuration used for this
+            creative rotation.
+
+    CreativeAssignment:
+      type: object
+      description: Creative assignment within a creative rotation.
+      properties:
+        creativeId:
+          type: string
+          description: ID of the creative to be assigned.
+        active:
+          type: boolean
+          description: Whether this creative assignment is active.
+        weight:
+          type: integer
+          description: Weight of the creative assignment.
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        sequence:
+          type: integer
+          description: Sequence number of the creative assignment.
+        clickThroughUrl:
+          $ref: '#/components/schemas/ClickThroughUrl'
+        creativeIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        richMediaExitOverrides:
+          type: array
+          items:
+            type: object
+            properties:
+              exitId:
+                type: string
+              clickThroughUrl:
+                $ref: '#/components/schemas/ClickThroughUrl'
+              enabled:
+                type: boolean
+
+    DeliverySchedule:
+      type: object
+      description: >-
+        Delivery schedule configuration for an ad, controlling pacing
+        and priority.
+      properties:
+        impressionRatio:
+          type: string
+          description: >-
+            Impression ratio for this ad. Used to calculate the
+            relative weight of this ad vs other ads with the same
+            priority.
+        priority:
+          type: string
+          description: Serving priority of this delivery schedule.
+          enum:
+            - AD_PRIORITY_01
+            - AD_PRIORITY_02
+            - AD_PRIORITY_03
+            - AD_PRIORITY_04
+            - AD_PRIORITY_05
+            - AD_PRIORITY_06
+            - AD_PRIORITY_07
+            - AD_PRIORITY_08
+            - AD_PRIORITY_09
+            - AD_PRIORITY_10
+            - AD_PRIORITY_11
+            - AD_PRIORITY_12
+            - AD_PRIORITY_13
+            - AD_PRIORITY_14
+            - AD_PRIORITY_15
+            - AD_PRIORITY_16
+        hardCutoff:
+          type: boolean
+          description: >-
+            Whether or not hard cutoff is enabled. If true, the ad
+            will not serve after the end time.
+        frequencyCap:
+          $ref: '#/components/schemas/FrequencyCap'
+
+    FrequencyCap:
+      type: object
+      description: Frequency cap configuration.
+      properties:
+        impressions:
+          type: integer
+          description: Number of times an individual user can be served the ad.
+        duration:
+          type: integer
+          description: Duration of time, in seconds, for this frequency cap.
+
+    GeoTargeting:
+      type: object
+      description: Geographic targeting configuration.
+      properties:
+        countries:
+          type: array
+          description: Countries to target.
+          items:
+            $ref: '#/components/schemas/Country'
+        regions:
+          type: array
+          description: Regions to target.
+          items:
+            $ref: '#/components/schemas/Region'
+        cities:
+          type: array
+          description: Cities to target.
+          items:
+            $ref: '#/components/schemas/City'
+        metros:
+          type: array
+          description: Metros to target.
+          items:
+            $ref: '#/components/schemas/Metro'
+        postalCodes:
+          type: array
+          description: Postal codes to target.
+          items:
+            $ref: '#/components/schemas/PostalCode'
+        excludeCountries:
+          type: boolean
+          description: Whether to exclude the specified geographic locations.
+
+    Country:
+      type: object
+      properties:
+        dartId:
+          type: string
+        name:
+          type: string
+        countryCode:
+          type: string
+        sslEnabled:
+          type: boolean
+        kind:
+          type: string
+          readOnly: true
+
+    Region:
+      type: object
+      properties:
+        dartId:
+          type: string
+        name:
+          type: string
+        regionCode:
+          type: string
+        countryDartId:
+          type: string
+        countryCode:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+
+    City:
+      type: object
+      properties:
+        dartId:
+          type: string
+        name:
+          type: string
+        regionDartId:
+          type: string
+        regionCode:
+          type: string
+        countryDartId:
+          type: string
+        countryCode:
+          type: string
+        metroCode:
+          type: string
+        metroDmaId:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+
+    Metro:
+      type: object
+      properties:
+        dartId:
+          type: string
+        name:
+          type: string
+        dmaId:
+          type: string
+        metroCode:
+          type: string
+        countryDartId:
+          type: string
+        countryCode:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+
+    PostalCode:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        countryDartId:
+          type: string
+        countryCode:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+
+    TechnologyTargeting:
+      type: object
+      description: Technology targeting configuration.
+      properties:
+        browsers:
+          type: array
+          description: Browsers to target.
+          items:
+            $ref: '#/components/schemas/Browser'
+        platforms:
+          type: array
+          description: Platforms to target.
+          items:
+            $ref: '#/components/schemas/Platform'
+        operatingSystems:
+          type: array
+          description: Operating systems to target.
+          items:
+            $ref: '#/components/schemas/OperatingSystem'
+        mobileCarriers:
+          type: array
+          description: Mobile carriers to target.
+          items:
+            $ref: '#/components/schemas/MobileCarrier'
+        connectionTypes:
+          type: array
+          description: Connection types to target.
+          items:
+            $ref: '#/components/schemas/ConnectionType'
+        operatingSystemVersions:
+          type: array
+          description: Operating system versions to target.
+          items:
+            $ref: '#/components/schemas/OperatingSystemVersion'
+
+    Browser:
+      type: object
+      properties:
+        dartId:
+          type: string
+        name:
+          type: string
+        browserVersionId:
+          type: string
+        majorVersion:
+          type: string
+        minorVersion:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+
+    Platform:
+      type: object
+      properties:
+        dartId:
+          type: string
+        name:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+
+    OperatingSystem:
+      type: object
+      properties:
+        dartId:
+          type: string
+        name:
+          type: string
+        desktop:
+          type: boolean
+        mobile:
+          type: boolean
+        kind:
+          type: string
+          readOnly: true
+
+    OperatingSystemVersion:
+      type: object
+      properties:
+        id:
+          type: string
+        majorVersion:
+          type: string
+        minorVersion:
+          type: string
+        name:
+          type: string
+        operatingSystem:
+          $ref: '#/components/schemas/OperatingSystem'
+        kind:
+          type: string
+          readOnly: true
+
+    MobileCarrier:
+      type: object
+      properties:
+        dartId:
+          type: string
+        name:
+          type: string
+        countryDartId:
+          type: string
+        countryCode:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+
+    ConnectionType:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+
+    DayPartTargeting:
+      type: object
+      description: Day part targeting configuration.
+      properties:
+        userLocalTime:
+          type: boolean
+          description: Whether targeting is based on user's local time.
+        hoursOfDay:
+          type: array
+          description: Hours of the day to target (0-23).
+          items:
+            type: integer
+            minimum: 0
+            maximum: 23
+        daysOfWeek:
+          type: array
+          description: Days of the week to target.
+          items:
+            type: string
+            enum:
+              - MONDAY
+              - TUESDAY
+              - WEDNESDAY
+              - THURSDAY
+              - FRIDAY
+              - SATURDAY
+              - SUNDAY
+
+    PricingSchedule:
+      type: object
+      description: Pricing schedule for a placement.
+      properties:
+        startDate:
+          type: string
+          format: date
+          description: Placement start date.
+        endDate:
+          type: string
+          format: date
+          description: Placement end date.
+        pricingType:
+          type: string
+          description: Placement pricing type.
+          enum:
+            - PRICING_TYPE_CPM
+            - PRICING_TYPE_CPC
+            - PRICING_TYPE_CPA
+            - PRICING_TYPE_FLAT_RATE_IMPRESSIONS
+            - PRICING_TYPE_FLAT_RATE_CLICKS
+        capCostType:
+          type: string
+          description: Placement cap cost type.
+          enum:
+            - PLANNING_PLACEMENT_CAP_COST_TYPE_NONE
+            - PLANNING_PLACEMENT_CAP_COST_TYPE_MONTHLY
+            - PLANNING_PLACEMENT_CAP_COST_TYPE_CUMULATIVE
+        pricingPeriods:
+          type: array
+          description: Pricing periods for this placement.
+          items:
+            $ref: '#/components/schemas/PricingSchedulePricingPeriod'
+        testingStartDate:
+          type: string
+          format: date
+          description: Testing start date of this placement.
+
+    PricingSchedulePricingPeriod:
+      type: object
+      description: A pricing period within a pricing schedule.
+      properties:
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        units:
+          type: string
+          description: Units of this pricing period.
+        rateOrCostNanos:
+          type: string
+          description: Rate or cost of this pricing period in nanos.
+        pricingComment:
+          type: string
+          description: Comments for this pricing period.
+
+    VideoSettings:
+      type: object
+      description: Video settings for in-stream video placements.
+      properties:
+        companionSettings:
+          type: object
+          description: Companion ad settings.
+          properties:
+            companionsDisabled:
+              type: boolean
+            enabledSizes:
+              type: array
+              items:
+                $ref: '#/components/schemas/Size'
+            imageOnly:
+              type: boolean
+            kind:
+              type: string
+              readOnly: true
+        transcodeSettings:
+          type: object
+          description: Transcode settings.
+          properties:
+            enabledVideoFormats:
+              type: array
+              items:
+                type: integer
+            kind:
+              type: string
+              readOnly: true
+        skippableSettings:
+          type: object
+          description: Skippability settings.
+          properties:
+            skippable:
+              type: boolean
+            skipOffset:
+              type: object
+              properties:
+                offsetSeconds:
+                  type: integer
+                offsetPercentage:
+                  type: integer
+            progressOffset:
+              type: object
+              properties:
+                offsetSeconds:
+                  type: integer
+                offsetPercentage:
+                  type: integer
+            kind:
+              type: string
+              readOnly: true
+        obaEnabled:
+          type: boolean
+          description: >-
+            Whether OBA icons are enabled for this placement.
+        obaSettings:
+          type: object
+          properties:
+            iconClickThroughUrl:
+              type: string
+              format: uri
+            iconClickTrackingUrl:
+              type: string
+              format: uri
+            iconViewTrackingUrl:
+              type: string
+              format: uri
+            program:
+              type: string
+            resourceUrl:
+              type: string
+              format: uri
+            size:
+              $ref: '#/components/schemas/Size'
+            xPosition:
+              type: string
+            yPosition:
+              type: string
+        orientation:
+          type: string
+          description: Video orientation setting.
+          enum:
+            - ANY
+            - LANDSCAPE
+            - PORTRAIT
+        kind:
+          type: string
+          readOnly: true
+
+    LookbackConfiguration:
+      type: object
+      description: Lookback window configuration for attribution.
+      properties:
+        clickDuration:
+          type: integer
+          description: >-
+            Lookback window, in days, from the last time a given user
+            clicked on one of your ads.
+        postImpressionActivitiesDuration:
+          type: integer
+          description: >-
+            Lookback window, in days, from the last time a given user
+            viewed one of your ads.
+
+    TagSetting:
+      type: object
+      description: Tag settings for a placement.
+      properties:
+        additionalKeyValues:
+          type: string
+          description: Additional key-values to append to tags.
+        includeClickTracking:
+          type: boolean
+          description: Whether to include click-tracking string in tags.
+        includeClickThroughUrls:
+          type: boolean
+          description: Whether to include click-through URLs in tags.
+        keywordOption:
+          type: string
+          description: Option specifying how keywords are embedded in ad tags.
+          enum:
+            - PLACEHOLDER_WITH_LIST_OF_KEYWORDS
+            - IGNORE
+            - GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD
+
+    PlacementTag:
+      type: object
+      description: A generated placement tag.
+      properties:
+        placementId:
+          type: string
+          description: The placement ID this tag is generated for.
+        tagDatas:
+          type: array
+          description: Tags generated for this placement.
+          items:
+            type: object
+            properties:
+              format:
+                type: string
+                description: Tag format type.
+              impressionTag:
+                type: string
+                description: The tag string for impressions.
+              clickTag:
+                type: string
+                description: The tag string for clicks.
+              adId:
+                type: string
+              creativeId:
+                type: string
+
+    CampaignsListResponse:
+      type: object
+      description: Campaign list response.
+      properties:
+        campaigns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Campaign'
+        nextPageToken:
+          type: string
+          description: >-
+            Pagination token to be used in a subsequent request to
+            retrieve the next page.
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#campaignsListResponse'
+
+    AdsListResponse:
+      type: object
+      description: Ad list response.
+      properties:
+        ads:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ad'
+        nextPageToken:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#adsListResponse'
+
+    PlacementsListResponse:
+      type: object
+      description: Placement list response.
+      properties:
+        placements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Placement'
+        nextPageToken:
+          type: string
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#placementsListResponse'
+
+    PlacementsGenerateTagsResponse:
+      type: object
+      description: Response containing generated placement tags.
+      properties:
+        placementTags:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementTag'
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#placementsGenerateTagsResponse'
+
+    ReportsListResponse:
+      type: object
+      description: Report list response.
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+        nextPageToken:
+          type: string
+        etag:
+          type: string
+          readOnly: true
+        kind:
+          type: string
+          readOnly: true
+          default: 'dfareporting#reportList'
+
+    Error:
+      type: object
+      description: Standard Google API error response.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: HTTP status code.
+            message:
+              type: string
+              description: Human-readable error message.
+            status:
+              type: string
+              description: Error status string.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  domain:
+                    type: string
+                  reason:
+                    type: string
