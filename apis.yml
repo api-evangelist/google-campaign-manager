@@ -1,10 +1,12 @@
+aid: google-campaign-manager
 name: Google Campaign Manager API
 description: The Campaign Manager 360 API allows developers to programmatically manage campaigns, creatives, reports, and other advertising operations in Google's Campaign Manager 360 platform.
 image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 url: https://developers.google.com/doubleclick-advertisers
 created: '2024'
-modified: '2026-03-03'
-specificationVersion: '0.18'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+type: Index
 apis:
 - name: Campaign Manager 360 API
   description: Manage your DoubleClick Campaign Manager ad campaigns and reports programmatically. Create, retrieve, update, and delete campaigns, creatives, placements, and generate comprehensive reporting data.
