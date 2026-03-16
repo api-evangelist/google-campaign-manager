@@ -1,5 +1,5 @@
 aid: google-campaign-manager
-name: Google Campaign Manager API
+name: Google Campaign Manager
 description: The Campaign Manager 360 API allows developers to programmatically manage campaigns, creatives, reports, and other advertising operations in Google's Campaign Manager 360 platform.
 image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 url: https://developers.google.com/doubleclick-advertisers
