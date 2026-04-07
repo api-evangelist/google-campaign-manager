@@ -25,18 +25,18 @@ servers:
     description: Campaign Manager 360 API Production Server
 
 tags:
-  - name: Campaigns
-    description: >-
-      Manage advertising campaigns. Campaigns serve as top-level
-      organizational containers that group ads, placements, and
-      creatives under a single advertiser with shared start and end
-      dates, budgets, and targeting configurations.
   - name: Ads
     description: >-
       Manage ad configurations within campaigns. Ads define the creative
       content, delivery schedules, targeting rules, and placement
       assignments that determine how and where advertising is served
       to users.
+  - name: Campaigns
+    description: >-
+      Manage advertising campaigns. Campaigns serve as top-level
+      organizational containers that group ads, placements, and
+      creatives under a single advertiser with shared start and end
+      dates, budgets, and targeting configurations.
   - name: Placements
     description: >-
       Manage placements representing ad inventory on publisher sites.
