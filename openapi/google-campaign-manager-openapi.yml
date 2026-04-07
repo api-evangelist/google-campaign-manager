@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Campaign Manager 360 API
+  title: Google Campaign Manager Campaign Manager 360 API
   description: >-
     The Campaign Manager 360 API (formerly DoubleClick Campaign Manager)
     provides programmatic access to manage digital advertising campaigns,
@@ -59,7 +59,7 @@ paths:
   /userprofiles/{profileId}/campaigns:
     get:
       operationId: listCampaigns
-      summary: List campaigns
+      summary: Google Campaign Manager List campaigns
       description: >-
         Retrieves a list of campaigns, possibly filtered. Results are
         returned in descending order by last modified time. Use query
@@ -143,7 +143,7 @@ paths:
 
     post:
       operationId: insertCampaign
-      summary: Create a campaign
+      summary: Google Campaign Manager Create a campaign
       description: >-
         Inserts a new campaign. The campaign is created under the
         specified advertiser with the provided configuration. Required
@@ -181,7 +181,7 @@ paths:
   /userprofiles/{profileId}/campaigns/{campaignId}:
     get:
       operationId: getCampaign
-      summary: Get a campaign
+      summary: Google Campaign Manager Get a campaign
       description: Gets one campaign by ID.
       tags:
         - Campaigns
@@ -207,7 +207,7 @@ paths:
 
     put:
       operationId: updateCampaign
-      summary: Update a campaign
+      summary: Google Campaign Manager Update a campaign
       description: >-
         Updates an existing campaign. All writable fields must be
         provided in the request body; unset writable fields will be
@@ -241,7 +241,7 @@ paths:
 
     patch:
       operationId: patchCampaign
-      summary: Patch a campaign
+      summary: Google Campaign Manager Patch a campaign
       description: >-
         Updates an existing campaign. This method supports patch
         semantics; only the fields specified in the request body are
@@ -276,7 +276,7 @@ paths:
   /userprofiles/{profileId}/ads:
     get:
       operationId: listAds
-      summary: List ads
+      summary: Google Campaign Manager List ads
       description: >-
         Retrieves a list of ads, possibly filtered. Results are returned
         in descending order by last modified time. Use query parameters
@@ -395,7 +395,7 @@ paths:
 
     post:
       operationId: insertAd
-      summary: Create an ad
+      summary: Google Campaign Manager Create an ad
       description: >-
         Inserts a new ad. The ad is created under the specified campaign
         and advertiser with the provided delivery, creative rotation,
@@ -435,7 +435,7 @@ paths:
   /userprofiles/{profileId}/ads/{adId}:
     get:
       operationId: getAd
-      summary: Get an ad
+      summary: Google Campaign Manager Get an ad
       description: Gets one ad by ID.
       tags:
         - Ads
@@ -461,7 +461,7 @@ paths:
 
     put:
       operationId: updateAd
-      summary: Update an ad
+      summary: Google Campaign Manager Update an ad
       description: >-
         Updates an existing ad. All writable fields must be provided
         in the request body.
@@ -494,7 +494,7 @@ paths:
 
     patch:
       operationId: patchAd
-      summary: Patch an ad
+      summary: Google Campaign Manager Patch an ad
       description: >-
         Updates an existing ad. This method supports patch semantics;
         only the fields specified in the request body are modified.
@@ -528,7 +528,7 @@ paths:
   /userprofiles/{profileId}/placements:
     get:
       operationId: listPlacements
-      summary: List placements
+      summary: Google Campaign Manager List placements
       description: >-
         Retrieves a list of placements, possibly filtered. Results are
         returned in descending order by last modified time.
@@ -641,7 +641,7 @@ paths:
 
     post:
       operationId: insertPlacement
-      summary: Create a placement
+      summary: Google Campaign Manager Create a placement
       description: >-
         Inserts a new placement. The placement is associated with a
         campaign, site, and directory site, and defines the ad inventory
@@ -690,7 +690,7 @@ paths:
   /userprofiles/{profileId}/placements/{placementId}:
     get:
       operationId: getPlacement
-      summary: Get a placement
+      summary: Google Campaign Manager Get a placement
       description: Gets one placement by ID.
       tags:
         - Placements
@@ -716,7 +716,7 @@ paths:
 
     put:
       operationId: updatePlacement
-      summary: Update a placement
+      summary: Google Campaign Manager Update a placement
       description: Updates an existing placement.
       tags:
         - Placements
@@ -747,7 +747,7 @@ paths:
 
     patch:
       operationId: patchPlacement
-      summary: Patch a placement
+      summary: Google Campaign Manager Patch a placement
       description: >-
         Updates an existing placement. This method supports patch
         semantics.
@@ -781,7 +781,7 @@ paths:
   /userprofiles/{profileId}/placements/generatetags:
     post:
       operationId: generatePlacementTags
-      summary: Generate placement tags
+      summary: Google Campaign Manager Generate placement tags
       description: >-
         Generates tags for one or more placements. Tags are the code
         snippets that publishers place on their sites to enable ad
@@ -847,7 +847,7 @@ paths:
   /userprofiles/{profileId}/reports:
     get:
       operationId: listReports
-      summary: List reports
+      summary: Google Campaign Manager List reports
       description: >-
         Retrieves list of reports. Results are ordered by last modified
         time descending.
@@ -903,7 +903,7 @@ paths:
 
     post:
       operationId: insertReport
-      summary: Create a report
+      summary: Google Campaign Manager Create a report
       description: >-
         Creates a report. Configure the report type, criteria with
         dimensions and metrics, date range, and optional scheduling
@@ -950,7 +950,7 @@ paths:
   /userprofiles/{profileId}/reports/{reportId}:
     get:
       operationId: getReport
-      summary: Get a report
+      summary: Google Campaign Manager Get a report
       description: Retrieves a report by its ID.
       tags:
         - Reports
@@ -976,7 +976,7 @@ paths:
 
     put:
       operationId: updateReport
-      summary: Update a report
+      summary: Google Campaign Manager Update a report
       description: Updates a report.
       tags:
         - Reports
@@ -1007,7 +1007,7 @@ paths:
 
     patch:
       operationId: patchReport
-      summary: Patch a report
+      summary: Google Campaign Manager Patch a report
       description: Updates a report. This method supports patch semantics.
       tags:
         - Reports
@@ -1038,7 +1038,7 @@ paths:
 
     delete:
       operationId: deleteReport
-      summary: Delete a report
+      summary: Google Campaign Manager Delete a report
       description: Deletes a report by its ID.
       tags:
         - Reports
@@ -1058,7 +1058,7 @@ paths:
   /userprofiles/{profileId}/reports/{reportId}/run:
     post:
       operationId: runReport
-      summary: Run a report
+      summary: Google Campaign Manager Run a report
       description: >-
         Runs a report. The report is executed asynchronously. Use the
         files endpoint to check report completion status and download
