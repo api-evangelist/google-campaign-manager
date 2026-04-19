@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReportFloodlightCriteria",
+  "type": "object",
+  "description": "Configuration for a FLOODLIGHT report type.",
+  "properties": {
+    "dimensions": {
+      "type": "array"
+    },
+    "metricNames": {
+      "type": "array"
+    },
+    "dimensionFilters": {
+      "type": "array"
+    },
+    "reportProperties": {
+      "type": "object"
+    }
+  }
+}

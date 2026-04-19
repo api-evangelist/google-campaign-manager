@@ -1,0 +1,6 @@
+{
+  "defaultLandingPage": true,
+  "landingPageId": "500123",
+  "customClickThroughUrl": "https://www.example.com",
+  "computedClickThroughUrl": "https://www.example.com"
+}

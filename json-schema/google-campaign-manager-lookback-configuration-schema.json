@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LookbackConfiguration",
+  "type": "object",
+  "description": "Lookback window configuration for attribution.",
+  "properties": {
+    "clickDuration": {
+      "type": "integer",
+      "description": "Lookback window, in days, from the last time a given user clicked on one of your ads."
+    },
+    "postImpressionActivitiesDuration": {
+      "type": "integer",
+      "description": "Lookback window, in days, from the last time a given user viewed one of your ads."
+    }
+  }
+}

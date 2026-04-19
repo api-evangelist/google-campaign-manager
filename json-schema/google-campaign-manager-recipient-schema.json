@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recipient",
+  "type": "object",
+  "description": "An email recipient for report delivery.",
+  "properties": {
+    "email": {
+      "type": "string",
+      "description": "The email address of the recipient."
+    },
+    "deliveryType": {
+      "type": "string",
+      "description": "The delivery type for this recipient."
+    }
+  }
+}

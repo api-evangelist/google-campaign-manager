@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ReportFloodlightCriteria",
+  "type": "object",
+  "properties": {
+    "dimensions": {
+      "type": "array"
+    },
+    "metricNames": {
+      "type": "array"
+    },
+    "dimensionFilters": {
+      "type": "array"
+    },
+    "reportProperties": {
+      "type": "object"
+    }
+  }
+}

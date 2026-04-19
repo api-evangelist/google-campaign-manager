@@ -1,0 +1,421 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Campaign Manager 360 API"
+  description: "Campaign Manager 360 API for managing digital advertising campaigns, ads, placements, and reports."
+  tags:
+    - Google
+    - Advertising
+    - Campaign Management
+    - Digital Marketing
+    - Reporting
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_OAUTH2_TOKEN: GOOGLE_OAUTH2_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: campaign-manager
+      baseUri: https://dfareporting.googleapis.com/dfareporting/v4
+      description: "Campaign Manager 360 API for managing campaigns, ads, placements, and reports."
+      authentication:
+        type: bearer
+        token: "{{GOOGLE_OAUTH2_TOKEN}}"
+      resources:
+        - name: campaigns
+          path: /userprofiles/{profileId}/campaigns
+          description: "Manage advertising campaigns."
+          operations:
+            - name: list-campaigns
+              method: GET
+              description: "List campaigns, optionally filtered."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-campaign
+              method: POST
+              description: "Create a new campaign."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  advertiserId: "{{tools.advertiserId}}"
+        - name: campaign-details
+          path: /userprofiles/{profileId}/campaigns/{campaignId}
+          description: "Manage individual campaigns."
+          operations:
+            - name: get-campaign
+              method: GET
+              description: "Get a campaign by ID."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: campaignId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Campaign ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-campaign
+              method: PUT
+              description: "Update a campaign."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: campaignId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Campaign ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+        - name: ads
+          path: /userprofiles/{profileId}/ads
+          description: "Manage ads within campaigns."
+          operations:
+            - name: list-ads
+              method: GET
+              description: "List ads."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-ad
+              method: POST
+              description: "Create a new ad."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  campaignId: "{{tools.campaignId}}"
+        - name: ad-details
+          path: /userprofiles/{profileId}/ads/{adId}
+          description: "Manage individual ads."
+          operations:
+            - name: get-ad
+              method: GET
+              description: "Get an ad by ID."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: adId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Ad ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-ad
+              method: PUT
+              description: "Update an ad."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: adId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Ad ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+        - name: placements
+          path: /userprofiles/{profileId}/placements
+          description: "Manage ad placements."
+          operations:
+            - name: list-placements
+              method: GET
+              description: "List placements."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-placement
+              method: POST
+              description: "Create a new placement."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  campaignId: "{{tools.campaignId}}"
+        - name: placement-details
+          path: /userprofiles/{profileId}/placements/{placementId}
+          description: "Manage individual placements."
+          operations:
+            - name: get-placement
+              method: GET
+              description: "Get a placement by ID."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: placementId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Placement ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-placement
+              method: PUT
+              description: "Update a placement."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: placementId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Placement ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+        - name: placement-tags
+          path: /userprofiles/{profileId}/placements/generatetags
+          description: "Generate placement tags."
+          operations:
+            - name: generate-placement-tags
+              method: POST
+              description: "Generate ad tags for placements."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: reports
+          path: /userprofiles/{profileId}/reports
+          description: "Manage reports."
+          operations:
+            - name: list-reports
+              method: GET
+              description: "List reports."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-report
+              method: POST
+              description: "Create a new report."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  type: "{{tools.type}}"
+        - name: report-details
+          path: /userprofiles/{profileId}/reports/{reportId}
+          description: "Manage individual reports."
+          operations:
+            - name: get-report
+              method: GET
+              description: "Get a report by ID."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: reportId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Report ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-report
+              method: PUT
+              description: "Update a report."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: reportId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Report ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+            - name: delete-report
+              method: DELETE
+              description: "Delete a report."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: reportId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Report ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: report-run
+          path: /userprofiles/{profileId}/reports/{reportId}/run
+          description: "Run reports."
+          operations:
+            - name: run-report
+              method: POST
+              description: "Run a report."
+              inputParameters:
+                - name: profileId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User profile ID."
+                - name: reportId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Report ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."

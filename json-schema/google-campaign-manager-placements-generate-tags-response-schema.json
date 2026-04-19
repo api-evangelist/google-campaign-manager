@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PlacementsGenerateTagsResponse",
+  "type": "object",
+  "description": "Response containing generated placement tags.",
+  "properties": {
+    "placementTags": {
+      "type": "array"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

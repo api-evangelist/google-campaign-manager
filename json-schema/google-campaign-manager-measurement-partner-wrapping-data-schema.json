@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MeasurementPartnerWrappingData",
+  "type": "object",
+  "description": "Measurement partner wrapping data for placements.",
+  "properties": {
+    "measurementPartner": {
+      "type": "string"
+    },
+    "tagWrappingMode": {
+      "type": "string"
+    },
+    "wrappedTag": {
+      "type": "string",
+      "description": "The wrapped tag content."
+    },
+    "linkStatus": {
+      "type": "string"
+    }
+  }
+}

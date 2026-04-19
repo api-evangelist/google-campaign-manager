@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CreativeRotation",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "weightCalculationStrategy": {
+      "type": "string"
+    },
+    "creativeAssignments": {
+      "type": "array"
+    },
+    "creativeOptimizationConfigurationId": {
+      "type": "string"
+    }
+  }
+}

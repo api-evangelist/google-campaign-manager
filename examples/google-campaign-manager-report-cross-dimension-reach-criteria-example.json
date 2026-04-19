@@ -1,0 +1,8 @@
+{
+  "dimension": "example_value",
+  "metricNames": [],
+  "overlapMetricNames": [],
+  "dimensionFilters": [],
+  "pivoted": true,
+  "breakdown": []
+}

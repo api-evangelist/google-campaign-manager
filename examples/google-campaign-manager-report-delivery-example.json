@@ -1,0 +1,6 @@
+{
+  "emailOwner": "user@example.com",
+  "emailOwnerDeliveryType": "user@example.com",
+  "message": "example_value",
+  "recipients": []
+}

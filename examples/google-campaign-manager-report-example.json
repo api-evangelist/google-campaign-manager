@@ -1,0 +1,13 @@
+{
+  "id": "abc123",
+  "ownerProfileId": "500123",
+  "accountId": "500123",
+  "subAccountId": "500123",
+  "name": "Example Title",
+  "fileName": "example_value",
+  "type": "example_value",
+  "format": "example_value",
+  "etag": "example_value",
+  "lastModifiedTime": "example_value",
+  "kind": "example_value"
+}

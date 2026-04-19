@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DateRange",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "relativeDateRange": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

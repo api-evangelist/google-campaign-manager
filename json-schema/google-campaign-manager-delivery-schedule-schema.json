@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeliverySchedule",
+  "type": "object",
+  "description": "Delivery schedule configuration for an ad, controlling pacing and priority.",
+  "properties": {
+    "impressionRatio": {
+      "type": "string",
+      "description": "Impression ratio for this ad. Used to calculate the relative weight of this ad vs other ads with the same priority."
+    },
+    "priority": {
+      "type": "string",
+      "description": "Serving priority of this delivery schedule."
+    },
+    "hardCutoff": {
+      "type": "boolean",
+      "description": "Whether or not hard cutoff is enabled. If true, the ad will not serve after the end time."
+    }
+  }
+}

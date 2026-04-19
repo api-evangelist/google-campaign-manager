@@ -1,0 +1,471 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Campaign Manager Campaign Management"
+  description: "Unified workflow for managing digital advertising campaigns, ads, placements, and performance reports. Used by ad operations specialists and digital marketers."
+  tags:
+    - Google
+    - Advertising
+    - Campaign Management
+    - Reporting
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_OAUTH2_TOKEN: GOOGLE_OAUTH2_TOKEN
+
+capability:
+  consumes:
+    - import: campaign-manager
+      location: ./shared/campaign-manager-360.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: campaign-management-api
+      description: "Unified REST API for Google Campaign Manager 360 campaign management."
+      resources:
+        - path: /v1/campaigns
+          name: campaigns
+          description: "Campaign management."
+          operations:
+            - method: GET
+              name: list-campaigns
+              description: "List campaigns."
+              call: "campaign-manager.list-campaigns"
+              with:
+                profileId: "rest.profileId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-campaign
+              description: "Create a campaign."
+              call: "campaign-manager.create-campaign"
+              with:
+                profileId: "rest.profileId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/campaigns/{id}
+          name: campaign-details
+          description: "Individual campaign management."
+          operations:
+            - method: GET
+              name: get-campaign
+              description: "Get campaign details."
+              call: "campaign-manager.get-campaign"
+              with:
+                profileId: "rest.profileId"
+                campaignId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-campaign
+              description: "Update a campaign."
+              call: "campaign-manager.update-campaign"
+              with:
+                profileId: "rest.profileId"
+                campaignId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/ads
+          name: ads
+          description: "Ad management."
+          operations:
+            - method: GET
+              name: list-ads
+              description: "List ads."
+              call: "campaign-manager.list-ads"
+              with:
+                profileId: "rest.profileId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-ad
+              description: "Create an ad."
+              call: "campaign-manager.create-ad"
+              with:
+                profileId: "rest.profileId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/ads/{id}
+          name: ad-details
+          description: "Individual ad management."
+          operations:
+            - method: GET
+              name: get-ad
+              description: "Get ad details."
+              call: "campaign-manager.get-ad"
+              with:
+                profileId: "rest.profileId"
+                adId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-ad
+              description: "Update an ad."
+              call: "campaign-manager.update-ad"
+              with:
+                profileId: "rest.profileId"
+                adId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/placements
+          name: placements
+          description: "Placement management."
+          operations:
+            - method: GET
+              name: list-placements
+              description: "List placements."
+              call: "campaign-manager.list-placements"
+              with:
+                profileId: "rest.profileId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-placement
+              description: "Create a placement."
+              call: "campaign-manager.create-placement"
+              with:
+                profileId: "rest.profileId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/placements/{id}
+          name: placement-details
+          description: "Individual placement management."
+          operations:
+            - method: GET
+              name: get-placement
+              description: "Get placement details."
+              call: "campaign-manager.get-placement"
+              with:
+                profileId: "rest.profileId"
+                placementId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-placement
+              description: "Update a placement."
+              call: "campaign-manager.update-placement"
+              with:
+                profileId: "rest.profileId"
+                placementId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/placement-tags
+          name: placement-tags
+          description: "Placement tag generation."
+          operations:
+            - method: POST
+              name: generate-placement-tags
+              description: "Generate ad tags for placements."
+              call: "campaign-manager.generate-placement-tags"
+              with:
+                profileId: "rest.profileId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/reports
+          name: reports
+          description: "Report management."
+          operations:
+            - method: GET
+              name: list-reports
+              description: "List reports."
+              call: "campaign-manager.list-reports"
+              with:
+                profileId: "rest.profileId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-report
+              description: "Create a report."
+              call: "campaign-manager.create-report"
+              with:
+                profileId: "rest.profileId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/reports/{id}
+          name: report-details
+          description: "Individual report management."
+          operations:
+            - method: GET
+              name: get-report
+              description: "Get report details."
+              call: "campaign-manager.get-report"
+              with:
+                profileId: "rest.profileId"
+                reportId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-report
+              description: "Update a report."
+              call: "campaign-manager.update-report"
+              with:
+                profileId: "rest.profileId"
+                reportId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-report
+              description: "Delete a report."
+              call: "campaign-manager.delete-report"
+              with:
+                profileId: "rest.profileId"
+                reportId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/reports/{id}/run
+          name: report-run
+          description: "Report execution."
+          operations:
+            - method: POST
+              name: run-report
+              description: "Run a report."
+              call: "campaign-manager.run-report"
+              with:
+                profileId: "rest.profileId"
+                reportId: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: campaign-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted campaign management and reporting."
+      tools:
+        - name: list-campaigns
+          description: "List advertising campaigns."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "campaign-manager.list-campaigns"
+          with:
+            profileId: "tools.profileId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-campaign
+          description: "Get campaign details by ID."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "campaign-manager.get-campaign"
+          with:
+            profileId: "tools.profileId"
+            campaignId: "tools.campaignId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-campaign
+          description: "Create a new advertising campaign."
+          hints:
+            readOnly: false
+          call: "campaign-manager.create-campaign"
+          with:
+            profileId: "tools.profileId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-campaign
+          description: "Update an existing campaign."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "campaign-manager.update-campaign"
+          with:
+            profileId: "tools.profileId"
+            campaignId: "tools.campaignId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-ads
+          description: "List ads."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "campaign-manager.list-ads"
+          with:
+            profileId: "tools.profileId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-ad
+          description: "Get ad details by ID."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "campaign-manager.get-ad"
+          with:
+            profileId: "tools.profileId"
+            adId: "tools.adId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-ad
+          description: "Create a new ad."
+          hints:
+            readOnly: false
+          call: "campaign-manager.create-ad"
+          with:
+            profileId: "tools.profileId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-ad
+          description: "Update an existing ad."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "campaign-manager.update-ad"
+          with:
+            profileId: "tools.profileId"
+            adId: "tools.adId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-placements
+          description: "List ad placements."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "campaign-manager.list-placements"
+          with:
+            profileId: "tools.profileId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-placement
+          description: "Get placement details by ID."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "campaign-manager.get-placement"
+          with:
+            profileId: "tools.profileId"
+            placementId: "tools.placementId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-placement
+          description: "Create a new placement."
+          hints:
+            readOnly: false
+          call: "campaign-manager.create-placement"
+          with:
+            profileId: "tools.profileId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-placement
+          description: "Update an existing placement."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "campaign-manager.update-placement"
+          with:
+            profileId: "tools.profileId"
+            placementId: "tools.placementId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: generate-placement-tags
+          description: "Generate ad tags for placements."
+          hints:
+            readOnly: false
+          call: "campaign-manager.generate-placement-tags"
+          with:
+            profileId: "tools.profileId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-reports
+          description: "List reports."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "campaign-manager.list-reports"
+          with:
+            profileId: "tools.profileId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-report
+          description: "Get report details by ID."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "campaign-manager.get-report"
+          with:
+            profileId: "tools.profileId"
+            reportId: "tools.reportId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-report
+          description: "Create a new report."
+          hints:
+            readOnly: false
+          call: "campaign-manager.create-report"
+          with:
+            profileId: "tools.profileId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-report
+          description: "Update an existing report."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "campaign-manager.update-report"
+          with:
+            profileId: "tools.profileId"
+            reportId: "tools.reportId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-report
+          description: "Delete a report."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "campaign-manager.delete-report"
+          with:
+            profileId: "tools.profileId"
+            reportId: "tools.reportId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: run-report
+          description: "Run a report to generate results."
+          hints:
+            readOnly: false
+          call: "campaign-manager.run-report"
+          with:
+            profileId: "tools.profileId"
+            reportId: "tools.reportId"
+          outputParameters:
+            - type: object
+              mapping: "$."

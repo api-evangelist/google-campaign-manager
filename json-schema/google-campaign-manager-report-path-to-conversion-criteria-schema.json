@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReportPathToConversionCriteria",
+  "type": "object",
+  "description": "Configuration for a PATH_TO_CONVERSION report type.",
+  "properties": {
+    "conversionDimensions": {
+      "type": "array"
+    },
+    "perInteractionDimensions": {
+      "type": "array"
+    },
+    "metricNames": {
+      "type": "array"
+    },
+    "activityFilters": {
+      "type": "array"
+    }
+  }
+}

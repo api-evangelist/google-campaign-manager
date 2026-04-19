@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "VideoSettings",
+  "type": "object",
+  "properties": {
+    "companionSettings": {
+      "type": "object"
+    },
+    "transcodeSettings": {
+      "type": "object"
+    },
+    "skippableSettings": {
+      "type": "object"
+    },
+    "obaEnabled": {
+      "type": "boolean"
+    },
+    "obaSettings": {
+      "type": "object"
+    },
+    "orientation": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

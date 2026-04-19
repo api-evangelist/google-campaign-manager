@@ -1,0 +1,18 @@
+{
+  "id": "abc123",
+  "accountId": "500123",
+  "subaccountId": "500123",
+  "campaignId": "500123",
+  "advertiserId": "500123",
+  "name": "Example Title",
+  "active": true,
+  "archived": true,
+  "comments": "example_value",
+  "startTime": "example_value",
+  "endTime": "example_value",
+  "type": "example_value",
+  "dynamicClickTracker": true,
+  "placementAssignments": [],
+  "eventTagOverrides": [],
+  "kind": "example_value"
+}

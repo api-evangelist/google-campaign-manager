@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Size",
+  "type": "object",
+  "description": "Represents the dimensions of ads, placements, and creatives.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of this size."
+    },
+    "width": {
+      "type": "integer",
+      "description": "Width of this size in pixels."
+    },
+    "height": {
+      "type": "integer",
+      "description": "Height of this size in pixels."
+    },
+    "iab": {
+      "type": "boolean",
+      "description": "Whether this size is an IAB standard size."
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

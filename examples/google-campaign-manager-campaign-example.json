@@ -1,0 +1,21 @@
+{
+  "id": "abc123",
+  "accountId": "500123",
+  "subaccountId": "500123",
+  "advertiserId": "500123",
+  "advertiserGroupId": "500123",
+  "name": "Example Title",
+  "archived": true,
+  "startDate": "example_value",
+  "endDate": "example_value",
+  "comment": "example_value",
+  "billingInvoiceCode": "example_value",
+  "defaultLandingPageId": "500123",
+  "externalId": "500123",
+  "audienceSegmentGroups": [],
+  "eventTagOverrides": [],
+  "creativeGroupIds": [],
+  "additionalCreativeOptimizationConfigurations": [],
+  "euPoliticalAdsDeclaration": "example_value",
+  "kind": "example_value"
+}

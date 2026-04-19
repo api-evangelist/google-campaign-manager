@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PlacementTag",
+  "type": "object",
+  "description": "A generated placement tag.",
+  "properties": {
+    "placementId": {
+      "type": "string",
+      "description": "The placement ID this tag is generated for."
+    },
+    "tagDatas": {
+      "type": "array",
+      "description": "Tags generated for this placement."
+    }
+  }
+}

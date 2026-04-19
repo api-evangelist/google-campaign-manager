@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Report",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "ownerProfileId": {
+      "type": "string"
+    },
+    "accountId": {
+      "type": "string"
+    },
+    "subAccountId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "fileName": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    },
+    "etag": {
+      "type": "string"
+    },
+    "lastModifiedTime": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

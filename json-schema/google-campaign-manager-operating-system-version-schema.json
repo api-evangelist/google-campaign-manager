@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OperatingSystemVersion",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "majorVersion": {
+      "type": "string"
+    },
+    "minorVersion": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

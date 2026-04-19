@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TechnologyTargeting",
+  "type": "object",
+  "properties": {
+    "browsers": {
+      "type": "array"
+    },
+    "platforms": {
+      "type": "array"
+    },
+    "operatingSystems": {
+      "type": "array"
+    },
+    "mobileCarriers": {
+      "type": "array"
+    },
+    "connectionTypes": {
+      "type": "array"
+    },
+    "operatingSystemVersions": {
+      "type": "array"
+    }
+  }
+}

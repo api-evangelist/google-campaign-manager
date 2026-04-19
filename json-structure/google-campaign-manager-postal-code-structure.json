@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PostalCode",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "countryDartId": {
+      "type": "string"
+    },
+    "countryCode": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

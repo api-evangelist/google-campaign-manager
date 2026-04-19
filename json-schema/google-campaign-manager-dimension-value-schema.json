@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DimensionValue",
+  "type": "object",
+  "description": "A dimension value used for filtering and reporting.",
+  "properties": {
+    "dimensionName": {
+      "type": "string",
+      "description": "The name of the dimension."
+    },
+    "value": {
+      "type": "string",
+      "description": "The value of the dimension."
+    },
+    "id": {
+      "type": "string",
+      "description": "The ID associated with the value."
+    },
+    "matchType": {
+      "type": "string",
+      "description": "Match type for filtering."
+    },
+    "etag": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AudienceSegmentGroup",
+  "type": "object",
+  "description": "Audience segment group for targeting.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of this audience segment group."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of this audience segment group."
+    },
+    "audienceSegments": {
+      "type": "array",
+      "description": "Audience segments assigned to this group."
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreativeOptimizationConfiguration",
+  "type": "object",
+  "description": "Creative optimization configuration.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of this creative optimization configuration."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of this creative optimization configuration."
+    },
+    "optimizationActivitys": {
+      "type": "array",
+      "description": "List of optimization activities associated with this configuration."
+    },
+    "optimizationModel": {
+      "type": "string",
+      "description": "Optimization model for this configuration."
+    }
+  }
+}

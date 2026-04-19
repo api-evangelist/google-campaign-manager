@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Activities",
+  "type": "object",
+  "description": "Represents an activity group for report filtering.",
+  "properties": {
+    "filters": {
+      "type": "array",
+      "description": "List of activity filters."
+    },
+    "metricNames": {
+      "type": "array",
+      "description": "List of activity metric names."
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

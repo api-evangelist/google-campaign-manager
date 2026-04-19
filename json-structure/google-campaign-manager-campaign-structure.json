@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Campaign",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "accountId": {
+      "type": "string"
+    },
+    "subaccountId": {
+      "type": "string"
+    },
+    "advertiserId": {
+      "type": "string"
+    },
+    "advertiserGroupId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "billingInvoiceCode": {
+      "type": "string"
+    },
+    "defaultLandingPageId": {
+      "type": "string"
+    },
+    "externalId": {
+      "type": "string"
+    },
+    "audienceSegmentGroups": {
+      "type": "array"
+    },
+    "eventTagOverrides": {
+      "type": "array"
+    },
+    "creativeGroupIds": {
+      "type": "array"
+    },
+    "additionalCreativeOptimizationConfigurations": {
+      "type": "array"
+    },
+    "euPoliticalAdsDeclaration": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

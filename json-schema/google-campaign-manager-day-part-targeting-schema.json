@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DayPartTargeting",
+  "type": "object",
+  "description": "Day part targeting configuration.",
+  "properties": {
+    "userLocalTime": {
+      "type": "boolean",
+      "description": "Whether targeting is based on user's local time."
+    },
+    "hoursOfDay": {
+      "type": "array",
+      "description": "Hours of the day to target (0-23)."
+    },
+    "daysOfWeek": {
+      "type": "array",
+      "description": "Days of the week to target."
+    }
+  }
+}

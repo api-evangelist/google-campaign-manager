@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "OperatingSystem",
+  "type": "object",
+  "properties": {
+    "dartId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "desktop": {
+      "type": "boolean"
+    },
+    "mobile": {
+      "type": "boolean"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

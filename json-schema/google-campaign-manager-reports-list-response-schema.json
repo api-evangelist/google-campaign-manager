@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReportsListResponse",
+  "type": "object",
+  "description": "Report list response.",
+  "properties": {
+    "items": {
+      "type": "array"
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "etag": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

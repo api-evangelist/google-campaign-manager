@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AudienceSegment",
+  "type": "object",
+  "description": "An audience segment for targeting.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of this audience segment."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of this audience segment."
+    },
+    "allocation": {
+      "type": "integer",
+      "description": "Weight allocated to this segment. Must be between 1 and 1000."
+    }
+  }
+}

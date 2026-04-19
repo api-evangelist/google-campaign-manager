@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Placement",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "accountId": {
+      "type": "string"
+    },
+    "subaccountId": {
+      "type": "string"
+    },
+    "advertiserId": {
+      "type": "string"
+    },
+    "campaignId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "siteId": {
+      "type": "string"
+    },
+    "directorySiteId": {
+      "type": "string"
+    },
+    "externalId": {
+      "type": "string"
+    },
+    "keyName": {
+      "type": "string"
+    },
+    "placementGroupId": {
+      "type": "string"
+    },
+    "compatibility": {
+      "type": "string"
+    },
+    "additionalSizes": {
+      "type": "array"
+    },
+    "tagFormats": {
+      "type": "array"
+    },
+    "paymentSource": {
+      "type": "string"
+    },
+    "paymentApproved": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string"
+    },
+    "activeStatus": {
+      "type": "string"
+    },
+    "contentCategoryId": {
+      "type": "string"
+    },
+    "placementStrategyId": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "primary": {
+      "type": "boolean"
+    },
+    "sslRequired": {
+      "type": "boolean"
+    },
+    "adBlockingOptOut": {
+      "type": "boolean"
+    },
+    "wrappingOptOut": {
+      "type": "boolean"
+    },
+    "videoActiveViewOptOut": {
+      "type": "boolean"
+    },
+    "vpaidAdapterChoice": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

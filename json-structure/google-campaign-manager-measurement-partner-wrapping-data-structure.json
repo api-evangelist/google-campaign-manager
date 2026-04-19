@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MeasurementPartnerWrappingData",
+  "type": "object",
+  "properties": {
+    "measurementPartner": {
+      "type": "string"
+    },
+    "tagWrappingMode": {
+      "type": "string"
+    },
+    "wrappedTag": {
+      "type": "string"
+    },
+    "linkStatus": {
+      "type": "string"
+    }
+  }
+}

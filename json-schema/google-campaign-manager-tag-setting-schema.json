@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TagSetting",
+  "type": "object",
+  "description": "Tag settings for a placement.",
+  "properties": {
+    "additionalKeyValues": {
+      "type": "string",
+      "description": "Additional key-values to append to tags."
+    },
+    "includeClickTracking": {
+      "type": "boolean",
+      "description": "Whether to include click-tracking string in tags."
+    },
+    "includeClickThroughUrls": {
+      "type": "boolean",
+      "description": "Whether to include click-through URLs in tags."
+    },
+    "keywordOption": {
+      "type": "string",
+      "description": "Option specifying how keywords are embedded in ad tags."
+    }
+  }
+}

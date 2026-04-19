@@ -1,380 +1,84 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/api-evangelist/google-campaign-manager/refs/heads/main/json-schema/google-campaign-manager-campaign-schema.json",
-  "title": "Campaign Manager 360 Campaign",
-  "description": "Schema for a Campaign Manager 360 campaign resource. Campaigns are the top-level organizational unit for advertising activities within Campaign Manager 360, grouping ads, placements, and creatives under a single advertiser with shared start and end dates, budgets, audience targeting, and delivery configurations. Campaigns belong to an advertiser within an account and define the overall parameters for a coordinated advertising effort.",
+  "title": "Campaign",
   "type": "object",
-  "required": ["name", "advertiserId", "startDate", "endDate"],
+  "description": "A Campaign Manager 360 campaign. Campaigns are the top-level organizational unit for advertising activities, grouping ads, placements, and creatives under a single advertiser with shared configuration, date ranges, and targeting.",
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^\\d+$",
-      "description": "Campaign ID. This is a read-only, auto-generated field assigned by Campaign Manager 360 when the campaign is created.",
-      "readOnly": true
+      "description": "Campaign ID. This is a read-only, auto-generated field."
     },
     "accountId": {
       "type": "string",
-      "pattern": "^\\d+$",
-      "description": "Account ID of this campaign. This is a read-only field inherited from the account context.",
-      "readOnly": true
+      "description": "Account ID of this campaign."
     },
     "subaccountId": {
       "type": "string",
-      "pattern": "^\\d+$",
-      "description": "Subaccount ID of this campaign. This is a read-only field that can only be selected using the value set in the parent account.",
-      "readOnly": true
+      "description": "Subaccount ID of this campaign."
     },
     "advertiserId": {
       "type": "string",
-      "pattern": "^\\d+$",
-      "description": "Advertiser ID of this campaign. This is a required field on insert and identifies the advertiser that owns the campaign."
+      "description": "Advertiser ID of this campaign. Required on insert."
     },
     "advertiserGroupId": {
       "type": "string",
-      "pattern": "^\\d+$",
-      "description": "Advertiser group ID of the associated advertiser. Advertiser groups allow organizing multiple advertisers for reporting and management purposes."
+      "description": "Advertiser group ID of the associated advertiser."
     },
     "name": {
       "type": "string",
-      "maxLength": 512,
-      "description": "Name of this campaign. This is a required field and must be fewer than 512 characters long. Campaign names must be unique among campaigns of the same advertiser."
+      "description": "Name of this campaign. Must be fewer than 512 characters and unique among campaigns of the same advertiser."
     },
     "archived": {
       "type": "boolean",
-      "default": false,
-      "description": "Whether this campaign has been archived. Archived campaigns no longer serve ads but remain available for reporting."
+      "description": "Whether this campaign has been archived."
     },
     "startDate": {
       "type": "string",
-      "format": "date",
-      "description": "Start date of this campaign. The date format is YYYY-MM-DD. This is a required field on insert and defines when the campaign begins serving ads."
+      "description": "Start date of this campaign. The date format is YYYY-MM-DD."
     },
     "endDate": {
       "type": "string",
-      "format": "date",
-      "description": "End date of this campaign. The date format is YYYY-MM-DD. This is a required field on insert and must be on or after the start date. After this date, the campaign stops serving ads."
+      "description": "End date of this campaign. Must be on or after the start date. The date format is YYYY-MM-DD."
     },
     "comment": {
       "type": "string",
-      "maxLength": 256,
-      "description": "Arbitrary comments about this campaign. Must be fewer than 256 characters long. Used for internal notes and documentation."
+      "description": "Arbitrary comments about this campaign. Must be fewer than 256 characters."
     },
     "billingInvoiceCode": {
       "type": "string",
-      "description": "Billing invoice code included in the Campaign Manager 360 invoices associated with this campaign. Used for billing reconciliation."
+      "description": "Billing invoice code included in the invoices."
     },
     "defaultLandingPageId": {
       "type": "string",
-      "pattern": "^\\d+$",
-      "description": "Default landing page ID for this campaign. This landing page is used when no other landing page is specified for an ad within the campaign."
+      "description": "Default landing page ID for this campaign."
     },
     "externalId": {
       "type": "string",
-      "description": "External ID for this campaign. Used to correlate the campaign with records in external systems such as order management or billing platforms."
+      "description": "External ID for this campaign."
     },
     "audienceSegmentGroups": {
       "type": "array",
-      "maxItems": 300,
-      "description": "Audience segment groups assigned to this campaign. A maximum of 300 segment groups can be assigned. Audience segments define the users who are eligible to see ads from this campaign.",
-      "items": {
-        "$ref": "#/$defs/AudienceSegmentGroup"
-      }
+      "description": "Audience segment groups assigned to this campaign. Maximum of 300 segment groups."
     },
     "eventTagOverrides": {
       "type": "array",
-      "description": "Event tag overrides for this campaign. Event tags track user interactions such as impressions, clicks, and conversions.",
-      "items": {
-        "$ref": "#/$defs/EventTagOverride"
-      }
-    },
-    "clickThroughUrlSuffixProperties": {
-      "$ref": "#/$defs/ClickThroughUrlSuffixProperties"
-    },
-    "defaultClickThroughEventTagProperties": {
-      "$ref": "#/$defs/DefaultClickThroughEventTagProperties"
+      "description": "Event tag overrides for this campaign."
     },
     "creativeGroupIds": {
       "type": "array",
-      "description": "List of creative group IDs that are assigned to this campaign. Creative groups organize creatives for rotation and optimization.",
-      "items": {
-        "type": "string",
-        "pattern": "^\\d+$"
-      }
-    },
-    "creativeOptimizationConfiguration": {
-      "$ref": "#/$defs/CreativeOptimizationConfiguration"
+      "description": "List of creative group IDs assigned to this campaign."
     },
     "additionalCreativeOptimizationConfigurations": {
       "type": "array",
-      "description": "Additional creative optimization configurations for this campaign. Each configuration defines how creatives are optimized for a specific set of activities.",
-      "items": {
-        "$ref": "#/$defs/CreativeOptimizationConfiguration"
-      }
-    },
-    "adBlockingConfiguration": {
-      "$ref": "#/$defs/AdBlockingConfiguration"
-    },
-    "measurementPartnerLink": {
-      "$ref": "#/$defs/MeasurementPartnerLink"
+      "description": "Additional creative optimization configurations."
     },
     "euPoliticalAdsDeclaration": {
       "type": "string",
-      "description": "EU political advertising declaration for this campaign. Required for campaigns that serve political ads within European Union member states.",
-      "enum": [
-        "EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED",
-        "EU_POLITICAL_ADS_DECLARATION_NOT_POLITICAL",
-        "EU_POLITICAL_ADS_DECLARATION_POLITICAL"
-      ]
+      "description": "EU political advertising declaration for this campaign."
     },
     "kind": {
       "type": "string",
-      "const": "dfareporting#campaign",
-      "description": "Identifies what kind of resource this is. Value is always dfareporting#campaign.",
-      "readOnly": true
-    },
-    "createInfo": {
-      "$ref": "#/$defs/LastModifiedInfo",
-      "description": "Information about the creation of this campaign, including the timestamp.",
-      "readOnly": true
-    },
-    "lastModifiedInfo": {
-      "$ref": "#/$defs/LastModifiedInfo",
-      "description": "Information about the most recent modification of this campaign.",
-      "readOnly": true
-    },
-    "idDimensionValue": {
-      "$ref": "#/$defs/DimensionValue",
-      "description": "Dimension value for the ID of this campaign. Used for reporting queries.",
-      "readOnly": true
-    },
-    "advertiserIdDimensionValue": {
-      "$ref": "#/$defs/DimensionValue",
-      "description": "Dimension value for the advertiser ID of this campaign. Used for reporting queries.",
-      "readOnly": true
-    }
-  },
-  "$defs": {
-    "AudienceSegmentGroup": {
-      "type": "object",
-      "description": "An audience segment group containing one or more audience segments for targeting. Segment groups use AND logic between groups and OR logic within a group.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "ID of this audience segment group."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of this audience segment group. Must be unique within the campaign."
-        },
-        "audienceSegments": {
-          "type": "array",
-          "description": "Audience segments assigned to this group. Users matching any segment within the group are eligible for targeting.",
-          "items": {
-            "$ref": "#/$defs/AudienceSegment"
-          }
-        }
-      }
-    },
-    "AudienceSegment": {
-      "type": "object",
-      "description": "An individual audience segment used for targeting within a segment group.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "ID of this audience segment."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of this audience segment."
-        },
-        "allocation": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 1000,
-          "description": "Weight allocated to this segment, between 1 and 1000. Determines the proportion of traffic directed to this segment relative to other segments in the group."
-        }
-      }
-    },
-    "EventTagOverride": {
-      "type": "object",
-      "description": "Configuration to override an event tag's enabled status at the campaign level.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "ID of the event tag that is overridden."
-        },
-        "enabled": {
-          "type": "boolean",
-          "description": "Whether this override enables or disables the event tag."
-        }
-      }
-    },
-    "ClickThroughUrlSuffixProperties": {
-      "type": "object",
-      "description": "Click-through URL suffix properties for the campaign. The suffix is appended to all click-through URLs served under this campaign.",
-      "properties": {
-        "clickThroughUrlSuffix": {
-          "type": "string",
-          "description": "Click-through URL suffix to apply to all ads in this campaign. Used for tracking parameters."
-        },
-        "overrideInheritedSuffix": {
-          "type": "boolean",
-          "description": "Whether this campaign should override the inherited click-through URL suffix with its own defined suffix."
-        }
-      }
-    },
-    "DefaultClickThroughEventTagProperties": {
-      "type": "object",
-      "description": "Default click-through event tag properties for the campaign.",
-      "properties": {
-        "defaultClickThroughEventTagId": {
-          "type": "string",
-          "description": "ID of the default click-through event tag for this campaign."
-        },
-        "overrideInheritedEventTag": {
-          "type": "boolean",
-          "description": "Whether this campaign overrides the inherited default click-through event tag with its own."
-        }
-      }
-    },
-    "CreativeOptimizationConfiguration": {
-      "type": "object",
-      "description": "Creative optimization configuration that defines how creatives are optimized for serving within the campaign.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "ID of this creative optimization configuration."
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of this creative optimization configuration."
-        },
-        "optimizationActivitys": {
-          "type": "array",
-          "description": "List of optimization activities associated with this configuration. Each activity defines a Floodlight activity used to measure optimization performance.",
-          "items": {
-            "$ref": "#/$defs/OptimizationActivity"
-          }
-        },
-        "optimizationModel": {
-          "type": "string",
-          "description": "Optimization model for this configuration. Determines which user actions are used to optimize creative delivery.",
-          "enum": [
-            "CLICK",
-            "POST_CLICK",
-            "POST_IMPRESSION",
-            "POST_CLICK_AND_IMPRESSION",
-            "VIDEO_COMPLETION"
-          ]
-        }
-      }
-    },
-    "OptimizationActivity": {
-      "type": "object",
-      "description": "An optimization activity that ties creative optimization to a Floodlight activity for performance measurement.",
-      "properties": {
-        "floodlightActivityId": {
-          "type": "string",
-          "description": "Floodlight activity ID of this optimization activity."
-        },
-        "floodlightActivityIdDimensionValue": {
-          "$ref": "#/$defs/DimensionValue"
-        },
-        "weight": {
-          "type": "integer",
-          "description": "Weight associated with this optimization. Higher weights give more importance to this activity in optimization decisions."
-        }
-      }
-    },
-    "AdBlockingConfiguration": {
-      "type": "object",
-      "description": "Ad blocking configuration for a campaign. When enabled, a default ad can be served when the primary ad is blocked.",
-      "properties": {
-        "enabled": {
-          "type": "boolean",
-          "description": "Whether this campaign has enabled ad blocking. When true, ad blocking is enabled for the campaign and a default ad can be served for blocked ads."
-        },
-        "overrideClickThroughUrl": {
-          "type": "string",
-          "format": "uri",
-          "description": "Override click-through URL to use when the default ad is served due to ad blocking."
-        }
-      }
-    },
-    "MeasurementPartnerLink": {
-      "type": "object",
-      "description": "Link to a third-party measurement partner for independent ad verification and viewability measurement.",
-      "properties": {
-        "measurementPartner": {
-          "type": "string",
-          "description": "The measurement partner used for tag wrapping and verification.",
-          "enum": [
-            "NONE",
-            "INTEGRAL_AD_SCIENCE",
-            "DOUBLE_VERIFY"
-          ]
-        },
-        "linkStatus": {
-          "type": "string",
-          "description": "The status of the measurement partner link.",
-          "enum": [
-            "MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED",
-            "MEASUREMENT_PARTNER_LINK_ACTIVE",
-            "MEASUREMENT_PARTNER_LINK_INACTIVE"
-          ]
-        },
-        "partnerCampaignId": {
-          "type": "string",
-          "description": "The partner-side campaign ID for correlating data between Campaign Manager 360 and the measurement partner."
-        }
-      }
-    },
-    "LastModifiedInfo": {
-      "type": "object",
-      "description": "Modification timestamp information.",
-      "properties": {
-        "time": {
-          "type": "string",
-          "description": "Timestamp of the last change in milliseconds since epoch."
-        }
-      }
-    },
-    "DimensionValue": {
-      "type": "object",
-      "description": "A dimension value used for filtering and reporting in Campaign Manager 360.",
-      "properties": {
-        "dimensionName": {
-          "type": "string",
-          "description": "The name of the dimension."
-        },
-        "value": {
-          "type": "string",
-          "description": "The value of the dimension."
-        },
-        "id": {
-          "type": "string",
-          "description": "The ID associated with the value."
-        },
-        "matchType": {
-          "type": "string",
-          "description": "Determines how the dimension value is matched.",
-          "enum": [
-            "EXACT",
-            "BEGINS_WITH",
-            "CONTAINS",
-            "WILDCARD_EXPRESSION"
-          ]
-        },
-        "etag": {
-          "type": "string",
-          "readOnly": true
-        },
-        "kind": {
-          "type": "string",
-          "const": "dfareporting#dimensionValue",
-          "readOnly": true
-        }
-      }
+      "description": "Identifies what kind of resource this is. Value is always dfareporting#campaign."
     }
   }
 }

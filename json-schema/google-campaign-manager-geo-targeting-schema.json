@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GeoTargeting",
+  "type": "object",
+  "description": "Geographic targeting configuration.",
+  "properties": {
+    "countries": {
+      "type": "array",
+      "description": "Countries to target."
+    },
+    "regions": {
+      "type": "array",
+      "description": "Regions to target."
+    },
+    "cities": {
+      "type": "array",
+      "description": "Cities to target."
+    },
+    "metros": {
+      "type": "array",
+      "description": "Metros to target."
+    },
+    "postalCodes": {
+      "type": "array",
+      "description": "Postal codes to target."
+    },
+    "excludeCountries": {
+      "type": "boolean",
+      "description": "Whether to exclude the specified geographic locations."
+    }
+  }
+}

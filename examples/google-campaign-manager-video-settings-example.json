@@ -1,0 +1,9 @@
+{
+  "companionSettings": "example_value",
+  "transcodeSettings": "example_value",
+  "skippableSettings": "example_value",
+  "obaEnabled": true,
+  "obaSettings": "example_value",
+  "orientation": "example_value",
+  "kind": "example_value"
+}

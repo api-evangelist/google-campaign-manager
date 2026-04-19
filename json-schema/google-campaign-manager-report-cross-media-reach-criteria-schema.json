@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReportCrossMediaReachCriteria",
+  "type": "object",
+  "description": "Configuration for a CROSS_MEDIA_REACH report type.",
+  "properties": {
+    "dimensionFilters": {
+      "type": "array"
+    },
+    "metricNames": {
+      "type": "array"
+    }
+  }
+}

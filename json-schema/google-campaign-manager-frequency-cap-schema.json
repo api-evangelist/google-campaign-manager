@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FrequencyCap",
+  "type": "object",
+  "description": "Frequency cap configuration.",
+  "properties": {
+    "impressions": {
+      "type": "integer",
+      "description": "Number of times an individual user can be served the ad."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Duration of time, in seconds, for this frequency cap."
+    }
+  }
+}

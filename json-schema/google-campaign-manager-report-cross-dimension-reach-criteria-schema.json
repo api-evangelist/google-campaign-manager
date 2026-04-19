@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReportCrossDimensionReachCriteria",
+  "type": "object",
+  "description": "Configuration for a CROSS_DIMENSION_REACH report type.",
+  "properties": {
+    "dimension": {
+      "type": "string"
+    },
+    "metricNames": {
+      "type": "array"
+    },
+    "overlapMetricNames": {
+      "type": "array"
+    },
+    "dimensionFilters": {
+      "type": "array"
+    },
+    "pivoted": {
+      "type": "boolean"
+    },
+    "breakdown": {
+      "type": "array"
+    }
+  }
+}

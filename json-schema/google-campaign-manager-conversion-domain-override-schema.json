@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ConversionDomainOverride",
+  "type": "object",
+  "description": "Conversion domain override for a placement.",
+  "properties": {
+    "conversionDomains": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DateRange",
+  "type": "object",
+  "description": "Date range configuration for reports.",
+  "properties": {
+    "startDate": {
+      "type": "string",
+      "description": "The start date of the date range, inclusive. Format is YYYY-MM-DD."
+    },
+    "endDate": {
+      "type": "string",
+      "description": "The end date of the date range, inclusive. Format is YYYY-MM-DD."
+    },
+    "relativeDateRange": {
+      "type": "string",
+      "description": "The date range relative to the date of when the report is run."
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

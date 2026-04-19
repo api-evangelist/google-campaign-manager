@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AdBlockingConfiguration",
+  "type": "object",
+  "description": "Ad blocking configuration for a campaign.",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether this campaign has enabled ad blocking. When true, ad blocking is enabled for the campaign and a default ad can be served for blocked ads."
+    },
+    "overrideClickThroughUrl": {
+      "type": "string",
+      "description": "Override click-through URL for blocked ads."
+    }
+  }
+}

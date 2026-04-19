@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreativeAssignment",
+  "type": "object",
+  "description": "Creative assignment within a creative rotation.",
+  "properties": {
+    "creativeId": {
+      "type": "string",
+      "description": "ID of the creative to be assigned."
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether this creative assignment is active."
+    },
+    "weight": {
+      "type": "integer",
+      "description": "Weight of the creative assignment."
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer",
+      "description": "Sequence number of the creative assignment."
+    },
+    "richMediaExitOverrides": {
+      "type": "array"
+    }
+  }
+}

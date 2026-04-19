@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClickThroughUrlSuffixProperties",
+  "type": "object",
+  "description": "Click-through URL suffix properties.",
+  "properties": {
+    "clickThroughUrlSuffix": {
+      "type": "string",
+      "description": "Click-through URL suffix to apply to all ads in this entity's scope."
+    },
+    "overrideInheritedSuffix": {
+      "type": "boolean",
+      "description": "Whether this entity should override the inherited suffix with its own defined suffix."
+    }
+  }
+}

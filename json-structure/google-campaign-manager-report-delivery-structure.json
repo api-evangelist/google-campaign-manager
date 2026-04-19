@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ReportDelivery",
+  "type": "object",
+  "properties": {
+    "emailOwner": {
+      "type": "boolean"
+    },
+    "emailOwnerDeliveryType": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "recipients": {
+      "type": "array"
+    }
+  }
+}

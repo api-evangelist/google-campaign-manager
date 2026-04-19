@@ -1,0 +1,9 @@
+{
+  "active": true,
+  "repeats": "example_value",
+  "every": 10,
+  "startDate": "example_value",
+  "expirationDate": "example_value",
+  "runsOnDayOfMonth": "example_value",
+  "timezone": "example_value"
+}

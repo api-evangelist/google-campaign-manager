@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DeliverySchedule",
+  "type": "object",
+  "properties": {
+    "impressionRatio": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "hardCutoff": {
+      "type": "boolean"
+    }
+  }
+}

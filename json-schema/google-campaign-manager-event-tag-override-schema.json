@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EventTagOverride",
+  "type": "object",
+  "description": "Event tag override configuration.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of the event tag that is overridden."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether this override is enabled."
+    }
+  }
+}

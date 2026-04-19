@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CustomRichMediaEvents",
+  "type": "object",
+  "properties": {
+    "filteredEventIds": {
+      "type": "array"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

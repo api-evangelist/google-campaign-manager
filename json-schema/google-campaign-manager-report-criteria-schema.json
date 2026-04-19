@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReportCriteria",
+  "type": "object",
+  "description": "Configuration for a STANDARD report type.",
+  "properties": {
+    "dimensions": {
+      "type": "array",
+      "description": "The list of standard dimensions the report should include."
+    },
+    "metricNames": {
+      "type": "array",
+      "description": "The list of names of metrics the report should include."
+    },
+    "dimensionFilters": {
+      "type": "array",
+      "description": "The list of filters on which dimensions are filtered."
+    }
+  }
+}

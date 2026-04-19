@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Metro",
+  "type": "object",
+  "properties": {
+    "dartId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "dmaId": {
+      "type": "string"
+    },
+    "metroCode": {
+      "type": "string"
+    },
+    "countryDartId": {
+      "type": "string"
+    },
+    "countryCode": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PlacementsListResponse",
+  "type": "object",
+  "description": "Placement list response.",
+  "properties": {
+    "placements": {
+      "type": "array"
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

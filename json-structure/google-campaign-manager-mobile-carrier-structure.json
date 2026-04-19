@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MobileCarrier",
+  "type": "object",
+  "properties": {
+    "dartId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "countryDartId": {
+      "type": "string"
+    },
+    "countryCode": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

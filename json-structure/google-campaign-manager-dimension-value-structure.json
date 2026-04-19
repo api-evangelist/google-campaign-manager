@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DimensionValue",
+  "type": "object",
+  "properties": {
+    "dimensionName": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "matchType": {
+      "type": "string"
+    },
+    "etag": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

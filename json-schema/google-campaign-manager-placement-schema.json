@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Placement",
+  "type": "object",
+  "description": "A Campaign Manager 360 placement. Placements represent ad inventory on publisher sites and define the size, format, pricing, and location where ads can be served.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Placement ID. Read-only, auto-generated field."
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Account ID of this placement."
+    },
+    "subaccountId": {
+      "type": "string",
+      "description": "Subaccount ID of this placement."
+    },
+    "advertiserId": {
+      "type": "string",
+      "description": "Advertiser ID of this placement."
+    },
+    "campaignId": {
+      "type": "string",
+      "description": "Campaign ID of this placement. Required on insert."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of this placement. Must be fewer than 512 characters."
+    },
+    "siteId": {
+      "type": "string",
+      "description": "Site ID associated with this placement. Required on insert, read-only after."
+    },
+    "directorySiteId": {
+      "type": "string",
+      "description": "Directory site ID of this placement. Required on insert, read-only after."
+    },
+    "externalId": {
+      "type": "string",
+      "description": "External ID for this placement."
+    },
+    "keyName": {
+      "type": "string",
+      "description": "Key name of this placement, auto-generated from the name."
+    },
+    "placementGroupId": {
+      "type": "string",
+      "description": "ID of the placement group this placement belongs to."
+    },
+    "compatibility": {
+      "type": "string",
+      "description": "Placement compatibility. Required on insert."
+    },
+    "additionalSizes": {
+      "type": "array",
+      "description": "Additional sizes associated with this placement."
+    },
+    "tagFormats": {
+      "type": "array",
+      "description": "Tag formats to generate for this placement."
+    },
+    "paymentSource": {
+      "type": "string",
+      "description": "Payment source for this placement. Read-only after insert."
+    },
+    "paymentApproved": {
+      "type": "boolean",
+      "description": "Whether payment was approved for this placement. Read-only for non-publisher-paid placements."
+    },
+    "status": {
+      "type": "string",
+      "description": "Third-party placement status."
+    },
+    "activeStatus": {
+      "type": "string",
+      "description": "Whether this placement is active, inactive, archived, or permanently archived."
+    },
+    "contentCategoryId": {
+      "type": "string",
+      "description": "ID of the content category assigned to this placement."
+    },
+    "placementStrategyId": {
+      "type": "string",
+      "description": "ID of the placement strategy assigned to this placement."
+    },
+    "comment": {
+      "type": "string",
+      "description": "Comments for this placement."
+    },
+    "primary": {
+      "type": "boolean",
+      "description": "Whether this placement is the primary placement in a roadblock."
+    },
+    "sslRequired": {
+      "type": "boolean",
+      "description": "Whether creatives assigned to this placement must be SSL-compliant."
+    },
+    "adBlockingOptOut": {
+      "type": "boolean",
+      "description": "Whether this placement opts out of ad blocking."
+    },
+    "wrappingOptOut": {
+      "type": "boolean",
+      "description": "Whether this placement opts out of tag wrapping."
+    },
+    "videoActiveViewOptOut": {
+      "type": "boolean",
+      "description": "Whether Verification and ActiveView for in-stream video creatives are disabled for this placement."
+    },
+    "vpaidAdapterChoice": {
+      "type": "string",
+      "description": "VPAID adapter setting for this placement."
+    },
+    "kind": {
+      "type": "string",
+      "description": "Identifies what kind of resource this is. Value is always dfareporting#placement."
+    }
+  }
+}

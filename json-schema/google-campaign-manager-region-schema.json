@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Region",
+  "type": "object",
+  "properties": {
+    "dartId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "regionCode": {
+      "type": "string"
+    },
+    "countryDartId": {
+      "type": "string"
+    },
+    "countryCode": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

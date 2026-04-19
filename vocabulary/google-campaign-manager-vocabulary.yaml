@@ -1,0 +1,11 @@
+name: google-campaign-manager API Vocabulary
+provider: google-campaign-manager
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 23
+schemas: 64
+tags:
+- Ads
+- Campaigns
+- Placements
+- Reports

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "LookbackConfiguration",
+  "type": "object",
+  "properties": {
+    "clickDuration": {
+      "type": "integer"
+    },
+    "postImpressionActivitiesDuration": {
+      "type": "integer"
+    }
+  }
+}

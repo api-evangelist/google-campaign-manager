@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PricingSchedule",
+  "type": "object",
+  "description": "Pricing schedule for a placement.",
+  "properties": {
+    "startDate": {
+      "type": "string",
+      "description": "Placement start date."
+    },
+    "endDate": {
+      "type": "string",
+      "description": "Placement end date."
+    },
+    "pricingType": {
+      "type": "string",
+      "description": "Placement pricing type."
+    },
+    "capCostType": {
+      "type": "string",
+      "description": "Placement cap cost type."
+    },
+    "pricingPeriods": {
+      "type": "array",
+      "description": "Pricing periods for this placement."
+    },
+    "testingStartDate": {
+      "type": "string",
+      "description": "Testing start date of this placement."
+    }
+  }
+}

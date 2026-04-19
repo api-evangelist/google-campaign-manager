@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ReportReachCriteria",
+  "type": "object",
+  "properties": {
+    "dimensions": {
+      "type": "array"
+    },
+    "metricNames": {
+      "type": "array"
+    },
+    "reachByFrequencyMetricNames": {
+      "type": "array"
+    },
+    "dimensionFilters": {
+      "type": "array"
+    },
+    "enableAllDimensionCombinations": {
+      "type": "boolean"
+    }
+  }
+}

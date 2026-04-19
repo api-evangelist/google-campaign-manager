@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Report",
+  "type": "object",
+  "description": "A Campaign Manager 360 report configuration. Reports provide performance data and analytics for campaigns, ads, placements, and other advertising dimensions.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Report ID. Read-only, auto-generated field."
+    },
+    "ownerProfileId": {
+      "type": "string",
+      "description": "The user profile ID of the owner of this report."
+    },
+    "accountId": {
+      "type": "string",
+      "description": "The account ID this report belongs to."
+    },
+    "subAccountId": {
+      "type": "string",
+      "description": "The subaccount ID this report belongs to."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the report."
+    },
+    "fileName": {
+      "type": "string",
+      "description": "The filename used when generating report files for this report."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of report."
+    },
+    "format": {
+      "type": "string",
+      "description": "The output format of the report."
+    },
+    "etag": {
+      "type": "string",
+      "description": "Etag of this resource."
+    },
+    "lastModifiedTime": {
+      "type": "string",
+      "description": "The timestamp (in milliseconds since epoch) of when this report was last modified."
+    },
+    "kind": {
+      "type": "string",
+      "description": "Identifies what kind of resource this is. Value is always dfareporting#report."
+    }
+  }
+}

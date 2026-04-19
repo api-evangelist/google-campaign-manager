@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ReportSchedule",
+  "type": "object",
+  "properties": {
+    "active": {
+      "type": "boolean"
+    },
+    "repeats": {
+      "type": "string"
+    },
+    "every": {
+      "type": "integer"
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "expirationDate": {
+      "type": "string"
+    },
+    "runsOnDayOfMonth": {
+      "type": "string"
+    },
+    "timezone": {
+      "type": "string"
+    }
+  }
+}

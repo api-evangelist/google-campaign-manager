@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "AdsListResponse",
+  "type": "object",
+  "properties": {
+    "ads": {
+      "type": "array"
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

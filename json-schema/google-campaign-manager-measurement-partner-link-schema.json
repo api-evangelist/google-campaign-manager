@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MeasurementPartnerLink",
+  "type": "object",
+  "description": "Measurement partner integration link.",
+  "properties": {
+    "measurementPartner": {
+      "type": "string",
+      "description": "Measurement partner used for tag wrapping."
+    },
+    "linkStatus": {
+      "type": "string",
+      "description": "The status of the link."
+    },
+    "partnerCampaignId": {
+      "type": "string",
+      "description": "Partner campaign ID for the link."
+    }
+  }
+}

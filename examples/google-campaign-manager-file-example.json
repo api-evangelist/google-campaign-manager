@@ -1,0 +1,11 @@
+{
+  "id": "abc123",
+  "reportId": "500123",
+  "status": "example_value",
+  "format": "example_value",
+  "fileName": "example_value",
+  "lastModifiedTime": "example_value",
+  "urls": "https://www.example.com",
+  "etag": "example_value",
+  "kind": "example_value"
+}

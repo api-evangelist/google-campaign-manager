@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PricingSchedule",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "pricingType": {
+      "type": "string"
+    },
+    "capCostType": {
+      "type": "string"
+    },
+    "pricingPeriods": {
+      "type": "array"
+    },
+    "testingStartDate": {
+      "type": "string"
+    }
+  }
+}

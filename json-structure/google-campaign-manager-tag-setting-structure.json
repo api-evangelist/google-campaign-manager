@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TagSetting",
+  "type": "object",
+  "properties": {
+    "additionalKeyValues": {
+      "type": "string"
+    },
+    "includeClickTracking": {
+      "type": "boolean"
+    },
+    "includeClickThroughUrls": {
+      "type": "boolean"
+    },
+    "keywordOption": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CustomRichMediaEvents",
+  "type": "object",
+  "description": "Custom rich media events for report filtering.",
+  "properties": {
+    "filteredEventIds": {
+      "type": "array",
+      "description": "List of custom rich media event IDs."
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

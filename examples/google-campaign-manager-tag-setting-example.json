@@ -1,0 +1,6 @@
+{
+  "additionalKeyValues": "example_value",
+  "includeClickTracking": true,
+  "includeClickThroughUrls": "https://www.example.com",
+  "keywordOption": "example_value"
+}

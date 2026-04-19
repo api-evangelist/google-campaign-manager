@@ -1,0 +1,11 @@
+{
+  "dartId": "500123",
+  "name": "Example Title",
+  "regionDartId": "500123",
+  "regionCode": "example_value",
+  "countryDartId": "500123",
+  "countryCode": "example_value",
+  "metroCode": "example_value",
+  "metroDmaId": "500123",
+  "kind": "example_value"
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ad",
+  "type": "object",
+  "description": "A Campaign Manager 360 ad. Ads define the creative content, delivery schedules, targeting rules, and placement assignments that control how advertising is served.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Ad ID. Read-only, auto-generated field."
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Account ID of this ad."
+    },
+    "subaccountId": {
+      "type": "string",
+      "description": "Subaccount ID of this ad."
+    },
+    "campaignId": {
+      "type": "string",
+      "description": "Campaign ID of this ad. Required on insert."
+    },
+    "advertiserId": {
+      "type": "string",
+      "description": "Advertiser ID of this ad. Required on insert."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of this ad. Must be fewer than 256 characters."
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether this ad is active. Cannot be true when archived is true."
+    },
+    "archived": {
+      "type": "boolean",
+      "description": "Whether this ad is archived. Cannot be true when active is true."
+    },
+    "comments": {
+      "type": "string",
+      "description": "Comments for this ad."
+    },
+    "startTime": {
+      "type": "string",
+      "description": "Date and time that this ad should start serving. Must be in the future for new ads."
+    },
+    "endTime": {
+      "type": "string",
+      "description": "Date and time that this ad should stop serving. Must be after startTime."
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of ad. Required on insert."
+    },
+    "dynamicClickTracker": {
+      "type": "boolean",
+      "description": "Whether this ad is a dynamic click tracker. Read-only after insert."
+    },
+    "placementAssignments": {
+      "type": "array",
+      "description": "Placement assignments for this ad."
+    },
+    "eventTagOverrides": {
+      "type": "array",
+      "description": "Event tag overrides for this ad."
+    },
+    "kind": {
+      "type": "string",
+      "description": "Identifies what kind of resource this is. Value is always dfareporting#ad."
+    }
+  }
+}

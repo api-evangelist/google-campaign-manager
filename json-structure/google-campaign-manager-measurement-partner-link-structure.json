@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MeasurementPartnerLink",
+  "type": "object",
+  "properties": {
+    "measurementPartner": {
+      "type": "string"
+    },
+    "linkStatus": {
+      "type": "string"
+    },
+    "partnerCampaignId": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "OperatingSystemVersion",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "majorVersion": {
+      "type": "string"
+    },
+    "minorVersion": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

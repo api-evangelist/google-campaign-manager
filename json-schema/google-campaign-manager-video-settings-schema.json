@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VideoSettings",
+  "type": "object",
+  "description": "Video settings for in-stream video placements.",
+  "properties": {
+    "companionSettings": {
+      "type": "object",
+      "description": "Companion ad settings."
+    },
+    "transcodeSettings": {
+      "type": "object",
+      "description": "Transcode settings."
+    },
+    "skippableSettings": {
+      "type": "object",
+      "description": "Skippability settings."
+    },
+    "obaEnabled": {
+      "type": "boolean",
+      "description": "Whether OBA icons are enabled for this placement."
+    },
+    "obaSettings": {
+      "type": "object"
+    },
+    "orientation": {
+      "type": "string",
+      "description": "Video orientation setting."
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

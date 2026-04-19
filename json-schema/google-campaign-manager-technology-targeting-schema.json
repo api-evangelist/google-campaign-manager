@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TechnologyTargeting",
+  "type": "object",
+  "description": "Technology targeting configuration.",
+  "properties": {
+    "browsers": {
+      "type": "array",
+      "description": "Browsers to target."
+    },
+    "platforms": {
+      "type": "array",
+      "description": "Platforms to target."
+    },
+    "operatingSystems": {
+      "type": "array",
+      "description": "Operating systems to target."
+    },
+    "mobileCarriers": {
+      "type": "array",
+      "description": "Mobile carriers to target."
+    },
+    "connectionTypes": {
+      "type": "array",
+      "description": "Connection types to target."
+    },
+    "operatingSystemVersions": {
+      "type": "array",
+      "description": "Operating system versions to target."
+    }
+  }
+}

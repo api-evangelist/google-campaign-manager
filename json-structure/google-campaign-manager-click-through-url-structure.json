@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ClickThroughUrl",
+  "type": "object",
+  "properties": {
+    "defaultLandingPage": {
+      "type": "boolean"
+    },
+    "landingPageId": {
+      "type": "string"
+    },
+    "customClickThroughUrl": {
+      "type": "string"
+    },
+    "computedClickThroughUrl": {
+      "type": "string"
+    }
+  }
+}

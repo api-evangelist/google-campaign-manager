@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CampaignsListResponse",
+  "type": "object",
+  "description": "Campaign list response.",
+  "properties": {
+    "campaigns": {
+      "type": "array"
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Pagination token to be used in a subsequent request to retrieve the next page."
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

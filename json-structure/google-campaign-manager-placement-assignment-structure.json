@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PlacementAssignment",
+  "type": "object",
+  "properties": {
+    "placementId": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "sslRequired": {
+      "type": "boolean"
+    }
+  }
+}

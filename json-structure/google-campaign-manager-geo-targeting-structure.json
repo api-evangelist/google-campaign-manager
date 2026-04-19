@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GeoTargeting",
+  "type": "object",
+  "properties": {
+    "countries": {
+      "type": "array"
+    },
+    "regions": {
+      "type": "array"
+    },
+    "cities": {
+      "type": "array"
+    },
+    "metros": {
+      "type": "array"
+    },
+    "postalCodes": {
+      "type": "array"
+    },
+    "excludeCountries": {
+      "type": "boolean"
+    }
+  }
+}

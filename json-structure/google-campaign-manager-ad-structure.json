@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Ad",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "accountId": {
+      "type": "string"
+    },
+    "subaccountId": {
+      "type": "string"
+    },
+    "campaignId": {
+      "type": "string"
+    },
+    "advertiserId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "dynamicClickTracker": {
+      "type": "boolean"
+    },
+    "placementAssignments": {
+      "type": "array"
+    },
+    "eventTagOverrides": {
+      "type": "array"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

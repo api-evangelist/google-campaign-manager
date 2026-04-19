@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Country",
+  "type": "object",
+  "properties": {
+    "dartId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "countryCode": {
+      "type": "string"
+    },
+    "sslEnabled": {
+      "type": "boolean"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

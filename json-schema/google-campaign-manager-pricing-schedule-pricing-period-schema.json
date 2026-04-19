@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PricingSchedulePricingPeriod",
+  "type": "object",
+  "description": "A pricing period within a pricing schedule.",
+  "properties": {
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "units": {
+      "type": "string",
+      "description": "Units of this pricing period."
+    },
+    "rateOrCostNanos": {
+      "type": "string",
+      "description": "Rate or cost of this pricing period in nanos."
+    },
+    "pricingComment": {
+      "type": "string",
+      "description": "Comments for this pricing period."
+    }
+  }
+}

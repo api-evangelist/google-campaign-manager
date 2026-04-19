@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreativeRotation",
+  "type": "object",
+  "description": "Creative rotation configuration controlling how creatives are served within an ad.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Type of creative rotation."
+    },
+    "weightCalculationStrategy": {
+      "type": "string",
+      "description": "Strategy for calculating creative weights."
+    },
+    "creativeAssignments": {
+      "type": "array",
+      "description": "Creative assignments in this creative rotation."
+    },
+    "creativeOptimizationConfigurationId": {
+      "type": "string",
+      "description": "Creative optimization configuration used for this creative rotation."
+    }
+  }
+}

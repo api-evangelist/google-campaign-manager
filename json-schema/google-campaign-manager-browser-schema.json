@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Browser",
+  "type": "object",
+  "properties": {
+    "dartId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "browserVersionId": {
+      "type": "string"
+    },
+    "majorVersion": {
+      "type": "string"
+    },
+    "minorVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

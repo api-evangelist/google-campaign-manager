@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PricingSchedulePricingPeriod",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "units": {
+      "type": "string"
+    },
+    "rateOrCostNanos": {
+      "type": "string"
+    },
+    "pricingComment": {
+      "type": "string"
+    }
+  }
+}

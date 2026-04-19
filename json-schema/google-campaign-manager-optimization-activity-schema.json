@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OptimizationActivity",
+  "type": "object",
+  "description": "An optimization activity for creative optimization.",
+  "properties": {
+    "floodlightActivityId": {
+      "type": "string",
+      "description": "Floodlight activity ID of this optimization activity."
+    },
+    "weight": {
+      "type": "integer",
+      "description": "Weight associated with this optimization."
+    }
+  }
+}

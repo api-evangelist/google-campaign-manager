@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CreativeAssignment",
+  "type": "object",
+  "properties": {
+    "creativeId": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "weight": {
+      "type": "integer"
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer"
+    },
+    "richMediaExitOverrides": {
+      "type": "array"
+    }
+  }
+}

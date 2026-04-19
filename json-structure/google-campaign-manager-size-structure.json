@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Size",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "iab": {
+      "type": "boolean"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}
