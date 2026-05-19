@@ -1,0 +1,268 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Campaign Manager Campaign Manager 360 API — Ads
+  description: 'Google Campaign Manager Campaign Manager 360 API — Ads. 5 operations. Lead operation: Google Campaign Manager
+    List Ads. Self-contained Naftiko capability covering one Google Campaign Manager business surface.'
+  tags:
+  - Google Campaign Manager
+  - Ads
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CAMPAIGN_MANAGER_API_KEY: GOOGLE_CAMPAIGN_MANAGER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-campaign-manager-ads
+    baseUri: https://dfareporting.googleapis.com/dfareporting/v4
+    description: Google Campaign Manager Campaign Manager 360 API — Ads business capability. Self-contained, no shared references.
+    resources:
+    - name: userprofiles-profileId-ads
+      path: /userprofiles/{profileId}/ads
+      operations:
+      - name: listads
+        method: GET
+        description: Google Campaign Manager List Ads
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: campaignIds
+          in: query
+          type: array
+          description: Select only ads belonging to these campaigns.
+        - name: advertiserIds
+          in: query
+          type: array
+          description: Select only ads belonging to these advertisers.
+        - name: ids
+          in: query
+          type: array
+          description: Select only ads with these IDs.
+        - name: placementIds
+          in: query
+          type: array
+          description: Select only ads with these placement IDs assigned.
+        - name: type
+          in: query
+          type: string
+          description: Select only ads with the specified type.
+        - name: active
+          in: query
+          type: boolean
+          description: Select only active ads.
+        - name: archived
+          in: query
+          type: boolean
+          description: Select only archived ads.
+        - name: searchString
+          in: query
+          type: string
+          description: Search string for filtering results. Matches against ad name and ID fields.
+        - name: sortField
+          in: query
+          type: string
+        - name: sortOrder
+          in: query
+          type: string
+      - name: insertad
+        method: POST
+        description: Google Campaign Manager Create an Ad
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: userprofiles-profileId-ads-adId
+      path: /userprofiles/{profileId}/ads/{adId}
+      operations:
+      - name: getad
+        method: GET
+        description: Google Campaign Manager Get an Ad
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatead
+        method: PUT
+        description: Google Campaign Manager Update an Ad
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: patchad
+        method: PATCH
+        description: Google Campaign Manager Patch an Ad
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CAMPAIGN_MANAGER_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-campaign-manager-ads-rest
+    port: 8080
+    description: REST adapter for Google Campaign Manager Campaign Manager 360 API — Ads. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/userprofiles/{profileid}/ads
+      name: userprofiles-profileid-ads
+      description: REST surface for userprofiles-profileId-ads.
+      operations:
+      - method: GET
+        name: listads
+        description: Google Campaign Manager List Ads
+        call: google-campaign-manager-ads.listads
+        with:
+          campaignIds: rest.campaignIds
+          advertiserIds: rest.advertiserIds
+          ids: rest.ids
+          placementIds: rest.placementIds
+          type: rest.type
+          active: rest.active
+          archived: rest.archived
+          searchString: rest.searchString
+          sortField: rest.sortField
+          sortOrder: rest.sortOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: insertad
+        description: Google Campaign Manager Create an Ad
+        call: google-campaign-manager-ads.insertad
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/userprofiles/{profileid}/ads/{adid}
+      name: userprofiles-profileid-ads-adid
+      description: REST surface for userprofiles-profileId-ads-adId.
+      operations:
+      - method: GET
+        name: getad
+        description: Google Campaign Manager Get an Ad
+        call: google-campaign-manager-ads.getad
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatead
+        description: Google Campaign Manager Update an Ad
+        call: google-campaign-manager-ads.updatead
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchad
+        description: Google Campaign Manager Patch an Ad
+        call: google-campaign-manager-ads.patchad
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-campaign-manager-ads-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Campaign Manager Campaign Manager 360 API — Ads. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: google-campaign-manager-list-ads
+      description: Google Campaign Manager List Ads
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-campaign-manager-ads.listads
+      with:
+        campaignIds: tools.campaignIds
+        advertiserIds: tools.advertiserIds
+        ids: tools.ids
+        placementIds: tools.placementIds
+        type: tools.type
+        active: tools.active
+        archived: tools.archived
+        searchString: tools.searchString
+        sortField: tools.sortField
+        sortOrder: tools.sortOrder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-campaign-manager-create-ad
+      description: Google Campaign Manager Create an Ad
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-campaign-manager-ads.insertad
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-campaign-manager-get-ad
+      description: Google Campaign Manager Get an Ad
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-campaign-manager-ads.getad
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-campaign-manager-update-ad
+      description: Google Campaign Manager Update an Ad
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: google-campaign-manager-ads.updatead
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-campaign-manager-patch-ad
+      description: Google Campaign Manager Patch an Ad
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: google-campaign-manager-ads.patchad
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
