@@ -1,0 +1,937 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Campaign Manager Campaign Manager 360 API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Campaign Manager List Campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/campaigns",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "advertiserIds",
+                "value": "",
+                "type": "query",
+                "description": "Select only campaigns that belong to these advertisers."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Select only campaigns with these IDs."
+              },
+              {
+                "name": "searchString",
+                "value": "",
+                "type": "query",
+                "description": "Search string for filtering results. Matches against campaign name and ID fields."
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query",
+                "description": "Select only archived campaigns. Default is false."
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Field by which to sort the list."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Order of sorted results."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return. Default is 1000."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Value of the nextPageToken from the previous result page."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a list of campaigns, possibly filtered. Results are returned in descending order by last modified time. Use query parameters to filter by advertiser, archive status, search string, or specific campaign IDs."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Create a Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/campaigns",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Inserts a new campaign. The campaign is created under the specified advertiser with the provided configuration. Required fields include name, advertiserId, startDate, and endDate."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Get a Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/campaigns/:campaignId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "campaignId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Campaign ID."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Gets one campaign by ID."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Update a Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/campaigns/:campaignId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "campaignId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Campaign ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing campaign. All writable fields must be provided in the request body; unset writable fields will be reset to their default values."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Patch a Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/campaigns/:campaignId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "campaignId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Campaign ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing campaign. This method supports patch semantics; only the fields specified in the request body are modified."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Campaign Manager List Ads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/ads",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "campaignIds",
+                "value": "",
+                "type": "query",
+                "description": "Select only ads belonging to these campaigns."
+              },
+              {
+                "name": "advertiserIds",
+                "value": "",
+                "type": "query",
+                "description": "Select only ads belonging to these advertisers."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Select only ads with these IDs."
+              },
+              {
+                "name": "placementIds",
+                "value": "",
+                "type": "query",
+                "description": "Select only ads with these placement IDs assigned."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Select only ads with the specified type."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Select only active ads."
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query",
+                "description": "Select only archived ads."
+              },
+              {
+                "name": "searchString",
+                "value": "",
+                "type": "query",
+                "description": "Search string for filtering results. Matches against ad name and ID fields."
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return. Default is 1000."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Value of the nextPageToken from the previous result page."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a list of ads, possibly filtered. Results are returned in descending order by last modified time. Use query parameters to filter by campaign, advertiser, type, or other criteria."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Create an Ad",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/ads",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Inserts a new ad. The ad is created under the specified campaign and advertiser with the provided delivery, creative rotation, and targeting configuration."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Get an Ad",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/ads/:adId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "adId",
+                "value": "87654321",
+                "type": "path",
+                "description": "Ad ID."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Gets one ad by ID."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Update an Ad",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/ads/:adId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "adId",
+                "value": "87654321",
+                "type": "path",
+                "description": "Ad ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing ad. All writable fields must be provided in the request body."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Patch an Ad",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/ads/:adId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "adId",
+                "value": "87654321",
+                "type": "path",
+                "description": "Ad ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing ad. This method supports patch semantics; only the fields specified in the request body are modified."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Placements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Campaign Manager List Placements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/placements",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "campaignIds",
+                "value": "",
+                "type": "query",
+                "description": "Select only placements belonging to these campaigns."
+              },
+              {
+                "name": "advertiserIds",
+                "value": "",
+                "type": "query",
+                "description": "Select only placements belonging to these advertisers."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Select only placements with these IDs."
+              },
+              {
+                "name": "siteIds",
+                "value": "",
+                "type": "query",
+                "description": "Select only placements associated with these sites."
+              },
+              {
+                "name": "groupIds",
+                "value": "",
+                "type": "query",
+                "description": "Select only placements belonging to these placement groups."
+              },
+              {
+                "name": "compatibilities",
+                "value": "",
+                "type": "query",
+                "description": "Select only placements with these compatibilities."
+              },
+              {
+                "name": "searchString",
+                "value": "",
+                "type": "query",
+                "description": "Search string for filtering results."
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return. Default is 1000."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Value of the nextPageToken from the previous result page."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a list of placements, possibly filtered. Results are returned in descending order by last modified time."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Create a Placement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/placements",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Inserts a new placement. The placement is associated with a campaign, site, and directory site, and defines the ad inventory configuration for a specific location on a publisher site."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Get a Placement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/placements/:placementId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "placementId",
+                "value": "11223344",
+                "type": "path",
+                "description": "Placement ID."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Gets one placement by ID."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Update a Placement",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/placements/:placementId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "placementId",
+                "value": "11223344",
+                "type": "path",
+                "description": "Placement ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing placement."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Patch a Placement",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/placements/:placementId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "placementId",
+                "value": "11223344",
+                "type": "path",
+                "description": "Placement ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing placement. This method supports patch semantics."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Generate Placement Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/placements/generatetags",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "placementIds",
+                "value": "",
+                "type": "query",
+                "description": "Generate tags for these placements."
+              },
+              {
+                "name": "tagFormats",
+                "value": "",
+                "type": "query",
+                "description": "Tag formats to generate."
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "query",
+                "description": "Generate placements belonging to this campaign."
+              }
+            ]
+          },
+          "docs": "Generates tags for one or more placements. Tags are the code snippets that publishers place on their sites to enable ad serving for the associated placements."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Campaign Manager List Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "The scope that defines which results are returned."
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return. Default is 1000."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Value of the nextPageToken from the previous result page."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves list of reports. Results are ordered by last modified time descending."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Create a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a report. Configure the report type, criteria with dimensions and metrics, date range, and optional scheduling for automated delivery."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Get a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a report by its ID."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Update a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a report."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Patch a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a report. This method supports patch semantics."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Delete a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              }
+            ]
+          },
+          "docs": "Deletes a report by its ID."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Run a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId/run",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              },
+              {
+                "name": "synchronous",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, tries to run the report synchronously. If the report is too large for synchronous processing, it runs asynchronously instead."
+              }
+            ]
+          },
+          "docs": "Runs a report. The report is executed asynchronously. Use the files endpoint to check report completion status and download the generated report file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
