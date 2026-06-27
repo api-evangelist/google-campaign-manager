@@ -49,7 +49,7 @@ apis:
         url: https://developers.google.com/doubleclick-advertisers/guides/authorizing
       - type: Pricing
         url: https://marketingplatform.google.com/about/campaign-manager-360/pricing/
-      - type: Quickstart
+      - type: GettingStarted
         url: https://developers.google.com/doubleclick-advertisers/getting_started
       - type: Support
         url: https://support.google.com/campaignmanager
@@ -61,7 +61,7 @@ apis:
         url: https://developers.google.com/doubleclick-advertisers/quotas
       - type: ReleaseNotes
         url: https://developers.google.com/doubleclick-advertisers/rel_notes
-      - type: SDK
+      - type: SDKs
         url: https://developers.google.com/doubleclick-advertisers/libraries
         title: Client Libraries
       - type: JSONSchema
@@ -214,7 +214,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.google.com/doubleclick-advertisers/dtv2/overview
-      - type: Quickstart
+      - type: GettingStarted
         url: https://developers.google.com/doubleclick-advertisers/dtv2/getting-started
       - type: FAQ
         url: https://developers.google.com/doubleclick-advertisers/dtv2/reference/faq
