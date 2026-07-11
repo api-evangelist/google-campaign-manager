@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/google-campaign-manager-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/google-campaign-manager-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+    tokenUrl: https://oauth2.googleapis.com/token
+  description: OAuth 2.0 authentication for accessing Campaign Manager 360 resources. Requires
+    appropriate scopes for trafficking or reporting operations.
+scopes:
+- scope: https://www.googleapis.com/auth/dfareporting
+  description: View and manage DoubleClick for Advertisers reports
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-campaign-manager-openapi.yml
+- scope: https://www.googleapis.com/auth/dfatrafficking
+  description: View and manage your DoubleClick Campaign Manager's (DCM) display ad campaigns
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-campaign-manager-openapi.yml
