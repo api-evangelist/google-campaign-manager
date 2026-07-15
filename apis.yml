@@ -223,6 +223,8 @@ apis:
       - type: Support
         url: https://developers.google.com/doubleclick-advertisers/dtv2/get-support
 common:
+  - type: AgenticAccess
+    url: agentic-access/google-campaign-manager-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/google-campaign-manager-vulnerability-disclosure.yml
   - type: DomainSecurity

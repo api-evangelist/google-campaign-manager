@@ -1,0 +1,397 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/google-campaign-manager-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 23
+  by_action_class:
+    connected: 8
+    acting: 15
+  by_consequence:
+    read: 8
+    write: 15
+  human_in_the_loop_required: 0
+operations:
+- path: /userprofiles/{profileId}/campaigns
+  method: get
+  operationId: listCampaigns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/dfatrafficking
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userprofiles/{profileId}/campaigns
+  method: post
+  operationId: insertCampaign
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/campaigns/{campaignId}
+  method: get
+  operationId: getCampaign
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/dfatrafficking
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userprofiles/{profileId}/campaigns/{campaignId}
+  method: put
+  operationId: updateCampaign
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/campaigns/{campaignId}
+  method: patch
+  operationId: patchCampaign
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/ads
+  method: get
+  operationId: listAds
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/dfatrafficking
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userprofiles/{profileId}/ads
+  method: post
+  operationId: insertAd
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/ads/{adId}
+  method: get
+  operationId: getAd
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/dfatrafficking
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userprofiles/{profileId}/ads/{adId}
+  method: put
+  operationId: updateAd
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/ads/{adId}
+  method: patch
+  operationId: patchAd
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/placements
+  method: get
+  operationId: listPlacements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/dfatrafficking
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userprofiles/{profileId}/placements
+  method: post
+  operationId: insertPlacement
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/placements/{placementId}
+  method: get
+  operationId: getPlacement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/dfatrafficking
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userprofiles/{profileId}/placements/{placementId}
+  method: put
+  operationId: updatePlacement
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/placements/{placementId}
+  method: patch
+  operationId: patchPlacement
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/placements/generatetags
+  method: post
+  operationId: generatePlacementTags
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/reports
+  method: get
+  operationId: listReports
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userprofiles/{profileId}/reports
+  method: post
+  operationId: insertReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/reports/{reportId}
+  method: get
+  operationId: getReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userprofiles/{profileId}/reports/{reportId}
+  method: put
+  operationId: updateReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/reports/{reportId}
+  method: patch
+  operationId: patchReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/reports/{reportId}
+  method: delete
+  operationId: deleteReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
+- path: /userprofiles/{profileId}/reports/{reportId}/run
+  method: post
+  operationId: runReport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/dfatrafficking
