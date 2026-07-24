@@ -1,0 +1,934 @@
+openapi: 3.1.0
+info:
+  title: Google Campaign Manager Campaign Manager 360 Ads Reports API
+  description: The Campaign Manager 360 API (formerly DoubleClick Campaign Manager) provides programmatic access to manage digital advertising campaigns, ads, placements, and reports. Use this API to automate trafficking workflows, create and manage campaign structures, configure ad placements across publisher sites, and generate comprehensive reporting data for campaign performance analysis. The API supports the full campaign lifecycle from creation through reporting and optimization.
+  version: v4
+  contact:
+    name: Google Campaign Manager 360 API Support
+    url: https://support.google.com/campaignmanager
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://dfareporting.googleapis.com/dfareporting/v4
+  description: Campaign Manager 360 API Production Server
+security:
+- OAuth2:
+  - https://www.googleapis.com/auth/dfareporting
+  - https://www.googleapis.com/auth/dfatrafficking
+tags:
+- name: Reports
+  description: Create, configure, and run reports to analyze campaign performance. Reports support multiple types including standard, reach, path to conversion, cross-dimension reach, floodlight, and cross-media reach, with configurable dimensions, metrics, and date ranges.
+paths:
+  /userprofiles/{profileId}/reports:
+    get:
+      operationId: listReports
+      summary: Google Campaign Manager List Reports
+      description: Retrieves list of reports. Results are ordered by last modified time descending.
+      tags:
+      - Reports
+      security:
+      - OAuth2:
+        - https://www.googleapis.com/auth/dfareporting
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - name: scope
+        in: query
+        required: false
+        description: The scope that defines which results are returned.
+        schema:
+          type: string
+          enum:
+          - ALL
+          - MINE
+          default: MINE
+      - name: sortField
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ID
+          - LAST_MODIFIED_TIME
+          - NAME
+          default: LAST_MODIFIED_TIME
+      - name: sortOrder
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ASCENDING
+          - DESCENDING
+          default: DESCENDING
+      - $ref: '#/components/parameters/MaxResults'
+      - $ref: '#/components/parameters/PageToken'
+      responses:
+        '200':
+          description: List of reports.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportsListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: insertReport
+      summary: Google Campaign Manager Create a Report
+      description: Creates a report. Configure the report type, criteria with dimensions and metrics, date range, and optional scheduling for automated delivery.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report'
+            example:
+              name: Weekly Campaign Performance Report
+              type: STANDARD
+              format: CSV
+              criteria:
+                dateRange:
+                  relativeDateRange: LAST_7_DAYS
+                dimensions:
+                - name: campaign
+                - name: ad
+                metricNames:
+                - impressions
+                - clicks
+                - clickRate
+                - totalConversions
+      responses:
+        '200':
+          description: Created report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /userprofiles/{profileId}/reports/{reportId}:
+    get:
+      operationId: getReport
+      summary: Google Campaign Manager Get a Report
+      description: Retrieves a report by its ID.
+      tags:
+      - Reports
+      security:
+      - OAuth2:
+        - https://www.googleapis.com/auth/dfareporting
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/ReportId'
+      responses:
+        '200':
+          description: Report details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateReport
+      summary: Google Campaign Manager Update a Report
+      description: Updates a report.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/ReportId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report'
+      responses:
+        '200':
+          description: Updated report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: patchReport
+      summary: Google Campaign Manager Patch a Report
+      description: Updates a report. This method supports patch semantics.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/ReportId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report'
+      responses:
+        '200':
+          description: Patched report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteReport
+      summary: Google Campaign Manager Delete a Report
+      description: Deletes a report by its ID.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/ReportId'
+      responses:
+        '204':
+          description: Report deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /userprofiles/{profileId}/reports/{reportId}/run:
+    post:
+      operationId: runReport
+      summary: Google Campaign Manager Run a Report
+      description: Runs a report. The report is executed asynchronously. Use the files endpoint to check report completion status and download the generated report file.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/ReportId'
+      - name: synchronous
+        in: query
+        required: false
+        description: If set to true, tries to run the report synchronously. If the report is too large for synchronous processing, it runs asynchronously instead.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Report file metadata for the initiated run.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    Forbidden:
+      description: Insufficient permissions for the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or invalid credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request parameters or malformed request body.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    ReportFloodlightCriteria:
+      type: object
+      description: Configuration for a FLOODLIGHT report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+        metricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        floodlightConfigId:
+          $ref: '#/components/schemas/DimensionValue'
+        reportProperties:
+          type: object
+          properties:
+            includeUnattributedIPConversions:
+              type: boolean
+            includeUnattributedCookieConversions:
+              type: boolean
+            includeAttributedIPConversions:
+              type: boolean
+          example: example_value
+    Error:
+      type: object
+      description: Standard Google API error response.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: HTTP status code.
+            message:
+              type: string
+              description: Human-readable error message.
+            status:
+              type: string
+              description: Error status string.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+          example: example_value
+    Report:
+      type: object
+      description: A Campaign Manager 360 report configuration. Reports provide performance data and analytics for campaigns, ads, placements, and other advertising dimensions.
+      properties:
+        id:
+          type: string
+          description: Report ID. Read-only, auto-generated field.
+          readOnly: true
+          example: abc123
+        ownerProfileId:
+          type: string
+          description: The user profile ID of the owner of this report.
+          readOnly: true
+          example: '500123'
+        accountId:
+          type: string
+          description: The account ID this report belongs to.
+          readOnly: true
+          example: '500123'
+        subAccountId:
+          type: string
+          description: The subaccount ID this report belongs to.
+          readOnly: true
+          example: '500123'
+        name:
+          type: string
+          description: The name of the report.
+          example: Example Title
+        fileName:
+          type: string
+          description: The filename used when generating report files for this report.
+          example: example_value
+        type:
+          type: string
+          description: The type of report.
+          enum:
+          - STANDARD
+          - REACH
+          - PATH_TO_CONVERSION
+          - CROSS_DIMENSION_REACH
+          - FLOODLIGHT
+          - CROSS_MEDIA_REACH
+          example: STANDARD
+        format:
+          type: string
+          description: The output format of the report.
+          enum:
+          - CSV
+          - EXCEL
+          default: CSV
+          example: CSV
+        etag:
+          type: string
+          description: Etag of this resource.
+          readOnly: true
+          example: example_value
+        lastModifiedTime:
+          type: string
+          description: The timestamp (in milliseconds since epoch) of when this report was last modified.
+          readOnly: true
+          example: example_value
+        criteria:
+          $ref: '#/components/schemas/ReportCriteria'
+        reachCriteria:
+          $ref: '#/components/schemas/ReportReachCriteria'
+        pathToConversionCriteria:
+          $ref: '#/components/schemas/ReportPathToConversionCriteria'
+        crossDimensionReachCriteria:
+          $ref: '#/components/schemas/ReportCrossDimensionReachCriteria'
+        floodlightCriteria:
+          $ref: '#/components/schemas/ReportFloodlightCriteria'
+        crossMediaReachCriteria:
+          $ref: '#/components/schemas/ReportCrossMediaReachCriteria'
+        schedule:
+          $ref: '#/components/schemas/ReportSchedule'
+        delivery:
+          $ref: '#/components/schemas/ReportDelivery'
+        kind:
+          type: string
+          description: Identifies what kind of resource this is. Value is always dfareporting#report.
+          readOnly: true
+          default: dfareporting#report
+          example: example_value
+    DateRange:
+      type: object
+      description: Date range configuration for reports.
+      properties:
+        startDate:
+          type: string
+          format: date
+          description: The start date of the date range, inclusive. Format is YYYY-MM-DD.
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: The end date of the date range, inclusive. Format is YYYY-MM-DD.
+          example: '2026-01-15'
+        relativeDateRange:
+          type: string
+          description: The date range relative to the date of when the report is run.
+          enum:
+          - TODAY
+          - YESTERDAY
+          - WEEK_TO_DATE
+          - MONTH_TO_DATE
+          - QUARTER_TO_DATE
+          - YEAR_TO_DATE
+          - PREVIOUS_WEEK
+          - PREVIOUS_MONTH
+          - PREVIOUS_QUARTER
+          - PREVIOUS_YEAR
+          - LAST_7_DAYS
+          - LAST_14_DAYS
+          - LAST_30_DAYS
+          - LAST_365_DAYS
+          - LAST_60_DAYS
+          - LAST_90_DAYS
+          - LAST_24_MONTHS
+          example: TODAY
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#dateRange
+          example: example_value
+    CustomRichMediaEvents:
+      type: object
+      description: Custom rich media events for report filtering.
+      properties:
+        filteredEventIds:
+          type: array
+          description: List of custom rich media event IDs.
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#customRichMediaEvents
+          example: example_value
+    ReportCrossMediaReachCriteria:
+      type: object
+      description: Configuration for a CROSS_MEDIA_REACH report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        metricNames:
+          type: array
+          items:
+            type: string
+          example: []
+    ReportDelivery:
+      type: object
+      description: Report email delivery settings.
+      properties:
+        emailOwner:
+          type: boolean
+          description: Whether the report should be emailed to the report owner.
+          example: user@example.com
+        emailOwnerDeliveryType:
+          type: string
+          description: The type of delivery for the owner email.
+          enum:
+          - LINK
+          - ATTACHMENT
+          example: LINK
+        message:
+          type: string
+          description: The message to include in the email.
+          example: example_value
+        recipients:
+          type: array
+          description: The list of recipients to send the report to.
+          items:
+            $ref: '#/components/schemas/Recipient'
+          example: []
+    ReportReachCriteria:
+      type: object
+      description: Configuration for a REACH report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+        metricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        reachByFrequencyMetricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        activities:
+          $ref: '#/components/schemas/Activities'
+        enableAllDimensionCombinations:
+          type: boolean
+          example: true
+    DimensionValue:
+      type: object
+      description: A dimension value used for filtering and reporting.
+      properties:
+        dimensionName:
+          type: string
+          description: The name of the dimension.
+          example: example_value
+        value:
+          type: string
+          description: The value of the dimension.
+          example: example_value
+        id:
+          type: string
+          description: The ID associated with the value.
+          example: abc123
+        matchType:
+          type: string
+          description: Match type for filtering.
+          enum:
+          - EXACT
+          - BEGINS_WITH
+          - CONTAINS
+          - WILDCARD_EXPRESSION
+          example: EXACT
+        etag:
+          type: string
+          readOnly: true
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#dimensionValue
+          example: example_value
+    Activities:
+      type: object
+      description: Represents an activity group for report filtering.
+      properties:
+        filters:
+          type: array
+          description: List of activity filters.
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        metricNames:
+          type: array
+          description: List of activity metric names.
+          items:
+            type: string
+          example: []
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#activities
+          example: example_value
+    ReportPathToConversionCriteria:
+      type: object
+      description: Configuration for a PATH_TO_CONVERSION report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        conversionDimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+        perInteractionDimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+        metricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        activityFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        floodlightConfigId:
+          $ref: '#/components/schemas/DimensionValue'
+    Recipient:
+      type: object
+      description: An email recipient for report delivery.
+      properties:
+        email:
+          type: string
+          format: email
+          description: The email address of the recipient.
+          example: user@example.com
+        deliveryType:
+          type: string
+          description: The delivery type for this recipient.
+          enum:
+          - LINK
+          - ATTACHMENT
+          example: LINK
+    ReportsListResponse:
+      type: object
+      description: Report list response.
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        nextPageToken:
+          type: string
+          example: example_value
+        etag:
+          type: string
+          readOnly: true
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#reportList
+          example: example_value
+    File:
+      type: object
+      description: Represents a report file generated by running a report.
+      properties:
+        id:
+          type: string
+          description: The unique ID of this report file.
+          readOnly: true
+          example: abc123
+        reportId:
+          type: string
+          description: The ID of the report this file was generated from.
+          readOnly: true
+          example: '500123'
+        status:
+          type: string
+          description: The status of this report file.
+          enum:
+          - PROCESSING
+          - REPORT_AVAILABLE
+          - FAILED
+          - CANCELLED
+          readOnly: true
+          example: PROCESSING
+        format:
+          type: string
+          description: The output format of this report file.
+          enum:
+          - CSV
+          - EXCEL
+          readOnly: true
+          example: CSV
+        fileName:
+          type: string
+          description: The filename of the file.
+          readOnly: true
+          example: example_value
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        lastModifiedTime:
+          type: string
+          description: The timestamp in milliseconds since epoch for when this file was last modified.
+          readOnly: true
+          example: example_value
+        urls:
+          type: object
+          description: The URLs where the completed report file can be downloaded.
+          properties:
+            apiUrl:
+              type: string
+              format: uri
+              description: The URL for downloading the report data through the API.
+            browserUrl:
+              type: string
+              format: uri
+              description: The URL for downloading the report data through a browser.
+          readOnly: true
+          example: https://www.example.com
+        etag:
+          type: string
+          readOnly: true
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#file
+          example: example_value
+    ReportSchedule:
+      type: object
+      description: Schedule configuration for automated report generation and delivery.
+      properties:
+        active:
+          type: boolean
+          description: Whether the schedule is active.
+          example: true
+        repeats:
+          type: string
+          description: The interval at which the report is run. Acceptable values are DAILY, WEEKLY, MONTHLY, or QUARTERLY.
+          enum:
+          - DAILY
+          - WEEKLY
+          - MONTHLY
+          - QUARTERLY
+          example: DAILY
+        every:
+          type: integer
+          description: Defines every how many days, weeks, or months the report should be run.
+          example: 10
+        startDate:
+          type: string
+          format: date
+          description: Start date of the scheduled reports.
+          example: '2026-01-15'
+        expirationDate:
+          type: string
+          format: date
+          description: The expiration date when the scheduled report stops running.
+          example: '2026-01-15'
+        runsOnDayOfMonth:
+          type: string
+          description: Enum to define for MONTHLY and QUARTERLY schedules whether reports should be repeated on the same day of the month or the same day of the week.
+          enum:
+          - DAY_OF_MONTH
+          - WEEK_OF_MONTH
+          example: DAY_OF_MONTH
+        timezone:
+          type: string
+          description: The timezone for the report schedule.
+          example: example_value
+    SortedDimension:
+      type: object
+      description: A sorted dimension for report queries.
+      properties:
+        name:
+          type: string
+          description: The name of the dimension.
+          example: Example Title
+        sortOrder:
+          type: string
+          description: The sort order of this dimension.
+          enum:
+          - ASCENDING
+          - DESCENDING
+          example: ASCENDING
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#sortedDimension
+          example: example_value
+    ReportCrossDimensionReachCriteria:
+      type: object
+      description: Configuration for a CROSS_DIMENSION_REACH report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimension:
+          type: string
+          enum:
+          - ADVERTISER
+          - CAMPAIGN
+          - SITE_BY_ADVERTISER
+          - SITE_BY_CAMPAIGN
+          example: ADVERTISER
+        metricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        overlapMetricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        pivoted:
+          type: boolean
+          example: true
+        breakdown:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+    ReportCriteria:
+      type: object
+      description: Configuration for a STANDARD report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensions:
+          type: array
+          description: The list of standard dimensions the report should include.
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+        metricNames:
+          type: array
+          description: The list of names of metrics the report should include.
+          items:
+            type: string
+          example: []
+        dimensionFilters:
+          type: array
+          description: The list of filters on which dimensions are filtered.
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        activities:
+          $ref: '#/components/schemas/Activities'
+        customRichMediaEvents:
+          $ref: '#/components/schemas/CustomRichMediaEvents'
+  parameters:
+    ReportId:
+      name: reportId
+      in: path
+      required: true
+      description: The ID of the report.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '99887766'
+    PageToken:
+      name: pageToken
+      in: query
+      required: false
+      description: Value of the nextPageToken from the previous result page.
+      schema:
+        type: string
+    MaxResults:
+      name: maxResults
+      in: query
+      required: false
+      description: Maximum number of results to return. Default is 1000.
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 1000
+        default: 1000
+    ProfileId:
+      name: profileId
+      in: path
+      required: true
+      description: The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '123456'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for accessing Campaign Manager 360 resources. Requires appropriate scopes for trafficking or reporting operations.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/dfareporting: View and manage DoubleClick for Advertisers reports
+            https://www.googleapis.com/auth/dfatrafficking: View and manage your DoubleClick Campaign Manager's (DCM) display ad campaigns
+externalDocs:
+  description: Campaign Manager 360 API Documentation
+  url: https://developers.google.com/doubleclick-advertisers/rest/v4

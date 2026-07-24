@@ -1,0 +1,678 @@
+openapi: 3.1.0
+info:
+  title: Google Campaign Manager Campaign Manager 360 Ads Campaigns API
+  description: The Campaign Manager 360 API (formerly DoubleClick Campaign Manager) provides programmatic access to manage digital advertising campaigns, ads, placements, and reports. Use this API to automate trafficking workflows, create and manage campaign structures, configure ad placements across publisher sites, and generate comprehensive reporting data for campaign performance analysis. The API supports the full campaign lifecycle from creation through reporting and optimization.
+  version: v4
+  contact:
+    name: Google Campaign Manager 360 API Support
+    url: https://support.google.com/campaignmanager
+  termsOfService: https://developers.google.com/terms
+servers:
+- url: https://dfareporting.googleapis.com/dfareporting/v4
+  description: Campaign Manager 360 API Production Server
+security:
+- OAuth2:
+  - https://www.googleapis.com/auth/dfareporting
+  - https://www.googleapis.com/auth/dfatrafficking
+tags:
+- name: Campaigns
+  description: Manage advertising campaigns. Campaigns serve as top-level organizational containers that group ads, placements, and creatives under a single advertiser with shared start and end dates, budgets, and targeting configurations.
+paths:
+  /userprofiles/{profileId}/campaigns:
+    get:
+      operationId: listCampaigns
+      summary: Google Campaign Manager List Campaigns
+      description: Retrieves a list of campaigns, possibly filtered. Results are returned in descending order by last modified time. Use query parameters to filter by advertiser, archive status, search string, or specific campaign IDs.
+      tags:
+      - Campaigns
+      security:
+      - OAuth2:
+        - https://www.googleapis.com/auth/dfatrafficking
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - name: advertiserIds
+        in: query
+        required: false
+        description: Select only campaigns that belong to these advertisers.
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+      - name: ids
+        in: query
+        required: false
+        description: Select only campaigns with these IDs.
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: true
+      - name: searchString
+        in: query
+        required: false
+        description: Search string for filtering results. Matches against campaign name and ID fields.
+        schema:
+          type: string
+      - name: archived
+        in: query
+        required: false
+        description: Select only archived campaigns. Default is false.
+        schema:
+          type: boolean
+          default: false
+      - name: sortField
+        in: query
+        required: false
+        description: Field by which to sort the list.
+        schema:
+          type: string
+          enum:
+          - ID
+          - NAME
+          default: ID
+      - name: sortOrder
+        in: query
+        required: false
+        description: Order of sorted results.
+        schema:
+          type: string
+          enum:
+          - ASCENDING
+          - DESCENDING
+          default: ASCENDING
+      - $ref: '#/components/parameters/MaxResults'
+      - $ref: '#/components/parameters/PageToken'
+      responses:
+        '200':
+          description: List of campaigns.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignsListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: insertCampaign
+      summary: Google Campaign Manager Create a Campaign
+      description: Inserts a new campaign. The campaign is created under the specified advertiser with the provided configuration. Required fields include name, advertiserId, startDate, and endDate.
+      tags:
+      - Campaigns
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+            example:
+              name: Q1 2026 Brand Awareness Campaign
+              advertiserId: '12345678'
+              startDate: '2026-01-01'
+              endDate: '2026-03-31'
+              defaultLandingPageId: '98765432'
+      responses:
+        '200':
+          description: Created campaign.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /userprofiles/{profileId}/campaigns/{campaignId}:
+    get:
+      operationId: getCampaign
+      summary: Google Campaign Manager Get a Campaign
+      description: Gets one campaign by ID.
+      tags:
+      - Campaigns
+      security:
+      - OAuth2:
+        - https://www.googleapis.com/auth/dfatrafficking
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/CampaignId'
+      responses:
+        '200':
+          description: Campaign details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateCampaign
+      summary: Google Campaign Manager Update a Campaign
+      description: Updates an existing campaign. All writable fields must be provided in the request body; unset writable fields will be reset to their default values.
+      tags:
+      - Campaigns
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/CampaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+      responses:
+        '200':
+          description: Updated campaign.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: patchCampaign
+      summary: Google Campaign Manager Patch a Campaign
+      description: Updates an existing campaign. This method supports patch semantics; only the fields specified in the request body are modified.
+      tags:
+      - Campaigns
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/CampaignId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+      responses:
+        '200':
+          description: Patched campaign.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AudienceSegment:
+      type: object
+      description: An audience segment for targeting.
+      properties:
+        id:
+          type: string
+          description: ID of this audience segment.
+          example: abc123
+        name:
+          type: string
+          description: Name of this audience segment.
+          example: Example Title
+        allocation:
+          type: integer
+          description: Weight allocated to this segment. Must be between 1 and 1000.
+          minimum: 1
+          maximum: 1000
+          example: 10
+    CreativeOptimizationConfiguration:
+      type: object
+      description: Creative optimization configuration.
+      properties:
+        id:
+          type: string
+          description: ID of this creative optimization configuration.
+          example: abc123
+        name:
+          type: string
+          description: Name of this creative optimization configuration.
+          example: Example Title
+        optimizationActivitys:
+          type: array
+          description: List of optimization activities associated with this configuration.
+          items:
+            $ref: '#/components/schemas/OptimizationActivity'
+          example: []
+        optimizationModel:
+          type: string
+          description: Optimization model for this configuration.
+          enum:
+          - CLICK
+          - POST_CLICK
+          - POST_IMPRESSION
+          - POST_CLICK_AND_IMPRESSION
+          - VIDEO_COMPLETION
+          example: CLICK
+    Error:
+      type: object
+      description: Standard Google API error response.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: HTTP status code.
+            message:
+              type: string
+              description: Human-readable error message.
+            status:
+              type: string
+              description: Error status string.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+          example: example_value
+    OptimizationActivity:
+      type: object
+      description: An optimization activity for creative optimization.
+      properties:
+        floodlightActivityId:
+          type: string
+          description: Floodlight activity ID of this optimization activity.
+          example: '500123'
+        floodlightActivityIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+        weight:
+          type: integer
+          description: Weight associated with this optimization.
+          example: 10
+    AdBlockingConfiguration:
+      type: object
+      description: Ad blocking configuration for a campaign.
+      properties:
+        enabled:
+          type: boolean
+          description: Whether this campaign has enabled ad blocking. When true, ad blocking is enabled for the campaign and a default ad can be served for blocked ads.
+          example: true
+        overrideClickThroughUrl:
+          type: string
+          format: uri
+          description: Override click-through URL for blocked ads.
+          example: https://www.example.com
+    DefaultClickThroughEventTagProperties:
+      type: object
+      description: Default click-through event tag properties.
+      properties:
+        defaultClickThroughEventTagId:
+          type: string
+          description: ID of the default click-through event tag.
+          example: '500123'
+        overrideInheritedEventTag:
+          type: boolean
+          description: Whether to override the inherited event tag.
+          example: true
+    LastModifiedInfo:
+      type: object
+      description: Modification timestamp information.
+      properties:
+        time:
+          type: string
+          description: Timestamp of the last change in milliseconds since epoch.
+          example: example_value
+    CampaignsListResponse:
+      type: object
+      description: Campaign list response.
+      properties:
+        campaigns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Campaign'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token to be used in a subsequent request to retrieve the next page.
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#campaignsListResponse
+          example: example_value
+    MeasurementPartnerLink:
+      type: object
+      description: Measurement partner integration link.
+      properties:
+        measurementPartner:
+          type: string
+          description: Measurement partner used for tag wrapping.
+          enum:
+          - NONE
+          - INTEGRAL_AD_SCIENCE
+          - DOUBLE_VERIFY
+          example: NONE
+        linkStatus:
+          type: string
+          description: The status of the link.
+          enum:
+          - MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
+          - MEASUREMENT_PARTNER_LINK_ACTIVE
+          - MEASUREMENT_PARTNER_LINK_INACTIVE
+          example: MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
+        partnerCampaignId:
+          type: string
+          description: Partner campaign ID for the link.
+          example: '500123'
+    Campaign:
+      type: object
+      description: A Campaign Manager 360 campaign. Campaigns are the top-level organizational unit for advertising activities, grouping ads, placements, and creatives under a single advertiser with shared configuration, date ranges, and targeting.
+      required:
+      - name
+      - advertiserId
+      - startDate
+      - endDate
+      properties:
+        id:
+          type: string
+          description: Campaign ID. This is a read-only, auto-generated field.
+          readOnly: true
+          example: abc123
+        accountId:
+          type: string
+          description: Account ID of this campaign.
+          readOnly: true
+          example: '500123'
+        subaccountId:
+          type: string
+          description: Subaccount ID of this campaign.
+          readOnly: true
+          example: '500123'
+        advertiserId:
+          type: string
+          description: Advertiser ID of this campaign. Required on insert.
+          example: '500123'
+        advertiserGroupId:
+          type: string
+          description: Advertiser group ID of the associated advertiser.
+          example: '500123'
+        name:
+          type: string
+          description: Name of this campaign. Must be fewer than 512 characters and unique among campaigns of the same advertiser.
+          maxLength: 512
+          example: Example Title
+        archived:
+          type: boolean
+          description: Whether this campaign has been archived.
+          default: false
+          example: true
+        startDate:
+          type: string
+          format: date
+          description: Start date of this campaign. The date format is YYYY-MM-DD.
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: End date of this campaign. Must be on or after the start date. The date format is YYYY-MM-DD.
+          example: '2026-01-15'
+        comment:
+          type: string
+          description: Arbitrary comments about this campaign. Must be fewer than 256 characters.
+          maxLength: 256
+          example: example_value
+        billingInvoiceCode:
+          type: string
+          description: Billing invoice code included in the invoices.
+          example: example_value
+        defaultLandingPageId:
+          type: string
+          description: Default landing page ID for this campaign.
+          example: '500123'
+        externalId:
+          type: string
+          description: External ID for this campaign.
+          example: '500123'
+        audienceSegmentGroups:
+          type: array
+          description: Audience segment groups assigned to this campaign. Maximum of 300 segment groups.
+          maxItems: 300
+          items:
+            $ref: '#/components/schemas/AudienceSegmentGroup'
+          example: []
+        eventTagOverrides:
+          type: array
+          description: Event tag overrides for this campaign.
+          items:
+            $ref: '#/components/schemas/EventTagOverride'
+          example: []
+        clickThroughUrlSuffixProperties:
+          $ref: '#/components/schemas/ClickThroughUrlSuffixProperties'
+        defaultClickThroughEventTagProperties:
+          $ref: '#/components/schemas/DefaultClickThroughEventTagProperties'
+        creativeGroupIds:
+          type: array
+          description: List of creative group IDs assigned to this campaign.
+          items:
+            type: string
+          example: []
+        creativeOptimizationConfiguration:
+          $ref: '#/components/schemas/CreativeOptimizationConfiguration'
+        additionalCreativeOptimizationConfigurations:
+          type: array
+          description: Additional creative optimization configurations.
+          items:
+            $ref: '#/components/schemas/CreativeOptimizationConfiguration'
+          example: []
+        adBlockingConfiguration:
+          $ref: '#/components/schemas/AdBlockingConfiguration'
+        measurementPartnerLink:
+          $ref: '#/components/schemas/MeasurementPartnerLink'
+        euPoliticalAdsDeclaration:
+          type: string
+          description: EU political advertising declaration for this campaign.
+          enum:
+          - EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED
+          - EU_POLITICAL_ADS_DECLARATION_NOT_POLITICAL
+          - EU_POLITICAL_ADS_DECLARATION_POLITICAL
+          example: EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED
+        kind:
+          type: string
+          description: Identifies what kind of resource this is. Value is always dfareporting#campaign.
+          readOnly: true
+          default: dfareporting#campaign
+          example: example_value
+        createInfo:
+          $ref: '#/components/schemas/LastModifiedInfo'
+          readOnly: true
+        lastModifiedInfo:
+          $ref: '#/components/schemas/LastModifiedInfo'
+          readOnly: true
+        idDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        advertiserIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+    DimensionValue:
+      type: object
+      description: A dimension value used for filtering and reporting.
+      properties:
+        dimensionName:
+          type: string
+          description: The name of the dimension.
+          example: example_value
+        value:
+          type: string
+          description: The value of the dimension.
+          example: example_value
+        id:
+          type: string
+          description: The ID associated with the value.
+          example: abc123
+        matchType:
+          type: string
+          description: Match type for filtering.
+          enum:
+          - EXACT
+          - BEGINS_WITH
+          - CONTAINS
+          - WILDCARD_EXPRESSION
+          example: EXACT
+        etag:
+          type: string
+          readOnly: true
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#dimensionValue
+          example: example_value
+    EventTagOverride:
+      type: object
+      description: Event tag override configuration.
+      properties:
+        id:
+          type: string
+          description: ID of the event tag that is overridden.
+          example: abc123
+        enabled:
+          type: boolean
+          description: Whether this override is enabled.
+          example: true
+    AudienceSegmentGroup:
+      type: object
+      description: Audience segment group for targeting.
+      properties:
+        id:
+          type: string
+          description: ID of this audience segment group.
+          example: abc123
+        name:
+          type: string
+          description: Name of this audience segment group.
+          example: Example Title
+        audienceSegments:
+          type: array
+          description: Audience segments assigned to this group.
+          items:
+            $ref: '#/components/schemas/AudienceSegment'
+          example: []
+    ClickThroughUrlSuffixProperties:
+      type: object
+      description: Click-through URL suffix properties.
+      properties:
+        clickThroughUrlSuffix:
+          type: string
+          description: Click-through URL suffix to apply to all ads in this entity's scope.
+          example: https://www.example.com
+        overrideInheritedSuffix:
+          type: boolean
+          description: Whether this entity should override the inherited suffix with its own defined suffix.
+          example: true
+  responses:
+    Forbidden:
+      description: Insufficient permissions for the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or invalid credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request parameters or malformed request body.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    CampaignId:
+      name: campaignId
+      in: path
+      required: true
+      description: Campaign ID.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '12345678'
+    PageToken:
+      name: pageToken
+      in: query
+      required: false
+      description: Value of the nextPageToken from the previous result page.
+      schema:
+        type: string
+    MaxResults:
+      name: maxResults
+      in: query
+      required: false
+      description: Maximum number of results to return. Default is 1000.
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 1000
+        default: 1000
+    ProfileId:
+      name: profileId
+      in: path
+      required: true
+      description: The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '123456'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for accessing Campaign Manager 360 resources. Requires appropriate scopes for trafficking or reporting operations.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/dfareporting: View and manage DoubleClick for Advertisers reports
+            https://www.googleapis.com/auth/dfatrafficking: View and manage your DoubleClick Campaign Manager's (DCM) display ad campaigns
+externalDocs:
+  description: Campaign Manager 360 API Documentation
+  url: https://developers.google.com/doubleclick-advertisers/rest/v4
