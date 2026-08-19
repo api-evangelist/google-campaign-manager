@@ -1,0 +1,59 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.google.com/doubleclick-advertisers/rel_notes
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  Campaign Manager 360 API release notes. Google publishes a single dated
+  release-notes page organised by API version rather than a per-release feed;
+  there is no RSS/Atom or machine-readable changelog endpoint.
+scheme: version-scoped release notes
+machine_readable: false
+feed: null
+current_version: v5
+discovery_revision: '20260721'
+page_last_updated: '2026-06-09'
+entries:
+  - version: v5
+    date: '2026-06-09'
+    type: release-notes-update
+    breaking: true
+    highlights:
+      additions:
+        - Fields added to the FloodlightActivities, Countries and tvCampaign resources.
+        - >-
+          euPoliticalAdsDeclaration field introduced for Advertisers and
+          Campaigns, backported across all supported API versions.
+        - Dynamic Profiles and Dynamic Feeds services launched.
+        - >-
+          TagWrappingMode gained the enum values BLOCKING_FILTERING_VPAID and
+          BLOCKING_FILTERING_VPAID_ONLY.
+      removals:
+        - The patch method was removed from the Reports resource.
+        - Creatives lost dynamicAssetSelection and creativeAssetSelection.
+        - Reports lost crossDimensionReachCriteria and enableAllDimensionCombinations.
+      behaviour_changes:
+        - >-
+          conversionCategory is now REQUIRED when creating or modifying a
+          floodlight activity that has attribution enabled.
+    source: https://developers.google.com/doubleclick-advertisers/rel_notes
+  - version: v4
+    date: null
+    type: sunset
+    breaking: true
+    highlights:
+      removals:
+        - >-
+          The v4 surface is fully deactivated. GET
+          https://dfareporting.googleapis.com/dfareporting/v4/userprofiles
+          returned HTTP 404 on 2026-08-13 and the v4 Discovery Document is no
+          longer served.
+    note: >-
+      The release-notes page does not carry a dated sunset row for v4; the
+      deactivation is recorded here from a live probe rather than from Google's
+      own dated entry. See lifecycle/google-campaign-manager-lifecycle.yml.
+notes:
+  - >-
+    The release-notes page renders only currently-supported versions, so the
+    historical record of what changed in v3.x and v4 disappears when those
+    versions are retired. There is no archived changelog.

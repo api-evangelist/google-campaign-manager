@@ -3,93 +3,103 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Google Campaign Manager
 providerId: google-campaign-manager
+generated: '2026-08-13'
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
+method: searched
+source: https://developers.google.com/doubleclick-advertisers/quotas
 tags:
   - Advertising
-  - Analytics
   - Campaign Management
-  - Digital Marketing
-  - Reporting
   - Rate Limiting
   - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the Google Campaign Manager API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
+description: >-
+  Published quotas for the Campaign Manager 360 API, read from Google's own
+  quotas page. Two things make this API unusual and both matter more than the
+  numbers: exhaustion is reported as HTTP 403 rather than 429, and NO rate-limit
+  headers are returned at all — a client is given no runtime budget signal and
+  must infer throttling from an error reason string.
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+  note: >-
+    None documented on the quotas page and none observed on live responses. This
+    supersedes a 2026-05-04 scaffold that asserted X-RateLimit-* and Retry-After
+    headers this API does not send.
 responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+  throttled: 403
+  note: >-
+    There is no 429 anywhere in this API. A client that branches on 429 will
+    silently mis-handle every Campaign Manager 360 quota event.
+error_reasons:
+  - reason: dailyLimitExceeded
+    message: Daily Limit Exceeded
+    meaning: The project's daily request budget is spent.
+  - reason: userRateLimitExceeded
+    message: User Rate Limit Exceeded
+    meaning: The per-second query rate was exceeded.
+  - reason: quotaExceeded
+    message: varies
+    meaning: >-
+      An account-level object quota was hit — number of accounts, user profiles
+      or scheduled reports.
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Campaign Manager 360 API
-      - Campaign Manager 360 Data Transfer v2.0
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Campaign Manager 360 API
-      - Campaign Manager 360 Data Transfer v2.0
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Campaign Manager 360 API
-      - Campaign Manager 360 Data Transfer v2.0
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Campaign Manager 360 API
-      - Campaign Manager 360 Data Transfer v2.0
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Campaign Manager 360 API
-      - Campaign Manager 360 Data Transfer v2.0
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com/
+  - name: Daily requests
+    scope: per-project
+    window: day
+    limit: 50000
+    unit: requests
+    resets: midnight PST
+    increasable: true
+    increase_path: Google API Console quota request
+    source: https://developers.google.com/doubleclick-advertisers/quotas
+  - name: Query rate
+    scope: per-project
+    window: second
+    limit: 1
+    unit: queries
+    burst: null
+    console_display: 60 queries per minute per user
+    maximum: 600
+    maximum_unit: queries per minute
+    maximum_note: 600 per minute is 10 QPS, the highest rate Google will grant.
+    increasable: true
+    source: https://developers.google.com/doubleclick-advertisers/quotas
+  - name: Report Builder / account object quotas
+    scope: per-account
+    window: n/a
+    limit: null
+    unit: objects
+    note: >-
+      Account-specific limits apply to accounts, user profiles and scheduled
+      reports; Google does not publish the numbers, pointing to Campaign Manager
+      support instead. Exhaustion surfaces as 403 quotaExceeded.
+    source: https://developers.google.com/doubleclick-advertisers/quotas
+retry:
+  strategy: exponential backoff
+  retry_after_header: false
+  guidance:
+    - Google advises against making concurrent write requests.
+    - Google advises against exceeding 10 QPS even where quota allows it.
+  note: >-
+    Because no Retry-After is returned, the backoff schedule is entirely the
+    client's responsibility. Retrying a dailyLimitExceeded before midnight PST
+    cannot succeed.
+attribution:
+  parameter: quotaUser
+  note: >-
+    An arbitrary caller-supplied string used to attribute per-user quota when
+    there is no authenticated end user. It shapes throttling, not tracing.
+limit_count: 3
+evidence:
+  - url: https://developers.google.com/doubleclick-advertisers/quotas
+    status: 200
+    checked: '2026-08-13'
+  - url: https://dfareporting.googleapis.com/dfareporting/v5/userprofiles
+    status: 401
+    checked: '2026-08-13'
+    finding: No RateLimit-* or Retry-After header present on a live response.

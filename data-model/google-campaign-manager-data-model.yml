@@ -1,0 +1,248 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  discovery/google-campaign-manager-dfareporting-v5-discovery.json,
+  openapi/*-openapi.yml, json-schema/*.json
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  Entity-relationship graph for Campaign Manager 360, derived from id-reference
+  fields and $ref links in the v5 Discovery Document. The graph is a strict
+  ownership tree rooted at Account, with a parallel measurement branch hanging
+  off FloodlightConfiguration, plus a reporting branch that is deliberately
+  disconnected from the trafficking tree.
+id_conventions:
+  type: int64 serialised as a JSON string
+  prefixes: none
+  note: >-
+    Campaign Manager uses bare numeric IDs with no type prefix, so an ID is
+    meaningless without knowing which collection it came from. Nearly every
+    resource also carries a parallel *IdDimensionValue object (a DimensionValue
+    with id, value, dimensionName and etag) — the reporting-side representation
+    of the same identifier. Two identifier systems for one object is the single
+    biggest source of confusion in this data model.
+  cross_ids:
+    - externalId — advertiser-supplied identifier on Campaign, Placement, PlacementGroup
+    - universalAdId — cross-industry creative identifier on Creative
+    - commercialId — Nielsen/TV identifier on Creative
+tenancy:
+  root: Account
+  path_scope: /userprofiles/{profileId}/...
+  note: >-
+    profileId is a UserProfile, not an Account. A UserProfile binds one Google
+    identity to one Account (or Subaccount); every object below is implicitly
+    filtered by what that profile can see. Resolve it first with
+    userProfiles.list.
+entities:
+  - name: Account
+    role: tenant root
+    children: [Subaccount, Advertiser, Site, UserRole, AccountUserProfile, ContentCategory]
+  - name: Subaccount
+    role: optional tenant partition
+  - name: Advertiser
+    role: brand container
+  - name: AdvertiserGroup
+  - name: Campaign
+    role: flight container
+  - name: Ad
+    role: delivery unit
+  - name: Creative
+  - name: CreativeGroup
+  - name: CreativeField
+  - name: Placement
+    role: inventory unit
+  - name: PlacementGroup
+  - name: PlacementStrategy
+  - name: Site
+  - name: DirectorySite
+  - name: ContentCategory
+  - name: EventTag
+  - name: TargetingTemplate
+  - name: FloodlightConfiguration
+    role: measurement root per advertiser
+  - name: FloodlightActivityGroup
+  - name: FloodlightActivity
+    role: conversion tag
+  - name: RemarketingList
+  - name: Report
+    role: reporting definition
+  - name: File
+    role: generated report output
+  - name: DimensionValue
+    role: reporting identifier projection
+relationships:
+  - from: Account
+    to: Subaccount
+    type: has_many
+    via: accountId
+  - from: Account
+    to: Advertiser
+    type: has_many
+    via: accountId
+  - from: Advertiser
+    to: Campaign
+    type: has_many
+    via: advertiserId
+  - from: Campaign
+    to: Advertiser
+    type: belongs_to
+    via: advertiserId
+  - from: Campaign
+    to: AdvertiserGroup
+    type: belongs_to
+    via: advertiserGroupId
+  - from: Campaign
+    to: LandingPage
+    type: belongs_to
+    via: defaultLandingPageId
+  - from: Campaign
+    to: CreativeGroup
+    type: has_many
+    via: creativeGroupIds
+  - from: Campaign
+    to: Ad
+    type: has_many
+    via: campaignId
+  - from: Ad
+    to: Campaign
+    type: belongs_to
+    via: campaignId
+  - from: Ad
+    to: TargetingTemplate
+    type: belongs_to
+    via: targetingTemplateId
+  - from: Ad
+    to: AudienceSegment
+    type: belongs_to
+    via: audienceSegmentId
+  - from: Ad
+    to: Creative
+    type: has_many
+    via: creativeRotation.creativeAssignments[].creativeId
+  - from: Ad
+    to: Placement
+    type: has_many
+    via: placementAssignments[].placementId
+    note: >-
+      This is the many-to-many join at the centre of trafficking — an Ad is
+      served on a set of Placements, and a Placement carries a set of Ads. The
+      join is expressed inline on the Ad, not as its own resource.
+  - from: Placement
+    to: Campaign
+    type: belongs_to
+    via: campaignId
+  - from: Placement
+    to: Site
+    type: belongs_to
+    via: siteId
+  - from: Placement
+    to: DirectorySite
+    type: belongs_to
+    via: directorySiteId
+  - from: Placement
+    to: PlacementGroup
+    type: belongs_to
+    via: placementGroupId
+  - from: Placement
+    to: PlacementStrategy
+    type: belongs_to
+    via: placementStrategyId
+  - from: Placement
+    to: ContentCategory
+    type: belongs_to
+    via: contentCategoryId
+  - from: PlacementGroup
+    to: Placement
+    type: has_many
+    via: childPlacementIds
+  - from: PlacementGroup
+    to: Placement
+    type: has_one
+    via: primaryPlacementId
+  - from: Site
+    to: DirectorySite
+    type: belongs_to
+    via: directorySiteId
+  - from: Creative
+    to: Advertiser
+    type: belongs_to
+    via: advertiserId
+  - from: Creative
+    to: StudioCreative
+    type: belongs_to
+    via: studioCreativeId
+  - from: Advertiser
+    to: FloodlightConfiguration
+    type: belongs_to
+    via: floodlightConfigurationId
+  - from: Advertiser
+    to: EventTag
+    type: belongs_to
+    via: defaultClickThroughEventTagId
+  - from: FloodlightConfiguration
+    to: FloodlightActivityGroup
+    type: has_many
+    via: floodlightConfigurationId
+  - from: FloodlightActivityGroup
+    to: FloodlightActivity
+    type: has_many
+    via: floodlightActivityGroupId
+  - from: FloodlightActivity
+    to: Advertiser
+    type: belongs_to
+    via: advertiserId
+  - from: Report
+    to: UserProfile
+    type: belongs_to
+    via: ownerProfileId
+  - from: Report
+    to: File
+    type: has_many
+    via: reports.files.list
+    note: Running a Report produces Files; the link is by method, not by an id field on Report.
+  - from: Campaign
+    to: DimensionValue
+    type: has_one
+    via: idDimensionValue
+    note: >-
+      Applies to almost every trafficking entity. The DimensionValue projection
+      is what the reporting API accepts as a filter, so a client that has a
+      Campaign ID still has to carry the DimensionValue to filter a report by it.
+value_objects:
+  - LastModifiedInfo
+  - DimensionValue
+  - Size
+  - ClickThroughUrl
+  - PricingSchedule
+  - DeliverySchedule
+  - FrequencyCap
+  - CreativeRotation
+  - CreativeAssignment
+  - PlacementAssignment
+  - GeoTargeting
+  - TechnologyTargeting
+  - DayPartTargeting
+  - LanguageTargeting
+  - TagSetting
+  - VideoSettings
+  - LookbackConfiguration
+  - AudienceSegment
+  - AudienceSegmentGroup
+disconnected_branches:
+  - name: reporting
+    entities: [Report, File, DimensionValue, ReportData]
+    note: >-
+      The reporting branch does not reference trafficking objects by their native
+      IDs. It filters on DimensionValue objects instead, which is why
+      dimensionValues.query exists — it is the bridge between the two halves of
+      the model.
+  - name: reference-data
+    entities: [Browser, City, Country, Region, Metro, PostalCode, ConnectionType, MobileCarrier, OperatingSystem, OperatingSystemVersion, PlatformType, Language, Size, VideoFormat]
+    note: Read-only lookup collections used as targeting inputs; no ownership edges.
+  - name: billing
+    entities: [AdvertiserInvoice, BillingAssignment, BillingProfile, BillingRate]
+summary:
+  entities: 24
+  relationships: 31
+  value_objects: 19
+  resource_collections_v5: 67

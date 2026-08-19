@@ -1,0 +1,125 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/*-openapi.yml,
+  discovery/google-campaign-manager-dfareporting-v5-discovery.json,
+  well-known/google-campaign-manager-openid-configuration.json,
+  well-known/google-campaign-manager-oauth-authorization-server.json,
+  https://developers.google.com/doubleclick-advertisers/performance,
+  https://developers.google.com/doubleclick-advertisers/quotas
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  Cross-cutting standards assertions for the Campaign Manager 360 API. Each entry
+  records whether the API actually conforms and the evidence for the call —
+  including the negatives, which are the useful half.
+standards:
+  - id: oauth2
+    name: OAuth 2.0 (RFC 6749)
+    conforms: true
+    evidence: >-
+      components.securitySchemes.OAuth2 declares an authorizationCode flow with
+      authorizationUrl https://accounts.google.com/o/oauth2/v2/auth and tokenUrl
+      https://oauth2.googleapis.com/token. Confirmed against the live
+      authorization-server metadata document saved in well-known/.
+  - id: rfc8414
+    name: OAuth 2.0 Authorization Server Metadata
+    conforms: true
+    evidence: >-
+      https://accounts.google.com/.well-known/oauth-authorization-server returned
+      HTTP 200 application/json with issuer https://accounts.google.com on
+      2026-08-13. Saved verbatim to
+      well-known/google-campaign-manager-oauth-authorization-server.json.
+  - id: oidc
+    name: OpenID Connect Discovery 1.0
+    conforms: true
+    evidence: >-
+      https://accounts.google.com/.well-known/openid-configuration returned HTTP
+      200 with issuer https://accounts.google.com. Note this covers Google
+      sign-in, not the Campaign Manager resource server; the API itself is a
+      pure OAuth 2.0 resource server and does not consume ID tokens.
+  - id: rfc9728
+    name: OAuth 2.0 Protected Resource Metadata
+    conforms: false
+    evidence: >-
+      https://dfareporting.googleapis.com/.well-known/oauth-protected-resource
+      returned HTTP 404. Nothing links the API host to its authorization server
+      machine-readably.
+  - id: rfc9457
+    name: Problem Details for HTTP APIs
+    conforms: false
+    evidence: >-
+      Errors use the Google JSON error envelope (error.code / error.message /
+      error.status / error.errors[].reason) with media type application/json. No
+      operation returns application/problem+json.
+  - id: rfc6585-429
+    name: Too Many Requests
+    conforms: false
+    evidence: >-
+      Quota exhaustion is reported as HTTP 403 with reason dailyLimitExceeded or
+      userRateLimitExceeded. No 429 is defined anywhere in the API.
+  - id: ratelimit-headers
+    name: IETF RateLimit header fields
+    conforms: false
+    evidence: >-
+      No RateLimit-*, X-RateLimit-* or Retry-After header is documented on
+      https://developers.google.com/doubleclick-advertisers/quotas, and none is
+      returned on a live unauthenticated probe.
+  - id: idempotency
+    name: Idempotency-Key
+    conforms: false
+    evidence: >-
+      No idempotency header is published. PUT is idempotent by HTTP semantics;
+      POST inserts are not, and there is no safe-retry affordance.
+  - id: pagination
+    name: Cursor pagination
+    conforms: true
+    evidence: >-
+      List methods accept maxResults and pageToken; responses carry
+      nextPageToken. Consistent across all 67 v5 resource collections.
+  - id: rfc8594
+    name: Sunset HTTP Header Field
+    conforms: false
+    evidence: >-
+      A written deprecation policy exists at
+      https://developers.google.com/doubleclick-advertisers/deprecation, but no
+      Sunset or Deprecation response header is emitted. The v4 shutdown was
+      observable only as a 404.
+  - id: json-api
+    name: JSON:API
+    conforms: false
+    evidence: Google Discovery-style JSON, not a JSON:API document structure.
+  - id: odata
+    name: OData
+    conforms: false
+    evidence: No OData metadata document or $-query surface.
+  - id: openapi
+    name: OpenAPI
+    conforms: false
+    evidence: >-
+      Google does not publish an OpenAPI description for this API. The
+      first-party machine-readable contract is the Google Discovery Document at
+      https://dfareporting.googleapis.com/$discovery/rest?version=v5 (HTTP 200,
+      revision 20260721), saved to discovery/. The OpenAPI documents in this
+      repository are API Evangelist artifacts describing the retired v4 surface.
+  - id: gzip
+    name: HTTP content compression
+    conforms: true
+    evidence: >-
+      Accept-Encoding: gzip is supported, with the documented quirk that the
+      User-Agent must also contain the string "gzip".
+  - id: partial-response
+    name: Sparse fieldsets
+    conforms: true
+    evidence: The `fields` query parameter is supported on every method.
+compliance:
+  published: false
+  note: >-
+    No Campaign-Manager-360-specific certification page is published. Google's
+    corporate compliance program (SOC 2, ISO 27001, ISO 27701) is documented for
+    Google Cloud and Google Workspace, not for the Marketing Platform API
+    surface, so no Compliance pointer is asserted for this provider.
+summary:
+  asserted: 15
+  conforming: 7
+  non_conforming: 8

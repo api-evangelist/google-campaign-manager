@@ -1,0 +1,148 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/*-openapi.yml (4xx responses + components.schemas.Error),
+  https://developers.google.com/doubleclick-advertisers/quotas,
+  live probes of https://dfareporting.googleapis.com/dfareporting/v5/userprofiles
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+format: google-json-error
+rfc9457: false
+media_type: application/json
+description: >-
+  Campaign Manager 360 uses the standard Google JSON error envelope, not RFC 9457
+  problem+json. The discriminating field is error.errors[].reason — the HTTP
+  status alone is not enough, because quota exhaustion is reported as 403 rather
+  than 429, and a sunset API version is reported as 403 and then 404.
+envelope:
+  root: error
+  fields:
+    - path: error.code
+      type: integer
+      description: HTTP status code, repeated in the body.
+    - path: error.message
+      type: string
+      description: Human-readable message.
+    - path: error.status
+      type: string
+      description: Canonical Google status string, e.g. NOT_FOUND, UNAUTHENTICATED.
+    - path: error.errors[].reason
+      type: string
+      description: The machine-actionable discriminator. Branch on this, not on error.code.
+    - path: error.errors[].domain
+      type: string
+    - path: error.errors[].message
+      type: string
+  example_observed:
+    url: https://dfareporting.googleapis.com/dfareporting/v5/userprofiles
+    status: 401
+    body:
+      error:
+        code: 401
+        message: >-
+          Request is missing required authentication credential. Expected OAuth 2
+          access token, login cookie or other valid authentication credential.
+        errors:
+          - message: Login Required.
+            domain: global
+            reason: required
+        status: UNAUTHENTICATED
+    note: Observed on an unauthenticated live probe on 2026-08-13.
+problems:
+  - status: 400
+    reason: invalidParameter
+    title: Invalid parameter
+    detail: A query parameter or request body field failed validation.
+    remediation: >-
+      Check the field against the v5 Discovery Document. Common causes are an
+      unknown enum value and a numeric ID sent as the wrong type — Campaign
+      Manager IDs are int64 rendered as strings.
+    source: openapi 400 responses
+  - status: 400
+    reason: required
+    title: Required field missing
+    detail: >-
+      A field the resource requires was omitted. As of v5, conversionCategory is
+      mandatory when creating or modifying a floodlight activity with attribution
+      enabled.
+    remediation: Supply the required field; see the v5 release notes for newly-required fields.
+    source: https://developers.google.com/doubleclick-advertisers/rel_notes
+  - status: 401
+    reason: required
+    title: Login required
+    detail: No OAuth 2.0 access token was presented, or the token was rejected.
+    remediation: >-
+      Obtain an access token via the authorization code flow or a service
+      account with domain-wide delegation. There is no API-key path to Campaign
+      Manager data.
+    source: live probe
+  - status: 401
+    reason: authError
+    title: Invalid credentials
+    detail: The access token is expired or malformed.
+    remediation: Refresh the token and retry once; do not retry in a loop.
+  - status: 403
+    reason: insufficientPermissions
+    title: Insufficient OAuth scope
+    detail: >-
+      The token lacks the scope the operation needs — dfatrafficking for
+      trafficking objects, dfareporting for reports, ddmconversions for
+      conversion uploads.
+    remediation: Re-consent with the required scope.
+  - status: 403
+    reason: dailyLimitExceeded
+    title: Daily Limit Exceeded
+    detail: The project exceeded 50,000 requests in a single day. The counter resets at midnight PST.
+    remediation: >-
+      Request a quota increase in the Google API Console, or spread the workload.
+      Retrying before the reset will not succeed.
+    source: https://developers.google.com/doubleclick-advertisers/quotas
+  - status: 403
+    reason: userRateLimitExceeded
+    title: User Rate Limit Exceeded
+    detail: >-
+      The project exceeded its per-second query rate (1 QPS default, 10 QPS
+      maximum).
+    remediation: >-
+      Back off exponentially. No Retry-After header is returned, so the client
+      must own the backoff schedule.
+    source: https://developers.google.com/doubleclick-advertisers/quotas
+  - status: 403
+    reason: quotaExceeded
+    title: Quota Exceeded
+    detail: >-
+      An account-level object quota was hit — number of accounts, user profiles,
+      or scheduled reports.
+    remediation: Delete unused objects or contact Campaign Manager 360 support to raise the account limit.
+    source: https://developers.google.com/doubleclick-advertisers/quotas
+  - status: 403
+    reason: forbidden
+    title: Version sunset
+    detail: >-
+      A sunset API version returns 403 during the shutdown window before it is
+      fully deactivated and starts returning 404.
+    remediation: Migrate to v5.
+    source: https://developers.google.com/doubleclick-advertisers/deprecation
+  - status: 404
+    reason: notFound
+    title: Resource not found
+    detail: >-
+      The object ID does not exist, or is not visible to the supplied user
+      profile. Also returned for a fully deactivated API version — a request to
+      the v4 base path now 404s at the host.
+    remediation: >-
+      Verify profileId and the object ID. If the whole path 404s, check the API
+      version in the URL.
+    source: live probe of /dfareporting/v4/userprofiles
+summary:
+  problem_count: 10
+  statuses:
+    - 400
+    - 401
+    - 403
+    - 404
+  rfc9457: false
+  note: >-
+    No 429 is defined anywhere in this API. Throttling is a 403. A client that
+    branches on 429 for rate limiting will silently mis-handle every Campaign
+    Manager 360 quota event.

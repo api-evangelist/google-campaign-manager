@@ -1,0 +1,124 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/google-campaign-manager-campaigns-api-openapi.yml, openapi/google-campaign-manager-ads-api-openapi.yml, openapi/google-campaign-manager-placements-api-openapi.yml, openapi/google-campaign-manager-reports-api-openapi.yml
+status: candidate
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  CANDIDATE tool surface derived from the Campaign Manager 360 OpenAPI
+  operations in this repo. Google publishes NO Model Context Protocol server for
+  Campaign Manager 360. Nothing below is deployed by the provider; it is a
+  design sketch of what a server over this API would expose.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: oauth
+  verified: derived
+search:
+  first_party_server: false
+  searched:
+    - https://developers.google.com/doubleclick-advertisers
+    - https://developers.google.com/doubleclick-advertisers/libraries
+    - GitHub repository search across the googleads and googleapis organizations
+  findings:
+    - >-
+      The only MCP server in the googleads GitHub organization is
+      googleads/google-ads-mcp, which targets the Google Ads API — a different
+      product with a different host (googleads.googleapis.com). It does not
+      cover Campaign Manager 360 / dfareporting.
+    - >-
+      Third-party Campaign Manager 360 MCP servers exist
+      (CDataSoftware/google-campaign-manager-360-mcp-server-by-cdata, a
+      read-only JDBC bridge; ag2-mcp-servers/campaign-manager-360-api, machine
+      generated). Neither is published by Google, so neither is recorded as this
+      provider's agent surface.
+auth:
+  type: oauth2
+  flows:
+    - authorizationCode
+  scopes:
+    - https://www.googleapis.com/auth/dfatrafficking
+    - https://www.googleapis.com/auth/dfareporting
+    - https://www.googleapis.com/auth/ddmconversions
+  note: >-
+    Every candidate tool would need a Google OAuth 2.0 access token and a
+    Campaign Manager 360 user profile ID; there is no API-key path.
+tools:
+  - name: list_campaigns
+    rest: listCampaigns
+    description: List campaigns in a Campaign Manager 360 user profile, with filtering and paging.
+  - name: get_campaign
+    rest: getCampaign
+    description: Retrieve one campaign by ID.
+  - name: create_campaign
+    rest: insertCampaign
+    description: Create a campaign.
+  - name: update_campaign
+    rest: updateCampaign
+    description: Replace a campaign.
+  - name: patch_campaign
+    rest: patchCampaign
+    description: Partially update a campaign.
+  - name: list_ads
+    rest: listAds
+    description: List ads in a user profile.
+  - name: get_ad
+    rest: getAd
+    description: Retrieve one ad by ID.
+  - name: create_ad
+    rest: insertAd
+    description: Create an ad.
+  - name: update_ad
+    rest: updateAd
+    description: Replace an ad.
+  - name: patch_ad
+    rest: patchAd
+    description: Partially update an ad.
+  - name: list_placements
+    rest: listPlacements
+    description: List placements in a user profile.
+  - name: get_placement
+    rest: getPlacement
+    description: Retrieve one placement by ID.
+  - name: create_placement
+    rest: insertPlacement
+    description: Create a placement.
+  - name: update_placement
+    rest: updatePlacement
+    description: Replace a placement.
+  - name: patch_placement
+    rest: patchPlacement
+    description: Partially update a placement.
+  - name: generate_placement_tags
+    rest: generatePlacementTags
+    description: Generate ad tags for placements.
+  - name: list_reports
+    rest: listReports
+    description: List reports owned by the profile.
+  - name: get_report
+    rest: getReport
+    description: Retrieve a report definition.
+  - name: create_report
+    rest: insertReport
+    description: Create a report definition.
+  - name: update_report
+    rest: updateReport
+    description: Replace a report definition.
+  - name: patch_report
+    rest: patchReport
+    description: >-
+      Partially update a report definition. NOTE — the v5 release notes state
+      the patch method was REMOVED from the Reports resource, so this tool has
+      no v5 backing operation.
+  - name: delete_report
+    rest: deleteReport
+    description: Delete a report definition.
+  - name: run_report
+    rest: runReport
+    description: Run a report and return the generated file handle.
+summary:
+  tool_count: 23
+  backed_by_openapi: 23
+  deployed: false

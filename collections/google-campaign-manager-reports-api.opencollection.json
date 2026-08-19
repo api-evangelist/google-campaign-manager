@@ -1,0 +1,259 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Campaign Manager Campaign Manager 360 Ads Reports API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Campaign Manager List Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "The scope that defines which results are returned."
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return. Default is 1000."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Value of the nextPageToken from the previous result page."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves list of reports. Results are ordered by last modified time descending."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Create a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a report. Configure the report type, criteria with dimensions and metrics, date range, and optional scheduling for automated delivery."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Get a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+              "accessTokenUrl": "https://oauth2.googleapis.com/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a report by its ID."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Update a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a report."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Patch a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a report. This method supports patch semantics."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Delete a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              }
+            ]
+          },
+          "docs": "Deletes a report by its ID."
+        },
+        {
+          "info": {
+            "name": "Google Campaign Manager Run a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dfareporting.googleapis.com/dfareporting/v4/userprofiles/:profileId/reports/:reportId/run",
+            "params": [
+              {
+                "name": "profileId",
+                "value": "123456",
+                "type": "path",
+                "description": "The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+              },
+              {
+                "name": "reportId",
+                "value": "99887766",
+                "type": "path",
+                "description": "The ID of the report."
+              },
+              {
+                "name": "synchronous",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, tries to run the report synchronously. If the report is too large for synchronous processing, it runs asynchronously instead."
+              }
+            ]
+          },
+          "docs": "Runs a report. The report is executed asynchronously. Use the files endpoint to check report completion status and download the generated report file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

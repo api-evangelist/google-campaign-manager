@@ -1,0 +1,127 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/doubleclick-advertisers/performance,
+  https://developers.google.com/doubleclick-advertisers/quotas,
+  https://developers.google.com/doubleclick-advertisers/authorizing,
+  discovery/google-campaign-manager-dfareporting-v5-discovery.json,
+  openapi/*-openapi.yml
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  Cross-cutting runtime semantics for the Campaign Manager 360 API. Most of these
+  are Google-platform-wide conventions inherited by every Discovery-based API,
+  which is useful: a client that already speaks Google APIs needs no
+  Campaign-Manager-specific plumbing.
+auth:
+  style: oauth2
+  flows: [authorizationCode, service-account-jwt]
+  header: 'Authorization: Bearer <access_token>'
+  alternative_parameters: [access_token, oauth_token]
+  api_key_supported: false
+  api_key_note: >-
+    The global `key` parameter exists on every Google API but does not
+    authorise access to Campaign Manager user data; only OAuth does.
+  tenancy: >-
+    Every data path is scoped to a Campaign Manager 360 user profile —
+    /userprofiles/{profileId}/... — so profileId is effectively a required
+    tenant selector on almost every call. Resolve it with userProfiles.list.
+  cross_reference: authentication/google-campaign-manager-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  scope: null
+  retention: null
+  note: >-
+    No idempotency key is published. PUT (update) replaces the whole resource and
+    is naturally idempotent; POST (insert) is not, so a retried create after a
+    timeout can duplicate a campaign, ad or placement. The safe pattern is
+    insert, then reconcile with a list filtered by searchString before retrying.
+pagination:
+  style: cursor
+  request_parameters:
+    - name: maxResults
+      type: integer
+      note: Per-resource default and maximum; check the Discovery Document per method.
+    - name: pageToken
+      type: string
+  response_fields:
+    - nextPageToken
+  termination: nextPageToken absent or empty
+  sorting:
+    parameters: [sortField, sortOrder]
+  filtering:
+    parameters: [ids, searchString, archived]
+    note: >-
+      searchString supports the * wildcard on name fields; ids accepts repeated
+      values for a batch fetch.
+field_selection:
+  supported: true
+  parameter: fields
+  syntax_examples:
+    - fields=id,name
+    - fields=items(id,name)
+    - fields=a/b/c
+    - fields=items/pagemap/*
+  purpose: partial response — reduces payload and counts against the same quota
+  source: https://developers.google.com/doubleclick-advertisers/performance
+compression:
+  supported: true
+  request_header: 'Accept-Encoding: gzip'
+  requirement: The User-Agent string must also contain "gzip" or the server will not compress.
+metadata:
+  custom_fields: false
+  note: >-
+    There is no generic metadata bag. Advertiser- and campaign-level custom data
+    is modelled explicitly (creativeFields, dynamicTargetingKeys,
+    contentCategories) rather than as free-form key/value.
+request_tracing:
+  request_id_header: null
+  quota_user_parameter: quotaUser
+  quota_user_note: >-
+    quotaUser is an arbitrary caller-supplied string used to attribute per-user
+    quota when there is no authenticated end user. It is the closest thing this
+    API has to a correlation identifier, and it affects throttling, not tracing.
+  note: >-
+    No request-id is returned in a documented response header, so a support
+    escalation cannot be anchored to a server-side trace identifier.
+versioning:
+  style: uri-path
+  current: v5
+  cross_reference: lifecycle/google-campaign-manager-lifecycle.yml
+error_envelope:
+  format: google-json-error
+  rfc9457: false
+  discriminator: error.errors[].reason
+  cross_reference: errors/google-campaign-manager-problem-types.yml
+rate_limit_signalling:
+  headers: []
+  status_on_exhaustion: 403
+  reasons: [dailyLimitExceeded, userRateLimitExceeded, quotaExceeded]
+  retry_after: false
+  guidance: exponential backoff; avoid concurrent writes; stay at or below 10 QPS
+  cross_reference: rate-limits/google-campaign-manager-rate-limits.yml
+  note: >-
+    This is the sharpest DX gap in the API. There is no RateLimit-* header, no
+    Retry-After, and no 429 — the client is given no runtime budget signal at
+    all and must infer throttling from a 403 reason string.
+data_types:
+  ids: >-
+    Object IDs are int64 and are serialised as JSON strings. Parsing them as
+    numbers loses precision in JavaScript.
+  dates: ISO 8601 (RFC 3339) timestamps; report date ranges use YYYY-MM-DD.
+  money: >-
+    Monetary amounts are micros (millionths of the account currency unit) in
+    pricing schedules and billing resources.
+async_operations:
+  present: true
+  pattern: >-
+    Reporting is asynchronous: POST reports/{reportId}/run returns a File whose
+    status moves through PROCESSING to REPORT_AVAILABLE; the caller polls
+    files.get or reports.files.list and then downloads via the file's
+    urls.apiUrl. There is no callback or webhook.
+  cross_reference: https://developers.google.com/doubleclick-advertisers/guides/run_reports
+bulk_alternative:
+  name: Campaign Manager 360 Data Transfer v2.0
+  url: https://developers.google.com/doubleclick-advertisers/dtv2/overview
+  note: File-based delivery of event-level data to Cloud Storage; not a REST convention but the intended path for large-scale extraction.

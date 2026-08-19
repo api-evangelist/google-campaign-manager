@@ -1,20 +1,86 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/google-campaign-manager-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/doubleclick-advertisers/authorizing,
+  https://developers.google.com/doubleclick-advertisers/service_accounts,
+  https://dfareporting.googleapis.com/$discovery/rest?version=v5,
+  well-known/google-campaign-manager-oauth-authorization-server.json
+docs: https://developers.google.com/doubleclick-advertisers/authorizing
+provider: Google Campaign Manager
+providerId: google-campaign-manager
 summary:
   types:
-  - oauth2
+    - oauth2
   oauth2_flows:
-  - authorizationCode
+    - authorizationCode
+    - jwt-bearer
+  api_key: false
+  mtls: false
 schemes:
-- name: OAuth2
-  type: oauth2
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
-    tokenUrl: https://oauth2.googleapis.com/token
-    scopes: 2
-  description: OAuth 2.0 authentication for accessing Campaign Manager 360 resources. Requires
-    appropriate scopes for trafficking or reporting operations.
-  sources:
-  - openapi/google-campaign-manager-openapi.yml
+  - name: OAuth2
+    type: oauth2
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+        tokenUrl: https://oauth2.googleapis.com/token
+        revocationUrl: https://oauth2.googleapis.com/revoke
+        scopes: 3
+        refresh: >-
+          Request access_type=offline and prompt=consent to receive a refresh
+          token; without it a long-running integration cannot re-authenticate.
+      - flow: jwt-bearer
+        description: >-
+          Service account with domain-wide delegation, impersonating a Google
+          Workspace user who holds a Campaign Manager 360 user profile. This is
+          the supported unattended path — a bare service account with no
+          delegation cannot see Campaign Manager data.
+        docs: https://developers.google.com/doubleclick-advertisers/service_accounts
+    token_presentation: 'Authorization: Bearer <access_token>'
+    alternative_parameters:
+      - access_token
+      - oauth_token
+    description: >-
+      OAuth 2.0 is the only way in. Google's global `key` query parameter is
+      accepted by the endpoint but does not authorise access to Campaign Manager
+      user data.
+    sources:
+      - https://developers.google.com/doubleclick-advertisers/authorizing
+      - openapi/google-campaign-manager-ads-api-openapi.yml
+      - openapi/google-campaign-manager-campaigns-api-openapi.yml
+      - openapi/google-campaign-manager-placements-api-openapi.yml
+      - openapi/google-campaign-manager-reports-api-openapi.yml
+authorization_server:
+  issuer: https://accounts.google.com
+  metadata:
+    - url: https://accounts.google.com/.well-known/oauth-authorization-server
+      status: 200
+      file: well-known/google-campaign-manager-oauth-authorization-server.json
+    - url: https://accounts.google.com/.well-known/openid-configuration
+      status: 200
+      file: well-known/google-campaign-manager-openid-configuration.json
+  protected_resource_metadata:
+    url: https://dfareporting.googleapis.com/.well-known/oauth-protected-resource
+    status: 404
+    note: >-
+      RFC 9728 metadata is not served, so a client cannot discover the
+      authorization server from the API host.
+authorization_model:
+  tenant_selector: profileId
+  note: >-
+    A valid token is not sufficient. Every data path is
+    /userprofiles/{profileId}/..., and the profile determines which account and
+    which objects are visible. Resolve it with userProfiles.list, then treat it
+    as part of the credential.
+  role_model: >-
+    Fine-grained permissions live in Campaign Manager 360 user roles
+    (userRoles, userRolePermissions, accountPermissions), not in OAuth scopes.
+    The three scopes are coarse — there is no read-only scope.
+observed:
+  - url: https://dfareporting.googleapis.com/dfareporting/v5/userprofiles
+    status: 401
+    body_status: UNAUTHENTICATED
+    reason: required
+    checked: '2026-08-13'
+    note: >-
+      The 401 response carries no WWW-Authenticate challenge pointing at the
+      authorization server; the error body names a documentation URL instead.

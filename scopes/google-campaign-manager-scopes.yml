@@ -1,25 +1,63 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/google-campaign-manager-openapi.yml
-schemes:
-- name: OAuth2
-  source: openapi/google-campaign-manager-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: https://dfareporting.googleapis.com/$discovery/rest?version=v5
+docs: https://developers.google.com/doubleclick-advertisers/authorizing
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  OAuth 2.0 scopes for the Campaign Manager 360 API. Baseline derived from the
+  OpenAPI securitySchemes, then upgraded from the provider's own v5 Discovery
+  Document (auth.oauth2.scopes, revision 20260721, HTTP 200 on 2026-08-13) —
+  which declares a third scope the OpenAPI documents omit.
+scheme:
+  name: OAuth2
+  type: oauth2
   flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
-    tokenUrl: https://oauth2.googleapis.com/token
-  description: OAuth 2.0 authentication for accessing Campaign Manager 360 resources. Requires
-    appropriate scopes for trafficking or reporting operations.
+    - flow: authorizationCode
+      authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+      tokenUrl: https://oauth2.googleapis.com/token
+  service_account: supported (JWT bearer with domain-wide delegation)
+  description: >-
+    OAuth 2.0 is the only path to Campaign Manager 360 data. The Google API key
+    parameter does not authorise access to user data on this API.
 scopes:
-- scope: https://www.googleapis.com/auth/dfareporting
-  description: View and manage DoubleClick for Advertisers reports
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/google-campaign-manager-openapi.yml
-- scope: https://www.googleapis.com/auth/dfatrafficking
-  description: View and manage your DoubleClick Campaign Manager's (DCM) display ad campaigns
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/google-campaign-manager-openapi.yml
+  - scope: https://www.googleapis.com/auth/dfatrafficking
+    description: View and manage your DoubleClick Campaign Manager's (DCM) display ad campaigns
+    flows: [authorizationCode]
+    grants: >-
+      Read and write across the trafficking tree — accounts, advertisers,
+      campaigns, ads, creatives, placements, sites, event tags, targeting.
+    sources:
+      - https://dfareporting.googleapis.com/$discovery/rest?version=v5
+      - openapi/google-campaign-manager-ads-api-openapi.yml
+      - openapi/google-campaign-manager-campaigns-api-openapi.yml
+      - openapi/google-campaign-manager-placements-api-openapi.yml
+  - scope: https://www.googleapis.com/auth/dfareporting
+    description: View and manage DoubleClick for Advertisers reports
+    flows: [authorizationCode]
+    grants: >-
+      Report definitions, report runs, generated files, dimension values,
+      compatible fields.
+    sources:
+      - https://dfareporting.googleapis.com/$discovery/rest?version=v5
+      - openapi/google-campaign-manager-reports-api-openapi.yml
+  - scope: https://www.googleapis.com/auth/ddmconversions
+    description: Manage DoubleClick Digital Marketing conversions
+    flows: [authorizationCode]
+    grants: >-
+      Offline conversion upload and update (conversions.batchinsert,
+      conversions.batchupdate).
+    sources:
+      - https://dfareporting.googleapis.com/$discovery/rest?version=v5
+    note: >-
+      Declared by the provider's Discovery Document but absent from the OpenAPI
+      documents in this repository, which cover only the trafficking and
+      reporting subsets.
+summary:
+  scope_count: 3
+  granularity: coarse
+  granularity_note: >-
+    Three scopes cover 67 resource collections. There is no read-only scope and
+    no per-resource scope — a token that can list campaigns can also delete
+    them. Least privilege is not expressible through this API's scope model;
+    it has to be enforced through Campaign Manager 360 user roles instead.

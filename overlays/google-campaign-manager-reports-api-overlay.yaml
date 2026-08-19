@@ -1,0 +1,82 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Google Campaign Manager Campaign Manager 360 Ads Reports API
+  version: 1.0.0
+extends: openapi/google-campaign-manager-reports-api-openapi.yml
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: https://developers.google.com/doubleclick-advertisers/quotas, https://developers.google.com/doubleclick-advertisers/deprecation,
+    https://developers.google.com/doubleclick-advertisers/performance, https://dfareporting.googleapis.com/$discovery/rest?version=v5
+  note: 'Non-destructive overlay. Records what the provider documents but the v4 OpenAPI does not carry:
+    the v4 sunset, the current v5 server, published quotas, and the paging/partial-response conventions.
+    Apply with an Overlay 1.0.0 processor; never edit the underlying OpenAPI.'
+actions:
+- target: $.info
+  description: Flag that this document describes the retired v4 surface and name the live replacement.
+  update:
+    x-lifecycle-status: sunset
+    x-api-version: v4
+    x-successor-version: v5
+    x-successor-server: https://dfareporting.googleapis.com/dfareporting/v5
+    x-sunset-evidence: GET https://dfareporting.googleapis.com/dfareporting/v4/userprofiles returned HTTP
+      404 on 2026-08-13; the Discovery Document for v4 is no longer served.
+    x-discovery-document: https://dfareporting.googleapis.com/$discovery/rest?version=v5
+    x-deprecation-policy: https://developers.google.com/doubleclick-advertisers/deprecation
+- target: $.servers
+  description: Add the live v5 production server alongside the historical v4 server. The v4 entry is left
+    intact.
+  update:
+  - url: https://dfareporting.googleapis.com/dfareporting/v5
+    description: Campaign Manager 360 API v5 — current preferred version
+- target: $.info
+  description: Attach published quota and throttling facts.
+  update:
+    x-rate-limits:
+      daily:
+        limit: 50000
+        scope: project
+        window: day
+        resets: midnight PST
+        increasable: true
+      query-rate:
+        limit: 1
+        unit: queries-per-second
+        scope: project
+        console-display: 60 queries per minute per user
+        maximum: 600
+        maximum-unit: queries-per-minute
+      exhaustion-status: 403
+      exhaustion-reasons:
+      - dailyLimitExceeded
+      - userRateLimitExceeded
+      - quotaExceeded
+      headers: null
+      retry-guidance: exponential backoff; avoid concurrent writes and rates above 10 QPS
+      source: https://developers.google.com/doubleclick-advertisers/quotas
+- target: $.info
+  description: Record the cross-cutting request conventions documented outside the spec.
+  update:
+    x-conventions:
+      pagination:
+        style: cursor
+        request:
+        - maxResults
+        - pageToken
+        response:
+        - nextPageToken
+      partial-response:
+        parameter: fields
+        syntax: fields=items(id,name)
+      compression:
+        header: 'Accept-Encoding: gzip'
+        requirement: User-Agent must contain the string gzip
+      error-envelope: 'Google JSON error object: error.code, error.message, error.status, error.errors[].reason'
+      idempotency: no idempotency-key header published; PUT is idempotent, POST is not
+      source: https://developers.google.com/doubleclick-advertisers/performance
+- target: $.paths['/userprofiles/{profileId}/reports/{reportId}'].patch
+  description: The v5 release notes state the patch method was removed from the Reports resource.
+  update:
+    deprecated: true
+    x-removed-in: v5
+    x-removal-source: https://developers.google.com/doubleclick-advertisers/rel_notes

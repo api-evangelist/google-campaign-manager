@@ -1,0 +1,202 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.google.com/doubleclick-advertisers/libraries
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  First-party Google client libraries that carry the Campaign Manager 360 API
+  (dfareporting). Google ships these two ways: broad multi-API clients that
+  generate every Google API surface from the Discovery Document (googleapis on
+  npm, google-api-python-client on PyPI, google-api-go-client, google/apiclient
+  on Packagist), and per-version service packages that carry dfareporting
+  explicitly (Maven google-api-services-dfareporting, NuGet
+  Google.Apis.Dfareporting.vN, RubyGems google-apis-dfareporting_vN, npm
+  @googleapis/dfareporting). Versions and publish dates below were read from each
+  registry's metadata endpoint on 2026-08-13.
+notes:
+  - >-
+    VERSION-DECAY SIGNAL: the per-version packages make the v4 sunset legible.
+    Google.Apis.Dfareporting.v4 last published 2026-05-19 and
+    google-apis-dfareporting_v4 last published 2026-05-24, while their v5
+    siblings continue to ship (2026-07-28 and 2026-07-26). The v4 REST surface
+    itself is already dead at the host — https://dfareporting.googleapis.com/dfareporting/v4/userprofiles
+    returns HTTP 404. Any consumer still pinned to a v4 package is calling a
+    retired API.
+  - >-
+    Google publishes no dfareporting-specific package on PyPI, Packagist or
+    pkg.go.dev; those ecosystems reach Campaign Manager 360 through the umbrella
+    client plus a generated service module.
+packages:
+  - name: googleapis
+    language: javascript
+    registry: npm
+    official: true
+    url: https://www.npmjs.com/package/googleapis
+    repository: https://github.com/googleapis/google-api-nodejs-client
+    version: 174.0.1
+    published: '2026-08-05'
+    scope: umbrella
+    note: >-
+      Google's Node.js client for all Google APIs; exposes google.dfareporting('v5').
+      Listed on the Campaign Manager 360 libraries page.
+  - name: '@googleapis/dfareporting'
+    language: javascript
+    registry: npm
+    official: true
+    url: https://www.npmjs.com/package/@googleapis/dfareporting
+    repository: https://github.com/googleapis/google-api-nodejs-client
+    version: 19.0.0
+    published: '2026-08-03'
+    scope: service
+    note: Per-API split of the Node.js client carrying only dfareporting.
+  - name: google-api-python-client
+    language: python
+    registry: pypi
+    official: true
+    url: https://pypi.org/project/google-api-python-client/
+    repository: https://github.com/googleapis/google-api-python-client
+    version: 2.198.0
+    published: '2026-06-25'
+    scope: umbrella
+    note: >-
+      Discovery-based Python client; build('dfareporting', 'v5'). No
+      dfareporting-specific PyPI distribution is published.
+  - name: com.google.apis:google-api-services-dfareporting
+    language: java
+    registry: maven
+    official: true
+    url: https://central.sonatype.com/artifact/com.google.apis/google-api-services-dfareporting
+    repository: https://github.com/googleapis/google-api-java-client-services
+    version: v5-rev20260527-2.0.0
+    published: '2026-05-29'
+    scope: service
+    note: >-
+      Maven coordinates encode the API version and the Discovery revision. The
+      newest v4 artifact, v4-rev20260511-2.0.0, was published 2026-05-15 and is
+      the last of that line.
+  - name: Google.Apis.Dfareporting.v5
+    language: dotnet
+    registry: nuget
+    official: true
+    url: https://www.nuget.org/packages/Google.Apis.Dfareporting.v5
+    repository: https://github.com/googleapis/google-api-dotnet-client
+    version: 1.75.0.4219
+    published: '2026-07-28'
+    scope: service
+  - name: Google.Apis.Dfareporting.v4
+    language: dotnet
+    registry: nuget
+    official: true
+    url: https://www.nuget.org/packages/Google.Apis.Dfareporting.v4
+    repository: https://github.com/googleapis/google-api-dotnet-client
+    version: 1.74.0.4148
+    published: '2026-05-19'
+    scope: service
+    status: superseded
+    note: Wraps the sunset v4 surface; retained here as the decay evidence, not as a recommendation.
+  - name: google-apis-dfareporting_v5
+    language: ruby
+    registry: rubygems
+    official: true
+    url: https://rubygems.org/gems/google-apis-dfareporting_v5
+    repository: https://github.com/googleapis/google-api-ruby-client
+    version: 0.9.0
+    published: '2026-07-26'
+    scope: service
+  - name: google-apis-dfareporting_v4
+    language: ruby
+    registry: rubygems
+    official: true
+    url: https://rubygems.org/gems/google-apis-dfareporting_v4
+    repository: https://github.com/googleapis/google-api-ruby-client
+    version: 0.28.0
+    published: '2026-05-24'
+    scope: service
+    status: superseded
+  - name: google-apis-dfareporting_v3_5
+    language: ruby
+    registry: rubygems
+    official: true
+    url: https://rubygems.org/gems/google-apis-dfareporting_v3_5
+    repository: https://github.com/googleapis/google-api-ruby-client
+    version: 0.6.0
+    published: '2022-01-10'
+    scope: service
+    status: abandoned
+    note: >-
+      Four years without a release. v3.5 still answers the Discovery directory
+      but is not the preferred version.
+  - name: google.golang.org/api
+    language: go
+    registry: gopkg
+    official: true
+    url: https://pkg.go.dev/google.golang.org/api/dfareporting/v5
+    repository: https://github.com/googleapis/google-api-go-client
+    version: v0.293.0
+    published: '2026-08-11'
+    scope: umbrella
+    note: >-
+      Module version read from proxy.golang.org/google.golang.org/api/@latest.
+      dfareporting/v5 is a package inside this module, not a separately
+      versioned artifact.
+  - name: google/apiclient
+    language: php
+    registry: packagist
+    official: true
+    url: https://packagist.org/packages/google/apiclient
+    repository: https://github.com/google/google-api-php-client
+    version: v2.19.4
+    published: '2026-06-29'
+    scope: umbrella
+  - name: google/apiclient-services
+    language: php
+    registry: packagist
+    official: true
+    url: https://packagist.org/packages/google/apiclient-services
+    repository: https://github.com/googleapis/google-api-php-client-services
+    version: v0.454.0
+    published: '2026-08-10'
+    scope: service
+    note: Carries the generated Google\Service\Dfareporting classes.
+  - name: GoogleAPIClientForREST
+    language: objective-c
+    registry: cocoapods
+    official: true
+    url: https://github.com/google/google-api-objectivec-client-for-rest
+    repository: https://github.com/google/google-api-objectivec-client-for-rest
+    version: null
+    published: null
+    scope: umbrella
+    note: >-
+      Listed on the Campaign Manager 360 libraries page and distributed via
+      CocoaPods/SwiftPM rather than a registry with an unauthenticated metadata
+      endpoint we could read; version left null rather than guessed.
+  - name: Google API Client Library for JavaScript (gapi)
+    language: javascript
+    registry: cdn
+    official: true
+    url: https://apis.google.com/js/api.js
+    repository: https://github.com/google/google-api-javascript-client
+    version: null
+    published: null
+    scope: umbrella
+    note: >-
+      Browser client loaded from an UNPINNED CDN script tag
+      (https://apis.google.com/js/api.js). There is no version in the URL and no
+      CDN metadata endpoint, so a consumer cannot tell which build they are
+      getting either — that is the finding, not a gap in this probe.
+summary:
+  total: 14
+  official: 14
+  registries:
+    - npm
+    - pypi
+    - maven
+    - nuget
+    - rubygems
+    - gopkg
+    - packagist
+    - cocoapods
+    - cdn
+  with_version: 12
+  version_null: 2

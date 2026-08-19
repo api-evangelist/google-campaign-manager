@@ -1,0 +1,2310 @@
+{
+  "item": [
+    {
+      "id": "d6bbf7f6-e203-4652-ba0b-5483ca6db8a2",
+      "name": "Placements",
+      "description": {
+        "content": "Manage placements representing ad inventory on publisher sites. Placements define the size, format, pricing, and site location where ads can be served, and generate the ad tags that publishers install on their pages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90935f4a-78ee-49c4-a398-63bcfa2ddd6f",
+          "name": "Google Campaign Manager List Placements",
+          "request": {
+            "name": "Google Campaign Manager List Placements",
+            "description": {
+              "content": "Retrieves a list of placements, possibly filtered. Results are returned in descending order by last modified time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "placements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "campaignIds",
+                  "value": "<string>",
+                  "description": "Select only placements belonging to these campaigns."
+                },
+                {
+                  "disabled": false,
+                  "key": "campaignIds",
+                  "value": "<string>",
+                  "description": "Select only placements belonging to these campaigns."
+                },
+                {
+                  "disabled": false,
+                  "key": "advertiserIds",
+                  "value": "<string>",
+                  "description": "Select only placements belonging to these advertisers."
+                },
+                {
+                  "disabled": false,
+                  "key": "advertiserIds",
+                  "value": "<string>",
+                  "description": "Select only placements belonging to these advertisers."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Select only placements with these IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Select only placements with these IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "siteIds",
+                  "value": "<string>",
+                  "description": "Select only placements associated with these sites."
+                },
+                {
+                  "disabled": false,
+                  "key": "siteIds",
+                  "value": "<string>",
+                  "description": "Select only placements associated with these sites."
+                },
+                {
+                  "disabled": false,
+                  "key": "groupIds",
+                  "value": "<string>",
+                  "description": "Select only placements belonging to these placement groups."
+                },
+                {
+                  "disabled": false,
+                  "key": "groupIds",
+                  "value": "<string>",
+                  "description": "Select only placements belonging to these placement groups."
+                },
+                {
+                  "disabled": false,
+                  "key": "compatibilities",
+                  "value": "<string>",
+                  "description": "Select only placements with these compatibilities."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchString",
+                  "value": "<string>",
+                  "description": "Search string for filtering results."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortField",
+                  "value": "ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "ASCENDING"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "1000",
+                  "description": "Maximum number of results to return. Default is 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Value of the nextPageToken from the previous result page."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/dfareporting https://www.googleapis.com/auth/dfatrafficking"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "14d0d911-1c98-497a-9b0a-8e376f52afa6",
+              "name": "List of placements.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compatibilities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "ID"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextPageToken\": \"example_value\",\n  \"kind\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70a7f881-134d-4542-9ba5-5465dbe0ad27",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compatibilities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "ID"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8709,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da54b572-e6fd-4bc6-8d78-2c27e01b92a8",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "siteIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "groupIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compatibilities",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "ID"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8709,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9731c618-0768-4fa9-acd9-dbf83e2534b4",
+          "name": "Google Campaign Manager Create a Placement",
+          "request": {
+            "name": "Google Campaign Manager Create a Placement",
+            "description": {
+              "content": "Inserts a new placement. The placement is associated with a campaign, site, and directory site, and defines the ad inventory configuration for a specific location on a publisher site.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "placements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"campaignId\": \"<string>\",\n  \"compatibility\": \"<string>\",\n  \"tagFormats\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"advertiserId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"directorySiteId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"placementGroupId\": \"<string>\",\n  \"size\": {\n    \"id\": \"<string>\",\n    \"width\": \"<integer>\",\n    \"height\": \"<integer>\",\n    \"iab\": \"<boolean>\"\n  },\n  \"additionalSizes\": [\n    {\n      \"id\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"iab\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"iab\": \"<boolean>\"\n    }\n  ],\n  \"paymentSource\": \"<string>\",\n  \"status\": \"<string>\",\n  \"activeStatus\": \"<string>\",\n  \"pricingSchedule\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\",\n    \"pricingType\": \"<string>\",\n    \"capCostType\": \"<string>\",\n    \"pricingPeriods\": [\n      {\n        \"startDate\": \"<date>\",\n        \"endDate\": \"<date>\",\n        \"units\": \"<string>\",\n        \"rateOrCostNanos\": \"<string>\",\n        \"pricingComment\": \"<string>\"\n      },\n      {\n        \"startDate\": \"<date>\",\n        \"endDate\": \"<date>\",\n        \"units\": \"<string>\",\n        \"rateOrCostNanos\": \"<string>\",\n        \"pricingComment\": \"<string>\"\n      }\n    ],\n    \"testingStartDate\": \"<date>\"\n  },\n  \"contentCategoryId\": \"<string>\",\n  \"placementStrategyId\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"primary\": \"<boolean>\",\n  \"sslRequired\": \"<boolean>\",\n  \"adBlockingOptOut\": \"<boolean>\",\n  \"wrappingOptOut\": \"<boolean>\",\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": \"<boolean>\",\n      \"enabledSizes\": [\n        {\n          \"id\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"iab\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"iab\": \"<boolean>\"\n        }\n      ],\n      \"imageOnly\": \"<boolean>\"\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": \"<boolean>\",\n      \"skipOffset\": {\n        \"offsetSeconds\": \"<integer>\",\n        \"offsetPercentage\": \"<integer>\"\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": \"<integer>\",\n        \"offsetPercentage\": \"<integer>\"\n      }\n    },\n    \"obaEnabled\": \"<boolean>\",\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"<uri>\",\n      \"iconClickTrackingUrl\": \"<uri>\",\n      \"iconViewTrackingUrl\": \"<uri>\",\n      \"program\": \"<string>\",\n      \"resourceUrl\": \"<uri>\",\n      \"size\": {\n        \"id\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"iab\": \"<boolean>\"\n      },\n      \"xPosition\": \"<string>\",\n      \"yPosition\": \"<string>\"\n    },\n    \"orientation\": \"<string>\"\n  },\n  \"videoActiveViewOptOut\": \"<boolean>\",\n  \"vpaidAdapterChoice\": \"<string>\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": \"<integer>\",\n    \"postImpressionActivitiesDuration\": \"<integer>\"\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"<string>\",\n    \"includeClickTracking\": \"<boolean>\",\n    \"includeClickThroughUrls\": \"<boolean>\",\n    \"keywordOption\": \"<string>\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"<string>\",\n    \"tagWrappingMode\": \"<string>\",\n    \"wrappedTag\": \"<string>\",\n    \"linkStatus\": \"<string>\"\n  },\n  \"conversionDomainOverride\": {\n    \"conversionDomains\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c50f909-52ee-4318-9b35-ec325743b247",
+              "name": "Created placement.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Homepage Leaderboard 728x90\",\n  \"campaignId\": \"12345678\",\n  \"siteId\": \"11111111\",\n  \"directorySiteId\": \"22222222\",\n  \"compatibility\": \"DISPLAY\",\n  \"size\": {\n    \"id\": \"12345\",\n    \"width\": 728,\n    \"height\": 90\n  },\n  \"tagFormats\": [\n    \"PLACEMENT_TAG_STANDARD\",\n    \"PLACEMENT_TAG_JAVASCRIPT\"\n  ],\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-01\",\n    \"endDate\": \"2026-03-31\",\n    \"pricingType\": \"PRICING_TYPE_CPM\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"keyName\": \"example_value\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true,\n    \"kind\": \"example_value\"\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"paymentApproved\": true,\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true,\n          \"kind\": \"example_value\"\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true,\n          \"kind\": \"example_value\"\n        }\n      ],\n      \"imageOnly\": true,\n      \"kind\": \"string\"\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        4655,\n        9988\n      ],\n      \"kind\": \"string\"\n    },\n    \"skippableSettings\": {\n      \"skippable\": true,\n      \"skipOffset\": {\n        \"offsetSeconds\": 4604,\n        \"offsetPercentage\": 6410\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 3347,\n        \"offsetPercentage\": 8438\n      },\n      \"kind\": \"string\"\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"https://gsmRUsbvCeG.nscqmEn6S1JsEuQl17gz7n+etVSwX\",\n      \"iconClickTrackingUrl\": \"http://QDwnhhhewXvVszlvwbtfMK.vobktuazYChrG1xBgfZpWWUHPTRWPD3t2\",\n      \"iconViewTrackingUrl\": \"https://styIfloSAjqIKzORSDU.zrclWJM\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://jGmiX.rkovwa34d+oV-DaRLpG1THvHWLvJhIa8qU0M05pwge8g4SfUkFcnIDFJ2uypj4SoFO14\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true,\n        \"kind\": \"example_value\"\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\",\n    \"kind\": \"example_value\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": true,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {},\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"campaignIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"siteIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"directorySiteIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"placementGroupIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1d88ff2-2490-4d16-8aec-943a8e3a1b8a",
+              "name": "Invalid request parameters or malformed request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Homepage Leaderboard 728x90\",\n  \"campaignId\": \"12345678\",\n  \"siteId\": \"11111111\",\n  \"directorySiteId\": \"22222222\",\n  \"compatibility\": \"DISPLAY\",\n  \"size\": {\n    \"id\": \"12345\",\n    \"width\": 728,\n    \"height\": 90\n  },\n  \"tagFormats\": [\n    \"PLACEMENT_TAG_STANDARD\",\n    \"PLACEMENT_TAG_JAVASCRIPT\"\n  ],\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-01\",\n    \"endDate\": \"2026-03-31\",\n    \"pricingType\": \"PRICING_TYPE_CPM\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8709,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be6ffad3-c810-4842-8a5d-e029358df59f",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Homepage Leaderboard 728x90\",\n  \"campaignId\": \"12345678\",\n  \"siteId\": \"11111111\",\n  \"directorySiteId\": \"22222222\",\n  \"compatibility\": \"DISPLAY\",\n  \"size\": {\n    \"id\": \"12345\",\n    \"width\": 728,\n    \"height\": 90\n  },\n  \"tagFormats\": [\n    \"PLACEMENT_TAG_STANDARD\",\n    \"PLACEMENT_TAG_JAVASCRIPT\"\n  ],\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-01\",\n    \"endDate\": \"2026-03-31\",\n    \"pricingType\": \"PRICING_TYPE_CPM\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05740a1e-1876-4362-80c5-bc0b0b99577d",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Homepage Leaderboard 728x90\",\n  \"campaignId\": \"12345678\",\n  \"siteId\": \"11111111\",\n  \"directorySiteId\": \"22222222\",\n  \"compatibility\": \"DISPLAY\",\n  \"size\": {\n    \"id\": \"12345\",\n    \"width\": 728,\n    \"height\": 90\n  },\n  \"tagFormats\": [\n    \"PLACEMENT_TAG_STANDARD\",\n    \"PLACEMENT_TAG_JAVASCRIPT\"\n  ],\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-01\",\n    \"endDate\": \"2026-03-31\",\n    \"pricingType\": \"PRICING_TYPE_CPM\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9fb2726-a3f5-44ec-92f8-ead9d27aad3e",
+          "name": "Google Campaign Manager Get a Placement",
+          "request": {
+            "name": "Google Campaign Manager Get a Placement",
+            "description": {
+              "content": "Gets one placement by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "placements",
+                ":placementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "placementId",
+                  "description": "(Required) Placement ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/dfareporting https://www.googleapis.com/auth/dfatrafficking"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f302f746-f5ed-4940-9189-1abbf3d06025",
+              "name": "Placement details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"keyName\": \"example_value\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true,\n    \"kind\": \"example_value\"\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"paymentApproved\": true,\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true,\n          \"kind\": \"example_value\"\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true,\n          \"kind\": \"example_value\"\n        }\n      ],\n      \"imageOnly\": true,\n      \"kind\": \"string\"\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        4655,\n        9988\n      ],\n      \"kind\": \"string\"\n    },\n    \"skippableSettings\": {\n      \"skippable\": true,\n      \"skipOffset\": {\n        \"offsetSeconds\": 4604,\n        \"offsetPercentage\": 6410\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 3347,\n        \"offsetPercentage\": 8438\n      },\n      \"kind\": \"string\"\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"https://gsmRUsbvCeG.nscqmEn6S1JsEuQl17gz7n+etVSwX\",\n      \"iconClickTrackingUrl\": \"http://QDwnhhhewXvVszlvwbtfMK.vobktuazYChrG1xBgfZpWWUHPTRWPD3t2\",\n      \"iconViewTrackingUrl\": \"https://styIfloSAjqIKzORSDU.zrclWJM\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://jGmiX.rkovwa34d+oV-DaRLpG1THvHWLvJhIa8qU0M05pwge8g4SfUkFcnIDFJ2uypj4SoFO14\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true,\n        \"kind\": \"example_value\"\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\",\n    \"kind\": \"example_value\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": true,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {},\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"campaignIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"siteIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"directorySiteIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"placementGroupIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "272feac7-0201-41a9-8f22-f9c4a877c3b6",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50c647dc-0162-4af7-ab78-9e277c6f0ac0",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27e8a5d1-b542-440d-8dfb-45ae713017c4",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8709,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0b5422d-bb44-42af-b2e3-ec46e1c56a8f",
+          "name": "Google Campaign Manager Update a Placement",
+          "request": {
+            "name": "Google Campaign Manager Update a Placement",
+            "description": {
+              "content": "Updates an existing placement.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "placements",
+                ":placementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "placementId",
+                  "description": "(Required) Placement ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"campaignId\": \"<string>\",\n  \"compatibility\": \"<string>\",\n  \"tagFormats\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"advertiserId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"directorySiteId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"placementGroupId\": \"<string>\",\n  \"size\": {\n    \"id\": \"<string>\",\n    \"width\": \"<integer>\",\n    \"height\": \"<integer>\",\n    \"iab\": \"<boolean>\"\n  },\n  \"additionalSizes\": [\n    {\n      \"id\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"iab\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"iab\": \"<boolean>\"\n    }\n  ],\n  \"paymentSource\": \"<string>\",\n  \"status\": \"<string>\",\n  \"activeStatus\": \"<string>\",\n  \"pricingSchedule\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\",\n    \"pricingType\": \"<string>\",\n    \"capCostType\": \"<string>\",\n    \"pricingPeriods\": [\n      {\n        \"startDate\": \"<date>\",\n        \"endDate\": \"<date>\",\n        \"units\": \"<string>\",\n        \"rateOrCostNanos\": \"<string>\",\n        \"pricingComment\": \"<string>\"\n      },\n      {\n        \"startDate\": \"<date>\",\n        \"endDate\": \"<date>\",\n        \"units\": \"<string>\",\n        \"rateOrCostNanos\": \"<string>\",\n        \"pricingComment\": \"<string>\"\n      }\n    ],\n    \"testingStartDate\": \"<date>\"\n  },\n  \"contentCategoryId\": \"<string>\",\n  \"placementStrategyId\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"primary\": \"<boolean>\",\n  \"sslRequired\": \"<boolean>\",\n  \"adBlockingOptOut\": \"<boolean>\",\n  \"wrappingOptOut\": \"<boolean>\",\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": \"<boolean>\",\n      \"enabledSizes\": [\n        {\n          \"id\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"iab\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"iab\": \"<boolean>\"\n        }\n      ],\n      \"imageOnly\": \"<boolean>\"\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": \"<boolean>\",\n      \"skipOffset\": {\n        \"offsetSeconds\": \"<integer>\",\n        \"offsetPercentage\": \"<integer>\"\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": \"<integer>\",\n        \"offsetPercentage\": \"<integer>\"\n      }\n    },\n    \"obaEnabled\": \"<boolean>\",\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"<uri>\",\n      \"iconClickTrackingUrl\": \"<uri>\",\n      \"iconViewTrackingUrl\": \"<uri>\",\n      \"program\": \"<string>\",\n      \"resourceUrl\": \"<uri>\",\n      \"size\": {\n        \"id\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"iab\": \"<boolean>\"\n      },\n      \"xPosition\": \"<string>\",\n      \"yPosition\": \"<string>\"\n    },\n    \"orientation\": \"<string>\"\n  },\n  \"videoActiveViewOptOut\": \"<boolean>\",\n  \"vpaidAdapterChoice\": \"<string>\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": \"<integer>\",\n    \"postImpressionActivitiesDuration\": \"<integer>\"\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"<string>\",\n    \"includeClickTracking\": \"<boolean>\",\n    \"includeClickThroughUrls\": \"<boolean>\",\n    \"keywordOption\": \"<string>\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"<string>\",\n    \"tagWrappingMode\": \"<string>\",\n    \"wrappedTag\": \"<string>\",\n    \"linkStatus\": \"<string>\"\n  },\n  \"conversionDomainOverride\": {\n    \"conversionDomains\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b461133-f765-44d2-80ca-6d5697bd0ffd",
+              "name": "Updated placement.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"keyName\": \"example_value\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true,\n    \"kind\": \"example_value\"\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"paymentApproved\": true,\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true,\n          \"kind\": \"example_value\"\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true,\n          \"kind\": \"example_value\"\n        }\n      ],\n      \"imageOnly\": true,\n      \"kind\": \"string\"\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        4655,\n        9988\n      ],\n      \"kind\": \"string\"\n    },\n    \"skippableSettings\": {\n      \"skippable\": true,\n      \"skipOffset\": {\n        \"offsetSeconds\": 4604,\n        \"offsetPercentage\": 6410\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 3347,\n        \"offsetPercentage\": 8438\n      },\n      \"kind\": \"string\"\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"https://gsmRUsbvCeG.nscqmEn6S1JsEuQl17gz7n+etVSwX\",\n      \"iconClickTrackingUrl\": \"http://QDwnhhhewXvVszlvwbtfMK.vobktuazYChrG1xBgfZpWWUHPTRWPD3t2\",\n      \"iconViewTrackingUrl\": \"https://styIfloSAjqIKzORSDU.zrclWJM\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://jGmiX.rkovwa34d+oV-DaRLpG1THvHWLvJhIa8qU0M05pwge8g4SfUkFcnIDFJ2uypj4SoFO14\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true,\n        \"kind\": \"example_value\"\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\",\n    \"kind\": \"example_value\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": true,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {},\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"campaignIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"siteIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"directorySiteIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"placementGroupIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4f9b1f2-9183-4528-9dd5-9322236fa34d",
+              "name": "Invalid request parameters or malformed request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f835f7d-8858-438b-a220-77d5403a1be3",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35ea3e43-b08b-4cc2-8b27-d70e031a5401",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e23574b8-5ba5-4953-9bb9-f8049f3e28f8",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1e627c5-1b29-469c-b282-7b83d3d7ce27",
+          "name": "Google Campaign Manager Patch a Placement",
+          "request": {
+            "name": "Google Campaign Manager Patch a Placement",
+            "description": {
+              "content": "Updates an existing placement. This method supports patch semantics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "placements",
+                ":placementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "placementId",
+                  "description": "(Required) Placement ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"campaignId\": \"<string>\",\n  \"compatibility\": \"<string>\",\n  \"tagFormats\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"advertiserId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"directorySiteId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"placementGroupId\": \"<string>\",\n  \"size\": {\n    \"id\": \"<string>\",\n    \"width\": \"<integer>\",\n    \"height\": \"<integer>\",\n    \"iab\": \"<boolean>\"\n  },\n  \"additionalSizes\": [\n    {\n      \"id\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"iab\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"iab\": \"<boolean>\"\n    }\n  ],\n  \"paymentSource\": \"<string>\",\n  \"status\": \"<string>\",\n  \"activeStatus\": \"<string>\",\n  \"pricingSchedule\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\",\n    \"pricingType\": \"<string>\",\n    \"capCostType\": \"<string>\",\n    \"pricingPeriods\": [\n      {\n        \"startDate\": \"<date>\",\n        \"endDate\": \"<date>\",\n        \"units\": \"<string>\",\n        \"rateOrCostNanos\": \"<string>\",\n        \"pricingComment\": \"<string>\"\n      },\n      {\n        \"startDate\": \"<date>\",\n        \"endDate\": \"<date>\",\n        \"units\": \"<string>\",\n        \"rateOrCostNanos\": \"<string>\",\n        \"pricingComment\": \"<string>\"\n      }\n    ],\n    \"testingStartDate\": \"<date>\"\n  },\n  \"contentCategoryId\": \"<string>\",\n  \"placementStrategyId\": \"<string>\",\n  \"comment\": \"<string>\",\n  \"primary\": \"<boolean>\",\n  \"sslRequired\": \"<boolean>\",\n  \"adBlockingOptOut\": \"<boolean>\",\n  \"wrappingOptOut\": \"<boolean>\",\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": \"<boolean>\",\n      \"enabledSizes\": [\n        {\n          \"id\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"iab\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\",\n          \"iab\": \"<boolean>\"\n        }\n      ],\n      \"imageOnly\": \"<boolean>\"\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": \"<boolean>\",\n      \"skipOffset\": {\n        \"offsetSeconds\": \"<integer>\",\n        \"offsetPercentage\": \"<integer>\"\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": \"<integer>\",\n        \"offsetPercentage\": \"<integer>\"\n      }\n    },\n    \"obaEnabled\": \"<boolean>\",\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"<uri>\",\n      \"iconClickTrackingUrl\": \"<uri>\",\n      \"iconViewTrackingUrl\": \"<uri>\",\n      \"program\": \"<string>\",\n      \"resourceUrl\": \"<uri>\",\n      \"size\": {\n        \"id\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\",\n        \"iab\": \"<boolean>\"\n      },\n      \"xPosition\": \"<string>\",\n      \"yPosition\": \"<string>\"\n    },\n    \"orientation\": \"<string>\"\n  },\n  \"videoActiveViewOptOut\": \"<boolean>\",\n  \"vpaidAdapterChoice\": \"<string>\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": \"<integer>\",\n    \"postImpressionActivitiesDuration\": \"<integer>\"\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"<string>\",\n    \"includeClickTracking\": \"<boolean>\",\n    \"includeClickThroughUrls\": \"<boolean>\",\n    \"keywordOption\": \"<string>\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"<string>\",\n    \"tagWrappingMode\": \"<string>\",\n    \"wrappedTag\": \"<string>\",\n    \"linkStatus\": \"<string>\"\n  },\n  \"conversionDomainOverride\": {\n    \"conversionDomains\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a90f7de9-22b2-47e1-b185-4b09373a2e70",
+              "name": "Patched placement.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"keyName\": \"example_value\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true,\n    \"kind\": \"example_value\"\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"paymentApproved\": true,\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true,\n          \"kind\": \"example_value\"\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true,\n          \"kind\": \"example_value\"\n        }\n      ],\n      \"imageOnly\": true,\n      \"kind\": \"string\"\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        4655,\n        9988\n      ],\n      \"kind\": \"string\"\n    },\n    \"skippableSettings\": {\n      \"skippable\": true,\n      \"skipOffset\": {\n        \"offsetSeconds\": 4604,\n        \"offsetPercentage\": 6410\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 3347,\n        \"offsetPercentage\": 8438\n      },\n      \"kind\": \"string\"\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"https://gsmRUsbvCeG.nscqmEn6S1JsEuQl17gz7n+etVSwX\",\n      \"iconClickTrackingUrl\": \"http://QDwnhhhewXvVszlvwbtfMK.vobktuazYChrG1xBgfZpWWUHPTRWPD3t2\",\n      \"iconViewTrackingUrl\": \"https://styIfloSAjqIKzORSDU.zrclWJM\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://jGmiX.rkovwa34d+oV-DaRLpG1THvHWLvJhIa8qU0M05pwge8g4SfUkFcnIDFJ2uypj4SoFO14\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true,\n        \"kind\": \"example_value\"\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\",\n    \"kind\": \"example_value\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": true,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {},\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"campaignIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"siteIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"directorySiteIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"placementGroupIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da2ed098-1ade-41d9-899b-5dd44472d7b5",
+              "name": "Invalid request parameters or malformed request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d7bd3c0-9214-43d6-be34-515d7b32b7cb",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74fcdc70-c4eb-4f63-b2c4-a889dd3d1bb9",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01d4aefd-1dc5-4c27-b0c0-4a1d5cc00960",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    ":placementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "placementId",
+                      "description": "(Required) Placement ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"compatibility\": \"DISPLAY\",\n  \"tagFormats\": [],\n  \"advertiserId\": \"500123\",\n  \"siteId\": \"500123\",\n  \"directorySiteId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"placementGroupId\": \"500123\",\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"paymentSource\": \"PLACEMENT_AGENCY_PAID\",\n  \"status\": \"PENDING_REVIEW\",\n  \"activeStatus\": \"PLACEMENT_STATUS_ACTIVE\",\n  \"pricingSchedule\": {\n    \"startDate\": \"2026-01-15\",\n    \"endDate\": \"2026-01-15\",\n    \"pricingType\": \"PRICING_TYPE_CPM\",\n    \"capCostType\": \"PLANNING_PLACEMENT_CAP_COST_TYPE_NONE\",\n    \"testingStartDate\": \"2026-01-15\"\n  },\n  \"contentCategoryId\": \"500123\",\n  \"placementStrategyId\": \"500123\",\n  \"comment\": \"example_value\",\n  \"primary\": true,\n  \"sslRequired\": true,\n  \"adBlockingOptOut\": true,\n  \"wrappingOptOut\": true,\n  \"videoSettings\": {\n    \"companionSettings\": {\n      \"companionsDisabled\": false,\n      \"enabledSizes\": [\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        },\n        {\n          \"id\": \"abc123\",\n          \"width\": 10,\n          \"height\": 10,\n          \"iab\": true\n        }\n      ],\n      \"imageOnly\": false\n    },\n    \"transcodeSettings\": {\n      \"enabledVideoFormats\": [\n        9074,\n        6504\n      ]\n    },\n    \"skippableSettings\": {\n      \"skippable\": false,\n      \"skipOffset\": {\n        \"offsetSeconds\": 8773,\n        \"offsetPercentage\": 6491\n      },\n      \"progressOffset\": {\n        \"offsetSeconds\": 5422,\n        \"offsetPercentage\": 6692\n      }\n    },\n    \"obaEnabled\": true,\n    \"obaSettings\": {\n      \"iconClickThroughUrl\": \"http://bPmRsyQuEeWjpcPEstdRhl.hvtMRF-JP.ReYZ\",\n      \"iconClickTrackingUrl\": \"http://qDNbdeWdzRPXSlgndhYTXmGdaGiP.irlzR.JuZSUUE06BkvW0Y3N\",\n      \"iconViewTrackingUrl\": \"https://SzcsbQkHfzWCqhYjJaOeiSaW.ycQ8i8G83V-pRAMMVrHqr4qMXU+08\",\n      \"program\": \"string\",\n      \"resourceUrl\": \"http://NTsBndpBzsRFivuxzonwjdxGDi.gwrfDoxb1AFFreJ00Jj5WbawdPYJD47-X4k9OMps+btmDPUZbxrZRDCheQ4sTanYx5bAChHtycuQH\",\n      \"size\": {\n        \"id\": \"abc123\",\n        \"width\": 10,\n        \"height\": 10,\n        \"iab\": true\n      },\n      \"xPosition\": \"string\",\n      \"yPosition\": \"string\"\n    },\n    \"orientation\": \"ANY\"\n  },\n  \"videoActiveViewOptOut\": true,\n  \"vpaidAdapterChoice\": \"DEFAULT\",\n  \"lookbackConfiguration\": {\n    \"clickDuration\": 10,\n    \"postImpressionActivitiesDuration\": 10\n  },\n  \"tagSetting\": {\n    \"additionalKeyValues\": \"example_value\",\n    \"includeClickTracking\": true,\n    \"includeClickThroughUrls\": false,\n    \"keywordOption\": \"PLACEHOLDER_WITH_LIST_OF_KEYWORDS\"\n  },\n  \"partnerWrappingData\": {\n    \"measurementPartner\": \"NONE\",\n    \"tagWrappingMode\": \"NONE\",\n    \"wrappedTag\": \"example_value\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\"\n  },\n  \"conversionDomainOverride\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28c31fb1-ea04-4886-aee8-f59aa7693a4c",
+          "name": "Google Campaign Manager Generate Placement Tags",
+          "request": {
+            "name": "Google Campaign Manager Generate Placement Tags",
+            "description": {
+              "content": "Generates tags for one or more placements. Tags are the code snippets that publishers place on their sites to enable ad serving for the associated placements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "placements",
+                "generatetags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "placementIds",
+                  "value": "<string>",
+                  "description": "Generate tags for these placements."
+                },
+                {
+                  "disabled": false,
+                  "key": "placementIds",
+                  "value": "<string>",
+                  "description": "Generate tags for these placements."
+                },
+                {
+                  "disabled": false,
+                  "key": "tagFormats",
+                  "value": "<string>",
+                  "description": "Tag formats to generate."
+                },
+                {
+                  "disabled": false,
+                  "key": "tagFormats",
+                  "value": "<string>",
+                  "description": "Tag formats to generate."
+                },
+                {
+                  "disabled": false,
+                  "key": "campaignId",
+                  "value": "<string>",
+                  "description": "Generate placements belonging to this campaign."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59632be6-9961-4ea4-b5eb-f319f6f0809e",
+              "name": "Generated placement tags.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    "generatetags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagFormats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagFormats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0aca72a4-e099-48b9-a40e-931c6e43cddd",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    "generatetags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagFormats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagFormats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9cfa72c-5698-4419-a946-b528aa0ef1f9",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "placements",
+                    "generatetags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagFormats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tagFormats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8870,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dfareporting.googleapis.com/dfareporting/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/dfareporting https://www.googleapis.com/auth/dfatrafficking"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f4308cb5-90b9-472b-89b0-e42945b66ce1",
+    "name": "Google Campaign Manager Campaign Manager 360 Ads Placements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Campaign Manager 360 API (formerly DoubleClick Campaign Manager) provides programmatic access to manage digital advertising campaigns, ads, placements, and reports. Use this API to automate trafficking workflows, create and manage campaign structures, configure ad placements across publisher sites, and generate comprehensive reporting data for campaign performance analysis. The API supports the full campaign lifecycle from creation through reporting and optimization.\n\nContact Support:\n Name: Google Campaign Manager 360 API Support",
+      "type": "text/plain"
+    }
+  }
+}

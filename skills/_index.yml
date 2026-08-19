@@ -1,0 +1,45 @@
+generated: '2026-08-13'
+method: generated
+source: openapi/*-openapi.yml, discovery/google-campaign-manager-dfareporting-v5-discovery.json
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  Packaged Agent Skills for the Campaign Manager 360 API, one per marquee
+  trafficking or reporting flow. Every operationId referenced is real and taken
+  from the OpenAPI documents in this repository; each skill also names the live
+  v5 base URL, because the OpenAPI describes the retired v4 path.
+provider_published_skills: false
+provider_published_note: >-
+  Google publishes no AGENTS.md, /skills surface or packaged agent skills for
+  Campaign Manager 360. These are API Evangelist generations grounded in the
+  provider's own contract and documentation.
+skills:
+  - name: google-campaign-manager-launch-campaign
+    file: skills/google-campaign-manager-launch-campaign.md
+    api: Google Campaign Manager Campaigns API
+    operations: [listCampaigns, insertCampaign, getCampaign]
+  - name: google-campaign-manager-traffic-ad
+    file: skills/google-campaign-manager-traffic-ad.md
+    api: Google Campaign Manager Ads API
+    operations: [listAds, insertAd, getAd, updateAd, patchAd]
+  - name: google-campaign-manager-generate-placement-tags
+    file: skills/google-campaign-manager-generate-placement-tags.md
+    api: Google Campaign Manager Placements API
+    operations: [listPlacements, insertPlacement, getPlacement, updatePlacement, patchPlacement, generatePlacementTags]
+  - name: google-campaign-manager-run-report
+    file: skills/google-campaign-manager-run-report.md
+    api: Google Campaign Manager Reports API
+    operations: [listReports, insertReport, getReport, updateReport, runReport, deleteReport]
+shared_rules:
+  base_url: https://dfareporting.googleapis.com/dfareporting/v5
+  auth: OAuth 2.0 bearer token; scopes dfatrafficking (write) and dfareporting (reports)
+  tenancy: every path is /userprofiles/{profileId}/... — resolve profileId with userProfiles.list
+  pagination: maxResults + pageToken, response nextPageToken
+  partial_response: fields query parameter
+  idempotency: none — POST inserts are unsafe to retry blindly
+  throttling: HTTP 403 with reason userRateLimitExceeded or dailyLimitExceeded; never 429; no Retry-After
+  errors: errors/google-campaign-manager-problem-types.yml
+  conventions: conventions/google-campaign-manager-conventions.yml
+summary:
+  skill_count: 4
+  operations_covered: 19

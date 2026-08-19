@@ -1,0 +1,2008 @@
+{
+  "item": [
+    {
+      "id": "9c22f502-e31e-4488-99f8-8f4c049a3da3",
+      "name": "Ads",
+      "description": {
+        "content": "Manage ad configurations within campaigns. Ads define the creative content, delivery schedules, targeting rules, and placement assignments that determine how and where advertising is served to users.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66fffd70-960f-447c-a9d3-0dd6b7af3699",
+          "name": "Google Campaign Manager List Ads",
+          "request": {
+            "name": "Google Campaign Manager List Ads",
+            "description": {
+              "content": "Retrieves a list of ads, possibly filtered. Results are returned in descending order by last modified time. Use query parameters to filter by campaign, advertiser, type, or other criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "ads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "campaignIds",
+                  "value": "<string>",
+                  "description": "Select only ads belonging to these campaigns."
+                },
+                {
+                  "disabled": false,
+                  "key": "campaignIds",
+                  "value": "<string>",
+                  "description": "Select only ads belonging to these campaigns."
+                },
+                {
+                  "disabled": false,
+                  "key": "advertiserIds",
+                  "value": "<string>",
+                  "description": "Select only ads belonging to these advertisers."
+                },
+                {
+                  "disabled": false,
+                  "key": "advertiserIds",
+                  "value": "<string>",
+                  "description": "Select only ads belonging to these advertisers."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Select only ads with these IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Select only ads with these IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "placementIds",
+                  "value": "<string>",
+                  "description": "Select only ads with these placement IDs assigned."
+                },
+                {
+                  "disabled": false,
+                  "key": "placementIds",
+                  "value": "<string>",
+                  "description": "Select only ads with these placement IDs assigned."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Select only ads with the specified type."
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<boolean>",
+                  "description": "Select only active ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "false",
+                  "description": "Select only archived ads."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchString",
+                  "value": "<string>",
+                  "description": "Search string for filtering results. Matches against ad name and ID fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortField",
+                  "value": "ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "ASCENDING"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "1000",
+                  "description": "Maximum number of results to return. Default is 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Value of the nextPageToken from the previous result page."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/dfareporting https://www.googleapis.com/auth/dfatrafficking"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b2507e0d-29ce-4929-aaf9-c339d1c2feef",
+              "name": "List of ads.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    },
+                    {
+                      "key": "searchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "ID"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextPageToken\": \"example_value\",\n  \"kind\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fc94507-1244-422c-a3e5-188fe76b99c0",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    },
+                    {
+                      "key": "searchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "ID"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 745,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4fe6a2d-13f9-48c4-a706-21bbb9096c74",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "placementIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    },
+                    {
+                      "key": "searchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "ID"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 745,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef0f4c1a-880b-481c-bfd2-1c9b1e35c34f",
+          "name": "Google Campaign Manager Create an Ad",
+          "request": {
+            "name": "Google Campaign Manager Create an Ad",
+            "description": {
+              "content": "Inserts a new ad. The ad is created under the specified campaign and advertiser with the provided delivery, creative rotation, and targeting configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "ads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"campaignId\": \"<string>\",\n  \"advertiserId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"active\": \"<boolean>\",\n  \"archived\": false,\n  \"comments\": \"<string>\",\n  \"dynamicClickTracker\": \"<boolean>\",\n  \"size\": {\n    \"id\": \"<string>\",\n    \"width\": \"<integer>\",\n    \"height\": \"<integer>\",\n    \"iab\": \"<boolean>\"\n  },\n  \"placementAssignments\": [\n    {\n      \"placementId\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"sslRequired\": \"<boolean>\"\n    },\n    {\n      \"placementId\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"sslRequired\": \"<boolean>\"\n    }\n  ],\n  \"creativeRotation\": {\n    \"type\": \"<string>\",\n    \"weightCalculationStrategy\": \"<string>\",\n    \"creativeAssignments\": [\n      {\n        \"creativeId\": \"<string>\",\n        \"active\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"sequence\": \"<integer>\",\n        \"clickThroughUrl\": {\n          \"defaultLandingPage\": \"<boolean>\",\n          \"landingPageId\": \"<string>\",\n          \"customClickThroughUrl\": \"<uri>\"\n        },\n        \"richMediaExitOverrides\": [\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          },\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          }\n        ]\n      },\n      {\n        \"creativeId\": \"<string>\",\n        \"active\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"sequence\": \"<integer>\",\n        \"clickThroughUrl\": {\n          \"defaultLandingPage\": \"<boolean>\",\n          \"landingPageId\": \"<string>\",\n          \"customClickThroughUrl\": \"<uri>\"\n        },\n        \"richMediaExitOverrides\": [\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          },\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          }\n        ]\n      }\n    ],\n    \"creativeOptimizationConfigurationId\": \"<string>\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"hardCutoff\": \"<boolean>\",\n    \"frequencyCap\": {\n      \"impressions\": \"<integer>\",\n      \"duration\": \"<integer>\"\n    }\n  },\n  \"geoTargeting\": {\n    \"countries\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"sslEnabled\": \"<boolean>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"sslEnabled\": \"<boolean>\"\n      }\n    ],\n    \"regions\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"cities\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionDartId\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"metroDmaId\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionDartId\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"metroDmaId\": \"<string>\"\n      }\n    ],\n    \"metros\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dmaId\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dmaId\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"postalCodes\": [\n      {\n        \"id\": \"<string>\",\n        \"code\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"code\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"excludeCountries\": \"<boolean>\"\n  },\n  \"technologyTargeting\": {\n    \"browsers\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"browserVersionId\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"browserVersionId\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\"\n      }\n    ],\n    \"platforms\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"operatingSystems\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"desktop\": \"<boolean>\",\n        \"mobile\": \"<boolean>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"desktop\": \"<boolean>\",\n        \"mobile\": \"<boolean>\"\n      }\n    ],\n    \"mobileCarriers\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"connectionTypes\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"operatingSystemVersions\": [\n      {\n        \"id\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\",\n        \"name\": \"<string>\",\n        \"operatingSystem\": {\n          \"dartId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"desktop\": \"<boolean>\",\n          \"mobile\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\",\n        \"name\": \"<string>\",\n        \"operatingSystem\": {\n          \"dartId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"desktop\": \"<boolean>\",\n          \"mobile\": \"<boolean>\"\n        }\n      }\n    ]\n  },\n  \"dayPartTargeting\": {\n    \"userLocalTime\": \"<boolean>\",\n    \"hoursOfDay\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"daysOfWeek\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"eventTagOverrides\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": \"<boolean>\",\n    \"landingPageId\": \"<string>\",\n    \"customClickThroughUrl\": \"<uri>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0ab3c9b7-b9d3-4851-9636-71b1ae574e7d",
+              "name": "Created ad.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Homepage Banner Ad\",\n  \"campaignId\": \"12345678\",\n  \"advertiserId\": \"87654321\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"active\": true,\n  \"startTime\": \"2026-01-01T00:00:00Z\",\n  \"endTime\": \"2026-03-31T23:59:59Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true,\n    \"kind\": \"example_value\"\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\",\n    \"computedClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"campaignIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8c92b79-0dc4-41ca-bfb4-d7dfebbb2a75",
+              "name": "Invalid request parameters or malformed request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Homepage Banner Ad\",\n  \"campaignId\": \"12345678\",\n  \"advertiserId\": \"87654321\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"active\": true,\n  \"startTime\": \"2026-01-01T00:00:00Z\",\n  \"endTime\": \"2026-03-31T23:59:59Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 745,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79beb996-f9df-44c7-b3df-9f65929bbc06",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Homepage Banner Ad\",\n  \"campaignId\": \"12345678\",\n  \"advertiserId\": \"87654321\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"active\": true,\n  \"startTime\": \"2026-01-01T00:00:00Z\",\n  \"endTime\": \"2026-03-31T23:59:59Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ad1824a-ea89-4d50-99ae-558ab0a53777",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Homepage Banner Ad\",\n  \"campaignId\": \"12345678\",\n  \"advertiserId\": \"87654321\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"active\": true,\n  \"startTime\": \"2026-01-01T00:00:00Z\",\n  \"endTime\": \"2026-03-31T23:59:59Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ca3b92e-9da7-49af-9892-7de4fad42fc9",
+          "name": "Google Campaign Manager Get an Ad",
+          "request": {
+            "name": "Google Campaign Manager Get an Ad",
+            "description": {
+              "content": "Gets one ad by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "ads",
+                ":adId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "adId",
+                  "description": "(Required) Ad ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/dfareporting https://www.googleapis.com/auth/dfatrafficking"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f294adb3-5787-437a-835e-cf8d2fa96399",
+              "name": "Ad details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true,\n    \"kind\": \"example_value\"\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\",\n    \"computedClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"campaignIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7a24336-323b-4986-a6cf-bd7c386f580e",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "195a1cc2-9a19-4c17-9c59-e1eeb3b36f1a",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28b0956d-7624-4749-a341-090cf50417f6",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 745,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e84ca45f-7527-451c-a6e9-0a22bf1f1a6e",
+          "name": "Google Campaign Manager Update an Ad",
+          "request": {
+            "name": "Google Campaign Manager Update an Ad",
+            "description": {
+              "content": "Updates an existing ad. All writable fields must be provided in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "ads",
+                ":adId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "adId",
+                  "description": "(Required) Ad ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"campaignId\": \"<string>\",\n  \"advertiserId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"active\": \"<boolean>\",\n  \"archived\": false,\n  \"comments\": \"<string>\",\n  \"dynamicClickTracker\": \"<boolean>\",\n  \"size\": {\n    \"id\": \"<string>\",\n    \"width\": \"<integer>\",\n    \"height\": \"<integer>\",\n    \"iab\": \"<boolean>\"\n  },\n  \"placementAssignments\": [\n    {\n      \"placementId\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"sslRequired\": \"<boolean>\"\n    },\n    {\n      \"placementId\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"sslRequired\": \"<boolean>\"\n    }\n  ],\n  \"creativeRotation\": {\n    \"type\": \"<string>\",\n    \"weightCalculationStrategy\": \"<string>\",\n    \"creativeAssignments\": [\n      {\n        \"creativeId\": \"<string>\",\n        \"active\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"sequence\": \"<integer>\",\n        \"clickThroughUrl\": {\n          \"defaultLandingPage\": \"<boolean>\",\n          \"landingPageId\": \"<string>\",\n          \"customClickThroughUrl\": \"<uri>\"\n        },\n        \"richMediaExitOverrides\": [\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          },\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          }\n        ]\n      },\n      {\n        \"creativeId\": \"<string>\",\n        \"active\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"sequence\": \"<integer>\",\n        \"clickThroughUrl\": {\n          \"defaultLandingPage\": \"<boolean>\",\n          \"landingPageId\": \"<string>\",\n          \"customClickThroughUrl\": \"<uri>\"\n        },\n        \"richMediaExitOverrides\": [\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          },\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          }\n        ]\n      }\n    ],\n    \"creativeOptimizationConfigurationId\": \"<string>\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"hardCutoff\": \"<boolean>\",\n    \"frequencyCap\": {\n      \"impressions\": \"<integer>\",\n      \"duration\": \"<integer>\"\n    }\n  },\n  \"geoTargeting\": {\n    \"countries\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"sslEnabled\": \"<boolean>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"sslEnabled\": \"<boolean>\"\n      }\n    ],\n    \"regions\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"cities\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionDartId\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"metroDmaId\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionDartId\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"metroDmaId\": \"<string>\"\n      }\n    ],\n    \"metros\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dmaId\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dmaId\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"postalCodes\": [\n      {\n        \"id\": \"<string>\",\n        \"code\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"code\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"excludeCountries\": \"<boolean>\"\n  },\n  \"technologyTargeting\": {\n    \"browsers\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"browserVersionId\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"browserVersionId\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\"\n      }\n    ],\n    \"platforms\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"operatingSystems\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"desktop\": \"<boolean>\",\n        \"mobile\": \"<boolean>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"desktop\": \"<boolean>\",\n        \"mobile\": \"<boolean>\"\n      }\n    ],\n    \"mobileCarriers\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"connectionTypes\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"operatingSystemVersions\": [\n      {\n        \"id\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\",\n        \"name\": \"<string>\",\n        \"operatingSystem\": {\n          \"dartId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"desktop\": \"<boolean>\",\n          \"mobile\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\",\n        \"name\": \"<string>\",\n        \"operatingSystem\": {\n          \"dartId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"desktop\": \"<boolean>\",\n          \"mobile\": \"<boolean>\"\n        }\n      }\n    ]\n  },\n  \"dayPartTargeting\": {\n    \"userLocalTime\": \"<boolean>\",\n    \"hoursOfDay\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"daysOfWeek\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"eventTagOverrides\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": \"<boolean>\",\n    \"landingPageId\": \"<string>\",\n    \"customClickThroughUrl\": \"<uri>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da1659fc-edc3-451c-ba4b-2fbc94e1cbba",
+              "name": "Updated ad.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true,\n    \"kind\": \"example_value\"\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\",\n    \"computedClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"campaignIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a86fae70-faec-49fa-a470-4e80f8210f11",
+              "name": "Invalid request parameters or malformed request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f08024e7-d008-477d-bdb3-5705ec099990",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd28253e-d017-4d73-af30-fcbad55ce48e",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f850f40a-7613-424b-96b8-6d2f32e43960",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac635a49-9a59-4f62-836f-f8be9dcf7167",
+          "name": "Google Campaign Manager Patch an Ad",
+          "request": {
+            "name": "Google Campaign Manager Patch an Ad",
+            "description": {
+              "content": "Updates an existing ad. This method supports patch semantics; only the fields specified in the request body are modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "ads",
+                ":adId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "adId",
+                  "description": "(Required) Ad ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"campaignId\": \"<string>\",\n  \"advertiserId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"active\": \"<boolean>\",\n  \"archived\": false,\n  \"comments\": \"<string>\",\n  \"dynamicClickTracker\": \"<boolean>\",\n  \"size\": {\n    \"id\": \"<string>\",\n    \"width\": \"<integer>\",\n    \"height\": \"<integer>\",\n    \"iab\": \"<boolean>\"\n  },\n  \"placementAssignments\": [\n    {\n      \"placementId\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"sslRequired\": \"<boolean>\"\n    },\n    {\n      \"placementId\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"sslRequired\": \"<boolean>\"\n    }\n  ],\n  \"creativeRotation\": {\n    \"type\": \"<string>\",\n    \"weightCalculationStrategy\": \"<string>\",\n    \"creativeAssignments\": [\n      {\n        \"creativeId\": \"<string>\",\n        \"active\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"sequence\": \"<integer>\",\n        \"clickThroughUrl\": {\n          \"defaultLandingPage\": \"<boolean>\",\n          \"landingPageId\": \"<string>\",\n          \"customClickThroughUrl\": \"<uri>\"\n        },\n        \"richMediaExitOverrides\": [\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          },\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          }\n        ]\n      },\n      {\n        \"creativeId\": \"<string>\",\n        \"active\": \"<boolean>\",\n        \"weight\": \"<integer>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"sequence\": \"<integer>\",\n        \"clickThroughUrl\": {\n          \"defaultLandingPage\": \"<boolean>\",\n          \"landingPageId\": \"<string>\",\n          \"customClickThroughUrl\": \"<uri>\"\n        },\n        \"richMediaExitOverrides\": [\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          },\n          {\n            \"exitId\": \"<string>\",\n            \"clickThroughUrl\": {\n              \"defaultLandingPage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"landingPageId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customClickThroughUrl\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"enabled\": \"<boolean>\"\n          }\n        ]\n      }\n    ],\n    \"creativeOptimizationConfigurationId\": \"<string>\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"hardCutoff\": \"<boolean>\",\n    \"frequencyCap\": {\n      \"impressions\": \"<integer>\",\n      \"duration\": \"<integer>\"\n    }\n  },\n  \"geoTargeting\": {\n    \"countries\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"sslEnabled\": \"<boolean>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"sslEnabled\": \"<boolean>\"\n      }\n    ],\n    \"regions\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"cities\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionDartId\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"metroDmaId\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"regionDartId\": \"<string>\",\n        \"regionCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"metroDmaId\": \"<string>\"\n      }\n    ],\n    \"metros\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dmaId\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dmaId\": \"<string>\",\n        \"metroCode\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"postalCodes\": [\n      {\n        \"id\": \"<string>\",\n        \"code\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"code\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"excludeCountries\": \"<boolean>\"\n  },\n  \"technologyTargeting\": {\n    \"browsers\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"browserVersionId\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"browserVersionId\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\"\n      }\n    ],\n    \"platforms\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"operatingSystems\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"desktop\": \"<boolean>\",\n        \"mobile\": \"<boolean>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"desktop\": \"<boolean>\",\n        \"mobile\": \"<boolean>\"\n      }\n    ],\n    \"mobileCarriers\": [\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      },\n      {\n        \"dartId\": \"<string>\",\n        \"name\": \"<string>\",\n        \"countryDartId\": \"<string>\",\n        \"countryCode\": \"<string>\"\n      }\n    ],\n    \"connectionTypes\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"operatingSystemVersions\": [\n      {\n        \"id\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\",\n        \"name\": \"<string>\",\n        \"operatingSystem\": {\n          \"dartId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"desktop\": \"<boolean>\",\n          \"mobile\": \"<boolean>\"\n        }\n      },\n      {\n        \"id\": \"<string>\",\n        \"majorVersion\": \"<string>\",\n        \"minorVersion\": \"<string>\",\n        \"name\": \"<string>\",\n        \"operatingSystem\": {\n          \"dartId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"desktop\": \"<boolean>\",\n          \"mobile\": \"<boolean>\"\n        }\n      }\n    ]\n  },\n  \"dayPartTargeting\": {\n    \"userLocalTime\": \"<boolean>\",\n    \"hoursOfDay\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"daysOfWeek\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"eventTagOverrides\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": \"<boolean>\",\n    \"landingPageId\": \"<string>\",\n    \"customClickThroughUrl\": \"<uri>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3bcba182-44b9-4ea6-9ae9-10cbca68dd41",
+              "name": "Patched ad.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true,\n    \"kind\": \"example_value\"\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\",\n    \"computedClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"campaignIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a66e781-743b-40b7-947a-ca3f72d2cf89",
+              "name": "Invalid request parameters or malformed request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d65ab114-6490-4804-9e08-0695643b7cf7",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92ce4929-5e8c-4528-8724-07a21e613983",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bb7654e-b7bc-4cfb-9695-445b7dae3bbf",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "ads",
+                    ":adId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adId",
+                      "description": "(Required) Ad ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"campaignId\": \"500123\",\n  \"advertiserId\": \"500123\",\n  \"type\": \"AD_SERVING_STANDARD_AD\",\n  \"startTime\": \"2026-01-15T10:30:00Z\",\n  \"endTime\": \"2026-01-15T10:30:00Z\",\n  \"active\": true,\n  \"archived\": true,\n  \"comments\": \"example_value\",\n  \"dynamicClickTracker\": true,\n  \"size\": {\n    \"id\": \"abc123\",\n    \"width\": 10,\n    \"height\": 10,\n    \"iab\": true\n  },\n  \"creativeRotation\": {\n    \"type\": \"CREATIVE_ROTATION_TYPE_SEQUENTIAL\",\n    \"weightCalculationStrategy\": \"WEIGHT_STRATEGY_EQUAL\",\n    \"creativeOptimizationConfigurationId\": \"500123\"\n  },\n  \"deliverySchedule\": {\n    \"impressionRatio\": \"example_value\",\n    \"priority\": \"AD_PRIORITY_01\",\n    \"hardCutoff\": true,\n    \"frequencyCap\": {\n      \"impressions\": 10,\n      \"duration\": 10\n    }\n  },\n  \"geoTargeting\": {\n    \"excludeCountries\": true\n  },\n  \"technologyTargeting\": {},\n  \"dayPartTargeting\": {\n    \"userLocalTime\": true\n  },\n  \"clickThroughUrl\": {\n    \"defaultLandingPage\": true,\n    \"landingPageId\": \"500123\",\n    \"customClickThroughUrl\": \"https://www.example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 328,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dfareporting.googleapis.com/dfareporting/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/dfareporting https://www.googleapis.com/auth/dfatrafficking"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "988e25b3-1ca8-425d-a4f9-c7f9debd028e",
+    "name": "Google Campaign Manager Campaign Manager 360 Ads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Campaign Manager 360 API (formerly DoubleClick Campaign Manager) provides programmatic access to manage digital advertising campaigns, ads, placements, and reports. Use this API to automate trafficking workflows, create and manage campaign structures, configure ad placements across publisher sites, and generate comprehensive reporting data for campaign performance analysis. The API supports the full campaign lifecycle from creation through reporting and optimization.\n\nContact Support:\n Name: Google Campaign Manager 360 API Support",
+      "type": "text/plain"
+    }
+  }
+}

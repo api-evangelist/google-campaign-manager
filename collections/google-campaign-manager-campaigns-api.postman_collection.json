@@ -1,0 +1,1902 @@
+{
+  "item": [
+    {
+      "id": "265acbc3-64eb-4ecf-b8c9-ea129a38fc41",
+      "name": "Campaigns",
+      "description": {
+        "content": "Manage advertising campaigns. Campaigns serve as top-level organizational containers that group ads, placements, and creatives under a single advertiser with shared start and end dates, budgets, and targeting configurations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f78e00d2-53db-4cef-a3c7-cb835146763c",
+          "name": "Google Campaign Manager List Campaigns",
+          "request": {
+            "name": "Google Campaign Manager List Campaigns",
+            "description": {
+              "content": "Retrieves a list of campaigns, possibly filtered. Results are returned in descending order by last modified time. Use query parameters to filter by advertiser, archive status, search string, or specific campaign IDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "advertiserIds",
+                  "value": "<string>",
+                  "description": "Select only campaigns that belong to these advertisers."
+                },
+                {
+                  "disabled": false,
+                  "key": "advertiserIds",
+                  "value": "<string>",
+                  "description": "Select only campaigns that belong to these advertisers."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Select only campaigns with these IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Select only campaigns with these IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchString",
+                  "value": "<string>",
+                  "description": "Search string for filtering results. Matches against campaign name and ID fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "false",
+                  "description": "Select only archived campaigns. Default is false."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortField",
+                  "value": "ID",
+                  "description": "Field by which to sort the list."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "ASCENDING",
+                  "description": "Order of sorted results."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "1000",
+                  "description": "Maximum number of results to return. Default is 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Value of the nextPageToken from the previous result page."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/dfareporting https://www.googleapis.com/auth/dfatrafficking"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "27edb4d7-19c1-4222-ae27-b6d8c4989b1f",
+              "name": "List of campaigns.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "ID"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextPageToken\": \"example_value\",\n  \"kind\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3945ac08-321d-49b5-ac1f-c18e6b3f9cd9",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "ID"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5036,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b6b3cf1-0032-483e-8987-495c24be2b7a",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advertiserIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "ID"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5036,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e09938af-fce2-47d2-af9c-6ea61889c476",
+          "name": "Google Campaign Manager Create a Campaign",
+          "request": {
+            "name": "Google Campaign Manager Create a Campaign",
+            "description": {
+              "content": "Inserts a new campaign. The campaign is created under the specified advertiser with the provided configuration. Required fields include name, advertiserId, startDate, and endDate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"advertiserId\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"advertiserGroupId\": \"<string>\",\n  \"archived\": false,\n  \"comment\": \"<string>\",\n  \"billingInvoiceCode\": \"<string>\",\n  \"defaultLandingPageId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"audienceSegmentGroups\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"audienceSegments\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"audienceSegments\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        }\n      ]\n    }\n  ],\n  \"eventTagOverrides\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"<string>\",\n    \"overrideInheritedSuffix\": \"<boolean>\"\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"<string>\",\n    \"overrideInheritedEventTag\": \"<boolean>\"\n  },\n  \"creativeGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"optimizationActivitys\": [\n      {\n        \"floodlightActivityId\": \"<string>\",\n        \"floodlightActivityIdDimensionValue\": {\n          \"dimensionName\": \"<string>\",\n          \"value\": \"<string>\",\n          \"id\": \"<string>\",\n          \"matchType\": \"<string>\"\n        },\n        \"weight\": \"<integer>\"\n      },\n      {\n        \"floodlightActivityId\": \"<string>\",\n        \"floodlightActivityIdDimensionValue\": {\n          \"dimensionName\": \"<string>\",\n          \"value\": \"<string>\",\n          \"id\": \"<string>\",\n          \"matchType\": \"<string>\"\n        },\n        \"weight\": \"<integer>\"\n      }\n    ],\n    \"optimizationModel\": \"<string>\"\n  },\n  \"additionalCreativeOptimizationConfigurations\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optimizationActivitys\": [\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        },\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        }\n      ],\n      \"optimizationModel\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optimizationActivitys\": [\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        },\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        }\n      ],\n      \"optimizationModel\": \"<string>\"\n    }\n  ],\n  \"adBlockingConfiguration\": {\n    \"enabled\": \"<boolean>\",\n    \"overrideClickThroughUrl\": \"<uri>\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"<string>\",\n    \"linkStatus\": \"<string>\",\n    \"partnerCampaignId\": \"<string>\"\n  },\n  \"euPoliticalAdsDeclaration\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65faceb5-ac75-483e-b0bd-eab91eb1fd25",
+              "name": "Created campaign.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Q1 2026 Brand Awareness Campaign\",\n  \"advertiserId\": \"12345678\",\n  \"startDate\": \"2026-01-01\",\n  \"endDate\": \"2026-03-31\",\n  \"defaultLandingPageId\": \"98765432\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\",\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be951e93-10f5-40af-bfb5-88bef5cdf050",
+              "name": "Invalid request parameters or malformed request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Q1 2026 Brand Awareness Campaign\",\n  \"advertiserId\": \"12345678\",\n  \"startDate\": \"2026-01-01\",\n  \"endDate\": \"2026-03-31\",\n  \"defaultLandingPageId\": \"98765432\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5036,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c79f376-d65f-4696-913d-cafc82a9931a",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Q1 2026 Brand Awareness Campaign\",\n  \"advertiserId\": \"12345678\",\n  \"startDate\": \"2026-01-01\",\n  \"endDate\": \"2026-03-31\",\n  \"defaultLandingPageId\": \"98765432\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c944478-655a-40ed-b037-24a544202550",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Q1 2026 Brand Awareness Campaign\",\n  \"advertiserId\": \"12345678\",\n  \"startDate\": \"2026-01-01\",\n  \"endDate\": \"2026-03-31\",\n  \"defaultLandingPageId\": \"98765432\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5adbcbdc-357b-42ca-b5f2-64f97ac8b721",
+          "name": "Google Campaign Manager Get a Campaign",
+          "request": {
+            "name": "Google Campaign Manager Get a Campaign",
+            "description": {
+              "content": "Gets one campaign by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "campaigns",
+                ":campaignId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaignId",
+                  "description": "(Required) Campaign ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://www.googleapis.com/auth/dfareporting https://www.googleapis.com/auth/dfatrafficking"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://oauth2.googleapis.com/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.google.com/o/oauth2/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "47507986-f534-4a83-9153-3e656afcc0d7",
+              "name": "Campaign details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\",\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbd06768-b3af-4f9a-ac43-79da1a94e57c",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "630d41a0-a6b1-412e-a71f-892b39b80dcb",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08f0ed99-ee75-4f13-a002-4d7cc0bee3c5",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5036,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b63aa5e8-e6b8-4dea-bba5-20972fd3b6f8",
+          "name": "Google Campaign Manager Update a Campaign",
+          "request": {
+            "name": "Google Campaign Manager Update a Campaign",
+            "description": {
+              "content": "Updates an existing campaign. All writable fields must be provided in the request body; unset writable fields will be reset to their default values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "campaigns",
+                ":campaignId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaignId",
+                  "description": "(Required) Campaign ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"advertiserId\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"advertiserGroupId\": \"<string>\",\n  \"archived\": false,\n  \"comment\": \"<string>\",\n  \"billingInvoiceCode\": \"<string>\",\n  \"defaultLandingPageId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"audienceSegmentGroups\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"audienceSegments\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"audienceSegments\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        }\n      ]\n    }\n  ],\n  \"eventTagOverrides\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"<string>\",\n    \"overrideInheritedSuffix\": \"<boolean>\"\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"<string>\",\n    \"overrideInheritedEventTag\": \"<boolean>\"\n  },\n  \"creativeGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"optimizationActivitys\": [\n      {\n        \"floodlightActivityId\": \"<string>\",\n        \"floodlightActivityIdDimensionValue\": {\n          \"dimensionName\": \"<string>\",\n          \"value\": \"<string>\",\n          \"id\": \"<string>\",\n          \"matchType\": \"<string>\"\n        },\n        \"weight\": \"<integer>\"\n      },\n      {\n        \"floodlightActivityId\": \"<string>\",\n        \"floodlightActivityIdDimensionValue\": {\n          \"dimensionName\": \"<string>\",\n          \"value\": \"<string>\",\n          \"id\": \"<string>\",\n          \"matchType\": \"<string>\"\n        },\n        \"weight\": \"<integer>\"\n      }\n    ],\n    \"optimizationModel\": \"<string>\"\n  },\n  \"additionalCreativeOptimizationConfigurations\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optimizationActivitys\": [\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        },\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        }\n      ],\n      \"optimizationModel\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optimizationActivitys\": [\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        },\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        }\n      ],\n      \"optimizationModel\": \"<string>\"\n    }\n  ],\n  \"adBlockingConfiguration\": {\n    \"enabled\": \"<boolean>\",\n    \"overrideClickThroughUrl\": \"<uri>\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"<string>\",\n    \"linkStatus\": \"<string>\",\n    \"partnerCampaignId\": \"<string>\"\n  },\n  \"euPoliticalAdsDeclaration\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "02888647-cdff-41d1-8d13-7a46753e5fbd",
+              "name": "Updated campaign.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\",\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e384f68-6454-498e-bc93-68af6d5a0dcd",
+              "name": "Invalid request parameters or malformed request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce52d3e0-3076-479f-865a-68f831fb5e0d",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c42b68c8-800c-43e4-b564-66b1944a16f6",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d8be6a3-f049-4c95-9eee-1f9be097ab2e",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c49c6d0-98b9-4d6b-9b84-94cee43af1f1",
+          "name": "Google Campaign Manager Patch a Campaign",
+          "request": {
+            "name": "Google Campaign Manager Patch a Campaign",
+            "description": {
+              "content": "Updates an existing campaign. This method supports patch semantics; only the fields specified in the request body are modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "userprofiles",
+                ":profileId",
+                "campaigns",
+                ":campaignId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profileId",
+                  "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaignId",
+                  "description": "(Required) Campaign ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"advertiserId\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"advertiserGroupId\": \"<string>\",\n  \"archived\": false,\n  \"comment\": \"<string>\",\n  \"billingInvoiceCode\": \"<string>\",\n  \"defaultLandingPageId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"audienceSegmentGroups\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"audienceSegments\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"audienceSegments\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"allocation\": \"<integer>\"\n        }\n      ]\n    }\n  ],\n  \"eventTagOverrides\": [\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"<string>\",\n    \"overrideInheritedSuffix\": \"<boolean>\"\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"<string>\",\n    \"overrideInheritedEventTag\": \"<boolean>\"\n  },\n  \"creativeGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"optimizationActivitys\": [\n      {\n        \"floodlightActivityId\": \"<string>\",\n        \"floodlightActivityIdDimensionValue\": {\n          \"dimensionName\": \"<string>\",\n          \"value\": \"<string>\",\n          \"id\": \"<string>\",\n          \"matchType\": \"<string>\"\n        },\n        \"weight\": \"<integer>\"\n      },\n      {\n        \"floodlightActivityId\": \"<string>\",\n        \"floodlightActivityIdDimensionValue\": {\n          \"dimensionName\": \"<string>\",\n          \"value\": \"<string>\",\n          \"id\": \"<string>\",\n          \"matchType\": \"<string>\"\n        },\n        \"weight\": \"<integer>\"\n      }\n    ],\n    \"optimizationModel\": \"<string>\"\n  },\n  \"additionalCreativeOptimizationConfigurations\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optimizationActivitys\": [\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        },\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        }\n      ],\n      \"optimizationModel\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optimizationActivitys\": [\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        },\n        {\n          \"floodlightActivityId\": \"<string>\",\n          \"floodlightActivityIdDimensionValue\": {\n            \"dimensionName\": \"<string>\",\n            \"value\": \"<string>\",\n            \"id\": \"<string>\",\n            \"matchType\": \"<string>\"\n          },\n          \"weight\": \"<integer>\"\n        }\n      ],\n      \"optimizationModel\": \"<string>\"\n    }\n  ],\n  \"adBlockingConfiguration\": {\n    \"enabled\": \"<boolean>\",\n    \"overrideClickThroughUrl\": \"<uri>\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"<string>\",\n    \"linkStatus\": \"<string>\",\n    \"partnerCampaignId\": \"<string>\"\n  },\n  \"euPoliticalAdsDeclaration\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44aaf39b-73bd-4dfd-82ee-f3ea47a03da9",
+              "name": "Patched campaign.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"id\": \"abc123\",\n  \"accountId\": \"500123\",\n  \"subaccountId\": \"500123\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\",\n  \"kind\": \"example_value\",\n  \"createInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"lastModifiedInfo\": {\n    \"time\": \"example_value\"\n  },\n  \"idDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  },\n  \"advertiserIdDimensionValue\": {\n    \"dimensionName\": \"example_value\",\n    \"value\": \"example_value\",\n    \"id\": \"abc123\",\n    \"matchType\": \"EXACT\",\n    \"etag\": \"example_value\",\n    \"kind\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d38ce6a-1aa2-476f-8ad0-511e57380879",
+              "name": "Invalid request parameters or malformed request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd636e23-a5d1-448d-bd05-c7d53cfa33f4",
+              "name": "Authentication required or invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10a4f694-cef3-4aa5-9925-c0965517a37a",
+              "name": "Insufficient permissions for the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9fea7515-2b1d-4027-b9c3-36b2d95453c9",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userprofiles",
+                    ":profileId",
+                    "campaigns",
+                    ":campaignId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profileId",
+                      "description": "(Required) The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaignId",
+                      "description": "(Required) Campaign ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"advertiserId\": \"500123\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"advertiserGroupId\": \"500123\",\n  \"archived\": true,\n  \"comment\": \"example_value\",\n  \"billingInvoiceCode\": \"example_value\",\n  \"defaultLandingPageId\": \"500123\",\n  \"externalId\": \"500123\",\n  \"clickThroughUrlSuffixProperties\": {\n    \"clickThroughUrlSuffix\": \"https://www.example.com\",\n    \"overrideInheritedSuffix\": true\n  },\n  \"defaultClickThroughEventTagProperties\": {\n    \"defaultClickThroughEventTagId\": \"500123\",\n    \"overrideInheritedEventTag\": true\n  },\n  \"creativeOptimizationConfiguration\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"optimizationModel\": \"CLICK\"\n  },\n  \"adBlockingConfiguration\": {\n    \"enabled\": true,\n    \"overrideClickThroughUrl\": \"https://www.example.com\"\n  },\n  \"measurementPartnerLink\": {\n    \"measurementPartner\": \"NONE\",\n    \"linkStatus\": \"MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED\",\n    \"partnerCampaignId\": \"500123\"\n  },\n  \"euPoliticalAdsDeclaration\": \"EU_POLITICAL_ADS_DECLARATION_UNSPECIFIED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1046,\n    \"message\": \"string\",\n    \"status\": \"string\",\n    \"errors\": [\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"domain\": \"string\",\n        \"reason\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dfareporting.googleapis.com/dfareporting/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/dfareporting https://www.googleapis.com/auth/dfatrafficking"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9b8c207f-5002-4651-90c0-43449982d815",
+    "name": "Google Campaign Manager Campaign Manager 360 Ads Campaigns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Campaign Manager 360 API (formerly DoubleClick Campaign Manager) provides programmatic access to manage digital advertising campaigns, ads, placements, and reports. Use this API to automate trafficking workflows, create and manage campaign structures, configure ad placements across publisher sites, and generate comprehensive reporting data for campaign performance analysis. The API supports the full campaign lifecycle from creation through reporting and optimization.\n\nContact Support:\n Name: Google Campaign Manager 360 API Support",
+      "type": "text/plain"
+    }
+  }
+}

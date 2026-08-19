@@ -1,0 +1,121 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developers.google.com/doubleclick-advertisers/deprecation,
+  https://developers.google.com/doubleclick-advertisers/rel_notes,
+  https://discovery.googleapis.com/discovery/v1/apis?name=dfareporting,
+  live probes of the v4 and v5 base paths
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  Versioning, deprecation and support posture for the Campaign Manager 360 API
+  (dfareporting). Google publishes a written deprecation policy and a dated
+  release-notes stream, and exposes the version set machine-readably through the
+  Discovery directory — so the lifecycle of this API can be verified without
+  reading prose.
+versioning:
+  style: uri-path
+  pattern: https://dfareporting.googleapis.com/dfareporting/{version}/
+  current: v5
+  discovery_directory: https://discovery.googleapis.com/discovery/v1/apis?name=dfareporting
+  concurrent_versions_supported: 3
+  note: >-
+    The Discovery directory marks exactly one version "preferred": v5. That flag
+    is the machine-readable answer to "which version should I call".
+deprecation:
+  policy_published: true
+  policy_url: https://developers.google.com/doubleclick-advertisers/deprecation
+  notice_period: ~7 months between deprecation announcement and sunset
+  sunset_headers: false
+  rfc8594: false
+  note: >-
+    Google does NOT emit RFC 8594 Sunset or Deprecation response headers on this
+    API. The deprecation signal is out-of-band — a page and a release-notes
+    entry. A client cannot learn from a response that its version is going away.
+  behaviour_after_sunset:
+    - status: 403
+      phase: shutdown window
+      description: Deprecated version returns Forbidden with a message that the version is no longer supported.
+    - status: 404
+      phase: fully deactivated
+      description: The version path stops existing.
+versions:
+  - version: v5
+    status: current
+    preferred: true
+    base: https://dfareporting.googleapis.com/dfareporting/v5/
+    discovery: https://dfareporting.googleapis.com/$discovery/rest?version=v5
+    discovery_revision: '20260721'
+    deprecation_date: null
+    sunset_date: null
+    probe:
+      url: https://dfareporting.googleapis.com/dfareporting/v5/userprofiles
+      status: 401
+      checked: '2026-08-13'
+      note: 401 UNAUTHENTICATED — the surface is live and simply requires OAuth.
+  - version: v4
+    status: sunset
+    preferred: false
+    base: https://dfareporting.googleapis.com/dfareporting/v4/
+    discovery: null
+    probe:
+      url: https://dfareporting.googleapis.com/dfareporting/v4/userprofiles
+      status: 404
+      checked: '2026-08-13'
+      note: >-
+        Fully deactivated. The Discovery Document for v4 is also gone —
+        https://dfareporting.googleapis.com/$discovery/rest?version=v4 returns
+        404 NOT_FOUND, and v4 no longer appears in the Discovery directory.
+    consequence: >-
+      The four OpenAPI documents in this repository describe v4 and therefore
+      describe a dead surface. They are kept as a historical record; the
+      authoritative contract is the v5 Discovery Document in discovery/.
+  - version: v3.5
+    status: legacy
+    preferred: false
+    discovery: https://dfareporting.googleapis.com/$discovery/rest?version=v3.5
+    probe:
+      url: https://dfareporting.googleapis.com/$discovery/rest?version=v3.5
+      status: 200
+      checked: '2026-08-13'
+      note: >-
+        Still listed in the Discovery directory and still serves a 24KB Discovery
+        Document, but marked preferred:false. The matching Ruby gem
+        google-apis-dfareporting_v3_5 has not shipped since 2022-01-10.
+deprecated_operations:
+  - operationId: patchReport
+    path: /userprofiles/{profileId}/reports/{reportId}
+    method: patch
+    removed_in: v5
+    source: https://developers.google.com/doubleclick-advertisers/rel_notes
+    note: The patch method was removed from the Reports resource in v5.
+removed_fields:
+  - resource: Creatives
+    fields: [dynamicAssetSelection, creativeAssetSelection]
+    removed_in: v5
+  - resource: Reports
+    fields: [crossDimensionReachCriteria, enableAllDimensionCombinations]
+    removed_in: v5
+status_page:
+  published: true
+  url: https://status.cloud.google.com/
+  note: >-
+    Google Cloud's status dashboard is the closest published status surface. It
+    does not carry a dfareporting-specific component, so an outage of this API
+    is not independently reportable there. Campaign Manager 360 platform
+    incidents are communicated through the product UI and the dfa-api group.
+sla:
+  published: false
+  note: >-
+    No SLA is published for the Campaign Manager 360 API. Access is bundled with
+    a Campaign Manager 360 contract rather than sold as an API product.
+support:
+  - url: https://developers.google.com/doubleclick-advertisers/get-support
+    type: support-page
+  - url: https://groups.google.com/g/dfa-api
+    type: forum
+  - url: https://support.google.com/campaignmanager
+    type: help-center
+release_notes:
+  url: https://developers.google.com/doubleclick-advertisers/rel_notes
+  cadence: dated entries, most recent update 2026-06-09

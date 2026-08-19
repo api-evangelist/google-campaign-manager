@@ -1,0 +1,134 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of the API host, the docs host and the OAuth host
+provider: Google Campaign Manager
+providerId: google-campaign-manager
+description: >-
+  /.well-known/ probe across every host this provider's apis.yml and OpenAPI
+  servers[] name, plus the OAuth host the authentication artifact depends on.
+  The API host itself (dfareporting.googleapis.com) serves NOTHING under
+  /.well-known/ — every path 404s with an HTML error page. The real documents
+  live on Google's shared identity and corporate hosts: accounts.google.com
+  serves the OIDC discovery document and an RFC 8414 authorization-server
+  metadata document, and www.google.com serves the corporate security.txt that
+  covers the whole google.com estate including this API's developer surface.
+hosts:
+  - host: dfareporting.googleapis.com
+    role: api-base
+    hits: 0
+  - host: developers.google.com
+    role: docs
+    hits: 0
+  - host: accounts.google.com
+    role: oauth-authorization-server
+    hits: 2
+  - host: www.google.com
+    role: corporate
+    hits: 1
+probes:
+  - host: dfareporting.googleapis.com
+    path: /.well-known/security.txt
+    url: https://dfareporting.googleapis.com/.well-known/security.txt
+    status: 404
+    file: null
+  - host: dfareporting.googleapis.com
+    path: /.well-known/openid-configuration
+    url: https://dfareporting.googleapis.com/.well-known/openid-configuration
+    status: 404
+    file: null
+  - host: dfareporting.googleapis.com
+    path: /.well-known/oauth-authorization-server
+    url: https://dfareporting.googleapis.com/.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - host: dfareporting.googleapis.com
+    path: /.well-known/oauth-protected-resource
+    url: https://dfareporting.googleapis.com/.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - host: dfareporting.googleapis.com
+    path: /.well-known/api-catalog
+    url: https://dfareporting.googleapis.com/.well-known/api-catalog
+    status: 404
+    file: null
+  - host: dfareporting.googleapis.com
+    path: /.well-known/ai-plugin.json
+    url: https://dfareporting.googleapis.com/.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - host: developers.google.com
+    path: /.well-known/security.txt
+    url: https://developers.google.com/.well-known/security.txt
+    status: 404
+    file: null
+    note: Returns the site's 45KB HTML 404 shell, not a document.
+  - host: developers.google.com
+    path: /.well-known/openid-configuration
+    url: https://developers.google.com/.well-known/openid-configuration
+    status: 404
+    file: null
+  - host: developers.google.com
+    path: /.well-known/oauth-authorization-server
+    url: https://developers.google.com/.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - host: developers.google.com
+    path: /.well-known/api-catalog
+    url: https://developers.google.com/.well-known/api-catalog
+    status: 404
+    file: null
+  - host: developers.google.com
+    path: /.well-known/ai-plugin.json
+    url: https://developers.google.com/.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - host: accounts.google.com
+    path: /.well-known/openid-configuration
+    url: https://accounts.google.com/.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: well-known/google-campaign-manager-openid-configuration.json
+    issuer: https://accounts.google.com
+  - host: accounts.google.com
+    path: /.well-known/oauth-authorization-server
+    url: https://accounts.google.com/.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: well-known/google-campaign-manager-oauth-authorization-server.json
+    issuer: https://accounts.google.com
+  - host: accounts.google.com
+    path: /.well-known/security.txt
+    url: https://accounts.google.com/.well-known/security.txt
+    status: 404
+    file: null
+  - host: accounts.google.com
+    path: /.well-known/oauth-protected-resource
+    url: https://accounts.google.com/.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - host: accounts.google.com
+    path: /.well-known/api-catalog
+    url: https://accounts.google.com/.well-known/api-catalog
+    status: 404
+    file: null
+  - host: www.google.com
+    path: /.well-known/security.txt
+    url: https://www.google.com/.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    file: well-known/google-campaign-manager-security.txt
+summary:
+  paths_probed: 18
+  hits: 3
+  documents_saved: 3
+  api_host_hits: 0
+notes:
+  - >-
+    The absence on dfareporting.googleapis.com is the substantive finding: an
+    agent that starts at the API base URL and follows /.well-known/ discovery
+    finds nothing. Every discovery affordance for this API is out-of-band —
+    the Google Discovery Document, and Google's shared identity host.
+  - >-
+    accounts.google.com does NOT advertise RFC 9728 protected-resource metadata,
+    so there is no machine-readable link from the API host back to its
+    authorization server.
