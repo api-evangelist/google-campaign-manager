@@ -8,6 +8,18 @@ description: >-
   cross-media reach reports. Access is OAuth 2.0 only and every path is scoped to a Campaign Manager 360
   user profile. The current version is v5; v4 has been fully sunset. Google publishes a Discovery Document
   rather than an OpenAPI, plus Data Transfer v2.0 for bulk event-level delivery to Cloud Storage.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: contact-sales
   onboarding: sales-assisted
@@ -750,6 +762,9 @@ apis:
   - type: JSONLD
     url: json-ld/google-campaign-manager-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/google-campaign-manager-capability-edges.yml
+    name: Google Campaign Manager Business Capability Map
   - type: AgenticAccess
     url: agentic-access/google-campaign-manager-agentic-access.yml
   - type: VulnerabilityDisclosure
