@@ -762,6 +762,8 @@ apis:
   - type: JSONLD
     url: json-ld/google-campaign-manager-context.jsonld
 common:
+  - type: Website
+    url: https://www.google.com/
   - type: CapabilityMap
     url: capabilities/google-campaign-manager-capability-edges.yml
     name: Google Campaign Manager Business Capability Map
@@ -915,3 +917,5 @@ x-enrichment:
   pass: local-v1
 x-coverage:
   state: covered
+x-parent: google
+x-relationship: product
