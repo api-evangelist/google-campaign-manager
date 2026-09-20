@@ -1,0 +1,46 @@
+slug: google-campaign-manager
+provider: Google Campaign Manager
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Ads
+  spec_file: google-campaign-manager-ads-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: insertAd  Create an Ad; 'ad-serving, trafficking and measurement platform for advertisers';
+    schemas GeoTargeting, CreativeRotation
+  reason: Managing digital ads with targeting and delivery schedules is digital marketing / paid media
+    execution.
+- tag: Campaigns
+  spec_file: google-campaign-manager-campaigns-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: insertCampaign  Create a Campaign; 'create and manage campaign structures'; schemas AudienceSegment,
+    CreativeOptimizationConfiguration
+  reason: Digital advertising campaign lifecycle management — digital marketing (paid media) execution;
+    also adjacent to demand generation campaigns.
+- tag: Placements
+  spec_file: google-campaign-manager-placements-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: generatePlacementTags  Generate Placement Tags; 'configure ad placements across publisher
+    sites'
+  reason: Ad placement configuration and tag generation across publisher inventory is paid media / digital
+    marketing execution.
