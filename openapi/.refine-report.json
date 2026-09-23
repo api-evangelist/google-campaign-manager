@@ -1,10 +1,7 @@
 {
   "provider": "google-campaign-manager",
   "sources": [
-    "google-campaign-manager-ads-api-openapi.yml",
-    "google-campaign-manager-campaigns-api-openapi.yml",
-    "google-campaign-manager-placements-api-openapi.yml",
-    "google-campaign-manager-reports-api-openapi.yml"
+    "_original/google-campaign-manager-openapi.yml"
   ],
   "outputs": [
     "google-campaign-manager-ads-api-openapi.yml",
@@ -16,11 +13,14 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "google-campaign-manager-ads-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-campaign-manager-campaigns-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-campaign-manager-placements-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-campaign-manager-reports-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "google-campaign-manager-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "google-campaign-manager-ads-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-campaign-manager-campaigns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-campaign-manager-placements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-campaign-manager-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

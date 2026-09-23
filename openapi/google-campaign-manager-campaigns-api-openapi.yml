@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Campaign Manager Campaign Manager 360 Ads Campaigns API
+  title: Google Campaign Manager Campaign Manager 360 Campaigns API
   description: The Campaign Manager 360 API (formerly DoubleClick Campaign Manager) provides programmatic access to manage digital advertising campaigns, ads, placements, and reports. Use this API to automate trafficking workflows, create and manage campaign structures, configure ad placements across publisher sites, and generate comprehensive reporting data for campaign performance analysis. The API supports the full campaign lifecycle from creation through reporting and optimization.
   version: v4
   contact:
@@ -232,39 +232,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DimensionValue:
+    CampaignsListResponse:
       type: object
-      description: A dimension value used for filtering and reporting.
+      description: Campaign list response.
       properties:
-        dimensionName:
+        campaigns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Campaign'
+          example: []
+        nextPageToken:
           type: string
-          description: The name of the dimension.
-          example: example_value
-        value:
-          type: string
-          description: The value of the dimension.
-          example: example_value
-        id:
-          type: string
-          description: The ID associated with the value.
-          example: abc123
-        matchType:
-          type: string
-          description: Match type for filtering.
-          enum:
-          - EXACT
-          - BEGINS_WITH
-          - CONTAINS
-          - WILDCARD_EXPRESSION
-          example: EXACT
-        etag:
-          type: string
-          readOnly: true
+          description: Pagination token to be used in a subsequent request to retrieve the next page.
           example: example_value
         kind:
           type: string
           readOnly: true
-          default: dfareporting#dimensionValue
+          default: dfareporting#campaignsListResponse
           example: example_value
     AudienceSegment:
       type: object
@@ -284,6 +268,175 @@ components:
           minimum: 1
           maximum: 1000
           example: 10
+    AudienceSegmentGroup:
+      type: object
+      description: Audience segment group for targeting.
+      properties:
+        id:
+          type: string
+          description: ID of this audience segment group.
+          example: abc123
+        name:
+          type: string
+          description: Name of this audience segment group.
+          example: Example Title
+        audienceSegments:
+          type: array
+          description: Audience segments assigned to this group.
+          items:
+            $ref: '#/components/schemas/AudienceSegment'
+          example: []
+    ClickThroughUrlSuffixProperties:
+      type: object
+      description: Click-through URL suffix properties.
+      properties:
+        clickThroughUrlSuffix:
+          type: string
+          description: Click-through URL suffix to apply to all ads in this entity's scope.
+          example: https://www.example.com
+        overrideInheritedSuffix:
+          type: boolean
+          description: Whether this entity should override the inherited suffix with its own defined suffix.
+          example: true
+    EventTagOverride:
+      type: object
+      description: Event tag override configuration.
+      properties:
+        id:
+          type: string
+          description: ID of the event tag that is overridden.
+          example: abc123
+        enabled:
+          type: boolean
+          description: Whether this override is enabled.
+          example: true
+    MeasurementPartnerLink:
+      type: object
+      description: Measurement partner integration link.
+      properties:
+        measurementPartner:
+          type: string
+          description: Measurement partner used for tag wrapping.
+          enum:
+          - NONE
+          - INTEGRAL_AD_SCIENCE
+          - DOUBLE_VERIFY
+          example: NONE
+        linkStatus:
+          type: string
+          description: The status of the link.
+          enum:
+          - MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
+          - MEASUREMENT_PARTNER_LINK_ACTIVE
+          - MEASUREMENT_PARTNER_LINK_INACTIVE
+          example: MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
+        partnerCampaignId:
+          type: string
+          description: Partner campaign ID for the link.
+          example: '500123'
+    CreativeOptimizationConfiguration:
+      type: object
+      description: Creative optimization configuration.
+      properties:
+        id:
+          type: string
+          description: ID of this creative optimization configuration.
+          example: abc123
+        name:
+          type: string
+          description: Name of this creative optimization configuration.
+          example: Example Title
+        optimizationActivitys:
+          type: array
+          description: List of optimization activities associated with this configuration.
+          items:
+            $ref: '#/components/schemas/OptimizationActivity'
+          example: []
+        optimizationModel:
+          type: string
+          description: Optimization model for this configuration.
+          enum:
+          - CLICK
+          - POST_CLICK
+          - POST_IMPRESSION
+          - POST_CLICK_AND_IMPRESSION
+          - VIDEO_COMPLETION
+          example: CLICK
+    AdBlockingConfiguration:
+      type: object
+      description: Ad blocking configuration for a campaign.
+      properties:
+        enabled:
+          type: boolean
+          description: Whether this campaign has enabled ad blocking. When true, ad blocking is enabled for the campaign and a default ad can be served for blocked ads.
+          example: true
+        overrideClickThroughUrl:
+          type: string
+          format: uri
+          description: Override click-through URL for blocked ads.
+          example: https://www.example.com
+    LastModifiedInfo:
+      type: object
+      description: Modification timestamp information.
+      properties:
+        time:
+          type: string
+          description: Timestamp of the last change in milliseconds since epoch.
+          example: example_value
+    Error:
+      type: object
+      description: Standard Google API error response.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: HTTP status code.
+            message:
+              type: string
+              description: Human-readable error message.
+            status:
+              type: string
+              description: Error status string.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+          example: example_value
+    OptimizationActivity:
+      type: object
+      description: An optimization activity for creative optimization.
+      properties:
+        floodlightActivityId:
+          type: string
+          description: Floodlight activity ID of this optimization activity.
+          example: '500123'
+        floodlightActivityIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+        weight:
+          type: integer
+          description: Weight associated with this optimization.
+          example: 10
+    DefaultClickThroughEventTagProperties:
+      type: object
+      description: Default click-through event tag properties.
+      properties:
+        defaultClickThroughEventTagId:
+          type: string
+          description: ID of the default click-through event tag.
+          example: '500123'
+        overrideInheritedEventTag:
+          type: boolean
+          description: Whether to override the inherited event tag.
+          example: true
     Campaign:
       type: object
       description: A Campaign Manager 360 campaign. Campaigns are the top-level organizational unit for advertising activities, grouping ads, placements, and creatives under a single advertiser with shared configuration, date ranges, and targeting.
@@ -414,192 +567,39 @@ components:
         advertiserIdDimensionValue:
           $ref: '#/components/schemas/DimensionValue'
           readOnly: true
-    DefaultClickThroughEventTagProperties:
+    DimensionValue:
       type: object
-      description: Default click-through event tag properties.
+      description: A dimension value used for filtering and reporting.
       properties:
-        defaultClickThroughEventTagId:
+        dimensionName:
           type: string
-          description: ID of the default click-through event tag.
-          example: '500123'
-        overrideInheritedEventTag:
-          type: boolean
-          description: Whether to override the inherited event tag.
-          example: true
-    MeasurementPartnerLink:
-      type: object
-      description: Measurement partner integration link.
-      properties:
-        measurementPartner:
-          type: string
-          description: Measurement partner used for tag wrapping.
-          enum:
-          - NONE
-          - INTEGRAL_AD_SCIENCE
-          - DOUBLE_VERIFY
-          example: NONE
-        linkStatus:
-          type: string
-          description: The status of the link.
-          enum:
-          - MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
-          - MEASUREMENT_PARTNER_LINK_ACTIVE
-          - MEASUREMENT_PARTNER_LINK_INACTIVE
-          example: MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
-        partnerCampaignId:
-          type: string
-          description: Partner campaign ID for the link.
-          example: '500123'
-    LastModifiedInfo:
-      type: object
-      description: Modification timestamp information.
-      properties:
-        time:
-          type: string
-          description: Timestamp of the last change in milliseconds since epoch.
+          description: The name of the dimension.
           example: example_value
-    EventTagOverride:
-      type: object
-      description: Event tag override configuration.
-      properties:
+        value:
+          type: string
+          description: The value of the dimension.
+          example: example_value
         id:
           type: string
-          description: ID of the event tag that is overridden.
+          description: The ID associated with the value.
           example: abc123
-        enabled:
-          type: boolean
-          description: Whether this override is enabled.
-          example: true
-    OptimizationActivity:
-      type: object
-      description: An optimization activity for creative optimization.
-      properties:
-        floodlightActivityId:
+        matchType:
           type: string
-          description: Floodlight activity ID of this optimization activity.
-          example: '500123'
-        floodlightActivityIdDimensionValue:
-          $ref: '#/components/schemas/DimensionValue'
-        weight:
-          type: integer
-          description: Weight associated with this optimization.
-          example: 10
-    AudienceSegmentGroup:
-      type: object
-      description: Audience segment group for targeting.
-      properties:
-        id:
-          type: string
-          description: ID of this audience segment group.
-          example: abc123
-        name:
-          type: string
-          description: Name of this audience segment group.
-          example: Example Title
-        audienceSegments:
-          type: array
-          description: Audience segments assigned to this group.
-          items:
-            $ref: '#/components/schemas/AudienceSegment'
-          example: []
-    AdBlockingConfiguration:
-      type: object
-      description: Ad blocking configuration for a campaign.
-      properties:
-        enabled:
-          type: boolean
-          description: Whether this campaign has enabled ad blocking. When true, ad blocking is enabled for the campaign and a default ad can be served for blocked ads.
-          example: true
-        overrideClickThroughUrl:
-          type: string
-          format: uri
-          description: Override click-through URL for blocked ads.
-          example: https://www.example.com
-    ClickThroughUrlSuffixProperties:
-      type: object
-      description: Click-through URL suffix properties.
-      properties:
-        clickThroughUrlSuffix:
-          type: string
-          description: Click-through URL suffix to apply to all ads in this entity's scope.
-          example: https://www.example.com
-        overrideInheritedSuffix:
-          type: boolean
-          description: Whether this entity should override the inherited suffix with its own defined suffix.
-          example: true
-    CreativeOptimizationConfiguration:
-      type: object
-      description: Creative optimization configuration.
-      properties:
-        id:
-          type: string
-          description: ID of this creative optimization configuration.
-          example: abc123
-        name:
-          type: string
-          description: Name of this creative optimization configuration.
-          example: Example Title
-        optimizationActivitys:
-          type: array
-          description: List of optimization activities associated with this configuration.
-          items:
-            $ref: '#/components/schemas/OptimizationActivity'
-          example: []
-        optimizationModel:
-          type: string
-          description: Optimization model for this configuration.
+          description: Match type for filtering.
           enum:
-          - CLICK
-          - POST_CLICK
-          - POST_IMPRESSION
-          - POST_CLICK_AND_IMPRESSION
-          - VIDEO_COMPLETION
-          example: CLICK
-    CampaignsListResponse:
-      type: object
-      description: Campaign list response.
-      properties:
-        campaigns:
-          type: array
-          items:
-            $ref: '#/components/schemas/Campaign'
-          example: []
-        nextPageToken:
+          - EXACT
+          - BEGINS_WITH
+          - CONTAINS
+          - WILDCARD_EXPRESSION
+          example: EXACT
+        etag:
           type: string
-          description: Pagination token to be used in a subsequent request to retrieve the next page.
+          readOnly: true
           example: example_value
         kind:
           type: string
           readOnly: true
-          default: dfareporting#campaignsListResponse
-          example: example_value
-    Error:
-      type: object
-      description: Standard Google API error response.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: HTTP status code.
-            message:
-              type: string
-              description: Human-readable error message.
-            status:
-              type: string
-              description: Error status string.
-            errors:
-              type: array
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  domain:
-                    type: string
-                  reason:
-                    type: string
+          default: dfareporting#dimensionValue
           example: example_value
   responses:
     Forbidden:
@@ -608,14 +608,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or invalid credentials.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Authentication required or invalid credentials.
       content:
         application/json:
           schema:
@@ -627,22 +627,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   parameters:
-    CampaignId:
-      name: campaignId
-      in: path
-      required: true
-      description: Campaign ID.
-      schema:
-        type: string
-        pattern: ^\d+$
-      example: '12345678'
-    PageToken:
-      name: pageToken
-      in: query
-      required: false
-      description: Value of the nextPageToken from the previous result page.
-      schema:
-        type: string
     ProfileId:
       name: profileId
       in: path
@@ -652,6 +636,22 @@ components:
         type: string
         pattern: ^\d+$
       example: '123456'
+    PageToken:
+      name: pageToken
+      in: query
+      required: false
+      description: Value of the nextPageToken from the previous result page.
+      schema:
+        type: string
+    CampaignId:
+      name: campaignId
+      in: path
+      required: true
+      description: Campaign ID.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '12345678'
     MaxResults:
       name: maxResults
       in: query
