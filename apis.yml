@@ -10,15 +10,19 @@ description: >-
   rather than an OpenAPI, plus Data Transfer v2.0 for bulk event-level delivery to Cloud Storage.
 deliveryModel:
   model: saas
-  open_source: false
+  license_evidence:
+    not_product:
+    - googleads/googleads-dfa-reporting-samples
+  open_source: unknown
   commercial: true
   callable_host: true
   label: Hosted service · you call their endpoint
-  confidence: high
+  confidence: low
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: contact-sales
