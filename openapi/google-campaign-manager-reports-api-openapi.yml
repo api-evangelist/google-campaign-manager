@@ -271,6 +271,282 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ReportCrossDimensionReachCriteria:
+      type: object
+      description: Configuration for a CROSS_DIMENSION_REACH report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimension:
+          type: string
+          enum:
+          - ADVERTISER
+          - CAMPAIGN
+          - SITE_BY_ADVERTISER
+          - SITE_BY_CAMPAIGN
+          example: ADVERTISER
+        metricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        overlapMetricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        pivoted:
+          type: boolean
+          example: true
+        breakdown:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+    ReportReachCriteria:
+      type: object
+      description: Configuration for a REACH report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+        metricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        reachByFrequencyMetricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        activities:
+          $ref: '#/components/schemas/Activities'
+        enableAllDimensionCombinations:
+          type: boolean
+          example: true
+    Recipient:
+      type: object
+      description: An email recipient for report delivery.
+      properties:
+        email:
+          type: string
+          format: email
+          description: The email address of the recipient.
+          example: user@example.com
+        deliveryType:
+          type: string
+          description: The delivery type for this recipient.
+          enum:
+          - LINK
+          - ATTACHMENT
+          example: LINK
+    CustomRichMediaEvents:
+      type: object
+      description: Custom rich media events for report filtering.
+      properties:
+        filteredEventIds:
+          type: array
+          description: List of custom rich media event IDs.
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#customRichMediaEvents
+          example: example_value
+    ReportsListResponse:
+      type: object
+      description: Report list response.
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        nextPageToken:
+          type: string
+          example: example_value
+        etag:
+          type: string
+          readOnly: true
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#reportList
+          example: example_value
+    DateRange:
+      type: object
+      description: Date range configuration for reports.
+      properties:
+        startDate:
+          type: string
+          format: date
+          description: The start date of the date range, inclusive. Format is YYYY-MM-DD.
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: The end date of the date range, inclusive. Format is YYYY-MM-DD.
+          example: '2026-01-15'
+        relativeDateRange:
+          type: string
+          description: The date range relative to the date of when the report is run.
+          enum:
+          - TODAY
+          - YESTERDAY
+          - WEEK_TO_DATE
+          - MONTH_TO_DATE
+          - QUARTER_TO_DATE
+          - YEAR_TO_DATE
+          - PREVIOUS_WEEK
+          - PREVIOUS_MONTH
+          - PREVIOUS_QUARTER
+          - PREVIOUS_YEAR
+          - LAST_7_DAYS
+          - LAST_14_DAYS
+          - LAST_30_DAYS
+          - LAST_365_DAYS
+          - LAST_60_DAYS
+          - LAST_90_DAYS
+          - LAST_24_MONTHS
+          example: TODAY
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#dateRange
+          example: example_value
+    ReportCriteria:
+      type: object
+      description: Configuration for a STANDARD report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        dimensions:
+          type: array
+          description: The list of standard dimensions the report should include.
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+        metricNames:
+          type: array
+          description: The list of names of metrics the report should include.
+          items:
+            type: string
+          example: []
+        dimensionFilters:
+          type: array
+          description: The list of filters on which dimensions are filtered.
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        activities:
+          $ref: '#/components/schemas/Activities'
+        customRichMediaEvents:
+          $ref: '#/components/schemas/CustomRichMediaEvents'
+    DimensionValue:
+      type: object
+      description: A dimension value used for filtering and reporting.
+      properties:
+        dimensionName:
+          type: string
+          description: The name of the dimension.
+          example: example_value
+        value:
+          type: string
+          description: The value of the dimension.
+          example: example_value
+        id:
+          type: string
+          description: The ID associated with the value.
+          example: abc123
+        matchType:
+          type: string
+          description: Match type for filtering.
+          enum:
+          - EXACT
+          - BEGINS_WITH
+          - CONTAINS
+          - WILDCARD_EXPRESSION
+          example: EXACT
+        etag:
+          type: string
+          readOnly: true
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#dimensionValue
+          example: example_value
+    ReportDelivery:
+      type: object
+      description: Report email delivery settings.
+      properties:
+        emailOwner:
+          type: boolean
+          description: Whether the report should be emailed to the report owner.
+          example: user@example.com
+        emailOwnerDeliveryType:
+          type: string
+          description: The type of delivery for the owner email.
+          enum:
+          - LINK
+          - ATTACHMENT
+          example: LINK
+        message:
+          type: string
+          description: The message to include in the email.
+          example: example_value
+        recipients:
+          type: array
+          description: The list of recipients to send the report to.
+          items:
+            $ref: '#/components/schemas/Recipient'
+          example: []
+    ReportPathToConversionCriteria:
+      type: object
+      description: Configuration for a PATH_TO_CONVERSION report type.
+      properties:
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        conversionDimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+        perInteractionDimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortedDimension'
+          example: []
+        metricNames:
+          type: array
+          items:
+            type: string
+          example: []
+        activityFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        floodlightConfigId:
+          $ref: '#/components/schemas/DimensionValue'
     File:
       type: object
       description: Represents a report file generated by running a report.
@@ -338,37 +614,6 @@ components:
           readOnly: true
           default: dfareporting#file
           example: example_value
-    ReportReachCriteria:
-      type: object
-      description: Configuration for a REACH report type.
-      properties:
-        dateRange:
-          $ref: '#/components/schemas/DateRange'
-        dimensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/SortedDimension'
-          example: []
-        metricNames:
-          type: array
-          items:
-            type: string
-          example: []
-        reachByFrequencyMetricNames:
-          type: array
-          items:
-            type: string
-          example: []
-        dimensionFilters:
-          type: array
-          items:
-            $ref: '#/components/schemas/DimensionValue'
-          example: []
-        activities:
-          $ref: '#/components/schemas/Activities'
-        enableAllDimensionCombinations:
-          type: boolean
-          example: true
     ReportCrossMediaReachCriteria:
       type: object
       description: Configuration for a CROSS_MEDIA_REACH report type.
@@ -384,261 +629,6 @@ components:
           type: array
           items:
             type: string
-          example: []
-    ReportPathToConversionCriteria:
-      type: object
-      description: Configuration for a PATH_TO_CONVERSION report type.
-      properties:
-        dateRange:
-          $ref: '#/components/schemas/DateRange'
-        conversionDimensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/SortedDimension'
-          example: []
-        perInteractionDimensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/SortedDimension'
-          example: []
-        metricNames:
-          type: array
-          items:
-            type: string
-          example: []
-        activityFilters:
-          type: array
-          items:
-            $ref: '#/components/schemas/DimensionValue'
-          example: []
-        floodlightConfigId:
-          $ref: '#/components/schemas/DimensionValue'
-    ReportsListResponse:
-      type: object
-      description: Report list response.
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Report'
-          example: []
-        nextPageToken:
-          type: string
-          example: example_value
-        etag:
-          type: string
-          readOnly: true
-          example: example_value
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#reportList
-          example: example_value
-    SortedDimension:
-      type: object
-      description: A sorted dimension for report queries.
-      properties:
-        name:
-          type: string
-          description: The name of the dimension.
-          example: Example Title
-        sortOrder:
-          type: string
-          description: The sort order of this dimension.
-          enum:
-          - ASCENDING
-          - DESCENDING
-          example: ASCENDING
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#sortedDimension
-          example: example_value
-    Recipient:
-      type: object
-      description: An email recipient for report delivery.
-      properties:
-        email:
-          type: string
-          format: email
-          description: The email address of the recipient.
-          example: user@example.com
-        deliveryType:
-          type: string
-          description: The delivery type for this recipient.
-          enum:
-          - LINK
-          - ATTACHMENT
-          example: LINK
-    Error:
-      type: object
-      description: Standard Google API error response.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: HTTP status code.
-            message:
-              type: string
-              description: Human-readable error message.
-            status:
-              type: string
-              description: Error status string.
-            errors:
-              type: array
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  domain:
-                    type: string
-                  reason:
-                    type: string
-          example: example_value
-    ReportSchedule:
-      type: object
-      description: Schedule configuration for automated report generation and delivery.
-      properties:
-        active:
-          type: boolean
-          description: Whether the schedule is active.
-          example: true
-        repeats:
-          type: string
-          description: The interval at which the report is run. Acceptable values are DAILY, WEEKLY, MONTHLY, or QUARTERLY.
-          enum:
-          - DAILY
-          - WEEKLY
-          - MONTHLY
-          - QUARTERLY
-          example: DAILY
-        every:
-          type: integer
-          description: Defines every how many days, weeks, or months the report should be run.
-          example: 10
-        startDate:
-          type: string
-          format: date
-          description: Start date of the scheduled reports.
-          example: '2026-01-15'
-        expirationDate:
-          type: string
-          format: date
-          description: The expiration date when the scheduled report stops running.
-          example: '2026-01-15'
-        runsOnDayOfMonth:
-          type: string
-          description: Enum to define for MONTHLY and QUARTERLY schedules whether reports should be repeated on the same day of the month or the same day of the week.
-          enum:
-          - DAY_OF_MONTH
-          - WEEK_OF_MONTH
-          example: DAY_OF_MONTH
-        timezone:
-          type: string
-          description: The timezone for the report schedule.
-          example: example_value
-    DimensionValue:
-      type: object
-      description: A dimension value used for filtering and reporting.
-      properties:
-        dimensionName:
-          type: string
-          description: The name of the dimension.
-          example: example_value
-        value:
-          type: string
-          description: The value of the dimension.
-          example: example_value
-        id:
-          type: string
-          description: The ID associated with the value.
-          example: abc123
-        matchType:
-          type: string
-          description: Match type for filtering.
-          enum:
-          - EXACT
-          - BEGINS_WITH
-          - CONTAINS
-          - WILDCARD_EXPRESSION
-          example: EXACT
-        etag:
-          type: string
-          readOnly: true
-          example: example_value
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#dimensionValue
-          example: example_value
-    DateRange:
-      type: object
-      description: Date range configuration for reports.
-      properties:
-        startDate:
-          type: string
-          format: date
-          description: The start date of the date range, inclusive. Format is YYYY-MM-DD.
-          example: '2026-01-15'
-        endDate:
-          type: string
-          format: date
-          description: The end date of the date range, inclusive. Format is YYYY-MM-DD.
-          example: '2026-01-15'
-        relativeDateRange:
-          type: string
-          description: The date range relative to the date of when the report is run.
-          enum:
-          - TODAY
-          - YESTERDAY
-          - WEEK_TO_DATE
-          - MONTH_TO_DATE
-          - QUARTER_TO_DATE
-          - YEAR_TO_DATE
-          - PREVIOUS_WEEK
-          - PREVIOUS_MONTH
-          - PREVIOUS_QUARTER
-          - PREVIOUS_YEAR
-          - LAST_7_DAYS
-          - LAST_14_DAYS
-          - LAST_30_DAYS
-          - LAST_365_DAYS
-          - LAST_60_DAYS
-          - LAST_90_DAYS
-          - LAST_24_MONTHS
-          example: TODAY
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#dateRange
-          example: example_value
-    ReportDelivery:
-      type: object
-      description: Report email delivery settings.
-      properties:
-        emailOwner:
-          type: boolean
-          description: Whether the report should be emailed to the report owner.
-          example: user@example.com
-        emailOwnerDeliveryType:
-          type: string
-          description: The type of delivery for the owner email.
-          enum:
-          - LINK
-          - ATTACHMENT
-          example: LINK
-        message:
-          type: string
-          description: The message to include in the email.
-          example: example_value
-        recipients:
-          type: array
-          description: The list of recipients to send the report to.
-          items:
-            $ref: '#/components/schemas/Recipient'
           example: []
     ReportFloodlightCriteria:
       type: object
@@ -673,107 +663,6 @@ components:
             includeAttributedIPConversions:
               type: boolean
           example: example_value
-    Activities:
-      type: object
-      description: Represents an activity group for report filtering.
-      properties:
-        filters:
-          type: array
-          description: List of activity filters.
-          items:
-            $ref: '#/components/schemas/DimensionValue'
-          example: []
-        metricNames:
-          type: array
-          description: List of activity metric names.
-          items:
-            type: string
-          example: []
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#activities
-          example: example_value
-    CustomRichMediaEvents:
-      type: object
-      description: Custom rich media events for report filtering.
-      properties:
-        filteredEventIds:
-          type: array
-          description: List of custom rich media event IDs.
-          items:
-            $ref: '#/components/schemas/DimensionValue'
-          example: []
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#customRichMediaEvents
-          example: example_value
-    ReportCriteria:
-      type: object
-      description: Configuration for a STANDARD report type.
-      properties:
-        dateRange:
-          $ref: '#/components/schemas/DateRange'
-        dimensions:
-          type: array
-          description: The list of standard dimensions the report should include.
-          items:
-            $ref: '#/components/schemas/SortedDimension'
-          example: []
-        metricNames:
-          type: array
-          description: The list of names of metrics the report should include.
-          items:
-            type: string
-          example: []
-        dimensionFilters:
-          type: array
-          description: The list of filters on which dimensions are filtered.
-          items:
-            $ref: '#/components/schemas/DimensionValue'
-          example: []
-        activities:
-          $ref: '#/components/schemas/Activities'
-        customRichMediaEvents:
-          $ref: '#/components/schemas/CustomRichMediaEvents'
-    ReportCrossDimensionReachCriteria:
-      type: object
-      description: Configuration for a CROSS_DIMENSION_REACH report type.
-      properties:
-        dateRange:
-          $ref: '#/components/schemas/DateRange'
-        dimension:
-          type: string
-          enum:
-          - ADVERTISER
-          - CAMPAIGN
-          - SITE_BY_ADVERTISER
-          - SITE_BY_CAMPAIGN
-          example: ADVERTISER
-        metricNames:
-          type: array
-          items:
-            type: string
-          example: []
-        overlapMetricNames:
-          type: array
-          items:
-            type: string
-          example: []
-        dimensionFilters:
-          type: array
-          items:
-            $ref: '#/components/schemas/DimensionValue'
-          example: []
-        pivoted:
-          type: boolean
-          example: true
-        breakdown:
-          type: array
-          items:
-            $ref: '#/components/schemas/SortedDimension'
-          example: []
     Report:
       type: object
       description: A Campaign Manager 360 report configuration. Reports provide performance data and analytics for campaigns, ads, placements, and other advertising dimensions.
@@ -857,14 +746,118 @@ components:
           readOnly: true
           default: dfareporting#report
           example: example_value
+    SortedDimension:
+      type: object
+      description: A sorted dimension for report queries.
+      properties:
+        name:
+          type: string
+          description: The name of the dimension.
+          example: Example Title
+        sortOrder:
+          type: string
+          description: The sort order of this dimension.
+          enum:
+          - ASCENDING
+          - DESCENDING
+          example: ASCENDING
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#sortedDimension
+          example: example_value
+    Error:
+      type: object
+      description: Standard Google API error response.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: HTTP status code.
+            message:
+              type: string
+              description: Human-readable error message.
+            status:
+              type: string
+              description: Error status string.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+          example: example_value
+    ReportSchedule:
+      type: object
+      description: Schedule configuration for automated report generation and delivery.
+      properties:
+        active:
+          type: boolean
+          description: Whether the schedule is active.
+          example: true
+        repeats:
+          type: string
+          description: The interval at which the report is run. Acceptable values are DAILY, WEEKLY, MONTHLY, or QUARTERLY.
+          enum:
+          - DAILY
+          - WEEKLY
+          - MONTHLY
+          - QUARTERLY
+          example: DAILY
+        every:
+          type: integer
+          description: Defines every how many days, weeks, or months the report should be run.
+          example: 10
+        startDate:
+          type: string
+          format: date
+          description: Start date of the scheduled reports.
+          example: '2026-01-15'
+        expirationDate:
+          type: string
+          format: date
+          description: The expiration date when the scheduled report stops running.
+          example: '2026-01-15'
+        runsOnDayOfMonth:
+          type: string
+          description: Enum to define for MONTHLY and QUARTERLY schedules whether reports should be repeated on the same day of the month or the same day of the week.
+          enum:
+          - DAY_OF_MONTH
+          - WEEK_OF_MONTH
+          example: DAY_OF_MONTH
+        timezone:
+          type: string
+          description: The timezone for the report schedule.
+          example: example_value
+    Activities:
+      type: object
+      description: Represents an activity group for report filtering.
+      properties:
+        filters:
+          type: array
+          description: List of activity filters.
+          items:
+            $ref: '#/components/schemas/DimensionValue'
+          example: []
+        metricNames:
+          type: array
+          description: List of activity metric names.
+          items:
+            type: string
+          example: []
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#activities
+          example: example_value
   parameters:
-    PageToken:
-      name: pageToken
-      in: query
-      required: false
-      description: Value of the nextPageToken from the previous result page.
-      schema:
-        type: string
     MaxResults:
       name: maxResults
       in: query
@@ -875,15 +868,13 @@ components:
         minimum: 0
         maximum: 1000
         default: 1000
-    ReportId:
-      name: reportId
-      in: path
-      required: true
-      description: The ID of the report.
+    PageToken:
+      name: pageToken
+      in: query
+      required: false
+      description: Value of the nextPageToken from the previous result page.
       schema:
         type: string
-        pattern: ^\d+$
-      example: '99887766'
     ProfileId:
       name: profileId
       in: path
@@ -893,15 +884,18 @@ components:
         type: string
         pattern: ^\d+$
       example: '123456'
+    ReportId:
+      name: reportId
+      in: path
+      required: true
+      description: The ID of the report.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '99887766'
   responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request parameters or malformed request body.
+    Unauthorized:
+      description: Authentication required or invalid credentials.
       content:
         application/json:
           schema:
@@ -912,8 +906,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or invalid credentials.
+    BadRequest:
+      description: Invalid request parameters or malformed request body.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

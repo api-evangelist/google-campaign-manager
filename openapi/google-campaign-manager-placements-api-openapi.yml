@@ -339,320 +339,96 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    MaxResults:
+      name: maxResults
+      in: query
+      required: false
+      description: Maximum number of results to return. Default is 1000.
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 1000
+        default: 1000
+    PageToken:
+      name: pageToken
+      in: query
+      required: false
+      description: Value of the nextPageToken from the previous result page.
+      schema:
+        type: string
+    ProfileId:
+      name: profileId
+      in: path
+      required: true
+      description: The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '123456'
+    PlacementId:
+      name: placementId
+      in: path
+      required: true
+      description: Placement ID.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '11223344'
+  responses:
+    Unauthorized:
+      description: Authentication required or invalid credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Insufficient permissions for the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request parameters or malformed request body.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Size:
+    PlacementTag:
       type: object
-      description: Represents the dimensions of ads, placements, and creatives.
+      description: A generated placement tag.
       properties:
-        id:
+        placementId:
           type: string
-          description: ID of this size.
-          example: abc123
-        width:
-          type: integer
-          description: Width of this size in pixels.
-          example: 10
-        height:
-          type: integer
-          description: Height of this size in pixels.
-          example: 10
-        iab:
-          type: boolean
-          description: Whether this size is an IAB standard size.
-          example: true
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#size
-          example: example_value
-    PlacementsGenerateTagsResponse:
-      type: object
-      description: Response containing generated placement tags.
-      properties:
-        placementTags:
+          description: The placement ID this tag is generated for.
+          example: '500123'
+        tagDatas:
           type: array
-          items:
-            $ref: '#/components/schemas/PlacementTag'
-          example: []
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#placementsGenerateTagsResponse
-          example: example_value
-    MeasurementPartnerWrappingData:
-      type: object
-      description: Measurement partner wrapping data for placements.
-      properties:
-        measurementPartner:
-          type: string
-          enum:
-          - NONE
-          - INTEGRAL_AD_SCIENCE
-          - DOUBLE_VERIFY
-          example: NONE
-        tagWrappingMode:
-          type: string
-          enum:
-          - NONE
-          - BLOCKING
-          - MONITORING
-          - MONITORING_READ_ONLY
-          - VIDEO_PIXEL_MONITORING
-          - TRACKING
-          - NON_VPAID_MONITORING
-          - VPAID_MONITORING
-          example: NONE
-        wrappedTag:
-          type: string
-          description: The wrapped tag content.
-          example: example_value
-        linkStatus:
-          type: string
-          enum:
-          - MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
-          - MEASUREMENT_PARTNER_LINK_ACTIVE
-          - MEASUREMENT_PARTNER_LINK_INACTIVE
-          example: MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
-    ConversionDomainOverride:
-      type: object
-      description: Conversion domain override for a placement.
-      properties:
-        conversionDomains:
-          type: array
+          description: Tags generated for this placement.
           items:
             type: object
             properties:
-              id:
+              format:
                 type: string
-              name:
+                description: Tag format type.
+              impressionTag:
+                type: string
+                description: The tag string for impressions.
+              clickTag:
+                type: string
+                description: The tag string for clicks.
+              adId:
+                type: string
+              creativeId:
                 type: string
           example: []
-    LastModifiedInfo:
-      type: object
-      description: Modification timestamp information.
-      properties:
-        time:
-          type: string
-          description: Timestamp of the last change in milliseconds since epoch.
-          example: example_value
-    PlacementsListResponse:
-      type: object
-      description: Placement list response.
-      properties:
-        placements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Placement'
-          example: []
-        nextPageToken:
-          type: string
-          example: example_value
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#placementsListResponse
-          example: example_value
-    Error:
-      type: object
-      description: Standard Google API error response.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: HTTP status code.
-            message:
-              type: string
-              description: Human-readable error message.
-            status:
-              type: string
-              description: Error status string.
-            errors:
-              type: array
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  domain:
-                    type: string
-                  reason:
-                    type: string
-          example: example_value
-    PricingSchedule:
-      type: object
-      description: Pricing schedule for a placement.
-      properties:
-        startDate:
-          type: string
-          format: date
-          description: Placement start date.
-          example: '2026-01-15'
-        endDate:
-          type: string
-          format: date
-          description: Placement end date.
-          example: '2026-01-15'
-        pricingType:
-          type: string
-          description: Placement pricing type.
-          enum:
-          - PRICING_TYPE_CPM
-          - PRICING_TYPE_CPC
-          - PRICING_TYPE_CPA
-          - PRICING_TYPE_FLAT_RATE_IMPRESSIONS
-          - PRICING_TYPE_FLAT_RATE_CLICKS
-          example: PRICING_TYPE_CPM
-        capCostType:
-          type: string
-          description: Placement cap cost type.
-          enum:
-          - PLANNING_PLACEMENT_CAP_COST_TYPE_NONE
-          - PLANNING_PLACEMENT_CAP_COST_TYPE_MONTHLY
-          - PLANNING_PLACEMENT_CAP_COST_TYPE_CUMULATIVE
-          example: PLANNING_PLACEMENT_CAP_COST_TYPE_NONE
-        pricingPeriods:
-          type: array
-          description: Pricing periods for this placement.
-          items:
-            $ref: '#/components/schemas/PricingSchedulePricingPeriod'
-          example: []
-        testingStartDate:
-          type: string
-          format: date
-          description: Testing start date of this placement.
-          example: '2026-01-15'
-    DimensionValue:
-      type: object
-      description: A dimension value used for filtering and reporting.
-      properties:
-        dimensionName:
-          type: string
-          description: The name of the dimension.
-          example: example_value
-        value:
-          type: string
-          description: The value of the dimension.
-          example: example_value
-        id:
-          type: string
-          description: The ID associated with the value.
-          example: abc123
-        matchType:
-          type: string
-          description: Match type for filtering.
-          enum:
-          - EXACT
-          - BEGINS_WITH
-          - CONTAINS
-          - WILDCARD_EXPRESSION
-          example: EXACT
-        etag:
-          type: string
-          readOnly: true
-          example: example_value
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#dimensionValue
-          example: example_value
-    VideoSettings:
-      type: object
-      description: Video settings for in-stream video placements.
-      properties:
-        companionSettings:
-          type: object
-          description: Companion ad settings.
-          properties:
-            companionsDisabled:
-              type: boolean
-            enabledSizes:
-              type: array
-              items:
-                $ref: '#/components/schemas/Size'
-            imageOnly:
-              type: boolean
-            kind:
-              type: string
-              readOnly: true
-          example: example_value
-        transcodeSettings:
-          type: object
-          description: Transcode settings.
-          properties:
-            enabledVideoFormats:
-              type: array
-              items:
-                type: integer
-            kind:
-              type: string
-              readOnly: true
-          example: example_value
-        skippableSettings:
-          type: object
-          description: Skippability settings.
-          properties:
-            skippable:
-              type: boolean
-            skipOffset:
-              type: object
-              properties:
-                offsetSeconds:
-                  type: integer
-                offsetPercentage:
-                  type: integer
-            progressOffset:
-              type: object
-              properties:
-                offsetSeconds:
-                  type: integer
-                offsetPercentage:
-                  type: integer
-            kind:
-              type: string
-              readOnly: true
-          example: example_value
-        obaEnabled:
-          type: boolean
-          description: Whether OBA icons are enabled for this placement.
-          example: true
-        obaSettings:
-          type: object
-          properties:
-            iconClickThroughUrl:
-              type: string
-              format: uri
-            iconClickTrackingUrl:
-              type: string
-              format: uri
-            iconViewTrackingUrl:
-              type: string
-              format: uri
-            program:
-              type: string
-            resourceUrl:
-              type: string
-              format: uri
-            size:
-              $ref: '#/components/schemas/Size'
-            xPosition:
-              type: string
-            yPosition:
-              type: string
-          example: example_value
-        orientation:
-          type: string
-          description: Video orientation setting.
-          enum:
-          - ANY
-          - LANDSCAPE
-          - PORTRAIT
-          example: ANY
-        kind:
-          type: string
-          readOnly: true
-          example: example_value
     Placement:
       type: object
       description: A Campaign Manager 360 placement. Placements represent ad inventory on publisher sites and define the size, format, pricing, and location where ads can be served.
@@ -865,18 +641,71 @@ components:
         placementGroupIdDimensionValue:
           $ref: '#/components/schemas/DimensionValue'
           readOnly: true
-    LookbackConfiguration:
+    DimensionValue:
       type: object
-      description: Lookback window configuration for attribution.
+      description: A dimension value used for filtering and reporting.
       properties:
-        clickDuration:
-          type: integer
-          description: Lookback window, in days, from the last time a given user clicked on one of your ads.
-          example: 10
-        postImpressionActivitiesDuration:
-          type: integer
-          description: Lookback window, in days, from the last time a given user viewed one of your ads.
-          example: 10
+        dimensionName:
+          type: string
+          description: The name of the dimension.
+          example: example_value
+        value:
+          type: string
+          description: The value of the dimension.
+          example: example_value
+        id:
+          type: string
+          description: The ID associated with the value.
+          example: abc123
+        matchType:
+          type: string
+          description: Match type for filtering.
+          enum:
+          - EXACT
+          - BEGINS_WITH
+          - CONTAINS
+          - WILDCARD_EXPRESSION
+          example: EXACT
+        etag:
+          type: string
+          readOnly: true
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#dimensionValue
+          example: example_value
+    PlacementsGenerateTagsResponse:
+      type: object
+      description: Response containing generated placement tags.
+      properties:
+        placementTags:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlacementTag'
+          example: []
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#placementsGenerateTagsResponse
+          example: example_value
+    PlacementsListResponse:
+      type: object
+      description: Placement list response.
+      properties:
+        placements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Placement'
+          example: []
+        nextPageToken:
+          type: string
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#placementsListResponse
+          example: example_value
     PricingSchedulePricingPeriod:
       type: object
       description: A pricing period within a pricing schedule.
@@ -901,34 +730,57 @@ components:
           type: string
           description: Comments for this pricing period.
           example: example_value
-    PlacementTag:
+    ConversionDomainOverride:
       type: object
-      description: A generated placement tag.
+      description: Conversion domain override for a placement.
       properties:
-        placementId:
-          type: string
-          description: The placement ID this tag is generated for.
-          example: '500123'
-        tagDatas:
+        conversionDomains:
           type: array
-          description: Tags generated for this placement.
           items:
             type: object
             properties:
-              format:
+              id:
                 type: string
-                description: Tag format type.
-              impressionTag:
-                type: string
-                description: The tag string for impressions.
-              clickTag:
-                type: string
-                description: The tag string for clicks.
-              adId:
-                type: string
-              creativeId:
+              name:
                 type: string
           example: []
+    Size:
+      type: object
+      description: Represents the dimensions of ads, placements, and creatives.
+      properties:
+        id:
+          type: string
+          description: ID of this size.
+          example: abc123
+        width:
+          type: integer
+          description: Width of this size in pixels.
+          example: 10
+        height:
+          type: integer
+          description: Height of this size in pixels.
+          example: 10
+        iab:
+          type: boolean
+          description: Whether this size is an IAB standard size.
+          example: true
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#size
+          example: example_value
+    LookbackConfiguration:
+      type: object
+      description: Lookback window configuration for attribution.
+      properties:
+        clickDuration:
+          type: integer
+          description: Lookback window, in days, from the last time a given user clicked on one of your ads.
+          example: 10
+        postImpressionActivitiesDuration:
+          type: integer
+          description: Lookback window, in days, from the last time a given user viewed one of your ads.
+          example: 10
     TagSetting:
       type: object
       description: Tag settings for a placement.
@@ -953,67 +805,215 @@ components:
           - IGNORE
           - GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD
           example: PLACEHOLDER_WITH_LIST_OF_KEYWORDS
-  parameters:
-    PageToken:
-      name: pageToken
-      in: query
-      required: false
-      description: Value of the nextPageToken from the previous result page.
-      schema:
-        type: string
-    MaxResults:
-      name: maxResults
-      in: query
-      required: false
-      description: Maximum number of results to return. Default is 1000.
-      schema:
-        type: integer
-        minimum: 0
-        maximum: 1000
-        default: 1000
-    PlacementId:
-      name: placementId
-      in: path
-      required: true
-      description: Placement ID.
-      schema:
-        type: string
-        pattern: ^\d+$
-      example: '11223344'
-    ProfileId:
-      name: profileId
-      in: path
-      required: true
-      description: The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to.
-      schema:
-        type: string
-        pattern: ^\d+$
-      example: '123456'
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request parameters or malformed request body.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Insufficient permissions for the requested operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or invalid credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    MeasurementPartnerWrappingData:
+      type: object
+      description: Measurement partner wrapping data for placements.
+      properties:
+        measurementPartner:
+          type: string
+          enum:
+          - NONE
+          - INTEGRAL_AD_SCIENCE
+          - DOUBLE_VERIFY
+          example: NONE
+        tagWrappingMode:
+          type: string
+          enum:
+          - NONE
+          - BLOCKING
+          - MONITORING
+          - MONITORING_READ_ONLY
+          - VIDEO_PIXEL_MONITORING
+          - TRACKING
+          - NON_VPAID_MONITORING
+          - VPAID_MONITORING
+          example: NONE
+        wrappedTag:
+          type: string
+          description: The wrapped tag content.
+          example: example_value
+        linkStatus:
+          type: string
+          enum:
+          - MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
+          - MEASUREMENT_PARTNER_LINK_ACTIVE
+          - MEASUREMENT_PARTNER_LINK_INACTIVE
+          example: MEASUREMENT_PARTNER_LINK_STATUS_UNSPECIFIED
+    LastModifiedInfo:
+      type: object
+      description: Modification timestamp information.
+      properties:
+        time:
+          type: string
+          description: Timestamp of the last change in milliseconds since epoch.
+          example: example_value
+    Error:
+      type: object
+      description: Standard Google API error response.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: HTTP status code.
+            message:
+              type: string
+              description: Human-readable error message.
+            status:
+              type: string
+              description: Error status string.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+          example: example_value
+    PricingSchedule:
+      type: object
+      description: Pricing schedule for a placement.
+      properties:
+        startDate:
+          type: string
+          format: date
+          description: Placement start date.
+          example: '2026-01-15'
+        endDate:
+          type: string
+          format: date
+          description: Placement end date.
+          example: '2026-01-15'
+        pricingType:
+          type: string
+          description: Placement pricing type.
+          enum:
+          - PRICING_TYPE_CPM
+          - PRICING_TYPE_CPC
+          - PRICING_TYPE_CPA
+          - PRICING_TYPE_FLAT_RATE_IMPRESSIONS
+          - PRICING_TYPE_FLAT_RATE_CLICKS
+          example: PRICING_TYPE_CPM
+        capCostType:
+          type: string
+          description: Placement cap cost type.
+          enum:
+          - PLANNING_PLACEMENT_CAP_COST_TYPE_NONE
+          - PLANNING_PLACEMENT_CAP_COST_TYPE_MONTHLY
+          - PLANNING_PLACEMENT_CAP_COST_TYPE_CUMULATIVE
+          example: PLANNING_PLACEMENT_CAP_COST_TYPE_NONE
+        pricingPeriods:
+          type: array
+          description: Pricing periods for this placement.
+          items:
+            $ref: '#/components/schemas/PricingSchedulePricingPeriod'
+          example: []
+        testingStartDate:
+          type: string
+          format: date
+          description: Testing start date of this placement.
+          example: '2026-01-15'
+    VideoSettings:
+      type: object
+      description: Video settings for in-stream video placements.
+      properties:
+        companionSettings:
+          type: object
+          description: Companion ad settings.
+          properties:
+            companionsDisabled:
+              type: boolean
+            enabledSizes:
+              type: array
+              items:
+                $ref: '#/components/schemas/Size'
+            imageOnly:
+              type: boolean
+            kind:
+              type: string
+              readOnly: true
+          example: example_value
+        transcodeSettings:
+          type: object
+          description: Transcode settings.
+          properties:
+            enabledVideoFormats:
+              type: array
+              items:
+                type: integer
+            kind:
+              type: string
+              readOnly: true
+          example: example_value
+        skippableSettings:
+          type: object
+          description: Skippability settings.
+          properties:
+            skippable:
+              type: boolean
+            skipOffset:
+              type: object
+              properties:
+                offsetSeconds:
+                  type: integer
+                offsetPercentage:
+                  type: integer
+            progressOffset:
+              type: object
+              properties:
+                offsetSeconds:
+                  type: integer
+                offsetPercentage:
+                  type: integer
+            kind:
+              type: string
+              readOnly: true
+          example: example_value
+        obaEnabled:
+          type: boolean
+          description: Whether OBA icons are enabled for this placement.
+          example: true
+        obaSettings:
+          type: object
+          properties:
+            iconClickThroughUrl:
+              type: string
+              format: uri
+            iconClickTrackingUrl:
+              type: string
+              format: uri
+            iconViewTrackingUrl:
+              type: string
+              format: uri
+            program:
+              type: string
+            resourceUrl:
+              type: string
+              format: uri
+            size:
+              $ref: '#/components/schemas/Size'
+            xPosition:
+              type: string
+            yPosition:
+              type: string
+          example: example_value
+        orientation:
+          type: string
+          description: Video orientation setting.
+          enum:
+          - ANY
+          - LANDSCAPE
+          - PORTRAIT
+          example: ANY
+        kind:
+          type: string
+          readOnly: true
+          example: example_value
   securitySchemes:
     OAuth2:
       type: oauth2
