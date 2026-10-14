@@ -1,0 +1,51 @@
+generated: '2026-10-14'
+edges:
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/google-campaign-manager
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - google-campaign-manager
+      status: released
+      sync_types:
+      - Conversion Adjustments
+      - Conversions
+      sync_modes:
+      - insert
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Census
+  partner: getcensus
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://fivetran.com/docs/activations/destinations/available-destinations/google-campaign-manager-360
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - google-campaign-manager-360
+      sync_behaviours:
+      - update only
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+method: searched
+checked:
+- https://fivetran.com/docs/activations/destinations/available-destinations/google-campaign-manager-360
+- https://hightouch.com/docs/destinations/google-campaign-manager
+source:
+- https://fivetran.com/docs/activations/destinations/available-destinations/google-campaign-manager-360
+- https://hightouch.com/docs/destinations/google-campaign-manager
