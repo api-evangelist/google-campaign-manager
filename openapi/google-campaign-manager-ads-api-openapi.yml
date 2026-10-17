@@ -270,6 +270,48 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    OperatingSystem:
+      type: object
+      properties:
+        dartId:
+          type: string
+          example: '500123'
+        name:
+          type: string
+          example: Example Title
+        desktop:
+          type: boolean
+          example: true
+        mobile:
+          type: boolean
+          example: true
+        kind:
+          type: string
+          readOnly: true
+          example: example_value
+    ClickThroughUrl:
+      type: object
+      description: Click-through URL configuration.
+      properties:
+        defaultLandingPage:
+          type: boolean
+          description: Whether the campaign default landing page is used.
+          example: true
+        landingPageId:
+          type: string
+          description: ID of the landing page for the click-through URL.
+          example: '500123'
+        customClickThroughUrl:
+          type: string
+          format: uri
+          description: Custom click-through URL.
+          example: https://www.example.com
+        computedClickThroughUrl:
+          type: string
+          format: uri
+          description: Read-only computed click-through URL. Set when either defaultLandingPage or landingPageId is set.
+          readOnly: true
+          example: https://www.example.com
     Region:
       type: object
       properties:
@@ -292,100 +334,7 @@ components:
           type: string
           readOnly: true
           example: example_value
-    ConnectionType:
-      type: object
-      properties:
-        id:
-          type: string
-          example: abc123
-        name:
-          type: string
-          example: Example Title
-        kind:
-          type: string
-          readOnly: true
-          example: example_value
-    LastModifiedInfo:
-      type: object
-      description: Modification timestamp information.
-      properties:
-        time:
-          type: string
-          description: Timestamp of the last change in milliseconds since epoch.
-          example: example_value
-    AdsListResponse:
-      type: object
-      description: Ad list response.
-      properties:
-        ads:
-          type: array
-          items:
-            $ref: '#/components/schemas/Ad'
-          example: []
-        nextPageToken:
-          type: string
-          example: example_value
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#adsListResponse
-          example: example_value
-    DayPartTargeting:
-      type: object
-      description: Day part targeting configuration.
-      properties:
-        userLocalTime:
-          type: boolean
-          description: Whether targeting is based on user's local time.
-          example: true
-        hoursOfDay:
-          type: array
-          description: Hours of the day to target (0-23).
-          items:
-            type: integer
-            minimum: 0
-            maximum: 23
-          example: []
-        daysOfWeek:
-          type: array
-          description: Days of the week to target.
-          items:
-            type: string
-            enum:
-            - MONDAY
-            - TUESDAY
-            - WEDNESDAY
-            - THURSDAY
-            - FRIDAY
-            - SATURDAY
-            - SUNDAY
-          example: []
-    Size:
-      type: object
-      description: Represents the dimensions of ads, placements, and creatives.
-      properties:
-        id:
-          type: string
-          description: ID of this size.
-          example: abc123
-        width:
-          type: integer
-          description: Width of this size in pixels.
-          example: 10
-        height:
-          type: integer
-          description: Height of this size in pixels.
-          example: 10
-        iab:
-          type: boolean
-          description: Whether this size is an IAB standard size.
-          example: true
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#size
-          example: example_value
-    OperatingSystem:
+    Browser:
       type: object
       properties:
         dartId:
@@ -394,142 +343,15 @@ components:
         name:
           type: string
           example: Example Title
-        desktop:
-          type: boolean
-          example: true
-        mobile:
-          type: boolean
-          example: true
-        kind:
-          type: string
-          readOnly: true
-          example: example_value
-    FrequencyCap:
-      type: object
-      description: Frequency cap configuration.
-      properties:
-        impressions:
-          type: integer
-          description: Number of times an individual user can be served the ad.
-          example: 10
-        duration:
-          type: integer
-          description: Duration of time, in seconds, for this frequency cap.
-          example: 10
-    Metro:
-      type: object
-      properties:
-        dartId:
+        browserVersionId:
           type: string
           example: '500123'
-        name:
-          type: string
-          example: Example Title
-        dmaId:
-          type: string
-          example: '500123'
-        metroCode:
+        majorVersion:
           type: string
           example: example_value
-        countryDartId:
-          type: string
-          example: '500123'
-        countryCode:
+        minorVersion:
           type: string
           example: example_value
-        kind:
-          type: string
-          readOnly: true
-          example: example_value
-    DimensionValue:
-      type: object
-      description: A dimension value used for filtering and reporting.
-      properties:
-        dimensionName:
-          type: string
-          description: The name of the dimension.
-          example: example_value
-        value:
-          type: string
-          description: The value of the dimension.
-          example: example_value
-        id:
-          type: string
-          description: The ID associated with the value.
-          example: abc123
-        matchType:
-          type: string
-          description: Match type for filtering.
-          enum:
-          - EXACT
-          - BEGINS_WITH
-          - CONTAINS
-          - WILDCARD_EXPRESSION
-          example: EXACT
-        etag:
-          type: string
-          readOnly: true
-          example: example_value
-        kind:
-          type: string
-          readOnly: true
-          default: dfareporting#dimensionValue
-          example: example_value
-    EventTagOverride:
-      type: object
-      description: Event tag override configuration.
-      properties:
-        id:
-          type: string
-          description: ID of the event tag that is overridden.
-          example: abc123
-        enabled:
-          type: boolean
-          description: Whether this override is enabled.
-          example: true
-    Error:
-      type: object
-      description: Standard Google API error response.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: HTTP status code.
-            message:
-              type: string
-              description: Human-readable error message.
-            status:
-              type: string
-              description: Error status string.
-            errors:
-              type: array
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  domain:
-                    type: string
-                  reason:
-                    type: string
-          example: example_value
-    Country:
-      type: object
-      properties:
-        dartId:
-          type: string
-          example: '500123'
-        name:
-          type: string
-          example: Example Title
-        countryCode:
-          type: string
-          example: example_value
-        sslEnabled:
-          type: boolean
-          example: true
         kind:
           type: string
           readOnly: true
@@ -569,181 +391,31 @@ components:
           example: true
         frequencyCap:
           $ref: '#/components/schemas/FrequencyCap'
-    GeoTargeting:
+    Size:
       type: object
-      description: Geographic targeting configuration.
-      properties:
-        countries:
-          type: array
-          description: Countries to target.
-          items:
-            $ref: '#/components/schemas/Country'
-          example: []
-        regions:
-          type: array
-          description: Regions to target.
-          items:
-            $ref: '#/components/schemas/Region'
-          example: []
-        cities:
-          type: array
-          description: Cities to target.
-          items:
-            $ref: '#/components/schemas/City'
-          example: []
-        metros:
-          type: array
-          description: Metros to target.
-          items:
-            $ref: '#/components/schemas/Metro'
-          example: []
-        postalCodes:
-          type: array
-          description: Postal codes to target.
-          items:
-            $ref: '#/components/schemas/PostalCode'
-          example: []
-        excludeCountries:
-          type: boolean
-          description: Whether to exclude the specified geographic locations.
-          example: true
-    City:
-      type: object
-      properties:
-        dartId:
-          type: string
-          example: '500123'
-        name:
-          type: string
-          example: Example Title
-        regionDartId:
-          type: string
-          example: '500123'
-        regionCode:
-          type: string
-          example: example_value
-        countryDartId:
-          type: string
-          example: '500123'
-        countryCode:
-          type: string
-          example: example_value
-        metroCode:
-          type: string
-          example: example_value
-        metroDmaId:
-          type: string
-          example: '500123'
-        kind:
-          type: string
-          readOnly: true
-          example: example_value
-    CreativeRotation:
-      type: object
-      description: Creative rotation configuration controlling how creatives are served within an ad.
-      properties:
-        type:
-          type: string
-          description: Type of creative rotation.
-          enum:
-          - CREATIVE_ROTATION_TYPE_SEQUENTIAL
-          - CREATIVE_ROTATION_TYPE_RANDOM
-          example: CREATIVE_ROTATION_TYPE_SEQUENTIAL
-        weightCalculationStrategy:
-          type: string
-          description: Strategy for calculating creative weights.
-          enum:
-          - WEIGHT_STRATEGY_EQUAL
-          - WEIGHT_STRATEGY_CUSTOM
-          - WEIGHT_STRATEGY_HIGHEST_CTR
-          - WEIGHT_STRATEGY_OPTIMIZED
-          example: WEIGHT_STRATEGY_EQUAL
-        creativeAssignments:
-          type: array
-          description: Creative assignments in this creative rotation.
-          items:
-            $ref: '#/components/schemas/CreativeAssignment'
-          example: []
-        creativeOptimizationConfigurationId:
-          type: string
-          description: Creative optimization configuration used for this creative rotation.
-          example: '500123'
-    MobileCarrier:
-      type: object
-      properties:
-        dartId:
-          type: string
-          example: '500123'
-        name:
-          type: string
-          example: Example Title
-        countryDartId:
-          type: string
-          example: '500123'
-        countryCode:
-          type: string
-          example: example_value
-        kind:
-          type: string
-          readOnly: true
-          example: example_value
-    OperatingSystemVersion:
-      type: object
+      description: Represents the dimensions of ads, placements, and creatives.
       properties:
         id:
           type: string
+          description: ID of this size.
           example: abc123
-        majorVersion:
-          type: string
-          example: example_value
-        minorVersion:
-          type: string
-          example: example_value
-        name:
-          type: string
-          example: Example Title
-        operatingSystem:
-          $ref: '#/components/schemas/OperatingSystem'
-        kind:
-          type: string
-          readOnly: true
-          example: example_value
-    Platform:
-      type: object
-      properties:
-        dartId:
-          type: string
-          example: '500123'
-        name:
-          type: string
-          example: Example Title
-        kind:
-          type: string
-          readOnly: true
-          example: example_value
-    ClickThroughUrl:
-      type: object
-      description: Click-through URL configuration.
-      properties:
-        defaultLandingPage:
+        width:
+          type: integer
+          description: Width of this size in pixels.
+          example: 10
+        height:
+          type: integer
+          description: Height of this size in pixels.
+          example: 10
+        iab:
           type: boolean
-          description: Whether the campaign default landing page is used.
+          description: Whether this size is an IAB standard size.
           example: true
-        landingPageId:
+        kind:
           type: string
-          description: ID of the landing page for the click-through URL.
-          example: '500123'
-        customClickThroughUrl:
-          type: string
-          format: uri
-          description: Custom click-through URL.
-          example: https://www.example.com
-        computedClickThroughUrl:
-          type: string
-          format: uri
-          description: Read-only computed click-through URL. Set when either defaultLandingPage or landingPageId is set.
           readOnly: true
-          example: https://www.example.com
+          default: dfareporting#size
+          example: example_value
     TechnologyTargeting:
       type: object
       description: Technology targeting configuration.
@@ -784,6 +456,242 @@ components:
           items:
             $ref: '#/components/schemas/OperatingSystemVersion'
           example: []
+    AdsListResponse:
+      type: object
+      description: Ad list response.
+      properties:
+        ads:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ad'
+          example: []
+        nextPageToken:
+          type: string
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#adsListResponse
+          example: example_value
+    Error:
+      type: object
+      description: Standard Google API error response.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: HTTP status code.
+            message:
+              type: string
+              description: Human-readable error message.
+            status:
+              type: string
+              description: Error status string.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+          example: example_value
+    City:
+      type: object
+      properties:
+        dartId:
+          type: string
+          example: '500123'
+        name:
+          type: string
+          example: Example Title
+        regionDartId:
+          type: string
+          example: '500123'
+        regionCode:
+          type: string
+          example: example_value
+        countryDartId:
+          type: string
+          example: '500123'
+        countryCode:
+          type: string
+          example: example_value
+        metroCode:
+          type: string
+          example: example_value
+        metroDmaId:
+          type: string
+          example: '500123'
+        kind:
+          type: string
+          readOnly: true
+          example: example_value
+    EventTagOverride:
+      type: object
+      description: Event tag override configuration.
+      properties:
+        id:
+          type: string
+          description: ID of the event tag that is overridden.
+          example: abc123
+        enabled:
+          type: boolean
+          description: Whether this override is enabled.
+          example: true
+    DimensionValue:
+      type: object
+      description: A dimension value used for filtering and reporting.
+      properties:
+        dimensionName:
+          type: string
+          description: The name of the dimension.
+          example: example_value
+        value:
+          type: string
+          description: The value of the dimension.
+          example: example_value
+        id:
+          type: string
+          description: The ID associated with the value.
+          example: abc123
+        matchType:
+          type: string
+          description: Match type for filtering.
+          enum:
+          - EXACT
+          - BEGINS_WITH
+          - CONTAINS
+          - WILDCARD_EXPRESSION
+          example: EXACT
+        etag:
+          type: string
+          readOnly: true
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          default: dfareporting#dimensionValue
+          example: example_value
+    ConnectionType:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        kind:
+          type: string
+          readOnly: true
+          example: example_value
+    Metro:
+      type: object
+      properties:
+        dartId:
+          type: string
+          example: '500123'
+        name:
+          type: string
+          example: Example Title
+        dmaId:
+          type: string
+          example: '500123'
+        metroCode:
+          type: string
+          example: example_value
+        countryDartId:
+          type: string
+          example: '500123'
+        countryCode:
+          type: string
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          example: example_value
+    MobileCarrier:
+      type: object
+      properties:
+        dartId:
+          type: string
+          example: '500123'
+        name:
+          type: string
+          example: Example Title
+        countryDartId:
+          type: string
+          example: '500123'
+        countryCode:
+          type: string
+          example: example_value
+        kind:
+          type: string
+          readOnly: true
+          example: example_value
+    Country:
+      type: object
+      properties:
+        dartId:
+          type: string
+          example: '500123'
+        name:
+          type: string
+          example: Example Title
+        countryCode:
+          type: string
+          example: example_value
+        sslEnabled:
+          type: boolean
+          example: true
+        kind:
+          type: string
+          readOnly: true
+          example: example_value
+    DayPartTargeting:
+      type: object
+      description: Day part targeting configuration.
+      properties:
+        userLocalTime:
+          type: boolean
+          description: Whether targeting is based on user's local time.
+          example: true
+        hoursOfDay:
+          type: array
+          description: Hours of the day to target (0-23).
+          items:
+            type: integer
+            minimum: 0
+            maximum: 23
+          example: []
+        daysOfWeek:
+          type: array
+          description: Days of the week to target.
+          items:
+            type: string
+            enum:
+            - MONDAY
+            - TUESDAY
+            - WEDNESDAY
+            - THURSDAY
+            - FRIDAY
+            - SATURDAY
+            - SUNDAY
+          example: []
+    LastModifiedInfo:
+      type: object
+      description: Modification timestamp information.
+      properties:
+        time:
+          type: string
+          description: Timestamp of the last change in milliseconds since epoch.
+          example: example_value
     PlacementAssignment:
       type: object
       description: Placement assignment for an ad.
@@ -803,7 +711,7 @@ components:
         placementIdDimensionValue:
           $ref: '#/components/schemas/DimensionValue'
           readOnly: true
-    Browser:
+    Platform:
       type: object
       properties:
         dartId:
@@ -812,19 +720,76 @@ components:
         name:
           type: string
           example: Example Title
-        browserVersionId:
+        kind:
           type: string
-          example: '500123'
+          readOnly: true
+          example: example_value
+    OperatingSystemVersion:
+      type: object
+      properties:
+        id:
+          type: string
+          example: abc123
         majorVersion:
           type: string
           example: example_value
         minorVersion:
           type: string
           example: example_value
+        name:
+          type: string
+          example: Example Title
+        operatingSystem:
+          $ref: '#/components/schemas/OperatingSystem'
         kind:
           type: string
           readOnly: true
           example: example_value
+    CreativeAssignment:
+      type: object
+      description: Creative assignment within a creative rotation.
+      properties:
+        creativeId:
+          type: string
+          description: ID of the creative to be assigned.
+          example: '500123'
+        active:
+          type: boolean
+          description: Whether this creative assignment is active.
+          example: true
+        weight:
+          type: integer
+          description: Weight of the creative assignment.
+          example: 10
+        startTime:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        endTime:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        sequence:
+          type: integer
+          description: Sequence number of the creative assignment.
+          example: 10
+        clickThroughUrl:
+          $ref: '#/components/schemas/ClickThroughUrl'
+        creativeIdDimensionValue:
+          $ref: '#/components/schemas/DimensionValue'
+          readOnly: true
+        richMediaExitOverrides:
+          type: array
+          items:
+            type: object
+            properties:
+              exitId:
+                type: string
+              clickThroughUrl:
+                $ref: '#/components/schemas/ClickThroughUrl'
+              enabled:
+                type: boolean
+          example: []
     PostalCode:
       type: object
       properties:
@@ -844,6 +809,86 @@ components:
           type: string
           readOnly: true
           example: example_value
+    FrequencyCap:
+      type: object
+      description: Frequency cap configuration.
+      properties:
+        impressions:
+          type: integer
+          description: Number of times an individual user can be served the ad.
+          example: 10
+        duration:
+          type: integer
+          description: Duration of time, in seconds, for this frequency cap.
+          example: 10
+    GeoTargeting:
+      type: object
+      description: Geographic targeting configuration.
+      properties:
+        countries:
+          type: array
+          description: Countries to target.
+          items:
+            $ref: '#/components/schemas/Country'
+          example: []
+        regions:
+          type: array
+          description: Regions to target.
+          items:
+            $ref: '#/components/schemas/Region'
+          example: []
+        cities:
+          type: array
+          description: Cities to target.
+          items:
+            $ref: '#/components/schemas/City'
+          example: []
+        metros:
+          type: array
+          description: Metros to target.
+          items:
+            $ref: '#/components/schemas/Metro'
+          example: []
+        postalCodes:
+          type: array
+          description: Postal codes to target.
+          items:
+            $ref: '#/components/schemas/PostalCode'
+          example: []
+        excludeCountries:
+          type: boolean
+          description: Whether to exclude the specified geographic locations.
+          example: true
+    CreativeRotation:
+      type: object
+      description: Creative rotation configuration controlling how creatives are served within an ad.
+      properties:
+        type:
+          type: string
+          description: Type of creative rotation.
+          enum:
+          - CREATIVE_ROTATION_TYPE_SEQUENTIAL
+          - CREATIVE_ROTATION_TYPE_RANDOM
+          example: CREATIVE_ROTATION_TYPE_SEQUENTIAL
+        weightCalculationStrategy:
+          type: string
+          description: Strategy for calculating creative weights.
+          enum:
+          - WEIGHT_STRATEGY_EQUAL
+          - WEIGHT_STRATEGY_CUSTOM
+          - WEIGHT_STRATEGY_HIGHEST_CTR
+          - WEIGHT_STRATEGY_OPTIMIZED
+          example: WEIGHT_STRATEGY_EQUAL
+        creativeAssignments:
+          type: array
+          description: Creative assignments in this creative rotation.
+          items:
+            $ref: '#/components/schemas/CreativeAssignment'
+          example: []
+        creativeOptimizationConfigurationId:
+          type: string
+          description: Creative optimization configuration used for this creative rotation.
+          example: '500123'
     Ad:
       type: object
       description: A Campaign Manager 360 ad. Ads define the creative content, delivery schedules, targeting rules, and placement assignments that control how advertising is served.
@@ -967,54 +1012,51 @@ components:
         campaignIdDimensionValue:
           $ref: '#/components/schemas/DimensionValue'
           readOnly: true
-    CreativeAssignment:
-      type: object
-      description: Creative assignment within a creative rotation.
-      properties:
-        creativeId:
-          type: string
-          description: ID of the creative to be assigned.
-          example: '500123'
-        active:
-          type: boolean
-          description: Whether this creative assignment is active.
-          example: true
-        weight:
-          type: integer
-          description: Weight of the creative assignment.
-          example: 10
-        startTime:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-        endTime:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
-        sequence:
-          type: integer
-          description: Sequence number of the creative assignment.
-          example: 10
-        clickThroughUrl:
-          $ref: '#/components/schemas/ClickThroughUrl'
-        creativeIdDimensionValue:
-          $ref: '#/components/schemas/DimensionValue'
-          readOnly: true
-        richMediaExitOverrides:
-          type: array
-          items:
-            type: object
-            properties:
-              exitId:
-                type: string
-              clickThroughUrl:
-                $ref: '#/components/schemas/ClickThroughUrl'
-              enabled:
-                type: boolean
-          example: []
+  parameters:
+    PageToken:
+      name: pageToken
+      in: query
+      required: false
+      description: Value of the nextPageToken from the previous result page.
+      schema:
+        type: string
+    MaxResults:
+      name: maxResults
+      in: query
+      required: false
+      description: Maximum number of results to return. Default is 1000.
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 1000
+        default: 1000
+    AdId:
+      name: adId
+      in: path
+      required: true
+      description: Ad ID.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '87654321'
+    ProfileId:
+      name: profileId
+      in: path
+      required: true
+      description: The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to.
+      schema:
+        type: string
+        pattern: ^\d+$
+      example: '123456'
   responses:
     NotFound:
       description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required or invalid credentials.
       content:
         application/json:
           schema:
@@ -1031,48 +1073,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication required or invalid credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    AdId:
-      name: adId
-      in: path
-      required: true
-      description: Ad ID.
-      schema:
-        type: string
-        pattern: ^\d+$
-      example: '87654321'
-    MaxResults:
-      name: maxResults
-      in: query
-      required: false
-      description: Maximum number of results to return. Default is 1000.
-      schema:
-        type: integer
-        minimum: 0
-        maximum: 1000
-        default: 1000
-    ProfileId:
-      name: profileId
-      in: path
-      required: true
-      description: The Campaign Manager 360 user profile ID. Each user has a profile for each account they have access to.
-      schema:
-        type: string
-        pattern: ^\d+$
-      example: '123456'
-    PageToken:
-      name: pageToken
-      in: query
-      required: false
-      description: Value of the nextPageToken from the previous result page.
-      schema:
-        type: string
   securitySchemes:
     OAuth2:
       type: oauth2
