@@ -51,5 +51,5 @@
     - connectors/applications/google-campaign-manager-360
     vendor_link: https://www.google.com/dfa/trafficking/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
