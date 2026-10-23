@@ -766,6 +766,8 @@ apis:
   - type: JSONLD
     url: json-ld/google-campaign-manager-context.jsonld
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/google-campaign-manager/overview
   - type: Website
     url: https://www.google.com/
   - type: CapabilityMap
