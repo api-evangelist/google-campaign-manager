@@ -1,4 +1,4 @@
-# Google Campaign Manager (google-campaign-manager)
+# Google Campaign Manager
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,176 +64,273 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-The Campaign Manager 360 API allows developers to programmatically manage campaigns, creatives, reports, and other advertising operations in Google's Campaign Manager 360 platform.
+Campaign Manager 360 is Google's ad-serving, trafficking and measurement platform for advertisers and agencies. Its API — service name dfareporting — lets developers programmatically manage advertisers, campaigns, ads, creatives, placements, floodlight conversion tags and remarketing lists, generate publisher ad tags, and define, run and download standard, reach, path-to-conversion, floodlight and cross-media reach reports. Access is OAuth 2.0 only and every path is scoped to a Campaign Manager 360 user profile. The current version is v5; v4 has been fully sunset. Google publishes a Discovery Document rather than an OpenAPI, plus Data Transfer v2.0 for bulk event-level delivery to Cloud Storage.
 
-**APIs.json:** [https://developers.google.com/doubleclick-advertisers](https://developers.google.com/doubleclick-advertisers)
+**Areas:** Advertising · Analytics · Campaign Management · Digital Marketing · Reporting · Ad Serving · Ad Trafficking · Attribution · Conversion Tracking · Marketing · Media Buying · Google Marketing Platform
 
-## Scope
+## Google Campaign Manager on APIs.io
 
-- **Type:** Index
+Everything profiled for Google Campaign Manager is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/google-campaign-manager/](https://apis.io/providers/google-campaign-manager/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Advertising
-- Analytics
-- Campaign Management
-- Digital Marketing
-- Reporting
+- [Campaign Manager 360 Data Transfer v2.0](https://apis.io/apis/google-campaign-manager/campaign-manager-360-data-transfer-v20/) — Data Transfer v2.0 provides raw, event-level reporting data from Campaign Manager 360 beyond what is available through standard reporting. Data is delivered…
+- [Google Campaign Manager Ads API](https://apis.io/apis/google-campaign-manager/google-campaign-manager-ads-api/) — Manage ad configurations within campaigns. Ads define the creative content, delivery schedules, targeting rules, and placement assignments that determine…
+- [Google Campaign Manager Campaigns API](https://apis.io/apis/google-campaign-manager/google-campaign-manager-campaigns-api/) — Manage advertising campaigns. Campaigns serve as top-level organizational containers that group ads, placements, and creatives under a single advertiser…
+- [Google Campaign Manager Placements API](https://apis.io/apis/google-campaign-manager/google-campaign-manager-placements-api/) — Manage placements representing ad inventory on publisher sites. Placements define the size, format, pricing, and site location where ads can be served, and…
+- [Google Campaign Manager Reports API](https://apis.io/apis/google-campaign-manager/google-campaign-manager-reports-api/) — Create, configure, and run reports to analyze campaign performance. Reports support multiple types including standard, reach, path to conversion,…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Campaign Manager 360 API
+Model Context Protocol servers that expose the API to agents.
 
-Manage your DoubleClick Campaign Manager ad campaigns and reports programmatically. Create, retrieve, update, and delete campaigns, creatives, placements, and generate comprehensive reporting data.
+- [google-campaign-manager-mcp.yml](https://apis.io/servers/google-campaign-manager/google-campaign-manager-mcp-yml/)
 
-- **Human URL:** [https://developers.google.com/doubleclick-advertisers](https://developers.google.com/doubleclick-advertisers)
-- **Base URL:** `https://dfareporting.googleapis.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Advertising
-- Analytics
-- Campaign Management
-- Conversions
-- Creatives
-- Digital Marketing
-- Floodlight
-- Placements
-- Reporting
-- Trafficking
+- [Google Campaign Manager Agentic Access](https://apis.io/agentic-access/google-campaign-manager/google-campaign-manager-agentic-access/)
 
-#### Properties
+#### JSON Schema (64)
 
-- [Documentation](https://developers.google.com/doubleclick-advertisers/v4)
-- [Documentation](https://developers.google.com/doubleclick-advertisers/rest)
-- [OpenAPI](openapi/google-campaign-manager-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/google-campaign-manager.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/google-campaign-manager.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](https://dfareporting.googleapis.com/$discovery/rest?version=v4) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](https://dfareporting.googleapis.com/$discovery/rest?version=v5) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://developers.google.com/doubleclick-advertisers/guides/authorizing)
-- [Pricing](https://marketingplatform.google.com/about/campaign-manager-360/pricing/)
-- [Quickstart](https://developers.google.com/doubleclick-advertisers/getting_started)
-- [Support](https://support.google.com/campaignmanager)
-- [Console](https://console.cloud.google.com/apis/library/dfareporting.googleapis.com)
-- [Terms of Service](https://developers.google.com/terms)
-- [Rate Limits](https://developers.google.com/doubleclick-advertisers/quotas)
-- [Release Notes](https://developers.google.com/doubleclick-advertisers/rel_notes)
-- [SDK](https://developers.google.com/doubleclick-advertisers/libraries)
-- [JSON Schema](json-schema/google-campaign-manager-campaign-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-ad-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-placement-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-report-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-report-criteria-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-report-reach-criteria-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-report-path-to-conversion-criteria-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-report-cross-dimension-reach-criteria-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-report-floodlight-criteria-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-report-cross-media-reach-criteria-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-report-schedule-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-report-delivery-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-recipient-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-file-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-size-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-date-range-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-sorted-dimension-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-activities-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-custom-rich-media-events-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-dimension-value-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-last-modified-info-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-audience-segment-group-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-audience-segment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-event-tag-override-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-click-through-url-suffix-properties-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-default-click-through-event-tag-properties-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-click-through-url-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-creative-optimization-configuration-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-optimization-activity-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-ad-blocking-configuration-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-measurement-partner-link-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-measurement-partner-wrapping-data-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-conversion-domain-override-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-placement-assignment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-creative-rotation-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-creative-assignment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-delivery-schedule-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-frequency-cap-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-geo-targeting-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-country-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-region-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-city-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-metro-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-postal-code-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-technology-targeting-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-browser-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-platform-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-operating-system-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-operating-system-version-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-mobile-carrier-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-connection-type-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-day-part-targeting-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-pricing-schedule-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-pricing-schedule-pricing-period-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-video-settings-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-lookback-configuration-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-tag-setting-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-placement-tag-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-campaigns-list-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-ads-list-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-placements-list-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-placements-generate-tags-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-reports-list-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/google-campaign-manager-error-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/google-campaign-manager-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+The data models the API reads and writes.
 
-### Campaign Manager 360 Data Transfer v2.0
+- [Activities](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-activities/)
+- [Ad](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-ad/)
+- [AdBlockingConfiguration](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-ad-blocking-configuration/)
+- [AdsListResponse](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-ads-list-response/)
+- [AudienceSegment](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-audience-segment/)
+- [AudienceSegmentGroup](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-audience-segment-group/)
+- [Browser](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-browser/)
+- [Campaign](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-campaign/)
+- [CampaignsListResponse](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-campaigns-list-response/)
+- [City](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-city/)
+- [ClickThroughUrl](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-click-through-url/)
+- [ClickThroughUrlSuffixProperties](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-click-through-url-suffix-properties/)
+- [ConnectionType](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-connection-type/)
+- [ConversionDomainOverride](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-conversion-domain-override/)
+- [Country](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-country/)
+- [CreativeAssignment](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-creative-assignment/)
+- [CreativeOptimizationConfiguration](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-creative-optimization-configuration/)
+- [CreativeRotation](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-creative-rotation/)
+- [CustomRichMediaEvents](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-custom-rich-media-events/)
+- [DateRange](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-date-range/)
+- [DayPartTargeting](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-day-part-targeting/)
+- [DefaultClickThroughEventTagProperties](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-default-click-through-event-tag-properties/)
+- [DeliverySchedule](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-delivery-schedule/)
+- [DimensionValue](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-dimension-value/)
+- [Error](https://apis.io/schemas/google-campaign-manager/google-campaign-manager-error/)
+- …and 39 more published on APIs.io
 
-Data Transfer v2.0 provides raw, event-level reporting data from Campaign Manager 360 beyond what is available through standard reporting. Data is delivered to Google Cloud Storage as CSV files for advanced analysis and data warehousing use cases.
+#### JSON Structure (64)
 
-- **Human URL:** [https://developers.google.com/doubleclick-advertisers/dtv2/overview](https://developers.google.com/doubleclick-advertisers/dtv2/overview)
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Google Campaign Manager Activities Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-activities-structure/)
+- [Google Campaign Manager Ad Blocking Configuration Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-ad-blocking-configuration-structure/)
+- [Google Campaign Manager Ad Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-ad-structure/)
+- [Google Campaign Manager Ads List Response Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-ads-list-response-structure/)
+- [Google Campaign Manager Audience Segment Group Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-audience-segment-group-structure/)
+- [Google Campaign Manager Audience Segment Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-audience-segment-structure/)
+- [Google Campaign Manager Browser Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-browser-structure/)
+- [Google Campaign Manager Campaign Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-campaign-structure/)
+- [Google Campaign Manager Campaigns List Response Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-campaigns-list-response-structure/)
+- [Google Campaign Manager City Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-city-structure/)
+- [Google Campaign Manager Click Through Url Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-click-through-url-structure/)
+- [Google Campaign Manager Click Through Url Suffix Properties Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-click-through-url-suffix-properties-structure/)
+- [Google Campaign Manager Connection Type Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-connection-type-structure/)
+- [Google Campaign Manager Conversion Domain Override Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-conversion-domain-override-structure/)
+- [Google Campaign Manager Country Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-country-structure/)
+- [Google Campaign Manager Creative Assignment Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-creative-assignment-structure/)
+- [Google Campaign Manager Creative Optimization Configuration Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-creative-optimization-configuration-structure/)
+- [Google Campaign Manager Creative Rotation Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-creative-rotation-structure/)
+- [Google Campaign Manager Custom Rich Media Events Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-custom-rich-media-events-structure/)
+- [Google Campaign Manager Date Range Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-date-range-structure/)
+- [Google Campaign Manager Day Part Targeting Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-day-part-targeting-structure/)
+- [Google Campaign Manager Default Click Through Event Tag Properties Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-default-click-through-event-tag-properties-structure/)
+- [Google Campaign Manager Delivery Schedule Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-delivery-schedule-structure/)
+- [Google Campaign Manager Dimension Value Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-dimension-value-structure/)
+- [Google Campaign Manager Error Structure](https://apis.io/json-structure/google-campaign-manager/google-campaign-manager-error-structure/)
+- …and 39 more published on APIs.io
 
-- Analytics
-- Cloud Storage
-- CSV
-- Data Transfer
-- Raw Data
-- Reporting
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://developers.google.com/doubleclick-advertisers/dtv2/overview)
-- [Quickstart](https://developers.google.com/doubleclick-advertisers/dtv2/getting-started)
-- [F A Q](https://developers.google.com/doubleclick-advertisers/dtv2/reference/faq)
-- [Release Notes](https://developers.google.com/doubleclick-advertisers/dtv2/reference/release-notes)
-- [Support](https://developers.google.com/doubleclick-advertisers/dtv2/get-support)
-- [Postman Collection](collections/google-campaign-manager.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/google-campaign-manager.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Google Campaign Manager Context](https://apis.io/jsonld/google-campaign-manager/google-campaign-manager-context/)
 
-## Common Properties
+#### Vocabulary (1)
 
-- [Portal](https://developers.google.com/)
-- [Authentication](https://developers.google.com/identity/protocols/oauth2)
+The provider's domain terms, defined.
+
+- [google-campaign-manager API Vocabulary](https://apis.io/vocabularies/google-campaign-manager/google-campaign-manager-vocabulary/)
+
+#### Examples (64)
+
+Example requests and responses.
+
+- [Google Campaign Manager Activities Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-activities-example/)
+- [Google Campaign Manager Ad Blocking Configuration Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-ad-blocking-configuration-example/)
+- [Google Campaign Manager Ad Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-ad-example/)
+- [Google Campaign Manager Ads List Response Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-ads-list-response-example/)
+- [Google Campaign Manager Audience Segment Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-audience-segment-example/)
+- [Google Campaign Manager Audience Segment Group Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-audience-segment-group-example/)
+- [Google Campaign Manager Browser Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-browser-example/)
+- [Google Campaign Manager Campaign Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-campaign-example/)
+- [Google Campaign Manager Campaigns List Response Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-campaigns-list-response-example/)
+- [Google Campaign Manager City Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-city-example/)
+- [Google Campaign Manager Click Through Url Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-click-through-url-example/)
+- [Google Campaign Manager Click Through Url Suffix Properties Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-click-through-url-suffix-properties-example/)
+- [Google Campaign Manager Connection Type Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-connection-type-example/)
+- [Google Campaign Manager Conversion Domain Override Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-conversion-domain-override-example/)
+- [Google Campaign Manager Country Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-country-example/)
+- [Google Campaign Manager Creative Assignment Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-creative-assignment-example/)
+- [Google Campaign Manager Creative Optimization Configuration Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-creative-optimization-configuration-example/)
+- [Google Campaign Manager Creative Rotation Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-creative-rotation-example/)
+- [Google Campaign Manager Custom Rich Media Events Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-custom-rich-media-events-example/)
+- [Google Campaign Manager Date Range Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-date-range-example/)
+- [Google Campaign Manager Day Part Targeting Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-day-part-targeting-example/)
+- [Google Campaign Manager Default Click Through Event Tag Properties Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-default-click-through-event-tag-properties-example/)
+- [Google Campaign Manager Delivery Schedule Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-delivery-schedule-example/)
+- [Google Campaign Manager Dimension Value Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-dimension-value-example/)
+- [Google Campaign Manager Error Example](https://apis.io/examples/google-campaign-manager/google-campaign-manager-error-example/)
+- …and 39 more published on APIs.io
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Google Campaign Manager Campaign Manager 360 API](https://apis.io/collections/google-campaign-manager/open-google-campaign-manager/)
+- [Google Campaign Manager Campaign Manager 360 Ads API](https://apis.io/collections/google-campaign-manager/open-google-campaign-manager-ads-api/)
+- [Google Campaign Manager Campaign Manager 360 Ads Campaigns API](https://apis.io/collections/google-campaign-manager/open-google-campaign-manager-campaigns-api/)
+- [Google Campaign Manager Campaign Manager 360 Ads Placements API](https://apis.io/collections/google-campaign-manager/open-google-campaign-manager-placements-api/)
+- [Google Campaign Manager Campaign Manager 360 Ads Reports API](https://apis.io/collections/google-campaign-manager/open-google-campaign-manager-reports-api/)
+
+#### Overlays (8)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Google Campaign Manager Ads Api Overlay](https://apis.io/overlays/google-campaign-manager/google-campaign-manager-ads-api-overlay/)
+- [Google Campaign Manager Ads Api Phrasing Overlay](https://apis.io/overlays/google-campaign-manager/google-campaign-manager-ads-api-phrasing-overlay/)
+- [Google Campaign Manager Campaigns Api Overlay](https://apis.io/overlays/google-campaign-manager/google-campaign-manager-campaigns-api-overlay/)
+- [Google Campaign Manager Campaigns Api Phrasing Overlay](https://apis.io/overlays/google-campaign-manager/google-campaign-manager-campaigns-api-phrasing-overlay/)
+- [Google Campaign Manager Placements Api Overlay](https://apis.io/overlays/google-campaign-manager/google-campaign-manager-placements-api-overlay/)
+- [Google Campaign Manager Placements Api Phrasing Overlay](https://apis.io/overlays/google-campaign-manager/google-campaign-manager-placements-api-phrasing-overlay/)
+- [Google Campaign Manager Reports Api Overlay](https://apis.io/overlays/google-campaign-manager/google-campaign-manager-reports-api-overlay/)
+- [Google Campaign Manager Reports Api Phrasing Overlay](https://apis.io/overlays/google-campaign-manager/google-campaign-manager-reports-api-phrasing-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Google Campaign Manager — jsonschema rules](https://apis.io/rules/google-campaign-manager/google-campaign-manager-jsonschema-spectral-rules/)
+- [Google Campaign Manager API Rules](https://apis.io/rules/google-campaign-manager/google-campaign-manager-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Google Campaign Manager Authentication](https://apis.io/security/google-campaign-manager/google-campaign-manager-authentication/)
+- [Google Campaign Manager Domain Security](https://apis.io/security/google-campaign-manager/google-campaign-manager-domain-security/)
+- [Google Campaign Manager Vulnerability Disclosure](https://apis.io/security/google-campaign-manager/google-campaign-manager-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Google Campaign Manager Scopes](https://apis.io/scopes/google-campaign-manager/google-campaign-manager-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Google Campaign Manager Plans Pricing](https://apis.io/plans/google-campaign-manager/google-campaign-manager-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Google Campaign Manager Rate Limits](https://apis.io/rate-limits/google-campaign-manager/google-campaign-manager-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Google Campaign Manager Finops](https://apis.io/finops/google-campaign-manager/google-campaign-manager-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.google.com/)
+- [Documentation](https://developers.google.com/doubleclick-advertisers)
+- [Getting started](https://developers.google.com/doubleclick-advertisers/getting_started)
+- [API reference](https://developers.google.com/doubleclick-advertisers/rest)
+- [Pricing](https://marketingplatform.google.com/about/campaign-manager-360/)
+- [Sign up](https://marketingplatform.google.com/about/campaign-manager-360/)
+- [Support](https://developers.google.com/doubleclick-advertisers/get-support)
 - [Blog](https://blog.google/products/marketingplatform/)
-- [Status Page](https://status.cloud.google.com/)
-- [Privacy Policy](https://policies.google.com/privacy)
-- [Terms of Service](https://policies.google.com/terms)
-- [GitHub Repository](https://github.com/googleads/googleads-dfa-reporting-samples)
-- [JSON-LD](json-ld/google-campaign-manager-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/google-campaign-manager-spectral-rules.yml)
-- [Vocabulary](vocabulary/google-campaign-manager-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Terms of service](https://policies.google.com/terms)
+- [Privacy policy](https://policies.google.com/privacy)
+- [GitHub](https://github.com/googleads)
+- [Status](https://status.cloud.google.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
-**URL:** https://apievangelist.com/
+**Kin Score 65.9** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 63.2 |
+| Contract governance | 31.8 |
+| Operational transparency | 84.2 |
+| Developer ergonomics | 70.8 |
+| Access clarity | 44.7 |
+
+**Agent readiness 32.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 40.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/google-campaign-manager/](https://apis.io/providers/google-campaign-manager/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Google Campaign Manager: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/google-campaign-manager/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
