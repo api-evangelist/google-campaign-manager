@@ -257,6 +257,9 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/google-campaign-manager-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -722,6 +725,9 @@ artifacts:
   lifecycle/google-campaign-manager-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
+  llms/google-campaign-manager-llms-provenance.yml:
+    method: generated
+    evidence: 'derive-llms-provenance.py: generated'
   llms/google-campaign-manager-llms.txt:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -771,6 +777,9 @@ artifacts:
   packages/google-campaign-manager-packages.yml:
     method: searched
     evidence: declared in the artifact
+  patterns/google-campaign-manager-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/google-campaign-manager-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -778,6 +787,9 @@ artifacts:
     method: searched
     evidence: declared in the artifact
   rules/google-campaign-manager-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/google-campaign-manager-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/google-campaign-manager-spectral-rules.yml:
@@ -810,9 +822,15 @@ artifacts:
   sla/google-campaign-manager-sla.yml:
     method: generated
     evidence: declared in the artifact
+  vendors/google-campaign-manager-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
   vocabulary/google-campaign-manager-vocabulary.yaml:
     method: unknown
     evidence: no authorship recorded
+  vocabulary/google-campaign-manager-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
   well-known/google-campaign-manager-oauth-authorization-server.json:
     method: unknown
     evidence: no authorship recorded
